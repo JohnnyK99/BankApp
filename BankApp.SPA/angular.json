@@ -20,6 +20,11 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "projects/spa/src/styles"
+              ]
+            },
             "outputPath": "dist/spa",
             "index": "projects/spa/src/index.html",
             "main": "projects/spa/src/main.ts",
@@ -31,7 +36,7 @@
               "projects/spa/src/assets"
             ],
             "styles": [
-              "projects/spa/src/styles.scss"
+              "projects/spa/src/styles/styles.scss"
             ],
             "scripts": []
           },
@@ -99,7 +104,7 @@
               "projects/spa/src/assets"
             ],
             "styles": [
-              "projects/spa/src/styles.scss"
+              "projects/spa/src/styles/styles.scss"
             ],
             "scripts": []
           }

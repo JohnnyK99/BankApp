@@ -434,6 +434,7 @@ $RECYCLE.BIN/
 ##
 ## Visual Studio Code
 ##
+.vscode
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
@@ -488,3 +489,6 @@ Thumbs.db
 Database/RedGateProjects/prod.scp
 
 Database/RedGateProjects/test.scp
+BankApp.SPA/.vscode/extensions.json
+BankApp.SPA/.vscode/extensions.json
+BankApp.SPA/.vscode/tasks.json
