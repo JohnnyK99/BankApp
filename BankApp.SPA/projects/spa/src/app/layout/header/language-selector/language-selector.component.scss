@@ -1,0 +1,21 @@
+:host {
+    display: flex;
+    align-items: center;
+  }
+  
+  .active {
+      background-color: var(--color-background-hover); //TODO: Change color
+      span {
+        color: var(--color-primary); //TODO: Change color
+      }
+    }
+    
+    .mat-menu-item {
+      display: flex;
+      align-items: center;
+    }
+    
+    img {
+      height: 20px;
+      margin-right: 5px;
+    }

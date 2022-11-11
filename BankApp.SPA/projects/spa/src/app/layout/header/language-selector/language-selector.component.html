@@ -1,0 +1,11 @@
+<button mat-icon-button [matMenuTriggerFor]="menu">
+    <img [src]="facade.selectedLanguageFlag$ | async">
+</button>
+<mat-menu #menu="matMenu">
+    <div *ngFor="let language of facade.availableLanguages$ | async" [ngClass]="{'active': language.code === (facade.selectedLanguage$ | async)}">
+        <button mat-menu-item (click)="setLanguage(language.code)">
+            <img [src]="language.flag">
+            <span>{{language.name}}</span>
+        </button>
+    </div>
+</mat-menu>
