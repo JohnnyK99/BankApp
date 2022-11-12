@@ -1,0 +1,25 @@
+:host {
+    flex: 1;
+    padding: 10px 20px;
+    text-align: center;
+    display: block;
+}
+
+form {
+    max-width: 400px;
+    margin: auto;
+    display: grid;
+}
+
+.example-data-button {
+    margin: 5px 0;
+}
+
+.login-button {
+    margin-top: 20px;
+}
+
+.mat-progress-spinner {
+    justify-self: center;
+    margin-top: 20px;
+}

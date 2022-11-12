@@ -1,8 +1,8 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { FeatureStates } from '../../shared/constants/enums/feature-states.enum';
+import { FeatureState } from '../../shared/constants/enums/feature-state.enum';
 import { LanguageState } from './language.state';
 
-const getLangState = createFeatureSelector<LanguageState>(FeatureStates.Language);
+const getLangState = createFeatureSelector<LanguageState>(FeatureState.Language);
 
 export const getAvailableLanguages = createSelector(
   getLangState,

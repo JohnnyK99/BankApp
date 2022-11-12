@@ -1,20 +1,45 @@
-import { LocalStorageKeys } from '../constants/enums/local-storage-keys.enum';
+import { AppRoutes } from '../../app-routes.constants';
+import { LocalStorageKey } from '../constants/enums/local-storage-key.enum';
 import { LanguageConstants } from '../constants/language.constants';
 
 export class LocalStorageHelpers {
   static setSelectedLanguage(languageCode: string): void {
-    this.setItem(LocalStorageKeys.selectedLanguage, languageCode);
+    this.setItem(LocalStorageKey.SelectedLanguage, languageCode);
   }
 
   static getSelectedLanguage(): string {
-    return this.getItem(LocalStorageKeys.selectedLanguage, LanguageConstants.defaultLanguageCode);
+    return this.getItem(LocalStorageKey.SelectedLanguage, LanguageConstants.defaultLanguageCode);
   }
 
   static removeSelectedLanguage(): void {
-    this.removeItem(LocalStorageKeys.selectedLanguage);
+    this.removeItem(LocalStorageKey.SelectedLanguage);
   }
 
-  private static getItem<T>(key: LocalStorageKeys, defaultValue: T): T {
+  static setAccessToken(token: string): void {
+    this.setItem(LocalStorageKey.AccessToken, token);
+  }
+
+  static getAccessToken(): string | null {
+    return this.getItem(LocalStorageKey.AccessToken, null);
+  }
+
+  static removeAccessToken(): void {
+    this.removeItem(LocalStorageKey.AccessToken);
+  }
+
+  static setLoginTargetUrl(url: string): void {
+    this.setItem(LocalStorageKey.LoginTargetUrl, url);
+  }
+
+  static getLoginTargetUrl(): string {
+    return this.getItem(LocalStorageKey.LoginTargetUrl, AppRoutes.base);
+  }
+
+  static removeLoginTargetUrl(): void {
+    this.removeItem(LocalStorageKey.LoginTargetUrl);
+  }
+
+  private static getItem<T>(key: LocalStorageKey, defaultValue: T): T {
     const value = localStorage.getItem(key);
 
     if(value == null) {
@@ -28,7 +53,7 @@ export class LocalStorageHelpers {
     }
   }
 
-  private static setItem<T>(key: LocalStorageKeys, value: T) {
+  private static setItem<T>(key: LocalStorageKey, value: T): void {
     if(!value) {
       localStorage.removeItem(key);
       return;
@@ -36,7 +61,7 @@ export class LocalStorageHelpers {
     localStorage.setItem(key, JSON.stringify(value));
   }
 
-  private static removeItem(key: LocalStorageKeys): void {
+  private static removeItem(key: LocalStorageKey): void {
     localStorage.removeItem(key);
   }
 }

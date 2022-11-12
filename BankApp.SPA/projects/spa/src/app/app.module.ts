@@ -10,10 +10,19 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { GlobalStoresModule } from './global-stores/global-stores.module';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { AuthModule } from './auth/auth.module';
+import { ApiClientConfigModel } from 'projects/api-client/src/config/config.model';
+import { environment } from '../environments/environment';
+import { ApiClientModule } from 'projects/api-client/api-client.module';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
 }
+
+const apiClientConfig: ApiClientConfigModel = {
+  baseApiUrl: environment.baseApiUrl,
+  apiVersion: environment.apiVersion,
+};
 
 @NgModule({
   declarations: [
@@ -27,6 +36,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     LayoutModule,
     HttpClientModule,
     GlobalStoresModule,
+    AuthModule,
+    ApiClientModule.forRoot(apiClientConfig),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
