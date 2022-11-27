@@ -1,4 +1,6 @@
-﻿namespace BankApp.Infrastructure.Features.Auth.Registration.Commands
+﻿using System.Threading.Tasks;
+
+namespace BankApp.Infrastructure.Features.Auth.Registration.Commands
 {
     public interface IRegisterUserDalCommand
     {

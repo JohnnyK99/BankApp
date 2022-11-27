@@ -3,6 +3,8 @@ using BankApp.DAL.Db.Entities;
 using BankApp.Infrastructure.Features.Auth;
 using BankApp.Infrastructure.Features.Auth.Registration.Commands;
 using Microsoft.AspNetCore.Identity;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace BankApp.DAL.Features.Auth.Register.Queries
 {

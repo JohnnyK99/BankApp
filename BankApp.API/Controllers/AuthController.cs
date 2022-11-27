@@ -1,8 +1,12 @@
 ﻿using BankApp.API.Constants.Routes;
 using BankApp.API.Dto.Auth.Register;
 using BankApp.Infrastructure.Features.Auth.Registration.Commands;
+using BankApp.Infrastructure.Wrappers;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
+using BankApp.Infrastructure.Features.Auth.Login.Commands;
+using BankApp.Infrastructure.Features.Auth;
 
 namespace BankApp.API.Controllers
 {
@@ -20,7 +24,7 @@ namespace BankApp.API.Controllers
         [HttpPost(ApiRoutes.Auth.Register)]
         public async Task<IActionResult> Register(RegisterUserDto request)
         {
-            var result = await _mediator.Send(new RegisterUserCommand(request.FirstName, request.LastName, request.Email, request.Password));
+            Result<bool> result = await _mediator.Send(new RegisterUserCommand(request.FirstName, request.LastName, request.Email, request.Password));
             
             if(!result.Succeeded)
             {
@@ -29,5 +33,19 @@ namespace BankApp.API.Controllers
 
             return Ok(result);
         }
+
+        [HttpPost(ApiRoutes.Auth.Login)]
+        public async Task<IActionResult> Login(LoginDto request)
+        {
+            Result<TokenModel> result = await _mediator.Send(new LoginCommand(request.Email, request.Password));
+
+            if(!result.Succeeded)
+            {
+                return Unauthorized(result);
+            }
+
+            return Ok(result);
+        }
+
     }
 }

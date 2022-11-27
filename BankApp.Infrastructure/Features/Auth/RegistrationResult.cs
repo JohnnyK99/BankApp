@@ -1,4 +1,6 @@
-﻿namespace BankApp.Infrastructure.Features.Auth
+﻿using System.Collections.Generic;
+
+namespace BankApp.Infrastructure.Features.Auth
 {
     public class RegistrationResult
     {

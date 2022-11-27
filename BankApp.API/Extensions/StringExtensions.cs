@@ -1,4 +1,5 @@
 ﻿using BankApp.API.Constants.Auth;
+using System.Linq;
 
 namespace BankApp.API.Extensions
 {

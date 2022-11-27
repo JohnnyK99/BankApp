@@ -1,9 +1,11 @@
 ﻿using BankApp.Infrastructure.Wrappers;
 using MediatR;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace BankApp.Infrastructure.Features.Auth.Registration.Commands
 {
-    public class RegisterUserCommand : IRequest<IResult>
+    public class RegisterUserCommand : IRequest<Result<bool>>
     {
         public string FirstName { get; }
         public string LastName { get; }
@@ -22,7 +24,7 @@ namespace BankApp.Infrastructure.Features.Auth.Registration.Commands
             Password = password;
         }
 
-        public class Handler : IRequestHandler<RegisterUserCommand, IResult>
+        public class Handler : IRequestHandler<RegisterUserCommand, Result<bool>>
         {
             private readonly IRegisterUserDalCommand _userRegisterDalCommand;
 
@@ -31,16 +33,16 @@ namespace BankApp.Infrastructure.Features.Auth.Registration.Commands
                 _userRegisterDalCommand = userRegisterDalCommand;
             }
 
-            public async Task<IResult> Handle(RegisterUserCommand request, CancellationToken token)
+            public async Task<Result<bool>> Handle(RegisterUserCommand request, CancellationToken token)
             {
                 RegistrationResult result = await _userRegisterDalCommand.RegisterUserAsync(request.FirstName, request.LastName, request.Email, request.Password);
 
                 if (!result.Succeeded)
                 {
-                    return await Result.FailAsync(result.ErrorMessages);
+                    return await Result<bool>.FailAsync(result.ErrorMessages);
                 }
 
-                return await Result.SuccessAsync();
+                return await Result<bool>.SuccessAsync();
             }
         }
     }

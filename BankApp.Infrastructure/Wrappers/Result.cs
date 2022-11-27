@@ -1,4 +1,7 @@
-﻿namespace BankApp.Infrastructure.Wrappers
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace BankApp.Infrastructure.Wrappers
 {
     public class Result : IResult
     {

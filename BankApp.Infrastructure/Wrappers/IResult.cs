@@ -1,4 +1,6 @@
-﻿namespace BankApp.Infrastructure.Wrappers
+﻿using System.Collections.Generic;
+
+namespace BankApp.Infrastructure.Wrappers
 {
     public interface IResult
     {
