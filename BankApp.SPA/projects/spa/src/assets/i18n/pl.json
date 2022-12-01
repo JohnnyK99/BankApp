@@ -1,0 +1,8 @@
+{
+    "error": {
+        "register": "Rejestracja nie powiodła się"
+    },
+    "success": {
+        "register": "Pomyślnie zarejestrowano użytkownika"
+    }
+}

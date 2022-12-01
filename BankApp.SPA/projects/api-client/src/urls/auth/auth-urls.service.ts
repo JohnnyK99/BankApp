@@ -7,11 +7,15 @@ import { CONFIG } from '../../config/config.token';
 })
 export class AuthUrlsService {
 
-  baseUrl = `${this.config.baseApiUrl}/${this.config.apiVersion}/auth`;
+  baseUrl = `${this.config.baseApiUrl}/auth`;
 
   constructor(@Inject(CONFIG) private config: ApiClientConfigModel) {}
 
   login(): string {
     return `${this.baseUrl}/login`;
+  }
+
+  register(): string {
+    return `${this.baseUrl}/register`;
   }
 }

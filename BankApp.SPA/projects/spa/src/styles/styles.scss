@@ -1,3 +1,5 @@
 @use 'reset';
-@use 'material-settings';
 @use 'global';
+
+@import 'ngx-toastr/toastr';
+@import 'ng-zorro-antd/ng-zorro-antd.min.css'

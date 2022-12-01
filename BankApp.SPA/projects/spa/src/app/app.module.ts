@@ -14,6 +14,7 @@ import { AuthModule } from './auth/auth.module';
 import { ApiClientConfigModel } from 'projects/api-client/src/config/config.model';
 import { environment } from '../environments/environment';
 import { ApiClientModule } from 'projects/api-client/api-client.module';
+import { ToastrModule } from 'ngx-toastr';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -21,7 +22,6 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 
 const apiClientConfig: ApiClientConfigModel = {
   baseApiUrl: environment.baseApiUrl,
-  apiVersion: environment.apiVersion,
 };
 
 @NgModule({
@@ -38,6 +38,7 @@ const apiClientConfig: ApiClientConfigModel = {
     GlobalStoresModule,
     AuthModule,
     ApiClientModule.forRoot(apiClientConfig),
+    ToastrModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -46,7 +47,6 @@ const apiClientConfig: ApiClientConfigModel = {
       },
     }),
   ],
-  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

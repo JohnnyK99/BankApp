@@ -8,7 +8,9 @@ import { AuthState } from './auth.state';
 const initialState: AuthState = {
   accessToken: LocalStorageHelpers.getAccessToken(),
   accessTokenExp: AuthHelpers.getAccessTokenExp(LocalStorageHelpers.getAccessToken()),
-  status: AuthHelpers.getInitialStatus(LocalStorageHelpers.getAccessToken()),
+  username: AuthHelpers.getUserName(LocalStorageHelpers.getAccessToken()),
+  userRoles: AuthHelpers.getUserRoles(LocalStorageHelpers.getAccessToken()),
+  status: AuthStatus.LoggedOut,
 };
 
 export const authReducer = createReducer<AuthState>(
@@ -19,8 +21,10 @@ export const authReducer = createReducer<AuthState>(
   })),
   on(AuthActions.loginSuccess, (state, action) => ({
     ...state,
-    accessToken: action.accessToken,
-    accessTokenExp: Date.now() + 100000,
+    accessToken: action.model.accessToken,
+    accessTokenExp: AuthHelpers.getAccessTokenExp(action.model.accessToken),
+    username: AuthHelpers.getUserName(action.model.accessToken),
+    userRoles: AuthHelpers.getUserRoles(action.model.accessToken),
     status: AuthStatus.Authenticated,
   })),
   on(AuthActions.loginFail, state => ({

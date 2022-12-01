@@ -1,21 +1,24 @@
 :host {
-    display: flex;
-    align-items: center;
-  }
-  
-  .active {
-      background-color: var(--color-background-hover); //TODO: Change color
+  display: flex;
+  align-items: center;
+}
+
+.ant-dropdown-menu {
+  padding: 0;
+}
+
+  .ant-dropdown-menu-item {
+    height: 40px;
+
+    &--active {
+      background-color: lightcoral; //TODO: Change color
       span {
-        color: var(--color-primary); //TODO: Change color
+        color: white; //TODO: Change color
       }
     }
-    
-    .mat-menu-item {
-      display: flex;
-      align-items: center;
-    }
-    
-    img {
-      height: 20px;
-      margin-right: 5px;
-    }
+  }
+
+  img {
+    height: 20px;
+    margin-right: 5px;
+  }

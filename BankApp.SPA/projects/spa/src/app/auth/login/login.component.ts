@@ -11,7 +11,7 @@ import { AuthStatus } from '../../shared/constants/enums/auth-status.enum';
 export class LoginComponent {
 
   loginFormGroup = this.fb.group({
-    idNumber: this.fb.control<string>('', [Validators.required]),
+    email: this.fb.control<string>('', [Validators.required]),
     password: this.fb.control<string>('', [Validators.required]),
   });
 
@@ -29,11 +29,11 @@ export class LoginComponent {
   }
 
   fillCustomerData(): void {
-    this.loginFormGroup.setValue({ idNumber: '12345', password: 'abcde' });
+    this.loginFormGroup.setValue({ email: 'abcffd@a.pl', password: 'aaaaaaaA1#' });
   }
 
   fillEmployeeData(): void {
-    this.loginFormGroup.setValue({ idNumber: '99999', password: 'wwwww' });
+    this.loginFormGroup.setValue({ email: '99999', password: 'wwwww' });
   }
 
 }

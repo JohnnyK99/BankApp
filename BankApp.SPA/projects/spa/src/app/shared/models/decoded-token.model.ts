@@ -1,5 +1,6 @@
 import { JwtPayload } from 'jwt-decode';
 
 export interface DecodedToken extends JwtPayload {
-  roles: string[];
+  name: string;
+  role: string[];
 }

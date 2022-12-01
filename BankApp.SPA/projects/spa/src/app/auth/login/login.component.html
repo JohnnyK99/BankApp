@@ -1,33 +1,26 @@
 <h1>Logowanie</h1>
 
 <form [formGroup]="loginFormGroup">
-    <mat-form-field appearance="outline">
-        <mat-label>Numer identyfikacyjny</mat-label>
-        <input matInput formControlName="idNumber">
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-        <mat-label>Hasło</mat-label>
-        <input type="password" matInput formControlName="password">
-    </mat-form-field>
+    <input nz-input placeholder="Email" formControlName="email">
+    <input nz-input placeholder="Password" type="password" formControlName="password">
 
-    <label *ngIf="(facade.authStatus$ | async) === AuthStatus.Error">
-        Błąd logowania - upewnij się, że dane są poprawne
-    </label>
+    <nz-alert nzType="error" 
+              nzMessage="Błąd logowania - upewnij się, że dane są poprawne"
+              *ngIf="(facade.authStatus$ | async) === AuthStatus.Error">  
+    </nz-alert>
 
-    <button mat-raised-button (click)="fillCustomerData()" class="example-data-button">
+    <button nz-button nzType="default" (click)="fillCustomerData()" class="example-data-button">
         Wypełnij dane klienta
     </button>
-    <button mat-raised-button (click)="fillEmployeeData()" class="example-data-button">
+    <button nz-button nzType="default" (click)="fillEmployeeData()" class="example-data-button">
         Wypełnij dane pracownika
     </button>
 
-    <mat-progress-spinner *ngIf="(facade.authStatus$ | async) === AuthStatus.Authenticating" 
-                          mode="indeterminate" 
-                          [diameter]="25">
-    </mat-progress-spinner>
+    <nz-spin nzSimple nzSize="small" *ngIf="(facade.authStatus$ | async) === AuthStatus.Authenticating"></nz-spin>
     
     <button *ngIf="(facade.authStatus$ | async) !== AuthStatus.Authenticating"
-            mat-raised-button
+            nz-button
+            nzType="primary"
             class="login-button"
             [disabled]="!loginFormGroup.valid" 
             (click)="login()">
