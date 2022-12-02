@@ -1,6 +1,30 @@
 {
+    "auth": {
+        "already_have_account": "Masz już konto?",
+        "email": "Email",
+        "fill_customer_data": "Wypełnij dane klienta",
+        "fill_employee_data": "Wypełnij dane pracownika",
+        "first_name": "Imię",
+        "last_name": "Nazwisko",
+        "login": "Zaloguj się",
+        "login_label": "Zaloguj",
+        "logout": "Wyloguj się",
+        "no_account": "Nie masz konta?",
+        "password": "Hasło",
+        "password_rules": {
+            "one_capital": "jedną wielką literę",
+            "eight_characters": "osiem znaków",
+            "one_digit": "jedną cyfrę",
+            "one_special_character": "jeden znak specjalny",
+            "password_should_contain_at_least": "Hasło powinno zawierać co najmniej:"
+        },
+        "register": "Zarejestruj się",
+        "register_label": "Zarejestruj",
+        "repeat_password": "Powtórz hasło"
+    },
     "error": {
-        "register": "Rejestracja nie powiodła się"
+        "login": "Błąd logowania - upewnij się, że dane są poprawne",
+        "register": "Nie udało się zarejestrować konta - spróbuj ponownie później"
     },
     "success": {
         "register": "Pomyślnie zarejestrowano użytkownika"

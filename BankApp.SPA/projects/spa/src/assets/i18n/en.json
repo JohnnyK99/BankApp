@@ -1,6 +1,30 @@
 {
+    "auth": {
+        "already_have_account": "Already have an account?",
+        "email": "Email",
+        "fill_customer_data": "Fill client credentials",
+        "fill_employee_data": "Fill employee credentials",
+        "first_name": "First name",
+        "last_name": "Last name",
+        "login": "Log in",
+        "login_label": "Log in",
+        "logout": "Log out",
+        "no_account": "Don't have an account?",
+        "password": "Password",
+        "password_rules": {
+            "one_capital": "one capital letter",
+            "eight_characters": "eight characters",
+            "one_digit": "one digit",
+            "one_special_character": "one special character",
+            "password_should_contain_at_least": "Password should contain at least"
+        },
+        "register": "Register",
+        "register_label": "Register",
+        "repeat_password": "Repeat password"
+    },
     "error": {
-        "register": "Registration failed"
+        "login": "Login failed - make sure that credentials are valid",
+        "register": "Registration failed - try again later"
     },
     "success": {
         "register": "User has been successfully registered"

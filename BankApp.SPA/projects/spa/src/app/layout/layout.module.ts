@@ -10,6 +10,7 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { UserOutline, LoginOutline } from '@ant-design/icons-angular/icons';
 import { UserPanelComponent } from './header/user-panel/user-panel.component';
 import { AppRoutingModule } from '../app-routing.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { AppRoutingModule } from '../app-routing.module';
   imports: [
     CommonModule,
     AppRoutingModule,
+    TranslateModule,
 
     NzButtonModule,
     NzIconModule.forChild([UserOutline, LoginOutline]),

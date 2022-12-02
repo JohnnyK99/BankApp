@@ -3,45 +3,52 @@
 <div class="content">
     <form nz-form [formGroup]="registrationFormGroup">
         <nz-alert nzType="error" 
-                  nzMessage="Nie udało się zarejestrować konta - spróbuj ponownie później"
+                  [nzMessage]="'errors.register' | translate"
                   class="error-alert"
                   *ngIf="(facade.authStatus$ | async) === AuthStatus.ErrorRegister">  
         </nz-alert>
         <nz-form-item>
-            <nz-form-label nzRequired nzFor="firstName">First name</nz-form-label>
+            <nz-form-label nzRequired nzFor="firstName">{{'auth.first_name' | translate}}</nz-form-label>
             <nz-form-control>
                 <input nz-input formControlName="firstName" id="firstName" />
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-            <nz-form-label nzRequired nzFor="lastName">Last name</nz-form-label>
+            <nz-form-label nzRequired nzFor="lastName">{{'auth.last_name' | translate}}</nz-form-label>
             <nz-form-control>
                 <input nz-input formControlName="lastName" id="lastName" />
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-            <nz-form-label nzRequired nzFor="email">Email</nz-form-label>
+            <nz-form-label nzRequired nzFor="email">{{'auth.email' | translate}}</nz-form-label>
             <nz-form-control>
                 <input nz-input type="email" formControlName="email" id="email" />
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-            <nz-form-label nzRequired nzFor="password" [nzTooltipTitle]="passwordTooltipTemplate">Password</nz-form-label>
+            <nz-form-label nzRequired nzFor="password" [nzTooltipTitle]="passwordTooltipTemplate">{{'auth.password' | translate}}</nz-form-label>
             <nz-form-control>
                 <input nz-input type="password" formControlName="password" id="password" />
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-            <nz-form-label nzRequired nzFor="lastName">Repeat password</nz-form-label>
+            <nz-form-label nzRequired nzFor="lastName">{{'auth.repeat_password' | translate}}</nz-form-label>
             <nz-form-control>
                 <input nz-input type="password" formControlName="repeatPassword" id="repeatPassword" />
             </nz-form-control>
         </nz-form-item>
-        <span class="login-redirect">Masz już konto? <a [routerLink]="'/' + AppRoutes.login">Zaloguj się</a></span>
+        <span class="login-redirect">{{'auth.already_have_account' | translate}} <a [routerLink]="'/' + AppRoutes.login">{{'auth.login' | translate}}</a></span>
         <nz-form-item>
             <nz-form-control>
               <nz-spin nzSimple nzSize="small" *ngIf="(facade.authStatus$ | async) === AuthStatus.Registering"></nz-spin>
-              <button *ngIf="(facade.authStatus$ | async) !== AuthStatus.Registering" nz-button nzType="primary" class="register-button" [disabled]="!registrationFormGroup.valid" (click)="register()">Register</button>
+              <button *ngIf="(facade.authStatus$ | async) !== AuthStatus.Registering" 
+                      nz-button 
+                      nzType="primary" 
+                      class="register-button" 
+                      [disabled]="!registrationFormGroup.valid" 
+                      (click)="register()">
+                {{'auth.register_label' | translate}}
+            </button>
             </nz-form-control>
         </nz-form-item>
     </form>
@@ -50,24 +57,24 @@
 
 
 <ng-template #passwordTooltipTemplate class="password-tooltip">
-    <span>Hasło powinno zawierać co najmniej:</span>
+    <span>{{'auth.password_rules.password_should_contain_at_least' | translate}}</span>
     <div class="password-validation-entry">
-        <span>osiem znaków</span>
+        <span>{{'auth.password_rules.eight_characters' | translate}}</span>
         <span *ngIf="!hasEnoughCharacters" nz-icon nzType="close" nzTheme="outline" style="color: red;"></span>
         <span *ngIf="hasEnoughCharacters" nz-icon nzType="check" nzTheme="outline" style="color: green;"></span>
     </div>
     <div class="password-validation-entry">
-        <span>jedną wielką literę</span>
+        <span>{{'auth.password_rules.one_capital' | translate}}</span>
         <span *ngIf="!hasEnoughCapitalLetters" nz-icon nzType="close" nzTheme="outline" style="color: red;"></span>
         <span *ngIf="hasEnoughCapitalLetters" nz-icon nzType="check" nzTheme="outline" style="color: green;"></span>
     </div>
     <div class="password-validation-entry">
-        <span>jedną cyfrę</span>
+        <span>{{'auth.password_rules.one_digit' | translate}}</span>
         <span *ngIf="!hasEnoughDigits" nz-icon nzType="close" nzTheme="outline" style="color: red;"></span>
         <span *ngIf="hasEnoughDigits" nz-icon nzType="check" nzTheme="outline" style="color: green;"></span>
     </div>
     <div class="password-validation-entry">
-        <span>jeden znak specjalny</span>
+        <span>{{'auth.password_rules.one_special_character' | translate}}</span>
         <span *ngIf="!hasEnoughSpecialCharacters" nz-icon nzType="close" nzTheme="outline" style="color: red;"></span>
         <span *ngIf="hasEnoughSpecialCharacters" nz-icon nzType="check" nzTheme="outline" style="color: green;"></span>
     </div>

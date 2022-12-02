@@ -12,6 +12,7 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 
 import { CheckOutline, CloseOutline } from '@ant-design/icons-angular/icons';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { CheckOutline, CloseOutline } from '@ant-design/icons-angular/icons';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    TranslateModule,
 
     NzSpinModule,
     NzButtonModule,

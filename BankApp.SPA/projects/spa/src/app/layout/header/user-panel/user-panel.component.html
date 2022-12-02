@@ -4,6 +4,6 @@
 <nz-dropdown-menu #menu="nzDropdownMenu">
     <div nz-menu>
         <span>{{(authFacade.userInfo$ | async)?.username}}</span>
-        <button nz-button nzType="default" (click)="authFacade.logout()">Wyloguj</button>
+        <button nz-button nzType="default" (click)="authFacade.logout()">{{'auth.logout' | translate}}</button>
     </div>
 </nz-dropdown-menu>
