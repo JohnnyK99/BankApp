@@ -10,7 +10,7 @@ const initialState: AuthState = {
   accessTokenExp: AuthHelpers.getAccessTokenExp(LocalStorageHelpers.getAccessToken()),
   username: AuthHelpers.getUserName(LocalStorageHelpers.getAccessToken()),
   userRoles: AuthHelpers.getUserRoles(LocalStorageHelpers.getAccessToken()),
-  status: AuthStatus.LoggedOut,
+  status: AuthHelpers.getInitialStatus(),
 };
 
 export const authReducer = createReducer<AuthState>(
@@ -38,5 +38,9 @@ export const authReducer = createReducer<AuthState>(
   on(AuthActions.registerFail, state => ({
     ...state,
     status: AuthStatus.ErrorRegister,
+  })),
+  on(AuthActions.logout, () => ({
+    ...initialState,
+    status: AuthStatus.LoggedOut,
   }))
 );

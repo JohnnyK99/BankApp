@@ -31,9 +31,10 @@ export class AuthEffects {
   loginSuccess$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.loginSuccess),
-      tap(() => {
+      tap((action) => {
         const targetUrl = LocalStorageHelpers.getLoginTargetUrl();
         LocalStorageHelpers.removeLoginTargetUrl();
+        LocalStorageHelpers.setAccessToken(action.model.accessToken);
         this.router.navigate([targetUrl]);
       })
     ), { dispatch: false });
@@ -54,6 +55,15 @@ export class AuthEffects {
       ofType(AuthActions.registerSuccess),
       tap(() => {
         this.alertService.success('success.register');
+        this.router.navigate([AppRoutes.login]);
+      })
+    ), { dispatch: false });
+
+  logout$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.logout),
+      tap(() => {
+        LocalStorageHelpers.removeAccessToken();
         this.router.navigate([AppRoutes.login]);
       })
     ), { dispatch: false });

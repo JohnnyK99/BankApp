@@ -24,4 +24,8 @@ export class AuthFacade {
   register(model: RegistrationModel): void {
     this.store.dispatch(AuthActions.register({ model }));
   }
+
+  logout(): void {
+    this.store.dispatch(AuthActions.logout());
+  }
 }

@@ -1,5 +1,7 @@
 import jwtDecode from 'jwt-decode';
+import { AuthStatus } from '../constants/enums/auth-status.enum';
 import { DecodedToken } from '../models/decoded-token.model';
+import { LocalStorageHelpers } from './local-storage.helpers';
 
 export class AuthHelpers {
   static getAccessTokenExp(token: string | null): number | null {
@@ -42,6 +44,16 @@ export class AuthHelpers {
     const name = this.decodeToken(token).name;
 
     return name ?? '';
+  }
+
+  static getInitialStatus(): AuthStatus {
+    const token = LocalStorageHelpers.getAccessToken();
+    const exp = this.getAccessTokenExp(token);
+
+    if(exp && exp > Date.now()) {
+      return AuthStatus.Authenticated;
+    }
+    return AuthStatus.LoggedOut;
   }
 
   private static decodeToken(token: string): DecodedToken {

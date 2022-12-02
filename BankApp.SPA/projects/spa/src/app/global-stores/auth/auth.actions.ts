@@ -25,4 +25,7 @@ export const AuthActions = {
   registerFail: createAction(
     '[Auth] Register fail'
   ),
+  logout: createAction(
+    '[Auth] Logout'
+  ),
 };
