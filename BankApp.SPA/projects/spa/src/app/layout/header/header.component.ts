@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { AuthFacade } from '../../global-stores/auth/auth.facade';
+import { AuthStatus } from '../../shared/constants/enums/auth-status.enum';
 
 @Component({
   selector: 'bnk-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
+  readonly AuthStatus = AuthStatus;
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  constructor(public authFacade: AuthFacade) {}
 }

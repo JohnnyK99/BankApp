@@ -1,0 +1,78 @@
+<div class="image"></div>
+
+<div class="content">
+    <form nz-form [formGroup]="registrationFormGroup">
+        <nz-alert nzType="error" 
+                  nzMessage="Nie udało się zarejestrować konta - spróbuj ponownie później"
+                  class="error-alert"
+                  *ngIf="(facade.authStatus$ | async) === AuthStatus.ErrorRegister">  
+        </nz-alert>
+        <nz-form-item>
+            <nz-form-label nzRequired nzFor="firstName">First name</nz-form-label>
+            <nz-form-control>
+                <input nz-input formControlName="firstName" id="firstName" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label nzRequired nzFor="lastName">Last name</nz-form-label>
+            <nz-form-control>
+                <input nz-input formControlName="lastName" id="lastName" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label nzRequired nzFor="email">Email</nz-form-label>
+            <nz-form-control>
+                <input nz-input type="email" formControlName="email" id="email" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label nzRequired nzFor="password" [nzTooltipTitle]="passwordTooltipTemplate">Password</nz-form-label>
+            <nz-form-control>
+                <input nz-input type="password" formControlName="password" id="password" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label nzRequired nzFor="lastName">Repeat password</nz-form-label>
+            <nz-form-control>
+                <input nz-input type="password" formControlName="repeatPassword" id="repeatPassword" />
+            </nz-form-control>
+        </nz-form-item>
+        <span class="login-redirect">Masz już konto? <a [routerLink]="'/' + AppRoutes.login">Zaloguj się</a></span>
+        <nz-form-item>
+            <nz-form-control>
+              <nz-spin nzSimple nzSize="small" *ngIf="(facade.authStatus$ | async) === AuthStatus.Registering"></nz-spin>
+              <button *ngIf="(facade.authStatus$ | async) !== AuthStatus.Registering" nz-button nzType="primary" class="register-button" [disabled]="!registrationFormGroup.valid" (click)="register()">Register</button>
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+</div>
+
+
+
+<ng-template #passwordTooltipTemplate class="password-tooltip">
+    <span>Hasło powinno zawierać co najmniej:</span>
+    <div class="password-validation-entry">
+        <span>osiem znaków</span>
+        <span *ngIf="!hasEnoughCharacters" nz-icon nzType="close" nzTheme="outline" style="color: red;"></span>
+        <span *ngIf="hasEnoughCharacters" nz-icon nzType="check" nzTheme="outline" style="color: green;"></span>
+    </div>
+    <div class="password-validation-entry">
+        <span>jedną wielką literę</span>
+        <span *ngIf="!hasEnoughCapitalLetters" nz-icon nzType="close" nzTheme="outline" style="color: red;"></span>
+        <span *ngIf="hasEnoughCapitalLetters" nz-icon nzType="check" nzTheme="outline" style="color: green;"></span>
+    </div>
+    <div class="password-validation-entry">
+        <span>jedną cyfrę</span>
+        <span *ngIf="!hasEnoughDigits" nz-icon nzType="close" nzTheme="outline" style="color: red;"></span>
+        <span *ngIf="hasEnoughDigits" nz-icon nzType="check" nzTheme="outline" style="color: green;"></span>
+    </div>
+    <div class="password-validation-entry">
+        <span>jeden znak specjalny</span>
+        <span *ngIf="!hasEnoughSpecialCharacters" nz-icon nzType="close" nzTheme="outline" style="color: red;"></span>
+        <span *ngIf="hasEnoughSpecialCharacters" nz-icon nzType="check" nzTheme="outline" style="color: green;"></span>
+    </div>
+</ng-template>
+
+
+
+

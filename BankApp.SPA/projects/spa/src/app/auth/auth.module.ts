@@ -6,21 +6,30 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
+import { RegisterComponent } from './register/register.component';
+import { AppRoutingModule } from '../app-routing.module';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
+import { CheckOutline, CloseOutline } from '@ant-design/icons-angular/icons';
 
 @NgModule({
   declarations: [
     LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    AppRoutingModule,
 
     NzSpinModule,
     NzButtonModule,
     NzInputModule,
     NzAlertModule,
+    NzFormModule,
+    NzIconModule.forChild([CheckOutline, CloseOutline]),
   ],
 })
 export class AuthModule { }

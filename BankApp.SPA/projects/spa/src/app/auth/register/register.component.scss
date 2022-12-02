@@ -1,0 +1,45 @@
+:host {
+    flex: 1;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 3fr 4fr;
+}
+
+.image {
+    background-image: url(../../../assets/background.jpg); //TODO: Change, just a placeholder
+}
+
+.error-alert {
+    position: absolute;
+    top: -70px;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+form {
+    width: 400px;
+    position: relative;
+}
+
+.example-data-button {
+    margin: 5px 0;
+}
+
+.login-button,
+nz-spin {
+    margin-top: 20px;
+}
+
+.password-validation-entry {
+    display: grid;
+    grid-template-columns: auto 40px;
+    align-items: center;
+}
+
+.register-button {
+    margin-top: 10px;
+}

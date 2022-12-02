@@ -58,12 +58,6 @@ export class AuthEffects {
       })
     ), { dispatch: false });
 
-  registerFail$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(AuthActions.registerFail),
-      tap(() => this.alertService.error('error.register'))
-    ), { dispatch: false });
-
   constructor(
     private actions$: Actions,
     private alertService: AlertService,

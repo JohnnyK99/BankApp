@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
+import { AppRoutes } from '../../app-routes.constants';
 import { AuthFacade } from '../../global-stores/auth/auth.facade';
 import { AuthStatus } from '../../shared/constants/enums/auth-status.enum';
 
@@ -10,12 +11,13 @@ import { AuthStatus } from '../../shared/constants/enums/auth-status.enum';
 })
 export class LoginComponent {
 
+  readonly AuthStatus = AuthStatus;
+  readonly AppRoutes = AppRoutes;
+
   loginFormGroup = this.fb.group({
     email: this.fb.control<string>('', [Validators.required]),
     password: this.fb.control<string>('', [Validators.required]),
   });
-
-  readonly AuthStatus = AuthStatus;
 
   constructor(
     private fb: NonNullableFormBuilder,

@@ -18,3 +18,39 @@ bnk-root {
     flex-direction: column;
     min-height: 100%;
 }
+
+//ng-zorro
+.ant-form-item {
+    display: grid;
+}
+
+.ant-form-item-label {
+    display: flex;
+    justify-content: flex-start;
+
+    &>label {
+        
+        &::before {
+            content: '' !important;
+        }
+
+        &::after {
+            content: '';
+        }
+
+        &.ant-form-item-required:not(.ant-form-item-required-mark-optional)::after {
+            display: inline-block;
+            margin-right: 4px;
+            color: #ff4d4f;
+            font-size: 14px;
+            font-family: SimSun,sans-serif;
+            line-height: 1;
+            content: '*';
+        }
+    }
+}
+
+.ant-input,
+.ant-btn {
+    border-radius: 5px;
+}

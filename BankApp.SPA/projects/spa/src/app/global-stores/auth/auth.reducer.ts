@@ -29,6 +29,14 @@ export const authReducer = createReducer<AuthState>(
   })),
   on(AuthActions.loginFail, state => ({
     ...state,
-    status: AuthStatus.Error,
+    status: AuthStatus.ErrorLogin,
+  })),
+  on(AuthActions.register, state => ({
+    ...state,
+    status: AuthStatus.Registering,
+  })),
+  on(AuthActions.registerFail, state => ({
+    ...state,
+    status: AuthStatus.ErrorRegister,
   }))
 );

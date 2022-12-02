@@ -2,5 +2,7 @@ export enum AuthStatus {
   LoggedOut,
   Authenticating,
   Authenticated,
-  Error
+  Registering,
+  ErrorLogin,
+  ErrorRegister
 }

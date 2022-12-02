@@ -6,8 +6,10 @@
 
     <nz-alert nzType="error" 
               nzMessage="Błąd logowania - upewnij się, że dane są poprawne"
-              *ngIf="(facade.authStatus$ | async) === AuthStatus.Error">  
+              *ngIf="(facade.authStatus$ | async) === AuthStatus.ErrorLogin">  
     </nz-alert>
+
+    <span>Nie masz konta? <a [routerLink]="['/' + AppRoutes.register]">Zarejestruj się</a></span>
 
     <button nz-button nzType="default" (click)="fillCustomerData()" class="example-data-button">
         Wypełnij dane klienta
