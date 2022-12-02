@@ -32,6 +32,11 @@
             "tsConfig": "projects/spa/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "/assets/"
+              },
               "projects/spa/src/favicon.ico",
               "projects/spa/src/assets"
             ],
@@ -100,6 +105,11 @@
             "karmaConfig": "projects/spa/karma.conf.js",
             "inlineStyleLanguage": "scss",
             "assets": [
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "/assets/"
+              },
               "projects/spa/src/favicon.ico",
               "projects/spa/src/assets"
             ],

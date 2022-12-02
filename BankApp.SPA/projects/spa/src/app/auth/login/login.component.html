@@ -1,31 +1,38 @@
-<h1>Logowanie</h1>
+<div class="image"></div>
 
-<form [formGroup]="loginFormGroup">
-    <input nz-input placeholder="Email" formControlName="email">
-    <input nz-input placeholder="Password" type="password" formControlName="password">
-
-    <nz-alert nzType="error" 
-              nzMessage="Błąd logowania - upewnij się, że dane są poprawne"
-              *ngIf="(facade.authStatus$ | async) === AuthStatus.ErrorLogin">  
-    </nz-alert>
-
-    <span>Nie masz konta? <a [routerLink]="['/' + AppRoutes.register]">Zarejestruj się</a></span>
-
-    <button nz-button nzType="default" (click)="fillCustomerData()" class="example-data-button">
-        Wypełnij dane klienta
-    </button>
-    <button nz-button nzType="default" (click)="fillEmployeeData()" class="example-data-button">
-        Wypełnij dane pracownika
-    </button>
-
-    <nz-spin nzSimple nzSize="small" *ngIf="(facade.authStatus$ | async) === AuthStatus.Authenticating"></nz-spin>
-    
-    <button *ngIf="(facade.authStatus$ | async) !== AuthStatus.Authenticating"
-            nz-button
-            nzType="primary"
-            class="login-button"
-            [disabled]="!loginFormGroup.valid" 
-            (click)="login()">
-        <span>Zaloguj</span>
-    </button>
-</form>
+<div class="content">
+    <form nz-form [formGroup]="loginFormGroup">
+        <nz-alert nzType="error" 
+                  nzMessage="Błąd logowania - upewnij się, że dane są poprawne"
+                  class="error-alert"
+                  *ngIf="(facade.authStatus$ | async) === AuthStatus.ErrorLogin">  
+        </nz-alert>
+        <nz-form-item>
+            <nz-form-label nzFor="email">Email</nz-form-label>
+            <nz-form-control>
+                <input nz-input formControlName="email" id="email" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label nzFor="password">Password</nz-form-label>
+            <nz-form-control>
+                <input nz-input formControlName="password" id="password" type="password" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <button nz-button nzType="default" (click)="fillCustomerData()" class="example-data-button">
+                Wypełnij dane klienta
+            </button>
+            <button nz-button nzType="default" (click)="fillEmployeeData()" class="example-data-button">
+                Wypełnij dane pracownika
+            </button>
+        </nz-form-item>
+        <span>Nie masz konta? <a [routerLink]="['/' + AppRoutes.register]">Zarejestruj się</a></span>
+        <nz-form-item>
+            <nz-form-control>
+              <nz-spin nzSimple nzSize="small" *ngIf="(facade.authStatus$ | async) === AuthStatus.Authenticating"></nz-spin>
+              <button *ngIf="(facade.authStatus$ | async) !== AuthStatus.Authenticating" nz-button nzType="primary" class="login-button" [disabled]="!loginFormGroup.valid" (click)="login()">Login</button>
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+</div>

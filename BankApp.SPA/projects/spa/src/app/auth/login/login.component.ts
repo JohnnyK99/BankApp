@@ -15,7 +15,7 @@ export class LoginComponent {
   readonly AppRoutes = AppRoutes;
 
   loginFormGroup = this.fb.group({
-    email: this.fb.control<string>('', [Validators.required]),
+    email: this.fb.control<string>('', [Validators.required, Validators.email]),
     password: this.fb.control<string>('', [Validators.required]),
   });
 

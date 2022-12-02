@@ -1,18 +1,36 @@
 :host {
     flex: 1;
-    padding: 10px 20px;
     text-align: center;
-    display: block;
+    display: grid;
+    grid-template-columns: 3fr 4fr;
+}
+
+.image {
+    background-image: url(../../../assets/background.jpg); //TODO: Change, just a placeholder
+}
+
+.error-alert {
+    position: absolute;
+    top: -50px;
+    left: 0;
+    right: 0;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 form {
-    max-width: 400px;
-    margin: auto;
-    display: grid;
+    width: 400px;
+    position: relative;
 }
 
 .example-data-button {
     margin: 5px 0;
+    width: 80%;
+    justify-self: center;
 }
 
 .login-button,
