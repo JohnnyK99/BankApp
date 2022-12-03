@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using BankApp.Infrastructure.Features.Auth.Login.Commands;
 using BankApp.Infrastructure.Features.Auth;
+using BankApp.API.Dto.Auth.RefreshToken;
+using BankApp.Infrastructure.Features.Auth.RefreshToken;
+using BankApp.API.Dto.Auth.Login;
 
 namespace BankApp.API.Controllers
 {
@@ -42,6 +45,19 @@ namespace BankApp.API.Controllers
             if(!result.Succeeded)
             {
                 return Unauthorized(result);
+            }
+
+            return Ok(result);
+        }
+
+        [HttpPost(ApiRoutes.Auth.RefreshToken)]
+        public async Task<IActionResult> RefreshToken(RefreshTokenDto request)
+        {
+            Result<TokenModel> result = await _mediator.Send(new RefreshTokenCommand(request.AccessToken, request.RefreshToken));
+
+            if(!result.Succeeded)
+            {
+                return StatusCode(500, result);
             }
 
             return Ok(result);

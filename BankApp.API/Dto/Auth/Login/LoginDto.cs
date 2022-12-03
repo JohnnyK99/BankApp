@@ -1,4 +1,4 @@
-﻿namespace BankApp.API.Dto.Auth.Register
+﻿namespace BankApp.API.Dto.Auth.Login
 {
     public class LoginDto
     {

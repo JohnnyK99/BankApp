@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BankApp.DAL.Features.Auth.Register.Queries
+namespace BankApp.DAL.Features.Auth.Commands
 {
     public class RegisterUserDalCommand : IRegisterUserDalCommand
     {
@@ -19,11 +19,17 @@ namespace BankApp.DAL.Features.Auth.Register.Queries
 
         public async Task<RegistrationResult> RegisterUserAsync(string firstName, string lastName, string email, string password)
         {
-            var user = new User { FirstName = firstName, LastName = lastName, Email = email, UserName = email };
+            var user = new User 
+            { 
+                FirstName = firstName,
+                LastName = lastName,
+                Email = email,
+                UserName = email
+            };
 
             var result = await _userManager.CreateAsync(user, password);
 
-            if(result.Succeeded)
+            if (result.Succeeded)
             {
                 await _userManager.AddToRoleAsync(user, UserRoles.Client);
             }

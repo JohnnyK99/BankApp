@@ -43,6 +43,7 @@ export class AuthFacade {
   }
 
   logout(): void {
+    this.stopTokenRefreshTimer();
     this.store.dispatch(AuthActions.logout());
   }
 

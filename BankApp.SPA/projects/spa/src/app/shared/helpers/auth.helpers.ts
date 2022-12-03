@@ -60,6 +60,18 @@ export class AuthHelpers {
     return exp < Date.now();
   }
 
+  static setLocalStorageValues(accessToken: string, refreshToken: string, refreshTokenExp: number): void {
+    LocalStorageHelpers.setAccessToken(accessToken);
+    LocalStorageHelpers.setRefreshToken(refreshToken);
+    LocalStorageHelpers.setRefreshTokenExp(refreshTokenExp);
+  }
+
+  static removeLocalStorageValues(): void {
+    LocalStorageHelpers.removeAccessToken();
+    LocalStorageHelpers.removeRefreshToken();
+    LocalStorageHelpers.removeRefreshTokenExp();
+  }
+
   private static decodeToken(token: string): DecodedToken {
     return jwtDecode<DecodedToken>(token);
   }

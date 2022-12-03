@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace BankApp.DAL.Helpers
@@ -50,11 +51,48 @@ namespace BankApp.DAL.Helpers
                 issuer: _jwtSettings["validIssuer"],
                 audience: _jwtSettings["validAudience"],
                 claims: claims,
-                expires: DateTime.Now.AddMinutes(Convert.ToDouble(_jwtSettings["expiryInMinutes"])),
+                expires: DateTime.Now.AddMinutes(Convert.ToDouble(_jwtSettings["accessTokenExpiryInMinutes"])),
                 signingCredentials: credentials
             );
 
             return tokenOptions;
+        }
+
+        public ClaimsPrincipal GetPrincipalFromExpiredToken(string token)
+        {
+            var tokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateAudience = false,
+                ValidateIssuer = false,
+                ValidateIssuerSigningKey = true,
+                ValidateLifetime = false,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings["securityKey"]))
+            };
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out SecurityToken securityToken);
+            if (securityToken is not JwtSecurityToken jwtSecurityToken || !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
+            {
+                throw new SecurityTokenException("Invalid token");
+            }
+            return principal;
+        }
+
+        public string GetRefreshToken()
+        {
+            var randomNumber = new byte[int.Parse(_jwtSettings["refreshTokenLength"])];
+            using (var rng = RandomNumberGenerator.Create())
+            {
+                rng.GetBytes(randomNumber);
+                return Convert.ToBase64String(randomNumber);
+            }
+        }
+
+        public double GetRefreshTokenExp()
+        {
+            var exp = DateTime.Now.AddMinutes(Convert.ToDouble(_jwtSettings["refreshTokenExpiryInMinutes"]));
+            var expMillis = (exp - DateTime.UnixEpoch).TotalMilliseconds;
+            return expMillis;
         }
     }
 }

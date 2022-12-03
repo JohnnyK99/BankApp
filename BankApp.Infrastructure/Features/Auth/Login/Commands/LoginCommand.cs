@@ -1,9 +1,5 @@
 ﻿using BankApp.Infrastructure.Wrappers;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -24,18 +20,27 @@ namespace BankApp.Infrastructure.Features.Auth.Login.Commands
 
         public class Handler : IRequestHandler<LoginCommand, Result<TokenModel>>
         {
-            private readonly ILoginDalCommand _loginDalCommand;
+            private readonly IVerifyUserDalCommand _verifyUserDalCommand;
+            private readonly IGetTokensDalCommand _getTokensDalCommand;
 
-            public Handler(ILoginDalCommand loginDalCommand)
+            public Handler(IVerifyUserDalCommand verifyUserDalCommand, IGetTokensDalCommand getTokensDalCommand)
             {
-                _loginDalCommand = loginDalCommand;
+                _verifyUserDalCommand = verifyUserDalCommand;
+                _getTokensDalCommand = getTokensDalCommand;
             }
 
             public async Task<Result<TokenModel>> Handle(LoginCommand request, CancellationToken token)
             {
-                Result<TokenModel> result = await _loginDalCommand.LoginAsync(request.Email, request.Password);
+                Result<string> usernameResult = await _verifyUserDalCommand.VerifyUserByCredentialsAsync(request.Email, request.Password);
 
-                return result;
+                if(!usernameResult.Succeeded)
+                {
+                    return await Result<TokenModel>.FailAsync(usernameResult.Messages);
+                }
+
+                Result<TokenModel> tokensResult = await _getTokensDalCommand.GetTokensAsync(usernameResult.Data);
+
+                return tokensResult;
             }
         }
     }

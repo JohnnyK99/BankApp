@@ -1,7 +1,6 @@
 ﻿using BankApp.DAL.Db;
 using BankApp.DAL.Db.Entities;
-using BankApp.DAL.Features.Auth.Login.Commands;
-using BankApp.DAL.Features.Auth.Register.Queries;
+using BankApp.DAL.Features.Auth.Commands;
 using BankApp.DAL.Helpers;
 using BankApp.Infrastructure.Features.Auth.Login.Commands;
 using BankApp.Infrastructure.Features.Auth.Registration.Commands;
@@ -17,7 +16,8 @@ namespace BankApp.DAL.Extensions
         public static void AddDalLayer(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped<IRegisterUserDalCommand, RegisterUserDalCommand>();
-            services.AddScoped<ILoginDalCommand, LoginDalCommand>();
+            services.AddScoped<IGetTokensDalCommand, GetTokensDalCommand>();
+            services.AddScoped<IVerifyUserDalCommand, VerifyUserDalCommand>();
             services.AddScoped<JwtHelpers>();
 
             services.AddDbContext<AppDbContext>(options =>

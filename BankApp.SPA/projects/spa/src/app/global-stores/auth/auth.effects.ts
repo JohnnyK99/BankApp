@@ -37,7 +37,7 @@ export class AuthEffects {
       tap((action) => {
         const targetUrl = LocalStorageHelpers.getLoginTargetUrl();
         LocalStorageHelpers.removeLoginTargetUrl();
-        LocalStorageHelpers.setAccessToken(action.model.accessToken);
+        AuthHelpers.setLocalStorageValues(action.model.accessToken, action.model.refreshToken, action.model.refreshTokenExp);
         this.router.navigate([targetUrl]);
       })
     ), { dispatch: false });
@@ -66,7 +66,7 @@ export class AuthEffects {
     this.actions$.pipe(
       ofType(AuthActions.logout),
       tap(() => {
-        LocalStorageHelpers.removeAccessToken();
+        AuthHelpers.removeLocalStorageValues();
         this.router.navigate([AppRoutes.login]);
       })
     ), { dispatch: false });
@@ -87,6 +87,12 @@ export class AuthEffects {
         );
       })
     ));
+
+  refreshTokenSuccess$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.refreshTokenSuccess),
+      tap((action) => AuthHelpers.setLocalStorageValues(action.model.accessToken, action.model.refreshToken, action.model.refreshTokenExp))
+    ), { dispatch: false });
 
   constructor(
     private actions$: Actions,
