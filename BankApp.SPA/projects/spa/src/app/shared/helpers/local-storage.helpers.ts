@@ -27,6 +27,30 @@ export class LocalStorageHelpers {
     this.removeItem(LocalStorageKey.AccessToken);
   }
 
+  static setRefreshToken(token: string): void {
+    this.setItem(LocalStorageKey.RefreshToken, token);
+  }
+
+  static getRefreshToken(): string | null {
+    return this.getItem(LocalStorageKey.RefreshToken, null);
+  }
+
+  static removeRefreshToken(): void {
+    this.removeItem(LocalStorageKey.RefreshToken);
+  }
+
+  static setRefreshTokenExp(exp: number): void {
+    this.setItem(LocalStorageKey.RefreshTokenExp, exp);
+  }
+
+  static getRefreshTokenExp(): number | null {
+    return this.getItem(LocalStorageKey.RefreshTokenExp, null);
+  }
+
+  static removeRefreshTokenExp(): void {
+    this.removeItem(LocalStorageKey.RefreshTokenExp);
+  }
+
   static setLoginTargetUrl(url: string): void {
     this.setItem(LocalStorageKey.LoginTargetUrl, url);
   }

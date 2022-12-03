@@ -6,6 +6,7 @@ import { LoginModel } from '../models/auth/login.model';
 import { RegistrationModel } from '../models/auth/registration.model';
 import { Result } from '../models/shared/result.model';
 import { AuthUrlsService } from '../urls/auth/auth-urls.service';
+import { TokenRefreshModel } from '../models/auth/token-refresh.model';
 
 @Injectable({
   providedIn: 'root',
@@ -23,5 +24,9 @@ export class AuthApiClient {
 
   register(model: RegistrationModel): Observable<undefined> {
     return this.http.post<undefined>(this.authUrls.register(), model);
+  }
+
+  refreshToken(model: TokenRefreshModel): Observable<Result<TokenResponse>> {
+    return this.http.post<Result<TokenResponse>>(this.authUrls.refreshToken(), model);
   }
 }

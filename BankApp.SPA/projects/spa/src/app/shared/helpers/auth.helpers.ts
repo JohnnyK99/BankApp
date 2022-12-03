@@ -56,6 +56,10 @@ export class AuthHelpers {
     return AuthStatus.LoggedOut;
   }
 
+  static isTokenExpired(exp: number): boolean {
+    return exp < Date.now();
+  }
+
   private static decodeToken(token: string): DecodedToken {
     return jwtDecode<DecodedToken>(token);
   }

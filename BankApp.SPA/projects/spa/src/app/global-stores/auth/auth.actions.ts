@@ -1,6 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 import { LoginSuccessProps } from './props/login-success.props';
 import { LoginProps } from './props/login.props';
+import { RefreshTokenSuccessProps } from './props/refresh-token-success.props';
 import { RegisterProps } from './props/register.props';
 
 export const AuthActions = {
@@ -27,5 +28,15 @@ export const AuthActions = {
   ),
   logout: createAction(
     '[Auth] Logout'
+  ),
+  refreshToken: createAction(
+    '[Auth] Refresh token'
+  ),
+  refreshTokenSuccess: createAction(
+    '[Auth] Refresh token success',
+    props<RefreshTokenSuccessProps>()
+  ),
+  refreshTokenFail: createAction(
+    '[Auth] Refresh token fail'
   ),
 };

@@ -3,7 +3,7 @@
 <div class="content">
     <form nz-form [formGroup]="loginFormGroup">
         <nz-alert nzType="error" 
-                  [nzMessage]="'errors.login' | translate"
+                  [nzMessage]="'error.login' | translate"
                   class="error-alert"
                   *ngIf="(facade.authStatus$ | async) === AuthStatus.ErrorLogin">  
         </nz-alert>
