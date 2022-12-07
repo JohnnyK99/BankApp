@@ -1,6 +1,0 @@
-<h4>
-    Hello {{(authFacade.userInfo$ | async)?.username}}, your roles are:
-</h4>
-<p *ngFor="let role of (authFacade.userInfo$ | async)?.userRoles">{{role}}</p>
-
-<button (click)="onClick()">TEST</button>

@@ -1,0 +1,20 @@
+<div class="carousel-wrapper">
+    <ng-container *ngIf="(facade.bankAccounts$ | async) === null">
+        <nz-skeleton [nzActive]="true"></nz-skeleton>
+    </ng-container>
+    <ng-container *ngIf="(facade.bankAccounts$ | async) as bankAccounts">
+        <button nz-button nzType="text" (click)="carousel.pre()" [disabled]="carousel.activeIndex === 0">
+            <span nz-icon nzType="left" nzTheme="outline"></span>
+        </button>
+        <nz-carousel nzEnableSwipe="false" #carousel>
+            <bnk-account-card nz-carousel-content 
+                              *ngFor="let account of bankAccounts" 
+                              [account]="account">
+            </bnk-account-card>
+        </nz-carousel>
+        <button nz-button nzType="text" (click)="carousel.next()" [disabled]="carousel.activeIndex === bankAccounts.length-1">
+            <span nz-icon nzType="right" nzTheme="outline"></span>
+        </button>
+    </ng-container>
+
+</div>

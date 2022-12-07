@@ -54,3 +54,7 @@ bnk-root {
 .ant-btn {
     border-radius: 5px;
 }
+
+.ant-btn[disabled] {
+    cursor: initial;
+}

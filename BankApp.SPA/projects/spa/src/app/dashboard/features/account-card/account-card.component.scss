@@ -1,0 +1,76 @@
+:host {
+    border: 2px solid #6DAFFE;
+    border-radius: 10px;
+    padding: 15px 20px;
+    display: grid !important;
+    grid-template-rows: 60px auto auto;
+    grid-template-columns: 2fr 1fr;
+}
+
+.header {
+    display: grid;
+}
+
+.reload-icon {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+
+}
+
+.account-name {
+    font-size: 1.5rem;
+    font-weight: 500;   
+}
+
+.account-balance {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.transactions-table {
+    grid-column: span 2;
+    display: grid;
+    text-align: center;
+    align-self: center;
+    justify-self: center;
+    width: 90%;
+}
+
+.transactions-table-title {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.transaction {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 1fr;
+    padding: 0 4px;
+
+    >span {
+        max-width: 100%;
+        white-space: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &--incoming .amount {
+        color: green;
+    }
+
+    &--outcoming .amount {
+        color: red;
+    }
+}
+
+.account-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+    grid-column: span 2;
+}

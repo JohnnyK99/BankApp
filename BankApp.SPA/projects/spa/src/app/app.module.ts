@@ -16,6 +16,7 @@ import { environment } from '../environments/environment';
 import { ApiClientModule } from 'projects/api-client/api-client.module';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { NgxMaskModule } from 'ngx-mask';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -40,6 +41,7 @@ const apiClientConfig: ApiClientConfigModel = {
     AuthModule,
     ApiClientModule.forRoot(apiClientConfig),
     ToastrModule.forRoot(),
+    NgxMaskModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

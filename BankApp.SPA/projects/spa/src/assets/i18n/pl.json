@@ -23,6 +23,7 @@
         "repeat_password": "Powtórz hasło"
     },
     "error": {
+        "bank_accounts": "Nie udało się pobrać kont bankowych",
         "login": "Błąd logowania - upewnij się, że dane są poprawne",
         "register": "Nie udało się zarejestrować konta - spróbuj ponownie później"
     },

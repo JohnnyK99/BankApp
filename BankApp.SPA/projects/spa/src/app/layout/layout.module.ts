@@ -7,7 +7,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 
-import { UserOutline, LoginOutline } from '@ant-design/icons-angular/icons';
+import { UserOutline, LoginOutline, GithubOutline, LinkedinOutline } from '@ant-design/icons-angular/icons';
 import { UserPanelComponent } from './header/user-panel/user-panel.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { TranslateModule } from '@ngx-translate/core';
@@ -25,7 +25,7 @@ import { TranslateModule } from '@ngx-translate/core';
     TranslateModule,
 
     NzButtonModule,
-    NzIconModule.forChild([UserOutline, LoginOutline]),
+    NzIconModule.forChild([UserOutline, LoginOutline, GithubOutline, LinkedinOutline]),
     NzDropDownModule,
   ],
   exports: [

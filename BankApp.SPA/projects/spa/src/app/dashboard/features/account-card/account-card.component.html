@@ -1,0 +1,25 @@
+<span nz-icon nzType="redo" title="odśwież dane" nzTheme="outline" class="reload-icon"></span>
+<div class="header">
+    <span class="account-name">{{account.accountType.translation | translatedField:currentLanguage}}</span>
+    <span class="account-number">{{account.accountNumber | mask: '00 0000 0000 0000 0000 0000 0000'}}</span>
+</div>
+<div class="account-balance">
+    {{account.balance | mask:'separator'}} zł
+</div>
+
+<div class="transactions-table">
+    <span class="transactions-table-title">Ostatnie transakcje</span>
+    <div *ngFor="let transaction of account.lastTransactions; index as i">
+        <div class="transaction" [ngClass]="{'transaction--incoming': transaction.type === TransactionType.Incoming, 'transaction--outcoming': transaction.type === TransactionType.Outcoming}">
+            <span>{{transaction.date | date: 'dd.MM.yyyy'}}</span>
+            <span>{{transaction.from}}</span>
+            <span>{{transaction.title}}</span>
+            <span class="amount">{{transaction.amount | mask:'separator'}} zł</span>
+        </div>
+        <hr *ngIf="i !== account.lastTransactions.length-1">
+    </div>
+</div>
+<div class="account-actions">
+    <button nz-button nzType="default">Pełna historia</button>
+    <button nz-button nzType="primary">Przelew</button>
+</div>

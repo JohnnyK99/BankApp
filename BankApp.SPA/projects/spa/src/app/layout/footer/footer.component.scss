@@ -1,7 +1,17 @@
 :host {
     height: 40px;
     padding: 0px 20px;
-    background-color: lightblue; //TODO: Change color
+    background-color: #437FC7; //TODO: Change color
     display: flex;
     align-items: center;
+    justify-content: space-between;
+}
+
+span {
+    color: white;
+}
+
+.icons {
+    display: flex;
+    gap: 15px;
 }

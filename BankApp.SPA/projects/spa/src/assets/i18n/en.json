@@ -23,6 +23,7 @@
         "repeat_password": "Repeat password"
     },
     "error": {
+        "bank_accounts": "Failed to load bank accounts",
         "login": "Login failed - make sure that credentials are valid",
         "register": "Registration failed - try again later"
     },
