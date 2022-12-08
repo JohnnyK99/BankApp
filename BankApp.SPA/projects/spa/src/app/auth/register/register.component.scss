@@ -43,3 +43,22 @@ nz-spin {
 .register-button {
     margin-top: 10px;
 }
+
+.ant-radio-group {
+    display: grid;
+    gap: 15px;
+}
+
+.ant-radio-button-wrapper {
+    height: initial;
+
+    > ::ng-deep  span:last-child {
+        display: grid;
+        padding-block: 5px;
+    }
+}
+
+.account-name {
+    font-size: 1.2rem;
+    font-weight: 500;
+}

@@ -1,6 +1,7 @@
 {
     "auth": {
         "already_have_account": "Already have an account?",
+        "continue_without_account": "I want to proceed without default account",
         "email": "Email",
         "fill_customer_data": "Fill client credentials",
         "fill_employee_data": "Fill employee credentials",
@@ -23,9 +24,14 @@
         "repeat_password": "Repeat password"
     },
     "error": {
+        "account_types": "Failed to load account types",
         "bank_accounts": "Failed to load bank accounts",
         "login": "Login failed - make sure that credentials are valid",
         "register": "Registration failed - try again later"
+    },
+    "shared": {
+        "back": "Back",
+        "next": "Next"
     },
     "success": {
         "register": "User has been successfully registered"

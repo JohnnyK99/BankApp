@@ -1,6 +1,6 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AuthUrlsService } from 'projects/api-client/src/urls/auth/auth-urls.service';
+import { AuthUrlsService } from 'projects/api-client/src/urls/auth-urls.service';
 import { Observable, concatMap, first, EMPTY } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { AuthFacade } from '../global-stores/auth/auth.facade';

@@ -2,56 +2,81 @@
 
 <div class="content">
     <form nz-form [formGroup]="registrationFormGroup">
-        <nz-alert nzType="error" 
-                  [nzMessage]="'errors.register' | translate"
-                  class="error-alert"
-                  *ngIf="(facade.authStatus$ | async) === AuthStatus.ErrorRegister">  
-        </nz-alert>
-        <nz-form-item>
-            <nz-form-label nzRequired nzFor="firstName">{{'auth.first_name' | translate}}</nz-form-label>
+        <ng-container *ngIf="step === 1">
+            <nz-alert nzType="error" 
+                      [nzMessage]="'errors.register' | translate"
+                      class="error-alert"
+                      *ngIf="(authFacade.authStatus$ | async) === AuthStatus.ErrorRegister">  
+            </nz-alert>
+            <nz-form-item>
+                <nz-form-label nzRequired nzFor="firstName">{{'auth.first_name' | translate}}</nz-form-label>
+                <nz-form-control>
+                    <input nz-input formControlName="firstName" id="firstName" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label nzRequired nzFor="lastName">{{'auth.last_name' | translate}}</nz-form-label>
+                <nz-form-control>
+                    <input nz-input formControlName="lastName" id="lastName" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label nzRequired nzFor="email">{{'auth.email' | translate}}</nz-form-label>
+                <nz-form-control>
+                    <input nz-input type="email" formControlName="email" id="email" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label nzRequired nzFor="password" [nzTooltipTitle]="passwordTooltipTemplate">{{'auth.password' | translate}}</nz-form-label>
+                <nz-form-control>
+                    <input nz-input type="password" formControlName="password" id="password" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label nzRequired nzFor="lastName">{{'auth.repeat_password' | translate}}</nz-form-label>
+                <nz-form-control>
+                    <input nz-input type="password" formControlName="repeatPassword" id="repeatPassword" />
+                </nz-form-control>
+            </nz-form-item>
+            <span class="login-redirect">{{'auth.already_have_account' | translate}} <a [routerLink]="'/' + AppRoutes.login">{{'auth.login' | translate}}</a></span>
+            <nz-form-item>
             <nz-form-control>
-                <input nz-input formControlName="firstName" id="firstName" />
+                <button nz-button nzType="primary" (click)="moveForward()" [disabled]="!registrationFormGroup.valid">{{'shared.next' | translate}}</button>
             </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-            <nz-form-label nzRequired nzFor="lastName">{{'auth.last_name' | translate}}</nz-form-label>
+            </nz-form-item>
+        </ng-container>
+        <ng-container *ngIf="step === 2">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-skeleton [nzActive]="true" *ngIf="(dictFacade.accountTypes$ | async) === null"></nz-skeleton>
+                    <nz-radio-group *ngIf="(dictFacade.accountTypes$ | async) as accountTypes" [formControl]="initialAccountTypeIdControl" nzButtonStyle="solid">
+                        <label nz-radio-button *ngFor="let account of accountTypes" [nzValue]="account.id">
+                            <span class="account-name">{{account.name | translatedField:currentLanguage}}</span>
+                            <span class="account-description">{{account.description | translatedField:currentLanguage}}</span>
+                        </label>
+                        <label nz-radio-button [nzValue]="null">{{'auth.continue_without_account' | translate}}</label>
+                    </nz-radio-group>
+                </nz-form-control>
+            </nz-form-item>
             <nz-form-control>
-                <input nz-input formControlName="lastName" id="lastName" />
+                <button nz-button nzType="default" (click)="moveBack()">{{'shared.back' | translate}}</button>
             </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-            <nz-form-label nzRequired nzFor="email">{{'auth.email' | translate}}</nz-form-label>
             <nz-form-control>
-                <input nz-input type="email" formControlName="email" id="email" />
-            </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-            <nz-form-label nzRequired nzFor="password" [nzTooltipTitle]="passwordTooltipTemplate">{{'auth.password' | translate}}</nz-form-label>
-            <nz-form-control>
-                <input nz-input type="password" formControlName="password" id="password" />
-            </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-            <nz-form-label nzRequired nzFor="lastName">{{'auth.repeat_password' | translate}}</nz-form-label>
-            <nz-form-control>
-                <input nz-input type="password" formControlName="repeatPassword" id="repeatPassword" />
-            </nz-form-control>
-        </nz-form-item>
-        <span class="login-redirect">{{'auth.already_have_account' | translate}} <a [routerLink]="'/' + AppRoutes.login">{{'auth.login' | translate}}</a></span>
-        <nz-form-item>
-            <nz-form-control>
-              <nz-spin nzSimple nzSize="small" *ngIf="(facade.authStatus$ | async) === AuthStatus.Registering"></nz-spin>
-              <button *ngIf="(facade.authStatus$ | async) !== AuthStatus.Registering" 
-                      nz-button 
-                      nzType="primary" 
-                      class="register-button" 
-                      [disabled]="!registrationFormGroup.valid" 
-                      (click)="register()">
+                <nz-spin nzSimple nzSize="small" *ngIf="(authFacade.authStatus$ | async) === AuthStatus.Registering"></nz-spin>
+                <button *ngIf="(authFacade.authStatus$ | async) !== AuthStatus.Registering" 
+                        nz-button 
+                        nzType="primary" 
+                        class="register-button" 
+                        [disabled]="!registrationFormGroup.valid" 
+                        (click)="register()">
                 {{'auth.register_label' | translate}}
             </button>
             </nz-form-control>
-        </nz-form-item>
+        </ng-container>
     </form>
+
+
+
 </div>
 
 

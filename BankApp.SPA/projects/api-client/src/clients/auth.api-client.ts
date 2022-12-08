@@ -5,7 +5,7 @@ import { TokenResponse } from '../models/auth/token-response.model';
 import { LoginModel } from '../models/auth/login.model';
 import { RegistrationModel } from '../models/auth/registration.model';
 import { Result } from '../models/shared/result.model';
-import { AuthUrlsService } from '../urls/auth/auth-urls.service';
+import { AuthUrlsService } from '../urls/auth-urls.service';
 import { TokenRefreshModel } from '../models/auth/token-refresh.model';
 
 @Injectable({

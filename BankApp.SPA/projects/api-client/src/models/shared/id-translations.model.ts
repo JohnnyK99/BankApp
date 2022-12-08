@@ -1,4 +1,5 @@
-import { IdTranslationsApi, Translation } from './id-translations-api.model';
+import { TranslationHelpers } from '../../helpers/translation.helpers';
+import { IdTranslationsApi } from './id-translations-api.model';
 
 export class IdTranslation {
   id: number;
@@ -8,7 +9,7 @@ export class IdTranslation {
     model: IdTranslationsApi
   ) {
     this.id = model.id;
-    this.translation = this.getTranslationsMap(model.translations);
+    this.translation = TranslationHelpers.getTranslationsMap(model.translations);
   }
 
   static from(obj: IdTranslationsApi): IdTranslation;
@@ -18,12 +19,5 @@ export class IdTranslation {
       return obj.map(item => new IdTranslation(item));
     }
     return new IdTranslation(obj);
-  }
-
-  private getTranslationsMap(translations: Translation[]): Map<string, string> {
-    const result: Map<string, string> = new Map<string, string>();
-    translations.forEach(translation => result.set(translation.countryCode, translation.value));
-
-    return result;
   }
 }

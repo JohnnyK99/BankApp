@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
-import { ApiClientConfigModel } from '../../config/config.model';
-import { CONFIG } from '../../config/config.token';
+import { ApiClientConfigModel } from '../config/config.model';
+import { CONFIG } from '../config/config.token';
 
 @Injectable({
   providedIn: 'root',

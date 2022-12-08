@@ -1,6 +1,7 @@
 {
     "auth": {
         "already_have_account": "Masz już konto?",
+        "continue_without_account": "Chcę kontynuować bez wyboru konta",
         "email": "Email",
         "fill_customer_data": "Wypełnij dane klienta",
         "fill_employee_data": "Wypełnij dane pracownika",
@@ -23,9 +24,14 @@
         "repeat_password": "Powtórz hasło"
     },
     "error": {
+        "account_types": "Nie udało się pobrać rodzajów kont",
         "bank_accounts": "Nie udało się pobrać kont bankowych",
         "login": "Błąd logowania - upewnij się, że dane są poprawne",
         "register": "Nie udało się zarejestrować konta - spróbuj ponownie później"
+    },
+    "shared": {
+        "back": "Wstecz",
+        "next": "Dalej"
     },
     "success": {
         "register": "Pomyślnie zarejestrowano użytkownika"

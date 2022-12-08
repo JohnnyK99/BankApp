@@ -5,7 +5,7 @@ import { mapToResponse } from '../helpers/map.helpers';
 import { BankAccount } from '../models/bank-accounts/bank-account.model';
 import { GetUserBankAccountsResponse } from '../models/bank-accounts/get-user-bank-accounts.response';
 import { Result } from '../models/shared/result.model';
-import { BankAccountUrlsService } from '../urls/bank-account/bank-account-urls.service';
+import { BankAccountUrlsService } from '../urls/bank-account-urls.service';
 
 @Injectable({
   providedIn: 'root',
