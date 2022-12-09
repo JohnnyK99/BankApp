@@ -11,10 +11,10 @@ namespace BankApp.DAL.Features.Auth.Commands
 {
     public class GetTokensDalCommand : IGetTokensDalCommand
     {
-        private readonly UserManager<User> _userManager;
+        private readonly UserManager<UserEntity> _userManager;
         private readonly JwtHelpers _jwtHelpers;
 
-        public GetTokensDalCommand(UserManager<User> userManager, JwtHelpers jwtHelpers)
+        public GetTokensDalCommand(UserManager<UserEntity> userManager, JwtHelpers jwtHelpers)
         {
             _userManager = userManager;
             _jwtHelpers = jwtHelpers;

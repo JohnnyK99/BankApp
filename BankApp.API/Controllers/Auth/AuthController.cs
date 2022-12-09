@@ -11,7 +11,7 @@ using BankApp.API.Dto.Auth.RefreshToken;
 using BankApp.Infrastructure.Features.Auth.RefreshToken;
 using BankApp.API.Dto.Auth.Login;
 
-namespace BankApp.API.Controllers
+namespace BankApp.API.Controllers.Auth
 {
     [Route(ApiRoutes.Auth.Base)]
     [ApiController]
@@ -28,8 +28,8 @@ namespace BankApp.API.Controllers
         public async Task<IActionResult> Register(RegisterUserDto request)
         {
             Result<bool> result = await _mediator.Send(new RegisterUserCommand(request.FirstName, request.LastName, request.Email, request.Password));
-            
-            if(!result.Succeeded)
+
+            if (!result.Succeeded)
             {
                 return StatusCode(500, result);
             }
@@ -42,7 +42,7 @@ namespace BankApp.API.Controllers
         {
             Result<TokenModel> result = await _mediator.Send(new LoginCommand(request.Email, request.Password));
 
-            if(!result.Succeeded)
+            if (!result.Succeeded)
             {
                 return Unauthorized(result);
             }
@@ -55,7 +55,7 @@ namespace BankApp.API.Controllers
         {
             Result<TokenModel> result = await _mediator.Send(new RefreshTokenCommand(request.AccessToken, request.RefreshToken));
 
-            if(!result.Succeeded)
+            if (!result.Succeeded)
             {
                 return StatusCode(500, result);
             }

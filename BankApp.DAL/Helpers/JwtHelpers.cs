@@ -27,7 +27,7 @@ namespace BankApp.DAL.Helpers
             return new SigningCredentials(secret, SecurityAlgorithms.HmacSha256);
         }
 
-        public List<Claim> GetClaims(User user, IList<string> userRoles)
+        public List<Claim> GetClaims(UserEntity user, IList<string> userRoles)
         {
             var claims = new List<Claim>()
             { 

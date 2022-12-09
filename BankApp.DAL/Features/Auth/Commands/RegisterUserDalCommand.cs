@@ -10,16 +10,16 @@ namespace BankApp.DAL.Features.Auth.Commands
 {
     public class RegisterUserDalCommand : IRegisterUserDalCommand
     {
-        private readonly UserManager<User> _userManager;
+        private readonly UserManager<UserEntity> _userManager;
 
-        public RegisterUserDalCommand(UserManager<User> userManager)
+        public RegisterUserDalCommand(UserManager<UserEntity> userManager)
         {
             _userManager = userManager;
         }
 
         public async Task<RegistrationResult> RegisterUserAsync(string firstName, string lastName, string email, string password)
         {
-            var user = new User 
+            var user = new UserEntity 
             { 
                 FirstName = firstName,
                 LastName = lastName,

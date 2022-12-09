@@ -11,5 +11,11 @@
             public const string Login = "login";
             public const string RefreshToken = "refresh";
         }
+
+        public static class Dictionaries
+        {
+            public const string Base = $"{Root}/dictionaries";
+            public const string AccountTypes = "account-types";
+        }
     }
 }

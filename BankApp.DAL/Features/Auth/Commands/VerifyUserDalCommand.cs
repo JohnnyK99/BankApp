@@ -10,10 +10,10 @@ namespace BankApp.DAL.Features.Auth.Commands
 {
     public class VerifyUserDalCommand : IVerifyUserDalCommand
     {
-        private readonly UserManager<User> _userManager;
+        private readonly UserManager<UserEntity> _userManager;
         private readonly JwtHelpers _jwtHelpers;
 
-        public VerifyUserDalCommand(UserManager<User> userManager, JwtHelpers jwtHelpers)
+        public VerifyUserDalCommand(UserManager<UserEntity> userManager, JwtHelpers jwtHelpers)
         {
             _userManager = userManager;
             _jwtHelpers = jwtHelpers;

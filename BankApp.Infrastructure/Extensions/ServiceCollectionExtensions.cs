@@ -9,6 +9,7 @@ namespace BankApp.Infrastructure.Extensions
         public static void AddInfrastructureLayer(this IServiceCollection services)
         {
             services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
         }
     }
 }
