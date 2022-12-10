@@ -22,6 +22,7 @@
         {
             public const string Base = $"{Root}/bank-accounts";
             public const string Create = "";
+            public const string GetAll = "";
         }
     }
 }

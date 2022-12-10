@@ -2,10 +2,14 @@
 using BankApp.API.Dto.BankAccounts.CreateBankAccount;
 using BankApp.DAL.Constants;
 using BankApp.Infrastructure.Features.BankAccounts.Commands.CreateBankAccount;
+using BankApp.Infrastructure.Features.BankAccounts.Queries.GetClientBankAccounts;
 using BankApp.Infrastructure.Features.Users.Queries.GetUserId;
+using BankApp.Infrastructure.Features.Users.Queries.UserExistence;
+using BankApp.Infrastructure.Wrappers;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -34,6 +38,28 @@ namespace BankApp.API.Controllers.BankAccounts
 
             await _mediator.Send(new CreateBankAccountCommand(request.UserId, request.AccountTypeId), cancellationToken);
             return NoContent();
+        }
+
+        [HttpGet(ApiRoutes.BankAccounts.GetAll)]
+        [Authorize(Roles = $"{UserRoles.Employee}, {UserRoles.Client}")]
+        public async Task<IActionResult> GetClientBankAccounts(string userId, CancellationToken cancellationToken)
+        {
+            if (User.IsInRole(UserRoles.Client))
+            {
+                userId = await _mediator.Send(new GetUserIdQuery(User.Identity.Name), cancellationToken);
+            } 
+            else
+            {
+                bool existsClient = await _mediator.Send(new UserExistenceQuery(userId), cancellationToken);
+                if (!existsClient)
+                {
+                    return NotFound();
+                }
+            }
+
+            Result<IEnumerable<BankAccount>> result = await _mediator.Send(new GetClientBankAccountsQuery(userId), cancellationToken);
+
+            return Ok(result);
         }
     }
 }
