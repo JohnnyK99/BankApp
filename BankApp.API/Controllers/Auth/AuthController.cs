@@ -27,14 +27,9 @@ namespace BankApp.API.Controllers.Auth
         [HttpPost(ApiRoutes.Auth.Register)]
         public async Task<IActionResult> Register(RegisterUserDto request)
         {
-            Result<bool> result = await _mediator.Send(new RegisterUserCommand(request.FirstName, request.LastName, request.Email, request.Password));
+            await _mediator.Send(new RegisterUserCommand(request.FirstName, request.LastName, request.Email, request.Password, request.AccountTypeId));
 
-            if (!result.Succeeded)
-            {
-                return StatusCode(500, result);
-            }
-
-            return Ok(result);
+            return NoContent();
         }
 
         [HttpPost(ApiRoutes.Auth.Login)]

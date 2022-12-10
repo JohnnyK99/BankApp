@@ -1,9 +1,7 @@
 ﻿using BankApp.DAL.Constants;
 using BankApp.DAL.Db.Entities;
-using BankApp.Infrastructure.Features.Auth;
 using BankApp.Infrastructure.Features.Auth.Registration.Commands;
 using Microsoft.AspNetCore.Identity;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace BankApp.DAL.Features.Auth.Commands
@@ -17,7 +15,7 @@ namespace BankApp.DAL.Features.Auth.Commands
             _userManager = userManager;
         }
 
-        public async Task<RegistrationResult> RegisterUserAsync(string firstName, string lastName, string email, string password)
+        public async Task<string> RegisterUserAsync(string firstName, string lastName, string email, string password)
         {
             var user = new UserEntity 
             { 
@@ -34,7 +32,7 @@ namespace BankApp.DAL.Features.Auth.Commands
                 await _userManager.AddToRoleAsync(user, UserRoles.Client);
             }
 
-            return new RegistrationResult { Succeeded = result.Succeeded, ErrorMessages = result.Errors.Select(err => err.Description).ToList() };
+            return user.Id;
         }
     }
 }
