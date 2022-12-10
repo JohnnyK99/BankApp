@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BankApp.DAL.Features.BankAccounts.Commands
 {
-    public class CreateBankAccountDalCommand : ICreateBankAccountDalCommand
+    public class CreateBankAccountDalCommand : IDalService, ICreateBankAccountDalCommand
     {
         private readonly AppDbContext _dbContext;
         private readonly BankAccountHelpers _bankAccountHelpers;

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BankApp.DAL.Features.Users.Queries
 {
-    public class GetUserIdDalQuery : IGetUserIdDalQuery
+    public class GetUserIdDalQuery : IDalService, IGetUserIdDalQuery
     {
         private AppDbContext _dbContext;
 

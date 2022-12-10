@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BankApp.DAL.Features.Dictionaries.Queries.Existence
 {
-    public class AccountTypeExistenceDalQuery : IAccountTypeExistenceDalQuery
+    public class AccountTypeExistenceDalQuery : IDalService, IAccountTypeExistenceDalQuery
     {
         private readonly AppDbContext _dbContext;
 

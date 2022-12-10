@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BankApp.DAL.Features.Dictionaries.Queries
 {
-    public class GetAccountTypesDalQuery : IGetAccountTypesDalQuery
+    public class GetAccountTypesDalQuery : IDalService, IGetAccountTypesDalQuery
     {
         private readonly AppDbContext _dbContext;
         private readonly IMapper _mapper;

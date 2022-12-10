@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BankApp.DAL.Features.Users.Queries
 {
-    public class UserExistenceDalQuery : IUserExistenceDalQuery
+    public class UserExistenceDalQuery : IDalService, IUserExistenceDalQuery
     {
         private readonly AppDbContext _dbContext;
 

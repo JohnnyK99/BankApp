@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BankApp.DAL.Features.Auth.Commands
 {
-    public class VerifyUserDalCommand : IVerifyUserDalCommand
+    public class VerifyUserDalCommand : IDalService, IVerifyUserDalCommand
     {
         private readonly UserManager<UserEntity> _userManager;
         private readonly JwtHelpers _jwtHelpers;

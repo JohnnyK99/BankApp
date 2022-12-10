@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BankApp.DAL.Features.Auth.Commands
 {
-    public class GetTokensDalCommand : IGetTokensDalCommand
+    public class GetTokensDalCommand : IDalService, IGetTokensDalCommand
     {
         private readonly UserManager<UserEntity> _userManager;
         private readonly JwtHelpers _jwtHelpers;

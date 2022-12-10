@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BankApp.DAL.Features.Auth.Commands
 {
-    public class RegisterUserDalCommand : IRegisterUserDalCommand
+    public class RegisterUserDalCommand : IDalService, IRegisterUserDalCommand
     {
         private readonly UserManager<UserEntity> _userManager;
 
