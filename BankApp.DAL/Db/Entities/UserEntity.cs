@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.Collections.Generic;
 
 namespace BankApp.DAL.Db.Entities
 {
@@ -8,5 +9,7 @@ namespace BankApp.DAL.Db.Entities
         public string LastName { get; set; }
         public string? RefreshToken { get; set; }
         public double? RefreshTokenExp { get; set; }
+
+        public ICollection<BankAccountEntity> BankAccounts { get; set; }
     }
 }

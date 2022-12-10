@@ -17,5 +17,11 @@
             public const string Base = $"{Root}/dictionaries";
             public const string AccountTypes = "account-types";
         }
+
+        public static class BankAccounts
+        {
+            public const string Base = $"{Root}/bank-accounts";
+            public const string Create = "";
+        }
     }
 }

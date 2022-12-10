@@ -4,6 +4,7 @@ using BankApp.DAL.Db;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BankApp.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221209185958_AddedBankAccountsTable")]
+    partial class AddedBankAccountsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -90,14 +92,14 @@ namespace BankApp.DAL.Migrations
                     b.Property<double>("Balance")
                         .HasColumnType("float");
 
-                    b.Property<string>("ClientId")
+                    b.Property<string>("ClientEmail")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AccountTypeId");
 
-                    b.HasIndex("ClientId");
+                    b.HasIndex("ClientEmail");
 
                     b.ToTable("BankAccounts");
                 });
@@ -208,22 +210,22 @@ namespace BankApp.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "7c56bd76-1b5d-4a0e-8c69-a0ceda3684b5",
-                            ConcurrencyStamp = "cfbf3952-46ec-4d0d-852a-80b2e3c46398",
+                            Id = "08d04e35-8276-4ebc-aec3-84873daf9a2a",
+                            ConcurrencyStamp = "3cf66bc6-18d8-46fe-9861-73fcc94fe35e",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "2885cf50-6808-45c4-9966-bacae273a561",
-                            ConcurrencyStamp = "d5f1abdf-fdae-4f18-91e7-7e7569884dd5",
+                            Id = "5f4a28f0-0401-4865-9219-eb4557cd8db0",
+                            ConcurrencyStamp = "76500d5f-0954-4f79-8e4b-6dc0105eced9",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         },
                         new
                         {
-                            Id = "a98db05f-03fe-4069-b35d-87de5ee96d5d",
-                            ConcurrencyStamp = "69c94a72-0f6c-4678-acc5-3e05e2eecd6a",
+                            Id = "a978af7c-d12d-4b9a-9b0b-4f04f2574b17",
+                            ConcurrencyStamp = "907ffbca-4bef-4d82-95ca-d4be93676c81",
                             Name = "Client",
                             NormalizedName = "CLIENT"
                         });
@@ -345,7 +347,7 @@ namespace BankApp.DAL.Migrations
 
                     b.HasOne("BankApp.DAL.Db.Entities.UserEntity", "User")
                         .WithMany("BankAccounts")
-                        .HasForeignKey("ClientId");
+                        .HasForeignKey("ClientEmail");
 
                     b.Navigation("AccountType");
 
