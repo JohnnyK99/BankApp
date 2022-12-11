@@ -1,24 +1,56 @@
-.ant-btn:hover,
-.ant-btn-primary {
-    color: black;
-    border-color: var(--color-accent);
+.ant-btn:not(.ant-btn-icon-only):hover,
+.ant-radio-button-wrapper:hover {
     background-color: var(--color-accent);
+    color: var(--color-black);
 }
 
-.ant-btn:focus {
-    color: initial;
-    border-color: var(--color-accent);
+.ant-btn-primary,
+.ant-radio-button-wrapper {
+    color: var(--color-text);
 }
 
 .ant-btn-primary:hover {
-    border-color: #e09945;
-    background-color: #e09945;
+    background-color: var(--color-accent-hover) !important;
+    border-color: var(--color-accent-hover); 
 }
 
-.ant-steps-icon {
-    color: var(--color-accent);
+.ant-btn:focus {
+    color: var(--color-text);
 }
 
-.ant-steps-item-process>.ant-steps-item-container>.ant-steps-item-content>.ant-steps-item-title::after {
-    background-color: #c2c2c2;
+.ant-carousel .slick-dots {
+    left: initial;
+    margin-right: 10px;
+    margin-left: 0;
+
+    li {
+        border: 1px solid var(--color-accent);
+        border-radius: 10px;
+
+        &.slick-active {
+            width: 16px;
+            background-color: var(--color-accent);
+
+             button{
+                 background-color: var(--color-accent);
+             }
+        }
+    }
+}
+
+.ant-steps-item-process > .ant-steps-item-container > .ant-steps-item-icon .ant-steps-icon {
+    color: var(--color-black);
+}
+
+.ant-steps-item-process > .ant-steps-item-container > .ant-steps-item-content > .ant-steps-item-title::after {
+    background-color: var(--color-gray);
+}
+
+.ant-radio-group-solid .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
+    color: var(--color-text);
+
+    &:hover {
+        background-color: var(--color-accent);
+        color: var(--color-text);
+    }
 }

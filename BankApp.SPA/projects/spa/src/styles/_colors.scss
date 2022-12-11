@@ -1,6 +1,14 @@
-:root {
+:root,
+::before,
+::after {
     --color-primary: #6DAFFE;
     --color-secondary: #437FC7;
     --color-background: #EDF6FF;
     --color-accent: #FEBC6D;
+    --color-accent-hover: #E09945;
+    --color-white: #FFFFFF;
+    --color-black: #000000;
+    --color-red: #ff4d4f;
+    --color-gray: #C2C2C2;
+    --color-text: #000000;
 }

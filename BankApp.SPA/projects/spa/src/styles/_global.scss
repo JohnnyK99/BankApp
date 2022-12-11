@@ -9,8 +9,12 @@ body {
 
 body { 
     margin: 0;
-    font-family: Roboto,
+    font-family: Rubik,
     "Helvetica Neue", sans-serif;
+}
+
+a {
+    font-weight: 500;
 }
 
 //ng-zorro
@@ -35,7 +39,7 @@ body {
         &.ant-form-item-required:not(.ant-form-item-required-mark-optional)::after {
             display: inline-block;
             margin-right: 4px;
-            color: #ff4d4f;
+            color: var(--color-red);
             font-size: 14px;
             font-family: SimSun,sans-serif;
             line-height: 1;
@@ -55,4 +59,9 @@ body {
 
 .elevated {
     box-shadow: 0 3px 1px -2px #0003, 0 2px 2px #00000024, 0 1px 5px #0000001f;
+}
+
+::selection {
+    color: white; 
+    background: #3297FD;
 }

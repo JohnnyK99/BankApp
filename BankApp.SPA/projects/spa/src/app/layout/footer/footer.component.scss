@@ -9,7 +9,7 @@
 }
 
 span {
-    color: white;
+    color: var(--color-white);
 
     &.created-by {
         text-align: center;
@@ -22,5 +22,9 @@ span {
 
     .anticon {
         font-size: 1.3rem;
+        
+        &:hover {
+            color: var(--color-accent);
+        }
     }
 }

@@ -1,5 +1,5 @@
-<button nz-button nz-dropdown nzType="text" nzTrigger="click" [nzDropdownMenu]="menu" nzPlacement="bottomCenter">
-    <img [src]="facade.selectedLanguageFlag$ | async">
+<button nz-button nz-dropdown nzType="text" nzTrigger="click" class="trigger-button" [nzDropdownMenu]="menu" nzPlacement="bottomCenter">
+    <img class="current-language" [src]="facade.selectedLanguageFlag$ | async">
 </button>
 <nz-dropdown-menu #menu="nzDropdownMenu">
     <ul nz-menu>

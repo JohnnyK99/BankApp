@@ -59,19 +59,21 @@
                 </nz-radio-group>
             </nz-form-control>
         </nz-form-item>
-        <nz-form-control>
-            <button nz-button nzType="default" (click)="moveBack()">{{'shared.back' | translate}}</button>
-        </nz-form-control>
-        <nz-form-control>
-            <nz-spin nzSimple nzSize="small" *ngIf="(authFacade.authStatus$ | async) === AuthStatus.Registering"></nz-spin>
-            <button *ngIf="(authFacade.authStatus$ | async) !== AuthStatus.Registering" 
-                    nz-button 
-                    nzType="primary" 
-                    [disabled]="!registrationFormGroup.valid" 
-                    (click)="register()">
-            {{'auth.register_label' | translate}}
-        </button>
-        </nz-form-control>
+        <div class="buttons">
+            <nz-form-control>
+                <button nz-button nzType="default" (click)="moveBack()">{{'shared.back' | translate}}</button>
+            </nz-form-control>
+            <nz-form-control>
+                <nz-spin nzSimple nzSize="small" *ngIf="(authFacade.authStatus$ | async) === AuthStatus.Registering"></nz-spin>
+                <button *ngIf="(authFacade.authStatus$ | async) !== AuthStatus.Registering" 
+                        nz-button 
+                        nzType="primary" 
+                        [disabled]="!registrationFormGroup.valid" 
+                        (click)="register()">
+                {{'auth.register_label' | translate}}
+            </button>
+            </nz-form-control>
+        </div>
     </ng-container>
 </form>
 

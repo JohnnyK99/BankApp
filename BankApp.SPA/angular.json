@@ -41,6 +41,7 @@
               "projects/spa/src/assets"
             ],
             "styles": [
+              "projects/spa/src/styles/theme.less",
               "projects/spa/src/styles/styles.scss"
             ],
             "scripts": []
@@ -114,6 +115,7 @@
               "projects/spa/src/assets"
             ],
             "styles": [
+              "projects/spa/src/styles/theme.less",
               "projects/spa/src/styles/styles.scss"
             ],
             "scripts": []

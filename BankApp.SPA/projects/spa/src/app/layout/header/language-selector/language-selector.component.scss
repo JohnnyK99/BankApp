@@ -11,14 +11,25 @@
     height: 40px;
 
     &--active {
-      background-color: lightcoral; //TODO: Change color
-      span {
-        color: white; //TODO: Change color
-      }
+      background-color: var(--color-accent);
+    }
+
+    img {
+      height: 20px;
+      margin-right: 5px;
     }
   }
 
-  img {
+  .trigger-button {
+    padding: 0;
+    height: 22px;
+    line-height: initial;
+
+    &:hover {
+      background-color: initial;
+    } 
+  }
+
+  .current-language {
     height: 20px;
-    margin-right: 5px;
   }
