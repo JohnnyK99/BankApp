@@ -4,21 +4,12 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 20px;
-    background: #437FC7; //TODO: Change color
-}
-
-.header-buttons {
-    display: flex;
+    width: 120%;
+    padding-right: 20%;
+    background-color: var(--color-secondary);
 }
 
 .home-title {
     color: white;
     cursor: pointer;
-}
-
-.menu {
-    height: 40px;
-    display: flex;
-    align-items: center;
-    background: cornflowerblue; //TODO: Change color
 }

@@ -1,0 +1,26 @@
+.body {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--color-primary);
+    min-height: 100%;
+}
+
+.sidenav {
+    transition: 0.5s;
+
+    &--authorized {
+        width: 250px;
+    }
+
+    &--unauthorized {
+        width: 30%;
+    }
+}
+
+.content {
+    background-color: var(--color-background);
+    border-radius: 35px 0 0 35px;
+    display: flex;
+    flex: 1;
+    padding: 15px;
+}

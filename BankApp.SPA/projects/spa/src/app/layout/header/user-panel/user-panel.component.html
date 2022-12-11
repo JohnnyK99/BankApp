@@ -1,9 +1,0 @@
-<button nz-button nz-dropdown nzType="text" nzTrigger="click" [nzDropdownMenu]="menu" nzPlacement="bottomCenter">
-    <span nz-icon nzType="user" nzTheme="outline" style="color: white;"></span>
-</button>
-<nz-dropdown-menu #menu="nzDropdownMenu">
-    <div nz-menu>
-        <span>{{(authFacade.userInfo$ | async)?.username}}</span>
-        <button nz-button nzType="default" (click)="authFacade.logout()">{{'auth.logout' | translate}}</button>
-    </div>
-</nz-dropdown-menu>

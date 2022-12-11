@@ -5,14 +5,14 @@ import { mapToResponse } from '../helpers/map.helpers';
 import { BankAccount } from '../models/bank-accounts/bank-account.model';
 import { GetUserBankAccountsResponse } from '../models/bank-accounts/get-user-bank-accounts.response';
 import { Result } from '../models/shared/result.model';
-import { BankAccountUrlsService } from '../urls/bank-account-urls.service';
+import { BankAccountsUrlsService } from '../urls/bank-accounts-urls.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BankAccountApiClient {
   constructor(
-    private accountUrls: BankAccountUrlsService,
+    private accountUrls: BankAccountsUrlsService,
     private http: HttpClient
   ) {}
 

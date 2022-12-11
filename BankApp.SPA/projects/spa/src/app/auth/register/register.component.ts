@@ -24,7 +24,7 @@ export class RegisterComponent extends TranslatedComponent implements OnInit {
   readonly AppRoutes = AppRoutes;
   readonly AuthStatus = AuthStatus;
 
-  step = 1;
+  step = 0;
 
   registrationFormGroup = this.fb.group({
     firstName: this.fb.control<string>('', [Validators.required]),

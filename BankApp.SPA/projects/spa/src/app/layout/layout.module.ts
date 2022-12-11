@@ -6,18 +6,17 @@ import { LanguageSelectorComponent } from './header/language-selector/language-s
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
-
 import { UserOutline, LoginOutline, GithubOutline, LinkedinOutline } from '@ant-design/icons-angular/icons';
-import { UserPanelComponent } from './header/user-panel/user-panel.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { SidenavComponent } from './sidenav/sidenav.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
     LanguageSelectorComponent,
-    UserPanelComponent,
+    SidenavComponent,
   ],
   imports: [
     CommonModule,
@@ -29,8 +28,7 @@ import { TranslateModule } from '@ngx-translate/core';
     NzDropDownModule,
   ],
   exports: [
-    HeaderComponent,
-    FooterComponent,
+    SidenavComponent,
   ],
 })
 export class LayoutModule { }

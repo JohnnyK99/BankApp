@@ -1,45 +1,41 @@
-<div class="image"></div>
-
-<div class="content">
-    <form nz-form [formGroup]="loginFormGroup">
-        <nz-alert nzType="error" 
-                  [nzMessage]="'error.login' | translate"
-                  class="error-alert"
-                  *ngIf="(facade.authStatus$ | async) === AuthStatus.ErrorLogin">  
-        </nz-alert>
-        <nz-form-item>
-            <nz-form-label nzFor="email">{{'auth.email' | translate}}</nz-form-label>
-            <nz-form-control>
-                <input nz-input formControlName="email" id="email" />
-            </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-            <nz-form-label nzFor="password">{{'auth.password' | translate}}</nz-form-label>
-            <nz-form-control>
-                <input nz-input formControlName="password" id="password" type="password" />
-            </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-            <button nz-button nzType="default" (click)="fillCustomerData()" class="example-data-button">
-                {{'auth.fill_customer_data' | translate}}
+<form nz-form [formGroup]="loginFormGroup">
+    <nz-alert nzType="error" 
+                [nzMessage]="'error.login' | translate"
+                class="error-alert"
+                *ngIf="(facade.authStatus$ | async) === AuthStatus.ErrorLogin">  
+    </nz-alert>
+    <nz-form-item>
+        <nz-form-label nzFor="email">{{'auth.email' | translate}}</nz-form-label>
+        <nz-form-control>
+            <input nz-input formControlName="email" id="email" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label nzFor="password">{{'auth.password' | translate}}</nz-form-label>
+        <nz-form-control>
+            <input nz-input formControlName="password" id="password" type="password" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <button nz-button nzType="default" (click)="fillCustomerData()" class="example-data-button">
+            {{'auth.fill_customer_data' | translate}}
+        </button>
+        <button nz-button nzType="default" (click)="fillEmployeeData()" class="example-data-button">
+            {{'auth.fill_employee_data' | translate}}
+        </button>
+    </nz-form-item>
+    <span>{{'auth.no_account' | translate}} <a [routerLink]="['/' + AppRoutes.register]">{{'auth.register' | translate}}</a></span>
+    <nz-form-item>
+        <nz-form-control>
+            <nz-spin nzSimple nzSize="small" *ngIf="(facade.authStatus$ | async) === AuthStatus.Authenticating"></nz-spin>
+            <button *ngIf="(facade.authStatus$ | async) !== AuthStatus.Authenticating" 
+                    nz-button
+                    nzType="primary"
+                    class="login-button"
+                    [disabled]="!loginFormGroup.valid"
+                    (click)="login()">
+                {{'auth.login_label' | translate}}
             </button>
-            <button nz-button nzType="default" (click)="fillEmployeeData()" class="example-data-button">
-                {{'auth.fill_employee_data' | translate}}
-            </button>
-        </nz-form-item>
-        <span>{{'auth.no_account' | translate}} <a [routerLink]="['/' + AppRoutes.register]">{{'auth.register' | translate}}</a></span>
-        <nz-form-item>
-            <nz-form-control>
-                <nz-spin nzSimple nzSize="small" *ngIf="(facade.authStatus$ | async) === AuthStatus.Authenticating"></nz-spin>
-                <button *ngIf="(facade.authStatus$ | async) !== AuthStatus.Authenticating" 
-                        nz-button
-                        nzType="primary"
-                        class="login-button"
-                        [disabled]="!loginFormGroup.valid"
-                        (click)="login()">
-                    {{'auth.login_label' | translate}}
-                </button>
-            </nz-form-control>
-        </nz-form-item>
-    </form>
-</div>
+        </nz-form-control>
+    </nz-form-item>
+</form>

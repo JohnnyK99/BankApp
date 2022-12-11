@@ -1,23 +1,12 @@
 :host {
-    flex: 1;
     text-align: center;
-    display: grid;
-    grid-template-columns: 3fr 4fr;
-}
-
-.image {
-    background-image: url(../../../assets/background.jpg); //TODO: Change, just a placeholder
+    align-self: center;
+    margin-inline: auto;
 }
 
 .error-alert {
     position: absolute;
     top: -70px;
-}
-
-.content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 form {
@@ -40,8 +29,8 @@ nz-spin {
     align-items: center;
 }
 
-.register-button {
-    margin-top: 10px;
+.next-button {
+    margin-top: 20px;
 }
 
 .ant-radio-group {
@@ -61,4 +50,8 @@ nz-spin {
 .account-name {
     font-size: 1.2rem;
     font-weight: 500;
+}
+
+.ant-steps {
+    margin-bottom: 30px;
 }

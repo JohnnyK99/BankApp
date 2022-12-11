@@ -5,9 +5,9 @@ import { CONFIG } from '../config/config.token';
 @Injectable({
   providedIn: 'root',
 })
-export class BankAccountUrlsService {
+export class BankAccountsUrlsService {
 
-  baseUrl = `${this.config.baseApiUrl}/bank-account`;
+  baseUrl = `${this.config.baseApiUrl}/bank-accounts`;
 
   constructor(@Inject(CONFIG) private config: ApiClientConfigModel) {}
 

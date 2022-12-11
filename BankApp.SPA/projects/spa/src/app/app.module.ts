@@ -17,6 +17,7 @@ import { ApiClientModule } from 'projects/api-client/api-client.module';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { NgxMaskModule } from 'ngx-mask';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -39,6 +40,7 @@ const apiClientConfig: ApiClientConfigModel = {
     HttpClientModule,
     GlobalStoresModule,
     AuthModule,
+    NzButtonModule,
     ApiClientModule.forRoot(apiClientConfig),
     ToastrModule.forRoot(),
     NgxMaskModule.forRoot(),

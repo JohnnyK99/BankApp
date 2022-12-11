@@ -1,17 +1,26 @@
 :host {
-    height: 40px;
-    padding: 0px 20px;
-    background-color: #437FC7; //TODO: Change color
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    min-height: 40px;
+    padding: 10px 20px;
+    padding-right: 25%;
+    background-color: var(--color-secondary);
+    display: grid;
+    width: 120%;
+    gap: 10px;
 }
 
 span {
     color: white;
+
+    &.created-by {
+        text-align: center;
+    }
 }
 
 .icons {
     display: flex;
-    gap: 15px;
+    justify-content: space-around;
+
+    .anticon {
+        font-size: 1.3rem;
+    }
 }

@@ -1,0 +1,16 @@
+<div class="top">
+    <bnk-header></bnk-header>
+
+    <div class="user-info" *ngIf="(authFacade.authStatus$ | async) === AuthStatus.Authenticated">
+        <span nz-icon nzType="user" nzTheme="outline"></span>
+        <span>{{(authFacade.userInfo$ | async)?.username}}</span>
+        <button nz-button 
+                nzType="primary" 
+                (click)="authFacade.logout()">
+            {{'auth.logout' | translate}}
+        </button>
+    </div>
+</div>
+
+<bnk-footer></bnk-footer>
+

@@ -1,7 +1,4 @@
 <div class="title">
     <span class="home-title" [routerLink]="'/' + [AppRoutes.base]">BankApp</span>
-    <div class="header-buttons">
-        <bnk-language-selector></bnk-language-selector>
-        <bnk-user-panel *ngIf="(authFacade.authStatus$ | async) === AuthStatus.Authenticated"></bnk-user-panel>
-    </div>
+    <bnk-language-selector></bnk-language-selector>
 </div>

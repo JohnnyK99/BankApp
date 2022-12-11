@@ -1,0 +1,24 @@
+.ant-btn:hover,
+.ant-btn-primary {
+    color: black;
+    border-color: var(--color-accent);
+    background-color: var(--color-accent);
+}
+
+.ant-btn:focus {
+    color: initial;
+    border-color: var(--color-accent);
+}
+
+.ant-btn-primary:hover {
+    border-color: #e09945;
+    background-color: #e09945;
+}
+
+.ant-steps-icon {
+    color: var(--color-accent);
+}
+
+.ant-steps-item-process>.ant-steps-item-container>.ant-steps-item-content>.ant-steps-item-title::after {
+    background-color: #c2c2c2;
+}

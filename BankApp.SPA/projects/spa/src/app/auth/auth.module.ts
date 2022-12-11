@@ -11,6 +11,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
+import { NzStepsModule } from 'ng-zorro-antd/steps';
 
 import { CheckOutline, CloseOutline } from '@ant-design/icons-angular/icons';
 import { TranslateModule } from '@ngx-translate/core';
@@ -37,6 +38,7 @@ import { TranslatedFieldPipe } from '../shared/pipes/translated-field.pipe';
     NzFormModule,
     NzRadioModule,
     NzSkeletonModule,
+    NzStepsModule,
     NzIconModule.forChild([CheckOutline, CloseOutline]),
   ],
 })

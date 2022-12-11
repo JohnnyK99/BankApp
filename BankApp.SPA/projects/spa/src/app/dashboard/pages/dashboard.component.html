@@ -6,7 +6,7 @@
         <button nz-button nzType="text" (click)="carousel.pre()" [disabled]="carousel.activeIndex === 0">
             <span nz-icon nzType="left" nzTheme="outline"></span>
         </button>
-        <nz-carousel nzEnableSwipe="false" #carousel>
+        <nz-carousel nzEnableSwipe="false" #carousel class="elevated">
             <bnk-account-card nz-carousel-content 
                               *ngFor="let account of bankAccounts" 
                               [account]="account">
