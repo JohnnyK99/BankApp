@@ -29,9 +29,21 @@
         "login": "Błąd logowania - upewnij się, że dane są poprawne",
         "register": "Nie udało się zarejestrować konta - spróbuj ponownie później"
     },
+    "new_transaction": {
+        "amount": "Kwota",
+        "bank_account": "Konto bankowe",
+        "new_transaction": "Nowa transakcja",
+        "payee_account_number": "Numer konta odbiorcy",
+        "payee_name": "Nazwa odbiorcy",
+        "saved_payees": "Zapisani odbiorcy",
+        "transaction_description": "Opis przelewu",
+        "transaction_title": "Tytuł przelewu"
+    },
     "shared": {
         "back": "Wstecz",
-        "next": "Dalej"
+        "confirm": "Potwierdź",
+        "next": "Dalej",
+        "search": "Szukaj"
     },
     "success": {
         "register": "Pomyślnie zarejestrowano użytkownika"

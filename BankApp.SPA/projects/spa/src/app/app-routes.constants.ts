@@ -3,4 +3,5 @@ export const AppRoutes = {
   dashboard: 'dashboard',
   login: 'login',
   register: 'register',
+  transactions: 'transactions',
 };

@@ -1,0 +1,79 @@
+<div class="page-header">
+    <button nz-button nzType="default">
+        <span nz-icon nzType="arrow-left" nzTheme="outline"></span>
+        {{'shared.back' | translate}}
+    </button>
+    <h1>{{'new_transaction.new_transaction' | translate}}</h1>
+    <div></div>
+</div>
+<div class="content">
+    <form nzForm [formGroup]="formGroup" class="elevated">
+        <nz-form-item>
+            <nz-form-label nzRequired nzFor="selectedAccount">{{'new_transaction.bank_account' | translate}}</nz-form-label>
+            <nz-form-control>
+                <nz-select formControlName="selectedAccount" [compareWith]="compareFn" [nzCustomTemplate]="defaultTemplate" class="account-select" nzDropdownClassName="account-options-panel">
+                    <nz-option *ngFor="let account of allAccounts" nzCustomContent [nzValue]="account">
+                        <div class="bank-account-option">
+                            <div class="bank-account-header">
+                                <span class="account-name">{{account.accountName | translatedField:currentLanguage}}</span>
+                                <span class="account-number">{{account.accountNumber | mask: TransactionsConstants.accountNumberMask}}</span>
+                            </div>
+                            <div class="account-balance">
+                                {{account.balance | mask:'separator'}} zł
+                            </div>
+                        </div>
+                    </nz-option>
+                </nz-select>
+                <ng-template #defaultTemplate let-selected>
+                    <div class="bank-account-option">
+                        <div class="bank-account-header">
+                            <span class="account-name">{{selected.nzValue.accountName | translatedField:currentLanguage}}</span>
+                            <span class="account-number">{{selected.nzValue.accountNumber | mask: TransactionsConstants.accountNumberMask}}</span>
+                        </div>
+                        <div class="account-balance">
+                            {{selected.nzValue.balance | mask:'separator'}} zł
+                        </div>
+                    </div>
+                </ng-template>
+            </nz-form-control>
+        </nz-form-item>
+        <div class="transaction-info">
+            <nz-form-item>
+                <nz-form-label nzRequired nzFor="title">{{'new_transaction.transaction_title' | translate}}</nz-form-label>
+                <nz-form-control>
+                    <input nz-input formControlName="title" id="title" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label nzFor="description">{{'new_transaction.transaction_description' | translate}}</nz-form-label>
+                <nz-form-control>
+                    <textarea rows="5" nz-input formControlName="description" id="description"></textarea>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label nzRequired nzFor="amount">{{'new_transaction.amount' | translate}}</nz-form-label>
+                <nz-form-control>
+                    <input nz-input class="amount-input" mask="separator.2" suffix=" zł" placeholder="np. 0 zł" formControlName="amount" id="amount" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div class="payee-info">
+            <div class="inputs">
+                <nz-form-item>
+                    <nz-form-label nzRequired nzFor="payeeName">{{'new_transaction.payee_name' | translate}}</nz-form-label>
+                    <nz-form-control>
+                        <input nz-input formControlName="payeeName" id="payeeName" />
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-label nzRequired nzFor="payeeAccountNumber">{{'new_transaction.payee_account_number' | translate}}</nz-form-label>
+                    <nz-form-control>
+                        <input nz-input formControlName="payeeAccountNumber" id="firstName" [mask]="TransactionsConstants.accountNumberMask" />
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <span nz-icon class="contacts-icon" nzType="contacts" nzTheme="outline" (click)="getAccountBookValue()"></span>
+        </div>
+        <button nz-button nzType="primary" class="accept-button">{{'shared.confirm' | translate}}</button>
+    </form>
+</div>

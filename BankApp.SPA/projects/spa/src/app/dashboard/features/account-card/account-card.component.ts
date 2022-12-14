@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { BankAccountTranslated } from 'projects/api-client/src/models/bank-accounts/bank-account-translated.model';
+import { AppRoutes } from '../../../app-routes.constants';
 import { TransactionType } from '../../../shared/constants/enums/transaction-type.enum';
+import { TransactionsConstants } from '../../../shared/constants/transactions.constants';
 import { TranslatedComponent } from '../../../translated.component';
 
 @Component({
@@ -13,4 +15,6 @@ export class AccountCardComponent extends TranslatedComponent {
   account: BankAccountTranslated;
 
   readonly TransactionType = TransactionType;
+  readonly AppRoutes = AppRoutes;
+  readonly TransactionsConstants = TransactionsConstants;
 }

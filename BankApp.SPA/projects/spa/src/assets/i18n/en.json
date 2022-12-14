@@ -29,9 +29,21 @@
         "login": "Login failed - make sure that credentials are valid",
         "register": "Registration failed - try again later"
     },
+    "new_transaction": {
+        "amount": "Amount",
+        "bank_account": "Bank account",
+        "new_transaction": "New transaction",
+        "payee_account_number": "Payee account number",
+        "payee_name": "Payee name",
+        "saved_payees": "Saved payees",
+        "transaction_description": "Transaction description",
+        "transaction_title": "Transaction title"
+    },
     "shared": {
         "back": "Back",
-        "next": "Next"
+        "confirm": "Confirm",
+        "next": "Next",
+        "search": "Search"
     },
     "success": {
         "register": "User has been successfully registered"

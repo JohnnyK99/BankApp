@@ -17,6 +17,26 @@ a {
     font-weight: 500;
 }
 
+textarea {
+    resize: none;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.page-header {
+    width: 100%;
+    display: grid;
+    gap: 15px;
+    text-align: center;
+    
+    button {
+        width: min-content;
+    }
+}
+
 //ng-zorro
 .ant-form-item {
     display: grid;
@@ -61,7 +81,32 @@ a {
     box-shadow: 0 3px 1px -2px #0003, 0 2px 2px #00000024, 0 1px 5px #0000001f;
 }
 
+.account-options-panel {
+    //height: 200px;
+    .ant-select-item {
+        padding: 15px 10px;
+    }
+
+    .cdk-virtual-scroll-viewport {
+        min-height: 175px;
+    }
+}
+
+.ant-modal-body {
+    max-height: 75vh;
+    overflow-y: scroll;
+}
+
 ::selection {
     color: white; 
     background: #3297FD;
+}
+
+
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: var(--color-gray);
 }

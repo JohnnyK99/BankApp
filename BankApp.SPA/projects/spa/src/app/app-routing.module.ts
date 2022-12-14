@@ -12,6 +12,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: AppRoutes.transactions,
+    loadChildren: () => import('./transactions/transactions.module').then(m => m.TransactionsModule),
+    canActivate: [AuthGuard],
+  },
+  {
     path: AppRoutes.login,
     component: LoginComponent,
   },

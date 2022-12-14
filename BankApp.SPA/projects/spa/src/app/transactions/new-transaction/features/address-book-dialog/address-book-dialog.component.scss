@@ -1,0 +1,15 @@
+.ant-radio-group {
+    display: grid;
+    gap: 5px;
+    margin: 20px 0;
+}
+
+.ant-radio-button-wrapper {
+    height: initial;
+    line-height: 25px;
+
+    > ::ng-deep  span:last-child {
+        display: grid;
+        padding-block: 5px;
+    }
+}
