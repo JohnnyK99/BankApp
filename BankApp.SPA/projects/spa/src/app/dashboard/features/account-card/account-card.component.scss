@@ -1,3 +1,5 @@
+@use 'mixins' as *;
+
 :host {
     background-color: white;
     border-radius: 10px;
@@ -5,10 +7,15 @@
     display: grid !important;
     grid-template-rows: 60px auto auto;
     grid-template-columns: 2fr 1fr;
+    height: 100% !important;
 }
 
 .header {
     display: grid;
+
+    @include lg {
+        grid-column: span 2;
+    }
 }
 
 .reload-icon {
@@ -29,6 +36,11 @@
     align-items: center;
     font-size: 2rem;
     font-weight: 500;
+
+    @include lg {
+        grid-column: span 2;
+        justify-content: left;
+    }
 }
 
 .transactions-table {
@@ -49,6 +61,7 @@
 .transaction {
     display: grid;
     grid-template-columns: 1fr 2fr 2fr 1fr;
+    gap: 15px;
     padding: 0 4px;
 
     >span {
@@ -64,6 +77,13 @@
 
     &--outcoming .amount {
         color: red;
+    }
+
+    @include lg {
+        grid-template-columns: 2fr 1fr;
+        .hide-small {
+            display: none;
+        }
     }
 }
 

@@ -1,10 +1,25 @@
+@use 'mixins' as *;
+
 :host {
     width: 100%;
+    display: grid;
+    gap: 20px;
+    justify-items: center;
+    grid-template-rows: 50px auto;
+    padding-top: 30px;
 }
 
 .carousel-wrapper{
-    width: 1000px;
+    width: 65vw;
     height: 300px;
     display: flex;
     align-items: center;
+
+    @include lg {
+        height: 350px;
+    }
+
+    @include sm {
+        width: 95vw;
+    }
 }

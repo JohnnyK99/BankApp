@@ -1,12 +1,20 @@
+@use 'mixins' as *;
+
 .title {
     height: 50px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
+    padding-left: 20px;
+    padding-right: 25%;
     width: 120%;
     padding-right: 25%;
     background-color: var(--color-secondary);
+
+    @include sm {
+        width: 100%;
+        padding-right: 20px;
+    }
 }
 
 .home-title {

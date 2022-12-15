@@ -1,16 +1,23 @@
 :host {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.center {
+  flex: 1;
+  padding: 20px 0;
+  box-shadow: inset 0px -20px 24px 0px var(--color-secondary),
+              inset 0px 20px 24px 0px var(--color-secondary);
 }
 
 .user-info {
-    color: white;
-    display: grid;
-    text-align: center;
-    gap: 15px;
-    padding: 10px;
-    .anticon {
-        font-size: 2.5rem;
-    }
+  color: white;
+  display: grid;
+  text-align: center;
+  gap: 15px;
+  padding: 10px;
+  .anticon {
+      font-size: 2.5rem;
+  }
 }

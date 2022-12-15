@@ -1,0 +1,25 @@
+@use 'constants' as *;
+
+@mixin xl {
+  @media (max-width: $max-xl) {
+    @content
+  }
+};
+
+@mixin lg {
+  @media (max-width: $max-lg) {
+    @content
+  }
+};
+
+@mixin md {
+  @media (max-width: $max-md) {
+    @content
+  }
+};
+
+@mixin sm {
+  @media (max-width: $max-sm) {
+    @content
+  }
+};

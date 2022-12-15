@@ -1,7 +1,9 @@
 :host {
+    display: flex;
+    justify-content: center;
+    width: 100%;
     text-align: center;
     align-self: center;
-    margin-inline: auto;
 }
 
 .error-alert {
@@ -12,7 +14,7 @@
 }
 
 form {
-    width: 400px;
+    width: calc(min(400px, 100%));
     position: relative;
 }
 

@@ -1,6 +1,6 @@
-<div class="top">
-    <bnk-header></bnk-header>
+<bnk-header></bnk-header>
 
+<div class="center">
     <div class="user-info" *ngIf="(authFacade.authStatus$ | async) === AuthStatus.Authenticated">
         <span nz-icon nzType="user" nzTheme="outline"></span>
         <span>{{(authFacade.userInfo$ | async)?.username}}</span>
@@ -13,4 +13,3 @@
 </div>
 
 <bnk-footer></bnk-footer>
-

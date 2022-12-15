@@ -11,8 +11,8 @@
     <span class="transactions-table-title">Ostatnie transakcje</span>
     <div *ngFor="let transaction of account.lastTransactions; index as i">
         <div class="transaction" [ngClass]="{'transaction--incoming': transaction.type === TransactionType.Incoming, 'transaction--outcoming': transaction.type === TransactionType.Outcoming}">
-            <span>{{transaction.date | date: 'dd.MM.yyyy'}}</span>
-            <span>{{transaction.from}}</span>
+            <span class="hide-small">{{transaction.date | date: 'dd.MM.yyyy'}}</span>
+            <span class="hide-small">{{transaction.from}}</span>
             <span>{{transaction.title}}</span>
             <span class="amount">{{transaction.amount | mask:'separator'}} zł</span>
         </div>
