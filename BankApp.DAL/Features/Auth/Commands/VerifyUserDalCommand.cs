@@ -1,7 +1,7 @@
 ﻿using BankApp.DAL.Db.Entities;
 using BankApp.DAL.Helpers;
-using BankApp.Infrastructure.Features.Auth.Login.Commands;
-using BankApp.Infrastructure.Wrappers;
+using BankApp.Application.Features.Auth.Login.Commands;
+using BankApp.Application.Wrappers;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Threading.Tasks;

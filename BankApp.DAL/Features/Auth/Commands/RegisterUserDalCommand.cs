@@ -1,6 +1,6 @@
 ﻿using BankApp.DAL.Constants;
 using BankApp.DAL.Db.Entities;
-using BankApp.Infrastructure.Features.Auth.Registration.Commands;
+using BankApp.Application.Features.Auth.Registration.Commands;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 

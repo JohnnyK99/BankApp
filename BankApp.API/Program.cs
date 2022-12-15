@@ -1,4 +1,4 @@
-using BankApp.Infrastructure.Extensions;
+using BankApp.Application.Extensions;
 using BankApp.DAL.Extensions;
 using BankApp.API.Dto.Auth.Register;
 using FluentValidation;

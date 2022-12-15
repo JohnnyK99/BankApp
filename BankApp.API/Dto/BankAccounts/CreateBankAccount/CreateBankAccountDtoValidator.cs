@@ -1,6 +1,6 @@
 ﻿using BankApp.DAL.Constants;
-using BankApp.Infrastructure.Features.Dictionaries.Queries.Existence.AccountTypeExistence;
-using BankApp.Infrastructure.Features.Users.Queries.UserExistence;
+using BankApp.Application.Features.Dictionaries.Queries.Existence.AccountTypeExistence;
+using BankApp.Application.Features.Users.Queries.UserExistence;
 using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Http;

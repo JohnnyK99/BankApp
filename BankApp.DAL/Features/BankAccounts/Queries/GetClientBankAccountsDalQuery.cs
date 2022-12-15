@@ -1,5 +1,5 @@
 ﻿using BankApp.DAL.Db;
-using BankApp.Infrastructure.Features.BankAccounts.Queries.GetClientBankAccounts;
+using BankApp.Application.Features.BankAccounts.Queries.GetClientBankAccounts;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;

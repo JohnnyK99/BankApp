@@ -2,8 +2,8 @@
 using BankApp.API.Extensions;
 using BankApp.API.Constants.Auth;
 using MediatR;
-using BankApp.Infrastructure.Features.Dictionaries.Queries.Existence.AccountTypeExistence;
-using BankApp.Infrastructure.Features.Users.Queries.UserExistence;
+using BankApp.Application.Features.Dictionaries.Queries.Existence.AccountTypeExistence;
+using BankApp.Application.Features.Users.Queries.UserExistence;
 
 namespace BankApp.API.Dto.Auth.Register
 {

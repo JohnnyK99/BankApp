@@ -1,7 +1,7 @@
 ﻿using BankApp.API.Constants.Routes;
 using BankApp.DAL.Constants;
-using BankApp.Infrastructure.Features.Dictionaries.Queries.GetAccountTypes;
-using BankApp.Infrastructure.Wrappers;
+using BankApp.Application.Features.Dictionaries.Queries.GetAccountTypes;
+using BankApp.Application.Wrappers;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

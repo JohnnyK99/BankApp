@@ -1,14 +1,14 @@
 ﻿using BankApp.API.Constants.Routes;
 using BankApp.API.Dto.Auth.Register;
-using BankApp.Infrastructure.Features.Auth.Registration.Commands;
-using BankApp.Infrastructure.Wrappers;
+using BankApp.Application.Features.Auth.Registration.Commands;
+using BankApp.Application.Wrappers;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using BankApp.Infrastructure.Features.Auth.Login.Commands;
-using BankApp.Infrastructure.Features.Auth;
+using BankApp.Application.Features.Auth.Login.Commands;
+using BankApp.Application.Features.Auth;
 using BankApp.API.Dto.Auth.RefreshToken;
-using BankApp.Infrastructure.Features.Auth.RefreshToken;
+using BankApp.Application.Features.Auth.RefreshToken;
 using BankApp.API.Dto.Auth.Login;
 
 namespace BankApp.API.Controllers.Auth

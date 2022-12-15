@@ -1,5 +1,5 @@
 ﻿using BankApp.DAL.Db;
-using BankApp.Infrastructure.Features.Dictionaries.Queries.Existence.AccountTypeExistence;
+using BankApp.Application.Features.Dictionaries.Queries.Existence.AccountTypeExistence;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 

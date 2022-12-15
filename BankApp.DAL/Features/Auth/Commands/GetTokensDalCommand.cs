@@ -1,8 +1,8 @@
 ﻿using BankApp.DAL.Db.Entities;
 using BankApp.DAL.Helpers;
-using BankApp.Infrastructure.Features.Auth;
-using BankApp.Infrastructure.Features.Auth.Login.Commands;
-using BankApp.Infrastructure.Wrappers;
+using BankApp.Application.Features.Auth;
+using BankApp.Application.Features.Auth.Login.Commands;
+using BankApp.Application.Wrappers;
 using Microsoft.AspNetCore.Identity;
 using System.IdentityModel.Tokens.Jwt;
 using System.Threading.Tasks;

@@ -1,11 +1,11 @@
 ﻿using BankApp.API.Constants.Routes;
 using BankApp.API.Dto.BankAccounts.CreateBankAccount;
 using BankApp.DAL.Constants;
-using BankApp.Infrastructure.Features.BankAccounts.Commands.CreateBankAccount;
-using BankApp.Infrastructure.Features.BankAccounts.Queries.GetClientBankAccounts;
-using BankApp.Infrastructure.Features.Users.Queries.GetUserId;
-using BankApp.Infrastructure.Features.Users.Queries.UserExistence;
-using BankApp.Infrastructure.Wrappers;
+using BankApp.Application.Features.BankAccounts.Commands.CreateBankAccount;
+using BankApp.Application.Features.BankAccounts.Queries.GetClientBankAccounts;
+using BankApp.Application.Features.Users.Queries.GetUserId;
+using BankApp.Application.Features.Users.Queries.UserExistence;
+using BankApp.Application.Wrappers;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

@@ -1,5 +1,5 @@
 ﻿using BankApp.DAL.Db;
-using BankApp.Infrastructure.Features.Users.Queries.UserExistence;
+using BankApp.Application.Features.Users.Queries.UserExistence;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 

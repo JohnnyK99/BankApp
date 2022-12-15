@@ -1,5 +1,5 @@
 ﻿using BankApp.DAL.Db;
-using BankApp.Infrastructure.Features.Users.Queries.GetUserId;
+using BankApp.Application.Features.Users.Queries.GetUserId;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
