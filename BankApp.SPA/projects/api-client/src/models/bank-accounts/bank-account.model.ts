@@ -6,5 +6,5 @@ export interface BankAccount {
   accountType: IdTranslationsApi;
   balance: number;
   accountNumber: string;
-  lastTransactions: Transaction[];
+  recentTransactions: Transaction[];
 }

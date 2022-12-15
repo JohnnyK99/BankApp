@@ -7,16 +7,21 @@
     {{account.balance | mask:'separator'}} zł
 </div>
 
-<div class="transactions-table">
+<div class="no-transactions" *ngIf="account.recentTransactions.length === 0">
+    Brak transakcji dla danego konta
+</div>
+
+<div class="transactions-table" *ngIf="account.recentTransactions.length > 0">
     <span class="transactions-table-title">Ostatnie transakcje</span>
-    <div *ngFor="let transaction of account.lastTransactions; index as i">
-        <div class="transaction" [ngClass]="{'transaction--incoming': transaction.type === TransactionType.Incoming, 'transaction--outcoming': transaction.type === TransactionType.Outcoming}">
+    <div *ngFor="let transaction of account.recentTransactions; index as i">
+        <div class="transaction" [ngClass]="{'transaction--incoming': transaction.transactionType === TransactionType.Incoming, 'transaction--outcoming': transaction.transactionType === TransactionType.Outcoming}">
             <span class="hide-small">{{transaction.date | date: 'dd.MM.yyyy'}}</span>
-            <span class="hide-small">{{transaction.from}}</span>
+            <span class="hide-small" *ngIf="transaction.transactionType === TransactionType.Incoming">{{transaction.accountNumberFrom | mask:TransactionsConstants.accountNumberMask}}</span>
+            <span class="hide-small" *ngIf="transaction.transactionType === TransactionType.Outcoming">{{transaction.accountNumberTo | mask:TransactionsConstants.accountNumberMask}}</span>
             <span>{{transaction.title}}</span>
             <span class="amount">{{transaction.amount | mask:'separator'}} zł</span>
         </div>
-        <hr *ngIf="i !== account.lastTransactions.length-1">
+        <hr *ngIf="i !== account.recentTransactions.length-1">
     </div>
 </div>
 <div class="account-actions">

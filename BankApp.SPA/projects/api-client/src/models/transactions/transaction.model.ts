@@ -1,10 +1,12 @@
 import { TransactionType } from 'projects/spa/src/app/shared/constants/enums/transaction-type.enum';
 
 export interface Transaction {
-  from: string;
-  //to: string;
-  amount: number;
+  id: number;
+  accountNumberFrom: string;
+  accountNumberTo: string;
   title: string;
-  type: TransactionType;
+  description: string;
   date: Date;
+  amount: number;
+  transactionType: TransactionType;
 }

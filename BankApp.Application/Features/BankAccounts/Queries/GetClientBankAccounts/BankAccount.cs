@@ -1,4 +1,5 @@
 ﻿using BankApp.Application.Wrappers;
+using System.Collections.Generic;
 
 namespace BankApp.Application.Features.BankAccounts.Queries.GetClientBankAccounts
 {
@@ -8,5 +9,6 @@ namespace BankApp.Application.Features.BankAccounts.Queries.GetClientBankAccount
         public string AccountNumber { get; set; }
         public double Balance { get; set; }
         public IdTranslations AccountType { get; set; }
+        public IEnumerable<Transaction> RecentTransactions { get; set; }
     }
 }
