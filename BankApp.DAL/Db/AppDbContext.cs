@@ -14,6 +14,7 @@ namespace BankApp.DAL.Db
 
         public DbSet<AccountTypeEntity> AccountTypes { get; set; }
         public DbSet<BankAccountEntity> BankAccounts { get; set; }
+        public DbSet<TransactionEntity> Transactions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -22,6 +23,7 @@ namespace BankApp.DAL.Db
             builder.ApplyConfiguration(new RoleConfiguration());
             builder.ApplyConfiguration(new AccountTypeConfiguration());
             builder.ApplyConfiguration(new BankAccountConfiguration());
+            builder.ApplyConfiguration(new TransactionConfiguration());
         }
     }
 }

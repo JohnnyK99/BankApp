@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BankApp.DAL.Features.BankAccounts.Queries
 {
-    internal class GetClientBankAccountsDalQuery : IDalService, IGetClientBankAccountsDalQuery
+    public class GetClientBankAccountsDalQuery : IDalService, IGetClientBankAccountsDalQuery
     {
         private readonly AppDbContext _dbContext;
 

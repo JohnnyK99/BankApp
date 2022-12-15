@@ -20,7 +20,7 @@ namespace BankApp.DAL.Features.BankAccounts.Commands
 
         public async Task CreateBankAccountAsync(string userId, int accountTypeId, int initialBalance)
         {
-            int maxAccountId = _dbContext.BankAccounts.Any() ? _dbContext.BankAccounts.Max(acc => acc.Id) : 1;
+            int maxAccountId = _dbContext.BankAccounts.Any() ? _dbContext.BankAccounts.Max(acc => acc.Id) : 0;
             string accountNumber = _bankAccountHelpers.GenerateAccountNumber(maxAccountId + 1);
 
             BankAccountEntity account = new()

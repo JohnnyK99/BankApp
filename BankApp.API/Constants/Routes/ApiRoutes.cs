@@ -12,17 +12,22 @@
             public const string RefreshToken = "refresh";
         }
 
+        public static class BankAccounts
+        {
+            public const string Base = $"{Root}/bank-accounts";
+            public const string Create = "";
+            public const string GetAll = "";
+        }
+
         public static class Dictionaries
         {
             public const string Base = $"{Root}/dictionaries";
             public const string AccountTypes = "account-types";
         }
 
-        public static class BankAccounts
+        public static class Transactions
         {
-            public const string Base = $"{Root}/bank-accounts";
-            public const string Create = "";
-            public const string GetAll = "";
+            public const string Base = $"{Root}/transactions";
         }
     }
 }

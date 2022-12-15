@@ -1,4 +1,6 @@
-﻿namespace BankApp.DAL.Db.Entities
+﻿using System.Collections.Generic;
+
+namespace BankApp.DAL.Db.Entities
 {
     public class BankAccountEntity
     {
@@ -10,5 +12,7 @@
 
         public AccountTypeEntity AccountType { get; set; }
         public UserEntity User { get; set; }
+        public ICollection<TransactionEntity> OutgoingTransactions { get; set; }
+        public ICollection<TransactionEntity> IncomingTransactions { get; set; }
     }
 }

@@ -1,5 +1,4 @@
-﻿using BankApp.Application.Features.Dictionaries.Queries.GetAccountTypes;
-using BankApp.Application.Wrappers;
+﻿using BankApp.Application.Wrappers;
 
 namespace BankApp.Application.Features.BankAccounts.Queries.GetClientBankAccounts
 {
