@@ -1,0 +1,22 @@
+<bnk-info-item subtitle="Numer konta nadawcy">
+    {{transaction.accountNumberFrom | mask:TransactionsConstants.accountNumberMask}}
+</bnk-info-item>
+<bnk-info-item subtitle="Numer konta odbiorcy">
+    {{transaction.accountNumberTo | mask:TransactionsConstants.accountNumberMask}}
+</bnk-info-item>
+<bnk-info-item subtitle="Tytuł transakcji">
+    {{transaction.title}}
+</bnk-info-item>
+<bnk-info-item subtitle="Opis transakcji">
+    <span *ngIf="transaction.description.length === 0">Brak</span>
+    <span *ngIf="transaction.description.length > 0">{{transaction.description}}</span>
+</bnk-info-item>
+<bnk-info-item subtitle="Data wykonania transakcji">
+    {{transaction.date | date:'dd.MM.yyyy HH:mm:ss'}}
+</bnk-info-item>
+<bnk-info-item subtitle="Typ transakcji">
+    {{transaction.transactionType === TransactionType.Incoming ? 'Przychodząca' : 'Wychodząca'}}
+</bnk-info-item>
+<bnk-info-item subtitle="Kwota">
+    <span class="amount">{{transaction.amount}} zł</span>
+</bnk-info-item>

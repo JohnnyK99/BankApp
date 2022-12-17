@@ -13,20 +13,26 @@ import { AccountCardComponent } from './features/account-card/account-card.compo
 import { NgxMaskModule } from 'ngx-mask';
 import { TranslatedFieldPipe } from '../shared/pipes/translated-field.pipe';
 import { DashboardStoreModule } from './state/dashboard-store.module';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { InfoItemModule } from '../shared/components/info-item/info-item.module';
+import { TransactionDialogComponent } from './features/transaction-dialog/transaction-dialog.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     AccountCardComponent,
+    TransactionDialogComponent,
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     DashboardStoreModule,
     TranslateModule,
+    InfoItemModule,
     NzCarouselModule,
     NzButtonModule,
     NzSkeletonModule,
+    NzModalModule,
     NzIconModule.forChild([LeftOutline, RightOutline]),
     NgxMaskModule.forChild(),
     TranslatedFieldPipe,
