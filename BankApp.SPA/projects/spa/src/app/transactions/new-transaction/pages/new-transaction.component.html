@@ -1,5 +1,5 @@
 <div class="page-header">
-    <button nz-button nzType="default">
+    <button nz-button nzType="default" (click)="goBack()">
         <span nz-icon nzType="arrow-left" nzTheme="outline"></span>
         {{'shared.back' | translate}}
     </button>
@@ -53,14 +53,14 @@
             <nz-form-item>
                 <nz-form-label nzRequired nzFor="amount">{{'new_transaction.amount' | translate}}</nz-form-label>
                 <nz-form-control>
-                    <input nz-input class="amount-input" mask="separator.2" suffix=" zł" placeholder="np. 0 zł" formControlName="amount" id="amount" />
+                    <input nz-input class="amount-input" mask="separator.2" suffix=" zł" formControlName="amount" id="amount" />
                 </nz-form-control>
             </nz-form-item>
         </div>
         <div class="payee-info">
             <div class="inputs">
                 <nz-form-item>
-                    <nz-form-label nzRequired nzFor="payeeName">{{'new_transaction.payee_name' | translate}}</nz-form-label>
+                    <nz-form-label nzFor="payeeName">{{'new_transaction.payee_name' | translate}}</nz-form-label>
                     <nz-form-control>
                         <input nz-input formControlName="payeeName" id="payeeName" />
                     </nz-form-control>
@@ -74,6 +74,6 @@
             </div>
             <span nz-icon class="contacts-icon" nzType="contacts" nzTheme="outline" (click)="getAccountBookValue()"></span>
         </div>
-        <button nz-button nzType="primary" class="accept-button">{{'shared.confirm' | translate}}</button>
+        <button nz-button nzType="primary" class="accept-button" [disabled]="!formGroup.valid" (click)="createTransaction()">{{'shared.confirm' | translate}}</button>
     </form>
 </div>

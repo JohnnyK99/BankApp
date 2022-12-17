@@ -13,11 +13,15 @@ import { AddressBookDialogComponent } from './features/address-book-dialog/addre
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { TranslatedFieldPipe } from '../../shared/pipes/translated-field.pipe';
+import { ConfirmTransactionDialogComponent } from './features/confirm-transaction-dialog/confirm-transaction-dialog.component';
+import { RouterModule } from '@angular/router';
+import { InfoItemModule } from '../../shared/components/info-item/info-item.module';
 
 @NgModule({
   declarations: [
     NewTransactionComponent,
     AddressBookDialogComponent,
+    ConfirmTransactionDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -25,7 +29,9 @@ import { TranslatedFieldPipe } from '../../shared/pipes/translated-field.pipe';
     FormsModule,
     TranslateModule,
     TranslatedFieldPipe,
+    RouterModule,
     NgxMaskModule.forChild(),
+    InfoItemModule,
     NzFormModule,
     NzInputModule,
     NzIconModule.forChild([]),

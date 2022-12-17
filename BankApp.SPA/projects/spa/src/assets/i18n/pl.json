@@ -36,8 +36,8 @@
         "payee_account_number": "Numer konta odbiorcy",
         "payee_name": "Nazwa odbiorcy",
         "saved_payees": "Zapisani odbiorcy",
-        "transaction_description": "Opis przelewu",
-        "transaction_title": "Tytuł przelewu"
+        "transaction_description": "Opis transakcji",
+        "transaction_title": "Tytuł transakcji"
     },
     "shared": {
         "back": "Wstecz",

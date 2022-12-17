@@ -3,12 +3,14 @@ import { Transaction } from '../transactions/transaction.model';
 import { BankAccount } from './bank-account.model';
 
 export class BankAccountTranslated {
+  id: number;
   accountType: IdTranslation;
   balance: number;
   accountNumber: string;
   recentTransactions: Transaction[];
 
   constructor(model: BankAccount) {
+    this.id = model.id;
     this.accountType = IdTranslation.from(model.accountType);
     this.balance = model.balance;
     this.accountNumber = model.accountNumber;
