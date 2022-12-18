@@ -1,0 +1,10 @@
+<nz-result nzStatus="success"
+            nzTitle="Transakcja pomyślna">
+</nz-result>
+
+<div class="actions">
+    <button nz-button (click)="downloadConfirmation()">Pobierz potwierdzenie</button>
+    <button nz-button [routerLink]="['/transactions/new']">Nowa transakcja</button>
+    <button nz-button [routerLink]="['']">Przejdź do strony głównej</button>
+</div>
+

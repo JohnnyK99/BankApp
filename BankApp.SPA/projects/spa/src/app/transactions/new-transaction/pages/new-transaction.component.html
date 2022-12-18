@@ -12,10 +12,10 @@
             <nz-form-label nzRequired nzFor="selectedAccount">{{'new_transaction.bank_account' | translate}}</nz-form-label>
             <nz-form-control>
                 <nz-select formControlName="selectedAccount" [compareWith]="compareFn" [nzCustomTemplate]="defaultTemplate" class="account-select" nzDropdownClassName="account-options-panel">
-                    <nz-option *ngFor="let account of allAccounts" nzCustomContent [nzValue]="account">
+                    <nz-option *ngFor="let account of bankAccountsFacade.userBankAccounts$ | async" nzCustomContent [nzValue]="account">
                         <div class="bank-account-option">
                             <div class="bank-account-header">
-                                <span class="account-name">{{account.accountName | translatedField:currentLanguage}}</span>
+                                <span class="account-name">{{account.accountType.translation | translatedField:currentLanguage}}</span>
                                 <span class="account-number">{{account.accountNumber | mask: TransactionsConstants.accountNumberMask}}</span>
                             </div>
                             <div class="account-balance">
@@ -27,7 +27,7 @@
                 <ng-template #defaultTemplate let-selected>
                     <div class="bank-account-option">
                         <div class="bank-account-header">
-                            <span class="account-name">{{selected.nzValue.accountName | translatedField:currentLanguage}}</span>
+                            <span class="account-name">{{selected.nzValue.accountType.translation | translatedField:currentLanguage}}</span>
                             <span class="account-number">{{selected.nzValue.accountNumber | mask: TransactionsConstants.accountNumberMask}}</span>
                         </div>
                         <div class="account-balance">
@@ -52,8 +52,11 @@
             </nz-form-item>
             <nz-form-item>
                 <nz-form-label nzRequired nzFor="amount">{{'new_transaction.amount' | translate}}</nz-form-label>
-                <nz-form-control>
+                <nz-form-control [nzErrorTip]="amountErrorTip">
                     <input nz-input class="amount-input" mask="separator.2" suffix=" zł" formControlName="amount" id="amount" />
+                    <ng-template #amountErrorTip let-control>   
+                        <ng-container *ngIf="control.hasError('amountTooHigh')">Kwota przekracza stan konta</ng-container>
+                      </ng-template>
                 </nz-form-control>
             </nz-form-item>
         </div>
@@ -67,8 +70,12 @@
                 </nz-form-item>
                 <nz-form-item>
                     <nz-form-label nzRequired nzFor="payeeAccountNumber">{{'new_transaction.payee_account_number' | translate}}</nz-form-label>
-                    <nz-form-control>
-                        <input nz-input formControlName="payeeAccountNumber" id="firstName" [mask]="TransactionsConstants.accountNumberMask" />
+                    <nz-form-control [nzErrorTip]="numberErrorTip">
+                        <input nz-input formControlName="payeeAccountNumber" id="firstName" [mask]="TransactionsConstants.accountNumberMask" [dropSpecialCharacters]="true" />
+                        <ng-template #numberErrorTip let-control>   
+                            <ng-container *ngIf="control.hasError('pattern')">Niepoprawny numer konta</ng-container>
+                            <ng-container *ngIf="control.hasError('sameAccount')">Numery konta muszą się różnić</ng-container>
+                          </ng-template>
                     </nz-form-control>
                 </nz-form-item>
             </div>

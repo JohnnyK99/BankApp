@@ -1,7 +1,8 @@
 <input nz-input [formControl]="filterControl" [placeholder]="'shared.search' | translate">
+<span class="no-entries-label" *ngIf="!(filteredEntries$ | async)?.length">Brak zapisanych odbiorców</span>
 <nz-radio-group nzButtonStyle="solid" [(ngModel)]="selected" (ngModelChange)="onSelect()">
-    <label nz-radio-button *ngFor="let payee of filteredPayees$ | async" [nzValue]="payee">
-        <span class="account-name">{{payee.name}}</span>
-        <span class="account-description">{{payee.bankAccount | mask: TransactionsConstants.accountNumberMask}}</span>
+    <label nz-radio-button *ngFor="let entry of filteredEntries$ | async" [nzValue]="entry">
+        <span class="account-name">{{entry.name}}</span>
+        <span class="account-description">{{entry.accountNumber | mask: TransactionsConstants.accountNumberMask}}</span>
     </label>
 </nz-radio-group>

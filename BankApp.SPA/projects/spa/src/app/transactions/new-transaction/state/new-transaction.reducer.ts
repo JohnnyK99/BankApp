@@ -1,13 +1,15 @@
-import { createReducer } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
+import { NewTransactionActions } from './new-transaction.actions';
 import { NewTransactionState } from './new-transaction.state';
 
 const initialState: NewTransactionState = {
-  selectedAccountId: null,
-  recipientAccountNumber: '',
-  recipientName: '',
-  amount: 0,
+  newTransactionId: null,
 };
 
 export const newTransactionReducer = createReducer<NewTransactionState>(
-  initialState
+  initialState,
+  on(NewTransactionActions.createTransactionSuccess, (state, action): NewTransactionState => ({
+    ...state,
+    newTransactionId: action.transactionId,
+  }))
 );

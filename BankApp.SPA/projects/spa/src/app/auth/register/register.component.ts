@@ -77,8 +77,8 @@ export class RegisterComponent extends TranslatedComponent implements OnInit {
 
     this.dictFacade.getAccountTypes();
 
-    this.passwordFormControl.setValidators(this.passwordValidator);
-    this.repeatPasswordFormControl.setValidators(this.repeatPasswordValidator);
+    this.passwordFormControl.addValidators([this.passwordValidator]);
+    this.repeatPasswordFormControl.addValidators([this.repeatPasswordValidator]);
 
     this.observe(this.passwordFormControl.valueChanges)
       .subscribe(() => this.repeatPasswordFormControl.updateValueAndValidity());

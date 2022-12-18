@@ -42,7 +42,9 @@ const apiClientConfig: ApiClientConfigModel = {
     AuthModule,
     NzButtonModule,
     ApiClientModule.forRoot(apiClientConfig),
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right',
+    }),
     NgxMaskModule.forRoot(),
     TranslateModule.forRoot({
       loader: {

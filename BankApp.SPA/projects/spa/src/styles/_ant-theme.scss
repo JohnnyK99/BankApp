@@ -1,4 +1,4 @@
-.ant-btn:not(.ant-btn-icon-only):hover,
+.ant-btn:not(.ant-btn-icon-only, .ant-btn[disabled]):hover,
 .ant-radio-button-wrapper:hover {
     background-color: var(--color-accent);
     color: var(--color-black);
@@ -9,13 +9,17 @@
     color: var(--color-text);
 }
 
-.ant-btn-primary:hover {
+.ant-btn-primary:not([disabled]):hover {
     background-color: var(--color-accent-hover) !important;
     border-color: var(--color-accent-hover); 
 }
 
 .ant-btn:focus {
     color: var(--color-text);
+}
+
+.ant-select-item-empty {
+    display: none;
 }
 
 .ant-carousel .slick-dots {

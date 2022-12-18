@@ -25,7 +25,9 @@
     },
     "error": {
         "account_types": "Failed to load account types",
+        "address_book": "Failed to load the address book",
         "bank_accounts": "Failed to load bank accounts",
+        "create_transaction": "Failed to create transaction",
         "login": "Login failed - make sure that credentials are valid",
         "register": "Registration failed - try again later"
     },

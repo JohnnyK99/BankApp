@@ -73,6 +73,10 @@ h1 {
     border-radius: 5px;
 }
 
+.ngx-toastr {
+	width: auto !important;
+}
+
 .ant-btn[disabled],
 .ant-input[disabled] {
     cursor: initial;
