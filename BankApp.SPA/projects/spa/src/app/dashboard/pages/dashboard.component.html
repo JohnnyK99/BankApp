@@ -1,9 +1,9 @@
 <h1>Strona główna</h1>
 <div class="carousel-wrapper">
-    <ng-container *ngIf="(facade.bankAccounts$ | async) === null">
+    <ng-container *ngIf="(facade.userBankAccounts$ | async) === null">
         <nz-skeleton [nzActive]="true"></nz-skeleton>
     </ng-container>
-    <ng-container *ngIf="(facade.bankAccounts$ | async) as bankAccounts">
+    <ng-container *ngIf="(facade.userBankAccounts$ | async) as bankAccounts">
         <button nz-button nzType="text" (click)="carousel.pre()" [disabled]="carousel.activeIndex === 0">
             <span nz-icon nzType="left" nzTheme="outline"></span>
         </button>

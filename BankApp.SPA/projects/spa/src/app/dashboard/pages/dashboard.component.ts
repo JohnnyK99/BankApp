@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DashboardFacade } from '../state/dashboard.facade';
+import { BankAccountsFacade } from '../../global-stores/bank-accounts/bank-accounts.facade';
 
 @Component({
   selector: 'bnk-dashboard',
@@ -7,9 +7,9 @@ import { DashboardFacade } from '../state/dashboard.facade';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  constructor(public facade: DashboardFacade) {}
+  constructor(public facade: BankAccountsFacade) {}
 
   ngOnInit(): void {
-    this.facade.getUserBankAccounts();
+    this.facade.fetchUserBankAccounts();
   }
 }

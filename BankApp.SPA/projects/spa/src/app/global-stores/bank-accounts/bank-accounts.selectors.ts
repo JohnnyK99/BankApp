@@ -1,10 +1,10 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { FeatureState } from '../../shared/constants/enums/feature-state.enum';
-import { DashboardState } from './dashboard.state';
+import { BankAccountsState } from './bank-accounts.state';
 
-const getDashboardState = createFeatureSelector<DashboardState>(FeatureState.Dashboard);
+const getBankAccountsState = createFeatureSelector<BankAccountsState>(FeatureState.BankAccounts);
 
 export const getUserBankAccounts = createSelector(
-  getDashboardState,
+  getBankAccountsState,
   state => state.bankAccounts
 );

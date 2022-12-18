@@ -9,18 +9,18 @@ import {
   tap
 } from 'rxjs';
 import { AlertService } from '../../shared/services/alert.service';
-import { DashboardActions } from './dashboard.actions';
+import { BankAccountsActions } from './bank-accounts.actions';
 
 @Injectable()
-export class DashboardEffects {
+export class BankAccountsEffects {
 
   getUserBankAccounts$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(DashboardActions.getUserBankAccounts),
+      ofType(BankAccountsActions.fetchUserBankAccounts),
       mergeMap(() =>
         this.bankAccountApiClient.getUserBankAccounts().pipe(
-          map(result => DashboardActions.getUserBankAccountsSuccess({ accounts: result.data })),
-          catchError(() => of(DashboardActions.getUserBankAccountsFail()))
+          map(result => BankAccountsActions.fetchUserBankAccountsSuccess({ bankAccounts: result.data })),
+          catchError(() => of(BankAccountsActions.fetchUserBankAccountsFail()))
         )
       )
     )
@@ -28,7 +28,7 @@ export class DashboardEffects {
 
   getUserBankAccountsFail$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(DashboardActions.getUserBankAccountsFail),
+      ofType(BankAccountsActions.fetchUserBankAccountsFail),
       tap(() => this.alertService.error('error.bank_accounts'))
     ), { dispatch: false }
   );

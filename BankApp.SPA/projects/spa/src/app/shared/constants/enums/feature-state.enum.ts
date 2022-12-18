@@ -1,6 +1,7 @@
 export enum FeatureState {
+  AddressBook = 'address-book',
   Auth = 'auth',
-  Dashboard = 'dashboard',
+  BankAccounts = 'bank-accounts',
   Dictionaries = 'dictionaries',
   Language = 'language',
   NewTransaction = 'new-transaction'
