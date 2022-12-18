@@ -1,5 +1,5 @@
 <input nz-input [formControl]="filterControl" [placeholder]="'shared.search' | translate">
-<span class="no-entries-label" *ngIf="!(filteredEntries$ | async)?.length">Brak zapisanych odbiorców</span>
+<span class="no-entries-label" *ngIf="!(filteredEntries$ | async)?.length">{{'new_transaction.no_recipients' | translate}}</span>
 <nz-radio-group nzButtonStyle="solid" [(ngModel)]="selected" (ngModelChange)="onSelect()">
     <label nz-radio-button *ngFor="let entry of filteredEntries$ | async" [nzValue]="entry">
         <span class="account-name">{{entry.name}}</span>

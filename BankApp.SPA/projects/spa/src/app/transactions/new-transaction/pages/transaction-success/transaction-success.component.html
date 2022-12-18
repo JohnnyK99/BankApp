@@ -1,10 +1,10 @@
 <nz-result nzStatus="success"
-            nzTitle="Transakcja pomyślna">
+            [nzTitle]="'new_transaction.transaction_successful' | translate">
 </nz-result>
 
 <div class="actions">
-    <button nz-button (click)="downloadConfirmation()">Pobierz potwierdzenie</button>
-    <button nz-button [routerLink]="['/transactions/new']">Nowa transakcja</button>
-    <button nz-button [routerLink]="['']">Przejdź do strony głównej</button>
+    <button nz-button (click)="downloadConfirmation()">{{'transaction.download_confirmation' | translate}}</button>
+    <button nz-button [routerLink]="['/transactions/new']">{{'dashboard.new_transaction' | translate}}</button>
+    <button nz-button [routerLink]="['']">{{'new_transaction.go_to_dashboard' | translate}}</button>
 </div>
 

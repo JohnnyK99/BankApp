@@ -1,16 +1,16 @@
-<bnk-info-item subtitle="Numer konta nadawcy">
+<bnk-info-item [subtitle]="'transaction.pay_from' | translate">
     {{transaction.accountNumberFrom | mask:TransactionsConstants.accountNumberMask}}
 </bnk-info-item>
-<bnk-info-item subtitle="Numer konta odbiorcy">
+<bnk-info-item [subtitle]="'transaction.pay_to' | translate">
     {{transaction.accountNumberTo | mask:TransactionsConstants.accountNumberMask}}
 </bnk-info-item>
-<bnk-info-item subtitle="Tytuł transakcji">
+<bnk-info-item [subtitle]="'transaction.title' | translate">
     {{transaction.title}}
 </bnk-info-item>
-<bnk-info-item subtitle="Opis transakcji">
-    <span *ngIf="transaction.description.length === 0">Brak</span>
+<bnk-info-item [subtitle]="'transaction.description' | translate">
+    <span *ngIf="transaction.description.length === 0">{{'shared.none' | translate}}</span>
     <span *ngIf="transaction.description.length > 0">{{transaction.description}}</span>
 </bnk-info-item>
-<bnk-info-item subtitle="Kwota">
+<bnk-info-item [subtitle]="'transaction.amount' | translate">
     <span class="amount">{{transaction.amount}} zł</span>
 </bnk-info-item>

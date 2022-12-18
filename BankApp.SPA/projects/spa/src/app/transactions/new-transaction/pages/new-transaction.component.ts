@@ -166,12 +166,12 @@ export class NewTransactionComponent extends TranslatedComponent {
 
   private openTransactionDialog(transaction: NewTransaction): void {
     this.modalService.create<ConfirmTransactionDialogComponent>({
-      nzTitle: 'Potwierdź transakcję',
+      nzTitle: this.translationService.getTranslation('new_transaction.confirm_transaction'),
       nzContent: ConfirmTransactionDialogComponent,
       nzWidth: '60vw',
       nzOnOk: () => this.newTransactionFacade.createTransaction(transaction),
-      nzOkText: 'Potwierdź',
-      nzCancelText: 'Anuluj',
+      nzOkText: this.translationService.getTranslation('shared.confirm'),
+      nzCancelText: this.translationService.getTranslation('shared.cancel'),
       nzComponentParams: {
         transaction,
       },

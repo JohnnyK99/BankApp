@@ -23,6 +23,13 @@
         "register_label": "Zarejestruj",
         "repeat_password": "Powtórz hasło"
     },
+    "dashboard": {
+        "full_transactions_list": "Pełna lista transakcji",
+        "main_page": "Strona główna",
+        "new_transaction": "Nowa transakcja",
+        "no_transactions_for_selected_account": "Brak transakcji dla wybranego konta",
+        "recent_transactions": "Ostatnie transakcje"
+    },
     "error": {
         "account_types": "Nie udało się pobrać rodzajów kont",
         "address_book": "Nie udało się pobrać listy zapisanych odbiorców",
@@ -34,20 +41,39 @@
     "new_transaction": {
         "amount": "Kwota",
         "bank_account": "Konto bankowe",
+        "confirm_transaction": "Potwierdź transakcję",
+        "go_to_dashboard": "Przejdź do strony głównej",
         "new_transaction": "Nowa transakcja",
+        "no_recipients": "Brak zapisanych odbiorców",
         "payee_account_number": "Numer konta odbiorcy",
         "payee_name": "Nazwa odbiorcy",
         "saved_payees": "Zapisani odbiorcy",
         "transaction_description": "Opis transakcji",
+        "transaction_successful": "Transakcja zakończona pomyślnie",
         "transaction_title": "Tytuł transakcji"
     },
     "shared": {
         "back": "Wstecz",
+        "cancel": "Anuluj",
         "confirm": "Potwierdź",
         "next": "Dalej",
+        "none": "-",
         "search": "Szukaj"
     },
     "success": {
         "register": "Pomyślnie zarejestrowano użytkownika"
+    },
+    "transaction": {
+        "amount": "Kwota",
+        "date": "Data transakcji",
+        "description": "Opis",
+        "download_confirmation": "Pobierz potwierdzenie",
+        "incoming": "Przychodząca",
+        "outcoming": "Wychodząca",
+        "pay_from": "Nadawca",
+        "pay_to": "Odbiorca",
+        "title": "Tytuł",
+        "transaction": "Transakcja",
+        "type": "Typ transakcji"
     }
 }

@@ -33,7 +33,7 @@ export class AccountCardComponent extends TranslatedComponent {
 
   openTransactionDialog(transaction: Transaction): void {
     this.modalService.create<TransactionDialogComponent>({
-      nzTitle: 'Transakcja',
+      nzTitle: this.translationService.getTranslation('transaction.transaction'),
       nzContent: TransactionDialogComponent,
       nzFooter: null,
       nzWidth: '60vw',

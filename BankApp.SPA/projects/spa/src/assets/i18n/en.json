@@ -23,6 +23,13 @@
         "register_label": "Register",
         "repeat_password": "Repeat password"
     },
+    "dashboard": {
+        "full_transactions_list": "Full transactions list",
+        "main_page": "Main page",
+        "new_transaction": "New transaction",
+        "no_transactions_for_selected_account": "There are no transactions for this acount",
+        "recent_transactions": "Recent transactions"
+    },
     "error": {
         "account_types": "Failed to load account types",
         "address_book": "Failed to load the address book",
@@ -34,20 +41,39 @@
     "new_transaction": {
         "amount": "Amount",
         "bank_account": "Bank account",
+        "confirm_transaction": "Confirm transaction",
+        "go_to_dashboard": "Go to dashboard",
         "new_transaction": "New transaction",
+        "no_recipients": "No records",
         "payee_account_number": "Payee account number",
         "payee_name": "Payee name",
         "saved_payees": "Saved payees",
         "transaction_description": "Transaction description",
+        "transaction_successful": "Transaction has been successful",
         "transaction_title": "Transaction title"
     },
     "shared": {
         "back": "Back",
+        "cancel": "Cancel",
         "confirm": "Confirm",
         "next": "Next",
+        "none": "-",
         "search": "Search"
     },
     "success": {
         "register": "User has been successfully registered"
+    },
+    "transaction": {
+        "amount": "Amount",
+        "date": "Transaction date",
+        "description": "Description",
+        "download_confirmation": "Download confirmation",
+        "incoming": "Incoming",
+        "outcoming": "Outcoming",
+        "pay_from": "Pay from",
+        "pay_to": "Pay to",
+        "title": "Title",
+        "transaction": "Transaction",
+        "type": "Transaction type"
     }
 }
