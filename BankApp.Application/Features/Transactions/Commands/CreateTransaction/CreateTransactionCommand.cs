@@ -1,4 +1,5 @@
 ﻿using BankApp.Application.Features.BankAccounts.Queries.GetBankAccount;
+using BankApp.Application.Wrappers;
 using MediatR;
 using System;
 using System.Threading;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BankApp.Application.Features.Transactions.Commands.CreateTransaction
 {
-    public class CreateTransactionCommand : IRequest<Unit>
+    public class CreateTransactionCommand : IRequest<Result<int>>
     {
         public string AccountNumberFrom { get; }
         public string AccountNumberTo { get; }
@@ -28,7 +29,7 @@ namespace BankApp.Application.Features.Transactions.Commands.CreateTransaction
             Amount = amount;
         }
 
-        public class Handler : IRequestHandler<CreateTransactionCommand, Unit>
+        public class Handler : IRequestHandler<CreateTransactionCommand, Result<int>>
         {
             private readonly ICreateTransactionDalCommand _createTransactionDalCommand;
 
@@ -37,10 +38,10 @@ namespace BankApp.Application.Features.Transactions.Commands.CreateTransaction
                 _createTransactionDalCommand = createTransactionDalCommand;
             }
 
-            public async Task<Unit> Handle(CreateTransactionCommand request, CancellationToken cancellationToken)
+            public async Task<Result<int>> Handle(CreateTransactionCommand request, CancellationToken cancellationToken)
             {
 
-                await _createTransactionDalCommand.CreateTransactionAsync(
+                int transactionId = await _createTransactionDalCommand.CreateTransactionAsync(
                     request.AccountNumberFrom,
                     request.AccountNumberTo,
                     request.Title,
@@ -48,7 +49,7 @@ namespace BankApp.Application.Features.Transactions.Commands.CreateTransaction
                     request.Amount,
                     DateTime.Now);
 
-                return Unit.Value;
+                return await Result<int>.SuccessAsync(transactionId);
             }
         }
     }

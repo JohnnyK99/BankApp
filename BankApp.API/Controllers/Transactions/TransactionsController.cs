@@ -1,6 +1,7 @@
 ﻿using BankApp.API.Constants.Routes;
 using BankApp.API.Dto.BankAccounts.CreateBankAccount;
 using BankApp.Application.Features.Transactions.Commands.CreateTransaction;
+using BankApp.Application.Wrappers;
 using BankApp.DAL.Constants;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -25,7 +26,7 @@ namespace BankApp.API.Controllers.BankAccounts
         [Authorize(Roles = UserRoles.Client)]
         public async Task<IActionResult> CreateTransaction(CreateTransactionDto request, CancellationToken cancellationToken)
         {
-            await _mediator.Send(new CreateTransactionCommand(
+            Result<int> transactionId = await _mediator.Send(new CreateTransactionCommand(
                 request.AccountNumberFrom,
                 request.AccountNumberTo,
                 request.Title,
@@ -33,7 +34,7 @@ namespace BankApp.API.Controllers.BankAccounts
                 request.Amount
                 ), cancellationToken);
 
-            return Ok();
+            return Ok(transactionId);
         }
     }
 }

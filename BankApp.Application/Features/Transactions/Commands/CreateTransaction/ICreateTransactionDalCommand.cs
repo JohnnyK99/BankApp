@@ -5,7 +5,7 @@ namespace BankApp.Application.Features.Transactions.Commands.CreateTransaction
 {
     public interface ICreateTransactionDalCommand
     {
-        Task CreateTransactionAsync(
+        Task<int> CreateTransactionAsync(
             string accountNumberFrom,
             string accountNumberTo,
             string title,

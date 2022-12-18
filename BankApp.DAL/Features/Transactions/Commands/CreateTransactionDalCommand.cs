@@ -16,7 +16,7 @@ namespace BankApp.DAL.Features.Transactions.Commands
             _dbContext = dbContext;
         }
 
-        public async Task CreateTransactionAsync(
+        public async Task<int> CreateTransactionAsync(
             string accountNumberFrom,
             string accountNumberTo,
             string title,
@@ -43,6 +43,8 @@ namespace BankApp.DAL.Features.Transactions.Commands
             _dbContext.Transactions.Add(transaction);
 
             await _dbContext.SaveChangesAsync();
+
+            return transaction.Id;
         }
     }
 }
