@@ -39,6 +39,10 @@
         "login": "Login failed - make sure that credentials are valid",
         "register": "Registration failed - try again later"
     },
+    "nav": {
+        "main_page": "Dashboard",
+        "new_transaction": "New transaction"
+    },
     "new_transaction": {
         "amount": "Amount",
         "bank_account": "Bank account",

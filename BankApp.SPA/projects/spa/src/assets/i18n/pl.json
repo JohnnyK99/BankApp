@@ -39,6 +39,10 @@
         "login": "Błąd logowania - upewnij się, że dane są poprawne",
         "register": "Nie udało się zarejestrować konta - spróbuj ponownie później"
     },
+    "nav": {
+        "main_page": "Strona główna",
+        "new_transaction": "Nowa transakcja"
+    },
     "new_transaction": {
         "amount": "Kwota",
         "bank_account": "Konto bankowe",

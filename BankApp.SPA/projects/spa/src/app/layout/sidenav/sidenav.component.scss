@@ -7,6 +7,7 @@
 .center {
   flex: 1;
   padding: 20px 0;
+  justify-items: center;
   box-shadow: inset 0px -20px 24px 0px var(--color-secondary),
               inset 0px 20px 24px 0px var(--color-secondary);
 }
@@ -20,4 +21,43 @@
   .anticon {
       font-size: 2.5rem;
   }
+}
+
+.nav-element {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  justify-items: center;
+  gap: 10px;
+  color: white;
+  background: var(--color-secondary);
+  width: 80%;
+  margin: 15px auto;
+  padding: 10px 0;
+  border-radius: 10px;
+  cursor: pointer;
+
+  .arrow-icon {
+    grid-row: span 2;
+    display: grid;
+    align-items: center;
+  }
+
+  .nav-icon {
+    font-size: 2rem;
+  }
+
+  &:hover:not(&--active) {
+    background-color: var(--color-secondary-hover);
+  }
+
+  &--active {
+    background-color: var(--color-accent);
+    color: var(--color-black);
+  }
+}
+
+hr {
+  width: 80%;
+  border-color: var(--color-secondary-light);
+  margin-block: 10px;
 }
