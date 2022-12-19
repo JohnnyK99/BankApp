@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using BankApp.Application.Helpers;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
@@ -10,6 +11,7 @@ namespace BankApp.Application.Extensions
         {
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddScoped<PdfHelpers>();
         }
     }
 }

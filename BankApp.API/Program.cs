@@ -49,7 +49,8 @@ builder.Services.AddCors(options =>
         {
         corsBuilder.WithOrigins(builder.Configuration.GetSection("CorsOrigins").Get<string[]>())
             .AllowAnyHeader()
-            .WithMethods("POST", "PUT", "GET", "DELETE");
+            .WithMethods("POST", "PUT", "GET", "DELETE")
+            .WithExposedHeaders("content-disposition");
         });
 });
 

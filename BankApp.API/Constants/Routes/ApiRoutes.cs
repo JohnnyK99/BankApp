@@ -28,6 +28,7 @@
         public static class Transactions
         {
             public const string Base = $"{Root}/transactions";
+            public const string Confirmation = "{transactionId}/confirmation";
         }
     }
 }
