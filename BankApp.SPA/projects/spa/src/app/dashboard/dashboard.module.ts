@@ -15,6 +15,7 @@ import { TranslatedFieldPipe } from '../shared/pipes/translated-field.pipe';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { InfoItemModule } from '../shared/components/info-item/info-item.module';
 import { TransactionDialogComponent } from './features/transaction-dialog/transaction-dialog.component';
+import { DashboardStoreModule } from './state/dashboard-store.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { TransactionDialogComponent } from './features/transaction-dialog/transa
   imports: [
     CommonModule,
     DashboardRoutingModule,
+    DashboardStoreModule,
     TranslateModule,
     InfoItemModule,
     NzCarouselModule,

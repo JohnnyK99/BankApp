@@ -14,4 +14,8 @@ export class TransactionsUrlsService {
   createTransaction(): string {
     return this.baseUrl;
   }
+
+  getConfirmation(transactionId: number): string {
+    return `${this.baseUrl}/${transactionId}/confirmation`;
+  }
 }

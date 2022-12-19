@@ -3,8 +3,15 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { TransactionApiClient } from 'projects/api-client/src/clients/transaction.api-client';
 import {
-  catchError, map, mergeMap, of, tap, withLatestFrom
+  catchError,
+  EMPTY,
+  map,
+  mergeMap,
+  of,
+  tap,
+  withLatestFrom
 } from 'rxjs';
+import { FileHelpers } from '../../../shared/helpers/file.helpers';
 import { AlertService } from '../../../shared/services/alert.service';
 import { NewTransactionActions } from './new-transaction.actions';
 import { NewTransactionFacade } from './new-transaction.facade';
@@ -42,14 +49,35 @@ export class NewTransactionEffects {
     ), { dispatch: false }
   );
 
-  //TODO: Replace with api client call and file download
   downloadConfirmation$ = createEffect(() =>
     this.actions$.pipe(
       ofType(NewTransactionActions.downloadConfirmation),
       withLatestFrom(this.facade.newTransactionId$),
-      map(([, id]) => id)
-    ), { dispatch: false }
+      map(([, id]) => id),
+      mergeMap(id => {
+        if(!id) {
+          return EMPTY;
+        }
+
+        return this.transactionApiClient.getConfirmation(id).pipe(
+          map(confirmation => NewTransactionActions.downloadConfirmationSuccess({ confirmation })),
+          catchError(() => of(NewTransactionActions.downloadConfirmationFail()))
+        );
+      })
+    )
   );
+
+  downloadConfirmationSuccess$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(NewTransactionActions.downloadConfirmationSuccess),
+      tap(action => FileHelpers.downloadFile(action.confirmation))
+    ), { dispatch: false });
+
+  downloadConfirmationFail$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(NewTransactionActions.downloadConfirmationFail),
+      tap(() => this.alertService.error('error.download_file'))
+    ), { dispatch: false });
 
   constructor(
     private actions$: Actions,

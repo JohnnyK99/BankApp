@@ -20,3 +20,6 @@
 <bnk-info-item [subtitle]="'transaction.amount' | translate">
     <span class="amount">{{transaction.amount}} zł</span>
 </bnk-info-item>
+<div class="actions">
+    <button nz-button nzType="primary" (click)="facade.downloadConfirmation(transaction.id)">{{'transaction.download_confirmation' | translate}}</button>
+</div>
