@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { NewTransactionModule } from './new-transaction/new-transaction.module';
 import { TransactionsRoutingModule } from './transactions-routing.module';
 import { TransactionsListModule } from './transactions-list/transactions-list.module';
+import { TransactionsStoreModule } from './state/transactions-store.module';
 
 @NgModule({
   imports: [
@@ -10,6 +11,7 @@ import { TransactionsListModule } from './transactions-list/transactions-list.mo
     NewTransactionModule,
     TransactionsListModule,
     TransactionsRoutingModule,
+    TransactionsStoreModule,
   ],
   exports: [
   ],

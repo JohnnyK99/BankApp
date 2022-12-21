@@ -24,6 +24,6 @@
     </div>
 </div>
 <div class="account-actions">
-    <button nz-button nzType="default">{{'dashboard.full_transactions_list' | translate}}</button>
-    <button nz-button nzType="primary" (click)="navigateToTransaction()">{{'dashboard.new_transaction' | translate}}</button>
+    <button nz-button nzType="default" [routerLink]="['/transactions/list']">{{'dashboard.full_transactions_list' | translate}}</button>
+    <button nz-button nzType="primary" [routerLink]="['/transactions/new']">{{'dashboard.new_transaction' | translate}}</button>
 </div>

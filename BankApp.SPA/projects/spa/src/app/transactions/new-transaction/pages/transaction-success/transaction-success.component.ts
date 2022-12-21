@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NewTransactionFacade } from '../../state/new-transaction.facade';
+import { TransactionsFacade } from '../../../state/transactions.facade';
 
 @Component({
   selector: 'bnk-transaction-success',
@@ -8,9 +8,9 @@ import { NewTransactionFacade } from '../../state/new-transaction.facade';
 })
 export class TransactionSuccessComponent {
 
-  constructor(private facade: NewTransactionFacade) { }
+  constructor(private facade: TransactionsFacade) { }
 
   downloadConfirmation(): void {
-    this.facade.downloadConfirmation();
+    this.facade.downloadNewConfirmation();
   }
 }

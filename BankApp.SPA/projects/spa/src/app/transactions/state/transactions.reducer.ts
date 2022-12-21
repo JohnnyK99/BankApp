@@ -1,10 +1,11 @@
 import { createReducer, on } from '@ngrx/store';
-import { TransactionType } from '../../../shared/constants/enums/transaction-type.enum';
-import { TransactionsConstants } from '../../../shared/constants/transactions.constants';
-import { TransactionsListActions } from './transactions-list.actions';
-import { TransactionsListState } from './transactions-list.state';
+import { TransactionType } from '../../shared/constants/enums/transaction-type.enum';
+import { TransactionsConstants } from '../../shared/constants/transactions.constants';
+import { TransactionsActions } from './transactions.actions';
+import { TransactionsState } from './transactions.state';
 
-const initialState: TransactionsListState = {
+const initialState: TransactionsState = {
+  newTransactionId: null,
   transactions: [],
   filters: {
     bankAccountNumber: null,
@@ -23,13 +24,17 @@ const initialState: TransactionsListState = {
   isTableLoading: false,
 };
 
-export const transactionsListReducer = createReducer<TransactionsListState>(
+export const transactionsReducer = createReducer<TransactionsState>(
   initialState,
-  on(TransactionsListActions.fetchTransactions, (state): TransactionsListState => ({
+  on(TransactionsActions.createTransactionSuccess, (state, action): TransactionsState => ({
+    ...state,
+    newTransactionId: action.transactionId,
+  })),
+  on(TransactionsActions.fetchTransactions, (state): TransactionsState => ({
     ...state,
     isTableLoading: true,
   })),
-  on(TransactionsListActions.fetchTransactionsSuccess, (state, action): TransactionsListState => ({
+  on(TransactionsActions.fetchTransactionsSuccess, (state, action): TransactionsState => ({
     ...state,
     transactions: action.transactions.data,
     paginationParameters: {
@@ -40,14 +45,14 @@ export const transactionsListReducer = createReducer<TransactionsListState>(
     },
     isTableLoading: false,
   })),
-  on(TransactionsListActions.setFilters, (state, action): TransactionsListState => ({
+  on(TransactionsActions.setFilters, (state, action): TransactionsState => ({
     ...state,
     filters: {
       ...state.filters,
       ...action.filters,
     },
   })),
-  on(TransactionsListActions.setTableParams, (state, action): TransactionsListState => ({
+  on(TransactionsActions.setTableParams, (state, action): TransactionsState => ({
     ...state,
     paginationParameters: {
       ...state.paginationParameters,

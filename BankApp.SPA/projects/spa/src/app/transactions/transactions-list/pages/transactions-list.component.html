@@ -8,7 +8,7 @@
 </div>
 
 <div class="content elevated">
-    <div class="filters" *ngIf="listFacade.filters$ | async as filters">
+    <div class="filters" *ngIf="transactionsFacade.filters$ | async as filters">
         <div class="left">
             <nz-select nzPlaceHolder="Konto bankowe" [ngModel]="filters.bankAccountNumber" (ngModelChange)="onBankAccountNumberChange($event)">
                 <nz-option *ngFor="let account of bankAccountsFacade.userBankAccounts$ | async" [nzValue]="account.accountNumber" [nzLabel]="account.accountNumber | mask: TransactionsConstants.accountNumberMask"></nz-option>
@@ -27,8 +27,8 @@
 
     <hr>
 
-    <div class="table" *ngIf="listFacade.transactions$ | async as transactions">
-        <ng-container *ngIf="listFacade.paginationParams$ | async as paginationParams">
+    <div class="table" *ngIf="transactionsFacade.transactions$ | async as transactions">
+        <ng-container *ngIf="transactionsFacade.paginationParams$ | async as paginationParams">
             <nz-table #table 
                     nzShowSizeChanger
                     nzBordered
@@ -39,7 +39,7 @@
                     [nzPageSize]="paginationParams.pageSize"
                     [nzPageSizeOptions]="[15, 30, 50]"
                     (nzQueryParams)="onTableParamsChange($event)"
-                    [nzLoading]="listFacade.isTableLoading$ | async">
+                    [nzLoading]="transactionsFacade.isTableLoading$ | async">
                 <thead>
                     <tr>
                         <th nzWidth="290px">Numer konta</th>
@@ -60,7 +60,7 @@
                         <td>{{transaction.amount | mask:"separator.2"}} zł</td>
                         <td>{{transaction.transactionType === TransactionType.Incoming ? 'Przychodząca' : 'Wychodząca'}}</td>
                         <td class="button-column">
-                            <span nz-icon nzType="cloud-download" nzTheme="outline"></span>
+                            <span nz-icon nzType="cloud-download" nzTheme="outline" (click)="transactionsFacade.downloadConfirmation(transaction.id)"></span>
                         </td>
                     </tr>
                 </tbody>

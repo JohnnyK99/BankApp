@@ -10,7 +10,6 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { TransactionsListComponent } from './pages/transactions-list.component';
 import { FormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
-import { TransactionsListStoreModule } from './state/transactions-list-store.module';
 import { NzFormModule } from 'ng-zorro-antd/form';
 
 @NgModule({
@@ -19,7 +18,6 @@ import { NzFormModule } from 'ng-zorro-antd/form';
   ],
   imports: [
     CommonModule,
-    TransactionsListStoreModule,
     TranslateModule,
     FormsModule,
     NzFormModule,

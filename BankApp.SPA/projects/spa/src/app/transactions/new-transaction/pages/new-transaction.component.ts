@@ -18,9 +18,9 @@ import { BankAccountsFacade } from '../../../global-stores/bank-accounts/bank-ac
 import { TransactionsConstants } from '../../../shared/constants/transactions.constants';
 import { TranslationService } from '../../../shared/services/translation.service';
 import { TranslatedComponent } from '../../../translated.component';
+import { TransactionsFacade } from '../../state/transactions.facade';
 import { AddressBookDialogComponent } from '../features/address-book-dialog/address-book-dialog.component';
 import { ConfirmTransactionDialogComponent } from '../features/confirm-transaction-dialog/confirm-transaction-dialog.component';
-import { NewTransactionFacade } from '../state/new-transaction.facade';
 
 @Component({
   templateUrl: './new-transaction.component.html',
@@ -60,7 +60,7 @@ export class NewTransactionComponent extends TranslatedComponent {
 
   constructor(
     public bankAccountsFacade: BankAccountsFacade,
-    private newTransactionFacade: NewTransactionFacade,
+    private transactionsFacade: TransactionsFacade,
     private addressBookFacade: AddressBookFacade,
     private fb: NonNullableFormBuilder,
     private modalService: NzModalService,
@@ -157,7 +157,7 @@ export class NewTransactionComponent extends TranslatedComponent {
       nzTitle: this.translationService.getTranslation('new_transaction.confirm_transaction'),
       nzContent: ConfirmTransactionDialogComponent,
       nzWidth: '60vw',
-      nzOnOk: () => this.newTransactionFacade.createTransaction(transaction),
+      nzOnOk: () => this.transactionsFacade.createTransaction(transaction),
       nzOkText: this.translationService.getTranslation('shared.confirm'),
       nzCancelText: this.translationService.getTranslation('shared.cancel'),
       nzComponentParams: {

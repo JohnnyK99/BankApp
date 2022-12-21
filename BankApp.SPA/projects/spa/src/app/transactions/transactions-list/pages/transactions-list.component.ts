@@ -9,7 +9,7 @@ import { SortDirection } from '../../../shared/constants/enums/sort-direction.en
 import { TransactionType } from '../../../shared/constants/enums/transaction-type.enum';
 import { TransactionsConstants } from '../../../shared/constants/transactions.constants';
 import { PaginationParameters } from '../../../shared/models/pagination-parameters.model';
-import { TransactionsListFacade } from '../state/transactions-list.facade';
+import { TransactionsFacade } from '../../state/transactions.facade';
 
 @Component({
   selector: 'bnk-transactions-list',
@@ -23,7 +23,7 @@ export class TransactionsListComponent extends BaseComponent implements OnInit {
   constructor(
     private router: Router,
     public bankAccountsFacade: BankAccountsFacade,
-    public listFacade: TransactionsListFacade
+    public transactionsFacade: TransactionsFacade
   ) {
     super();
   }
@@ -49,31 +49,31 @@ export class TransactionsListComponent extends BaseComponent implements OnInit {
     const sortItem = params.sort.find(item => item.value != null);
 
     if(sortItem) {
-      this.listFacade.setTableParams(paginationParams, { sortDirection: sortItem.value === 'ascend' ? SortDirection.Ascending : SortDirection.Descending, column: sortItem.key });
+      this.transactionsFacade.setTableParams(paginationParams, { sortDirection: sortItem.value === 'ascend' ? SortDirection.Ascending : SortDirection.Descending, column: sortItem.key });
     } else {
-      this.listFacade.setTableParams(paginationParams, { sortDirection: undefined, column: undefined });
+      this.transactionsFacade.setTableParams(paginationParams, { sortDirection: undefined, column: undefined });
     }
   }
 
   onBankAccountNumberChange(bankAccountNumber: string): void {
-    this.listFacade.setFilters({ bankAccountNumber });
+    this.transactionsFacade.setFilters({ bankAccountNumber });
   }
 
   onTransactionTypesChange(transactionTypes: TransactionType[]): void {
-    this.listFacade.setFilters({ transactionTypes });
-    this.listFacade.fetchTransactions();
+    this.transactionsFacade.setFilters({ transactionTypes });
+    this.transactionsFacade.fetchTransactions();
   }
 
   onDateFromChange(dateFrom: Date | null): void {
-    this.listFacade.setFilters({ dateFrom });
+    this.transactionsFacade.setFilters({ dateFrom });
   }
 
   onDateToChange(dateTo: Date | null): void {
-    this.listFacade.setFilters({ dateTo });
+    this.transactionsFacade.setFilters({ dateTo });
   }
 
   onSearchByChange(searchBy: string): void {
-    this.listFacade.setFilters({ searchBy });
+    this.transactionsFacade.setFilters({ searchBy });
   }
 
   disabledDateFrom = (dateTo: Date | null) => (current: Date): boolean => {

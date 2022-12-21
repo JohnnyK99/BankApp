@@ -16,7 +16,6 @@ import { TranslatedFieldPipe } from '../../shared/pipes/translated-field.pipe';
 import { ConfirmTransactionDialogComponent } from './features/confirm-transaction-dialog/confirm-transaction-dialog.component';
 import { RouterModule } from '@angular/router';
 import { InfoItemModule } from '../../shared/components/info-item/info-item.module';
-import { NewTransactionStoreModule } from './state/new-transaction-store.module';
 import { TransactionSuccessComponent } from './pages/transaction-success/transaction-success.component';
 import { NzResultModule } from 'ng-zorro-antd/result';
 
@@ -29,7 +28,6 @@ import { NzResultModule } from 'ng-zorro-antd/result';
   ],
   imports: [
     CommonModule,
-    NewTransactionStoreModule,
     ReactiveFormsModule,
     FormsModule,
     TranslateModule,

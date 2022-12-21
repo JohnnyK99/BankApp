@@ -1,33 +1,38 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { TransactionsQueryParams } from 'projects/api-client/src/models/transactions/transactions-query-params.model';
-import { FeatureState } from '../../../shared/constants/enums/feature-state.enum';
-import { DateHelpers } from '../../../shared/helpers/date-helpers';
-import { TransactionsListState } from './transactions-list.state';
+import { FeatureState } from '../../shared/constants/enums/feature-state.enum';
+import { DateHelpers } from '../../shared/helpers/date-helpers';
+import { TransactionsState } from './transactions.state';
 
-const getTransactionsListState = createFeatureSelector<TransactionsListState>(FeatureState.TransactionsList);
+const getTransactionsState = createFeatureSelector<TransactionsState>(FeatureState.Transactions);
+
+export const getNewTransactionId = createSelector(
+  getTransactionsState,
+  state => state.newTransactionId
+);
 
 export const getTransactions = createSelector(
-  getTransactionsListState,
+  getTransactionsState,
   state => state.transactions
 );
 
 export const isTableLoading = createSelector(
-  getTransactionsListState,
+  getTransactionsState,
   state => state.isTableLoading
 );
 
 export const getPaginationParams = createSelector(
-  getTransactionsListState,
+  getTransactionsState,
   state => state.paginationParameters
 );
 
 export const getFilters = createSelector(
-  getTransactionsListState,
+  getTransactionsState,
   state => state.filters
 );
 
 export const getQueryParams = createSelector(
-  getTransactionsListState,
+  getTransactionsState,
   state => ({
     bankAccountNumber: state.filters.bankAccountNumber,
     transactionTypes: state.filters.transactionTypes,
