@@ -10,18 +10,18 @@
 <div class="content elevated">
     <div class="filters" *ngIf="transactionsFacade.filters$ | async as filters">
         <div class="left">
-            <nz-select nzPlaceHolder="Konto bankowe" [ngModel]="filters.bankAccountNumber" (ngModelChange)="onBankAccountNumberChange($event)">
+            <nz-select [nzPlaceHolder]="'transactions_list.bank_account' | translate" [ngModel]="filters.bankAccountNumber" (ngModelChange)="onBankAccountNumberChange($event)">
                 <nz-option *ngFor="let account of bankAccountsFacade.userBankAccounts$ | async" [nzValue]="account.accountNumber" [nzLabel]="account.accountNumber | mask: TransactionsConstants.accountNumberMask"></nz-option>
             </nz-select>
-            <nz-select nzPlaceHolder="Rodzaj transakcji" nzMode="multiple" [ngModel]="filters.transactionTypes" (ngModelChange)="onTransactionTypesChange($event)">
-                <nz-option [nzValue]="TransactionType.Incoming" nzLabel="Przychodząca"></nz-option>
-                <nz-option [nzValue]="TransactionType.Outcoming" nzLabel="Wychodząca"></nz-option>
+            <nz-select [nzPlaceHolder]="'transactions_list.transaction_type' | translate" nzMode="multiple" [ngModel]="filters.transactionTypes" (ngModelChange)="onTransactionTypesChange($event)">
+                <nz-option [nzValue]="TransactionType.Incoming" [nzLabel]="'transaction_type.incoming' | translate"></nz-option>
+                <nz-option [nzValue]="TransactionType.Outcoming" [nzLabel]="'transaction_type.outcoming' | translate"></nz-option>
             </nz-select>
-            <nz-date-picker [ngModel]="filters.dateFrom" (ngModelChange)="onDateFromChange($event)" nzInputReadOnly="true" nzFormat="dd.MM.yyyy" nzPlaceHolder="Data od"></nz-date-picker>
-            <nz-date-picker [ngModel]="filters.dateTo" (ngModelChange)="onDateToChange($event)" nzInputReadOnly="true" nzFormat="dd.MM.yyyy" nzPlaceHolder="Data do"></nz-date-picker>
+            <nz-date-picker [ngModel]="filters.dateFrom" (ngModelChange)="onDateFromChange($event)" nzInputReadOnly="true" nzFormat="dd.MM.yyyy" [nzPlaceHolder]="'transactions_list.date_from' | translate"></nz-date-picker>
+            <nz-date-picker [ngModel]="filters.dateTo" (ngModelChange)="onDateToChange($event)" nzInputReadOnly="true" nzFormat="dd.MM.yyyy" [nzPlaceHolder]="'transactions_list.date_to' | translate"></nz-date-picker>
         </div>
         <div class="right">
-            <input class="text-filter" nz-input placeholder="Wyszukaj..." [ngModel]="filters.searchBy" (ngModelChange)="onSearchByChange($event)">
+            <input class="text-filter" nz-input [placeholder]="'transactions_list.search_title_description' | translate" [ngModel]="filters.searchBy" (ngModelChange)="onSearchByChange($event)">
         </div>
     </div>
 
@@ -37,17 +37,17 @@
                     [nzTotal]="paginationParams.totalRecords"
                     [nzPageIndex]="paginationParams.currentPage"
                     [nzPageSize]="paginationParams.pageSize"
-                    [nzPageSizeOptions]="[15, 30, 50]"
+                    [nzPageSizeOptions]="TransactionsConstants.pageSizeOptions"
                     (nzQueryParams)="onTableParamsChange($event)"
                     [nzLoading]="transactionsFacade.isTableLoading$ | async">
                 <thead>
                     <tr>
-                        <th nzWidth="290px">Numer konta</th>
-                        <th nzColumnKey="Title" [nzSortFn]="true" [nzFilterMultiple]="false" nzWidth="225px">Tytuł</th>
-                        <th nzColumnKey="Description" [nzSortFn]="true" [nzFilterMultiple]="false">Opis</th>
-                        <th nzColumnKey="Date" [nzSortFn]="true" [nzFilterMultiple]="false" nzWidth="175px">Data transakcji</th>
-                        <th nzColumnKey="Amount" [nzSortFn]="true" [nzFilterMultiple]="false" nzWidth="150px">Kwota</th>
-                        <th nzColumnKey="TransactionType" [nzSortFn]="true" [nzFilterMultiple]="false" nzWidth="150px">Typ transakcji</th>
+                        <th nzWidth="290px">{{'transactions_list.sender_or_receiver' | translate}}</th>
+                        <th nzColumnKey="Title" [nzSortFn]="true" [nzFilterMultiple]="false" nzWidth="225px">{{'transactions_list.title' | translate}}</th>
+                        <th nzColumnKey="Description" [nzSortFn]="true" [nzFilterMultiple]="false">{{'transactions_list.description' | translate}}</th>
+                        <th nzColumnKey="Date" [nzSortFn]="true" [nzFilterMultiple]="false" nzWidth="175px">{{'transactions_list.transaction_date' | translate}}</th>
+                        <th nzColumnKey="Amount" [nzSortFn]="true" [nzFilterMultiple]="false" nzWidth="150px">{{'transactions_list.amount' | translate}}</th>
+                        <th nzColumnKey="TransactionType" [nzSortFn]="true" [nzFilterMultiple]="false" nzWidth="150px">{{'transactions_list.transaction_type' | translate}}</th>
                         <th nzWidth="40px"></th>
                     </tr>
                 </thead>
@@ -58,7 +58,7 @@
                         <td>{{transaction.description}}</td>
                         <td>{{transaction.date | date:'dd.MM.yyyy HH:mm:ss'}}</td>
                         <td>{{transaction.amount | mask:"separator.2"}} zł</td>
-                        <td>{{transaction.transactionType === TransactionType.Incoming ? 'Przychodząca' : 'Wychodząca'}}</td>
+                        <td>{{transaction.transactionType === TransactionType.Incoming ? ('transaction_type.incoming' | translate) : ('transaction_type.outcoming' | translate)}}</td>
                         <td class="button-column">
                             <span nz-icon nzType="cloud-download" nzTheme="outline" (click)="transactionsFacade.downloadConfirmation(transaction.id)"></span>
                         </td>

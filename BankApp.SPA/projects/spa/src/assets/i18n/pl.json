@@ -83,7 +83,21 @@
         "transaction": "Transakcja",
         "type": "Typ transakcji"
     },
+    "transaction_type": {
+        "incoming": "Przychodząca",
+        "outcoming": "Wychodząca"
+    },
     "transactions_list": {
+        "amount": "Kwota",
+        "date_from": "Data od",
+        "date_to": "Data do",
+        "bank_account": "Konto bankowe",
+        "description": "Opis",
+        "search_title_description": "Wyszukaj (tytuł, opis)...",
+        "sender_or_receiver": "Nadawca / odbiorca",
+        "title": "Tytuł",
+        "transaction_date": "Data transakcji",
+        "transaction_type": "Rodzaj transakcji",
         "transactions_list": "Lista transakcji"
     }
 }

@@ -3,4 +3,5 @@ export const TransactionsConstants = {
   accountNumberRegex: '\\d{26}|\\d{2}[ ]\\d{4}[ ]\\d{4}[ ]\\d{4}[ ]\\d{4}[ ]\\d{4}[ ]\\d{4}',
   minTransactionAmount: 0.01,
   defaultPageSize: 15,
+  pageSizeOptions: [15, 30, 50],
 };
