@@ -5,7 +5,7 @@ using System.IO;
 
 namespace BankApp.Application.Helpers
 {
-    public class PdfHelpers
+    public class PdfHelpers : IPdfHelpers
     {
         private readonly XPen linePen;
         private readonly XFont fontBold;

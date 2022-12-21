@@ -1,19 +1,19 @@
 ﻿using BankApp.DAL.Db.Entities;
-using BankApp.DAL.Helpers;
 using BankApp.Application.Features.Auth.Login.Commands;
-using BankApp.Application.Wrappers;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Threading.Tasks;
+using BankApp.DAL.Helpers.Jwt;
+using BankApp.Application.Wrappers.Result;
 
 namespace BankApp.DAL.Features.Auth.Commands
 {
     public class VerifyUserDalCommand : IDalService, IVerifyUserDalCommand
     {
         private readonly UserManager<UserEntity> _userManager;
-        private readonly JwtHelpers _jwtHelpers;
+        private readonly IJwtHelpers _jwtHelpers;
 
-        public VerifyUserDalCommand(UserManager<UserEntity> userManager, JwtHelpers jwtHelpers)
+        public VerifyUserDalCommand(UserManager<UserEntity> userManager, IJwtHelpers jwtHelpers)
         {
             _userManager = userManager;
             _jwtHelpers = jwtHelpers;

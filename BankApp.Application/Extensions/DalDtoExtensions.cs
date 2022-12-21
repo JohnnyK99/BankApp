@@ -1,5 +1,5 @@
 ﻿using BankApp.Application.Constants;
-using BankApp.Application.Wrappers;
+using BankApp.Application.Wrappers.Translations;
 using System.Collections.Generic;
 
 namespace BankApp.Application.Extensions

@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using BankApp.Application.Wrappers;
+using BankApp.Application.Wrappers.Result;
 
 namespace BankApp.Application.Features.Auth.Login.Commands
 {

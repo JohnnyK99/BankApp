@@ -1,20 +1,20 @@
 ﻿using BankApp.DAL.Db.Entities;
-using BankApp.DAL.Helpers;
 using BankApp.Application.Features.Auth;
 using BankApp.Application.Features.Auth.Login.Commands;
-using BankApp.Application.Wrappers;
 using Microsoft.AspNetCore.Identity;
 using System.IdentityModel.Tokens.Jwt;
 using System.Threading.Tasks;
+using BankApp.DAL.Helpers.Jwt;
+using BankApp.Application.Wrappers.Result;
 
 namespace BankApp.DAL.Features.Auth.Commands
 {
     public class GetTokensDalCommand : IDalService, IGetTokensDalCommand
     {
         private readonly UserManager<UserEntity> _userManager;
-        private readonly JwtHelpers _jwtHelpers;
+        private readonly IJwtHelpers _jwtHelpers;
 
-        public GetTokensDalCommand(UserManager<UserEntity> userManager, JwtHelpers jwtHelpers)
+        public GetTokensDalCommand(UserManager<UserEntity> userManager, IJwtHelpers jwtHelpers)
         {
             _userManager = userManager;
             _jwtHelpers = jwtHelpers;

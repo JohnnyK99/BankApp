@@ -1,18 +1,18 @@
 ﻿using BankApp.DAL.Db;
 using BankApp.DAL.Db.Entities;
-using BankApp.DAL.Helpers;
 using BankApp.Application.Features.BankAccounts.Commands.CreateBankAccount;
 using System.Linq;
 using System.Threading.Tasks;
+using BankApp.DAL.Helpers.BankAccount;
 
 namespace BankApp.DAL.Features.BankAccounts.Commands
 {
     public class CreateBankAccountDalCommand : IDalService, ICreateBankAccountDalCommand
     {
         private readonly AppDbContext _dbContext;
-        private readonly BankAccountHelpers _bankAccountHelpers;
+        private readonly IBankAccountHelpers _bankAccountHelpers;
 
-        public CreateBankAccountDalCommand(AppDbContext dbContext, BankAccountHelpers bankAccountHelpers)
+        public CreateBankAccountDalCommand(AppDbContext dbContext, IBankAccountHelpers bankAccountHelpers)
         {
             _dbContext = dbContext;
             _bankAccountHelpers = bankAccountHelpers;

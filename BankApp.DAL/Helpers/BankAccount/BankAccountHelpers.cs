@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace BankApp.DAL.Helpers
+namespace BankApp.DAL.Helpers.BankAccount
 {
-    public class BankAccountHelpers
+    public class BankAccountHelpers : IBankAccountHelpers
     {
         private readonly IConfigurationSection _accountNumberSettings;
 

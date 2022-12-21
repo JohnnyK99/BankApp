@@ -3,7 +3,8 @@ using BankApp.DAL.Db;
 using BankApp.DAL.Db.Entities;
 using BankApp.DAL.Features;
 using BankApp.DAL.Features.Dictionaries.Queries;
-using BankApp.DAL.Helpers;
+using BankApp.DAL.Helpers.BankAccount;
+using BankApp.DAL.Helpers.Jwt;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -18,8 +19,8 @@ namespace BankApp.DAL.Extensions
         public static void AddDalLayer(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDalServices();
-            services.AddScoped<JwtHelpers>();
-            services.AddScoped<BankAccountHelpers>();
+            services.AddScoped<IJwtHelpers, JwtHelpers>();
+            services.AddScoped<IBankAccountHelpers, BankAccountHelpers>();
 
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("SqlConnection"))

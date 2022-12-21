@@ -1,4 +1,4 @@
-﻿using BankApp.Application.Wrappers;
+﻿using BankApp.Application.Wrappers.Translations;
 using System.Collections.Generic;
 
 namespace BankApp.Application.Features.Dictionaries.Queries.GetAccountTypes

@@ -1,4 +1,4 @@
-﻿using BankApp.Application.Wrappers;
+﻿using BankApp.Application.Wrappers.Translations;
 
 namespace BankApp.Application.Features.BankAccounts.Queries.GetClientBankAccounts
 {

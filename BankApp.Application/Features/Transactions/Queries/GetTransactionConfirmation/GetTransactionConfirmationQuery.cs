@@ -19,10 +19,10 @@ namespace BankApp.Application.Features.Transactions.Queries.GetTransactionConfir
 
         public class Handler : IRequestHandler<GetTransactionConfirmationQuery, FileResponse>
         {
-            private readonly PdfHelpers _pdfHelpers;
+            private readonly IPdfHelpers _pdfHelpers;
             private readonly IGetTransactionDalQuery _getTransactionDalQuery;
 
-            public Handler(PdfHelpers pdfHelpers, IGetTransactionDalQuery getTransactionDalQuery)
+            public Handler(IPdfHelpers pdfHelpers, IGetTransactionDalQuery getTransactionDalQuery)
             {
                 _pdfHelpers = pdfHelpers;
                 _getTransactionDalQuery = getTransactionDalQuery;

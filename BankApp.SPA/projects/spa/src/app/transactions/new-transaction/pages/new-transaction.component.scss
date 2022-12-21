@@ -1,9 +1,6 @@
 :host {
     width: 100%;
     --account-select-option-height: 60px;
-    display: grid;
-    grid-template-rows: 50px auto;
-    gap: 50px;
 
     ::ng-deep .ant-select-selection-item {
         .bank-account-option {
@@ -29,6 +26,7 @@ form {
 }
 
 .content {
+    margin-top: 30px;
     padding: 0 100px;
 }
 

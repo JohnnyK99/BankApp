@@ -11,7 +11,7 @@ namespace BankApp.Application.Extensions
         {
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
-            services.AddScoped<PdfHelpers>();
+            services.AddScoped<IPdfHelpers, PdfHelpers>();
         }
     }
 }

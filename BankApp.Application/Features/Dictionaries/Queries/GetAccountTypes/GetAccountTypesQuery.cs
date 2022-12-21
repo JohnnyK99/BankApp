@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using BankApp.Application.Wrappers;
+using BankApp.Application.Wrappers.Result;
 using MediatR;
 using System.Collections.Generic;
 using System.Threading;

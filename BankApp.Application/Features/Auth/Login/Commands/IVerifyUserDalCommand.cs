@@ -1,4 +1,4 @@
-﻿using BankApp.Application.Wrappers;
+﻿using BankApp.Application.Wrappers.Result;
 using System.Threading.Tasks;
 
 namespace BankApp.Application.Features.Auth.Login.Commands

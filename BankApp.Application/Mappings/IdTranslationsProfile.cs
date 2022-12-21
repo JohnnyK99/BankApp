@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using BankApp.Application.Extensions;
-using BankApp.Application.Wrappers;
+using BankApp.Application.Wrappers.Translations;
 
 namespace BankApp.Application.Mappings
 {

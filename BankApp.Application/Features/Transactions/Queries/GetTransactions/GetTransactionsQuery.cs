@@ -2,6 +2,7 @@
 using BankApp.Application.Constants.Enums;
 using BankApp.Application.Features.BankAccounts.Queries.GetClientBankAccounts;
 using BankApp.Application.Wrappers;
+using BankApp.Application.Wrappers.Result;
 using MediatR;
 using System;
 using System.Collections.Generic;

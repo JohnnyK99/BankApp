@@ -1,4 +1,4 @@
-﻿namespace BankApp.Application.Wrappers
+﻿namespace BankApp.Application.Wrappers.Translations
 {
     public class IdTranslationsDalDto
     {

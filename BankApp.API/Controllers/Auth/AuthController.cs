@@ -1,7 +1,6 @@
 ﻿using BankApp.API.Constants.Routes;
 using BankApp.API.Dto.Auth.Register;
 using BankApp.Application.Features.Auth.Registration.Commands;
-using BankApp.Application.Wrappers;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -10,6 +9,8 @@ using BankApp.Application.Features.Auth;
 using BankApp.API.Dto.Auth.RefreshToken;
 using BankApp.Application.Features.Auth.RefreshToken;
 using BankApp.API.Dto.Auth.Login;
+using System.Threading;
+using BankApp.Application.Wrappers.Result;
 
 namespace BankApp.API.Controllers.Auth
 {
@@ -25,17 +26,27 @@ namespace BankApp.API.Controllers.Auth
         }
 
         [HttpPost(ApiRoutes.Auth.Register)]
-        public async Task<IActionResult> Register(RegisterUserDto request)
+        public async Task<IActionResult> Register(RegisterUserDto request, CancellationToken cancellationToken)
         {
-            await _mediator.Send(new RegisterUserCommand(request.FirstName, request.LastName, request.Email, request.Password, request.AccountTypeId));
+            RegisterUserCommand command = new(
+                request.FirstName,
+                request.LastName,
+                request.Email,
+                request.Password,
+                request.AccountTypeId);
 
+            await _mediator.Send(command, cancellationToken);
             return NoContent();
         }
 
         [HttpPost(ApiRoutes.Auth.Login)]
-        public async Task<IActionResult> Login(LoginDto request)
+        public async Task<IActionResult> Login(LoginDto request, CancellationToken cancellationToken)
         {
-            Result<TokenModel> result = await _mediator.Send(new LoginCommand(request.Email, request.Password));
+            LoginCommand command = new(
+                request.Email,
+                request.Password);
+
+            Result<TokenModel> result = await _mediator.Send(command, cancellationToken);
 
             if (!result.Succeeded)
             {
@@ -46,15 +57,13 @@ namespace BankApp.API.Controllers.Auth
         }
 
         [HttpPost(ApiRoutes.Auth.RefreshToken)]
-        public async Task<IActionResult> RefreshToken(RefreshTokenDto request)
+        public async Task<IActionResult> RefreshToken(RefreshTokenDto request, CancellationToken cancellationToken)
         {
-            Result<TokenModel> result = await _mediator.Send(new RefreshTokenCommand(request.AccessToken, request.RefreshToken));
+            RefreshTokenCommand command = new(
+                request.AccessToken,
+                request.RefreshToken);
 
-            if (!result.Succeeded)
-            {
-                return StatusCode(500, result);
-            }
-
+            Result<TokenModel> result = await _mediator.Send(command, cancellationToken);
             return Ok(result);
         }
 

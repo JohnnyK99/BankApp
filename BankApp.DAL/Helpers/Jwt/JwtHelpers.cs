@@ -8,9 +8,9 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace BankApp.DAL.Helpers
+namespace BankApp.DAL.Helpers.Jwt
 {
-    public class JwtHelpers
+    public class JwtHelpers : IJwtHelpers
     {
         private readonly IConfigurationSection _jwtSettings;
 
@@ -30,12 +30,12 @@ namespace BankApp.DAL.Helpers
         public List<Claim> GetClaims(UserEntity user, IList<string> userRoles)
         {
             var claims = new List<Claim>()
-            { 
+            {
                 new Claim(ClaimTypes.Name, user.Email),
                 new Claim("name", user.Email)
             };
 
-            foreach(var role in userRoles)
+            foreach (var role in userRoles)
             {
                 claims.Add(new Claim(ClaimTypes.Role, role));
                 claims.Add(new Claim("role", role));

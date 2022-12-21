@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace BankApp.Application.Wrappers
+namespace BankApp.Application.Wrappers.Result
 {
     public class Result : IResult
     {

@@ -8,6 +8,7 @@ using BankApp.Application.Features.Transactions.Queries.Existence;
 using BankApp.Application.Features.Transactions.Queries.GetTransactionConfirmation;
 using BankApp.Application.Features.Transactions.Queries.GetTransactions;
 using BankApp.Application.Wrappers;
+using BankApp.Application.Wrappers.Result;
 using BankApp.DAL.Constants;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -52,13 +53,14 @@ namespace BankApp.API.Controllers.BankAccounts
         [Authorize(Roles = UserRoles.Client)]
         public async Task<IActionResult> CreateTransaction(CreateTransactionDto request, CancellationToken cancellationToken)
         {
-            Result<int> transactionId = await _mediator.Send(new CreateTransactionCommand(
+            CreateTransactionCommand command = new(
                 request.AccountNumberFrom,
                 request.AccountNumberTo,
                 request.Title,
                 request.Description,
-                request.Amount
-                ), cancellationToken);
+                request.Amount);
+
+            Result<int> transactionId = await _mediator.Send(command, cancellationToken);
 
             return Ok(transactionId);
         }

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace BankApp.Application.Wrappers
+namespace BankApp.Application.Wrappers.Translations
 {
     public class IdTranslations
     {
@@ -8,7 +8,7 @@ namespace BankApp.Application.Wrappers
         public ICollection<Translation> Translations { get; set; }
 
         public IdTranslations()
-        { 
+        {
         }
 
         public IdTranslations(int id, ICollection<Translation> translations)

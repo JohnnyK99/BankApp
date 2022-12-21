@@ -16,7 +16,7 @@ export class AuthUrlsService {
   }
 
   register(): string {
-    return `${this.baseUrl}/registerr`;
+    return `${this.baseUrl}/register`;
   }
 
   refreshToken(): string {

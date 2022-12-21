@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace BankApp.Application.Wrappers
+namespace BankApp.Application.Wrappers.Result
 {
     public interface IResult
     {

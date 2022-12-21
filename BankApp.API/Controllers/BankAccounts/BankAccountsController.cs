@@ -5,13 +5,13 @@ using BankApp.Application.Features.BankAccounts.Commands.CreateBankAccount;
 using BankApp.Application.Features.BankAccounts.Queries.GetClientBankAccounts;
 using BankApp.Application.Features.Users.Queries.GetUserId;
 using BankApp.Application.Features.Users.Queries.UserExistence;
-using BankApp.Application.Wrappers;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using BankApp.Application.Wrappers.Result;
 
 namespace BankApp.API.Controllers.BankAccounts
 {
