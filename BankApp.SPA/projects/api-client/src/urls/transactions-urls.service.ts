@@ -11,6 +11,10 @@ export class TransactionsUrlsService {
 
   constructor(@Inject(CONFIG) private config: ApiClientConfigModel) {}
 
+  getTransactions(): string {
+    return this.baseUrl;
+  }
+
   createTransaction(): string {
     return this.baseUrl;
   }

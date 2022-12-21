@@ -4,5 +4,6 @@ export enum FeatureState {
   BankAccounts = 'bank-accounts',
   Dictionaries = 'dictionaries',
   Language = 'language',
-  NewTransaction = 'new-transaction'
+  NewTransaction = 'new-transaction',
+  TransactionsList = 'transactions-list'
 }

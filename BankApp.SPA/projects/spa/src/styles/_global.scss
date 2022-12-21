@@ -29,7 +29,6 @@ h1 {
 .page-header {
     width: 100%;
     display: grid;
-    gap: 15px;
     text-align: center;
     
     button {
@@ -68,17 +67,13 @@ h1 {
     }
 }
 
-.ant-input,
-.ant-btn {
-    border-radius: 5px;
-}
-
 .ngx-toastr {
 	width: auto !important;
 }
 
 .ant-btn[disabled],
-.ant-input[disabled] {
+.ant-input[disabled],
+.ant-pagination-disabled .ant-pagination-item-link, .ant-pagination-disabled:hover .ant-pagination-item-link {
     cursor: initial;
 }
 

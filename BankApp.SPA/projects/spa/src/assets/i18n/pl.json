@@ -36,12 +36,14 @@
         "bank_accounts": "Nie udało się pobrać kont bankowych",
         "create_transaction": "Nie udało się stworzyć transakcji",
         "download_file": "Nie udało się pobrać pliku",
+        "fetch_transactions": "Nie udało się pobrać listy transakcji",
         "login": "Błąd logowania - upewnij się, że dane są poprawne",
         "register": "Nie udało się zarejestrować konta - spróbuj ponownie później"
     },
     "nav": {
         "main_page": "Strona główna",
-        "new_transaction": "Nowa transakcja"
+        "new_transaction": "Nowa transakcja",
+        "transactions_list": "Lista transakcji"
     },
     "new_transaction": {
         "amount": "Kwota",
@@ -80,5 +82,8 @@
         "title": "Tytuł",
         "transaction": "Transakcja",
         "type": "Typ transakcji"
+    },
+    "transactions_list": {
+        "transactions_list": "Lista transakcji"
     }
 }

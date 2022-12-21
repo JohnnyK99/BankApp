@@ -44,6 +44,6 @@ export class AccountCardComponent extends TranslatedComponent {
   }
 
   navigateToTransaction(): void {
-    this.router.navigate([AppRoutes.transactions], { queryParams: { selectedAccountId: this.account.id } });
+    this.router.navigate([AppRoutes.transactions]);
   }
 }

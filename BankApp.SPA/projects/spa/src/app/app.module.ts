@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -18,6 +19,12 @@ import { ToastrModule } from 'ngx-toastr';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { NgxMaskModule } from 'ngx-mask';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { registerLocaleData } from '@angular/common';
+
+import pl from '@angular/common/locales/pl';
+import { NZ_I18N, pl_PL } from 'ng-zorro-antd/i18n';
+
+registerLocaleData(pl);
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -54,11 +61,17 @@ const apiClientConfig: ApiClientConfigModel = {
       },
     }),
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi: true,
-  }],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+    {
+      provide: NZ_I18N,
+      useValue: pl_PL,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -1,0 +1,55 @@
+:host {
+    width: 100%;
+}
+
+.content {
+    background-color: var(--color-white);
+    margin-top: 30px;
+    border-radius: 5px;
+    padding: 10px 20px;
+    height: min-content;
+
+    .ant-select {
+        min-width: 290px;
+    }
+
+    .ant-picker {
+        min-width: 150px;
+    }
+}
+
+.filters {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+
+    .left {
+        display: flex;
+        gap: 15px;
+    }
+}
+
+.button-column {
+    position: relative;
+
+    span {
+        position: absolute;
+        left: 25%;
+        top: 25%;
+        font-size: 1.2rem;
+        cursor: pointer;
+
+        &:hover {
+            color: var(--color-accent);
+        }
+    }
+}
+
+hr {
+    width: 80%;
+    margin: 20px auto;
+}
+
+.text-filter {
+    min-width: 300px;
+}

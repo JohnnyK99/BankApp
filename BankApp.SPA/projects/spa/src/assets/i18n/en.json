@@ -36,12 +36,14 @@
         "bank_accounts": "Failed to load bank accounts",
         "create_transaction": "Failed to create transaction",
         "download_file": "Failed to download the file",
+        "fetch_transactions": "Failed to load transactions",
         "login": "Login failed - make sure that credentials are valid",
         "register": "Registration failed - try again later"
     },
     "nav": {
         "main_page": "Dashboard",
-        "new_transaction": "New transaction"
+        "new_transaction": "New transaction",
+        "transactions_list": "Transactions list"
     },
     "new_transaction": {
         "amount": "Amount",
@@ -80,5 +82,8 @@
         "title": "Title",
         "transaction": "Transaction",
         "type": "Transaction type"
+    },
+    "transactions_list": {
+        "transactions_list": "Transactions list"
     }
 }

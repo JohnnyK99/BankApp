@@ -6,12 +6,12 @@ import {
   ValidatorFn,
   Validators
 } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { AddressBookEntry } from 'projects/api-client/src/models/address-book/address-book-entry.model';
 import { BankAccountTranslated } from 'projects/api-client/src/models/bank-accounts/bank-account-translated.model';
 import { NewTransaction } from 'projects/api-client/src/models/transactions/new-transaction.model';
-import { combineLatest, filter } from 'rxjs';
+import { filter } from 'rxjs';
 import { AppRoutes } from '../../../app-routes.constants';
 import { AddressBookFacade } from '../../../global-stores/address-book/address-book.facade';
 import { BankAccountsFacade } from '../../../global-stores/bank-accounts/bank-accounts.facade';
@@ -64,7 +64,6 @@ export class NewTransactionComponent extends TranslatedComponent {
     private addressBookFacade: AddressBookFacade,
     private fb: NonNullableFormBuilder,
     private modalService: NzModalService,
-    private route: ActivatedRoute,
     private router: Router,
     public override translationService: TranslationService
   ) {
@@ -81,19 +80,8 @@ export class NewTransactionComponent extends TranslatedComponent {
         this.amountControl.updateValueAndValidity();
       });
 
-    combineLatest([
-      this.bankAccountsFacade.userBankAccounts$,
-      this.route.queryParamMap,
-    ]).subscribe(([accounts, params]) => {
-      const id = Number(params.get('selectedAccountId'));
-
-      if(isNaN(id) || accounts == null || accounts.length === 0) {
-        return;
-      }
-
-      const selectedAccount = accounts.find(acc => acc.id === id) ?? accounts[0];
-      this.selectedAccountControl.setValue(selectedAccount, { emitEvent: false });
-    });
+    this.observe(this.bankAccountsFacade.selectedBankAccount$)
+      .subscribe(account => this.selectedAccountControl.setValue(account, { emitEvent: false }));
   }
 
   compareFn = (o1: BankAccountTranslated | null, o2: BankAccountTranslated | null): boolean => o1 != null && o2 != null && o1.id === o2.id;

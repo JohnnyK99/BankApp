@@ -1,0 +1,70 @@
+<div class="page-header">
+    <button nz-button nzType="default" (click)="goBack()">
+        <span nz-icon nzType="arrow-left" nzTheme="outline"></span>
+        {{'shared.back' | translate}}
+    </button>
+    <h1>{{'transactions_list.transactions_list' | translate}}</h1>
+    <div></div>
+</div>
+
+<div class="content elevated">
+    <div class="filters" *ngIf="listFacade.filters$ | async as filters">
+        <div class="left">
+            <nz-select nzPlaceHolder="Konto bankowe" [ngModel]="filters.bankAccountNumber" (ngModelChange)="onBankAccountNumberChange($event)">
+                <nz-option *ngFor="let account of bankAccountsFacade.userBankAccounts$ | async" [nzValue]="account.accountNumber" [nzLabel]="account.accountNumber | mask: TransactionsConstants.accountNumberMask"></nz-option>
+            </nz-select>
+            <nz-select nzPlaceHolder="Rodzaj transakcji" nzMode="multiple" [ngModel]="filters.transactionTypes" (ngModelChange)="onTransactionTypesChange($event)">
+                <nz-option [nzValue]="TransactionType.Incoming" nzLabel="Przychodząca"></nz-option>
+                <nz-option [nzValue]="TransactionType.Outcoming" nzLabel="Wychodząca"></nz-option>
+            </nz-select>
+            <nz-date-picker [ngModel]="filters.dateFrom" (ngModelChange)="onDateFromChange($event)" nzInputReadOnly="true" nzFormat="dd.MM.yyyy" nzPlaceHolder="Data od"></nz-date-picker>
+            <nz-date-picker [ngModel]="filters.dateTo" (ngModelChange)="onDateToChange($event)" nzInputReadOnly="true" nzFormat="dd.MM.yyyy" nzPlaceHolder="Data do"></nz-date-picker>
+        </div>
+        <div class="right">
+            <input class="text-filter" nz-input placeholder="Wyszukaj..." [ngModel]="filters.searchBy" (ngModelChange)="onSearchByChange($event)">
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="table" *ngIf="listFacade.transactions$ | async as transactions">
+        <ng-container *ngIf="listFacade.paginationParams$ | async as paginationParams">
+            <nz-table #table 
+                    nzShowSizeChanger
+                    nzBordered
+                    [nzData]="transactions" 
+                    [nzFrontPagination]="false" 
+                    [nzTotal]="paginationParams.totalRecords"
+                    [nzPageIndex]="paginationParams.currentPage"
+                    [nzPageSize]="paginationParams.pageSize"
+                    [nzPageSizeOptions]="[15, 30, 50]"
+                    (nzQueryParams)="onTableParamsChange($event)"
+                    [nzLoading]="listFacade.isTableLoading$ | async">
+                <thead>
+                    <tr>
+                        <th nzWidth="290px">Numer konta</th>
+                        <th nzColumnKey="Title" [nzSortFn]="true" [nzFilterMultiple]="false" nzWidth="225px">Tytuł</th>
+                        <th nzColumnKey="Description" [nzSortFn]="true" [nzFilterMultiple]="false">Opis</th>
+                        <th nzColumnKey="Date" [nzSortFn]="true" [nzFilterMultiple]="false" nzWidth="175px">Data transakcji</th>
+                        <th nzColumnKey="Amount" [nzSortFn]="true" [nzFilterMultiple]="false" nzWidth="150px">Kwota</th>
+                        <th nzColumnKey="TransactionType" [nzSortFn]="true" [nzFilterMultiple]="false" nzWidth="150px">Typ transakcji</th>
+                        <th nzWidth="40px"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let transaction of table.data">
+                        <td>{{transaction.accountNumberFrom | mask: TransactionsConstants.accountNumberMask}}</td>
+                        <td>{{transaction.title}}</td>
+                        <td>{{transaction.description}}</td>
+                        <td>{{transaction.date | date:'dd.MM.yyyy HH:mm:ss'}}</td>
+                        <td>{{transaction.amount | mask:"separator.2"}} zł</td>
+                        <td>{{transaction.transactionType === TransactionType.Incoming ? 'Przychodząca' : 'Wychodząca'}}</td>
+                        <td class="button-column">
+                            <span nz-icon nzType="cloud-download" nzTheme="outline"></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </nz-table>
+        </ng-container>
+    </div>
+</div>

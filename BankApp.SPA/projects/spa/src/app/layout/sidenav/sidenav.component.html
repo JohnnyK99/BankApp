@@ -1,29 +1,37 @@
 <bnk-header></bnk-header>
 
 <div class="center">
-    <div class="user-info" *ngIf="(authFacade.authStatus$ | async) === AuthStatus.Authenticated">
-        <span nz-icon nzType="user" nzTheme="outline"></span>
-        <span>{{(authFacade.userInfo$ | async)?.username}}</span>
-        <button nz-button 
-                nzType="primary" 
-                (click)="authFacade.logout()">
-            {{'auth.logout' | translate}}
-        </button>
-    </div>
+    <ng-container *ngIf="(authFacade.authStatus$ | async) === AuthStatus.Authenticated">
+        <div class="user-info" >
+            <span nz-icon nzType="user" nzTheme="outline"></span>
+            <span>{{(authFacade.userInfo$ | async)?.username}}</span>
+            <button nz-button 
+                    nzType="primary" 
+                    (click)="authFacade.logout()">
+                {{'auth.logout' | translate}}
+            </button>
+        </div>
 
-    <hr>
+        <hr>
 
-    <div class="nav-element" [routerLink]="['dashboard']" routerl routerLinkActive="nav-element--active" [routerLinkActiveOptions]="{exact: true}">
-        <span nz-icon nzType="home" nzTheme="outline" class="nav-icon"></span>
-        <span nz-icon nzType="right" nzTheme="outline" class="arrow-icon"></span>
-        <span>{{'nav.main_page' | translate}}</span>
-    </div>
+        <div class="nav-element" [routerLink]="['dashboard']" routerl routerLinkActive="nav-element--active" [routerLinkActiveOptions]="{exact: true}">
+            <span nz-icon nzType="home" nzTheme="outline" class="nav-icon"></span>
+            <span nz-icon nzType="right" nzTheme="outline" class="arrow-icon"></span>
+            <span>{{'nav.main_page' | translate}}</span>
+        </div>
 
-    <div class="nav-element" [routerLink]="['/transactions/new']" routerLinkActive="nav-element--active" [routerLinkActiveOptions]="{exact: true}">
-        <span nz-icon nzType="dollar" nzTheme="outline" class="nav-icon"></span>
-        <span nz-icon nzType="right" nzTheme="outline" class="arrow-icon"></span>
-        <span>{{'nav.new_transaction' | translate}}</span>
-    </div>
+        <div class="nav-element" [routerLink]="['/transactions/new']" routerLinkActive="nav-element--active" [routerLinkActiveOptions]="{exact: true}">
+            <span nz-icon nzType="dollar" nzTheme="outline" class="nav-icon"></span>
+            <span nz-icon nzType="right" nzTheme="outline" class="arrow-icon"></span>
+            <span>{{'nav.new_transaction' | translate}}</span>
+        </div>
+
+        <div class="nav-element" [routerLink]="['/transactions/list']" routerLinkActive="nav-element--active" [routerLinkActiveOptions]="{exact: true}">
+            <span nz-icon nzType="unordered-list" nzTheme="outline" class="nav-icon"></span>
+            <span nz-icon nzType="right" nzTheme="outline" class="arrow-icon"></span>
+            <span>{{'nav.transactions_list' | translate}}</span>
+        </div>
+    </ng-container>
 </div>
 
 <bnk-footer></bnk-footer>

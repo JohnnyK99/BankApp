@@ -1,6 +1,16 @@
-import { HttpResponse } from '@angular/common/http';
+import { HttpParams, HttpResponse } from '@angular/common/http';
 
 export class HttpHelpers {
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  static getQueryStringParams<T extends {}>(params: T): HttpParams {
+
+    const notNullParams = Object.fromEntries(Object.entries(params)
+      .filter(([, value]) => value != null)
+      .map(entry => entry as [string, number|string|boolean]));
+
+    return new HttpParams({ fromObject: notNullParams });
+  }
+
   static mapResponseToFile(response: HttpResponse<Blob>, defaultFileName: string): File {
     const fileName = HttpHelpers.getFileNameFromHeader(response, defaultFileName);
     if(!response.body) {

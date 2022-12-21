@@ -2,4 +2,5 @@ import { BankAccountTranslated } from 'projects/api-client/src/models/bank-accou
 
 export interface BankAccountsState {
   bankAccounts: BankAccountTranslated[] | null;
+  selectedBankAccountIndex: number | null;
 }

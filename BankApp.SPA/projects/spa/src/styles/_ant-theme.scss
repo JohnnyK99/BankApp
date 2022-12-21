@@ -26,6 +26,7 @@
     left: initial;
     margin-right: 10px;
     margin-left: 0;
+    pointer-events: none;
 
     li {
         border: 1px solid var(--color-accent);
@@ -57,4 +58,9 @@
         background-color: var(--color-accent);
         color: var(--color-text);
     }
+}
+
+.ant-table-tbody > tr > td,
+.ant-table-thead > tr > th {
+    padding: 8px 5px;
 }

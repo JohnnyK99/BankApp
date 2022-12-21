@@ -4,6 +4,17 @@
     display: grid;
     grid-template-rows: 50px auto;
     gap: 50px;
+
+    ::ng-deep .ant-select-selection-item {
+        .bank-account-option {
+            margin-right: 30px;
+        }
+    }
+    
+    ::ng-deep .ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+        height: calc(var(--account-select-option-height) + 20px);
+        padding: 10px;
+    }
 }
 
 form {
@@ -51,17 +62,6 @@ nz-select {
     display: flex;
     justify-content: space-between;
     height: var(--account-select-option-height);
-}
-
-::ng-deep .ant-select-selection-item {
-    .bank-account-option {
-        margin-right: 30px;
-    }
-}
-
-::ng-deep .ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
-    height: calc(var(--account-select-option-height) + 20px);
-    padding: 10px;
 }
 
 .amount-input {
