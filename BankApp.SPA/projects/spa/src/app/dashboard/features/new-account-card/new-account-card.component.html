@@ -1,0 +1,28 @@
+<ng-container *ngIf="!isActive">
+    <button nz-button nzType="primary" (click)="onActivate()">Dodaj nowe konto</button>
+</ng-container>
+
+<div *ngIf="isActive" class="active-content">
+    <nz-alert nzType="info" nzMessage="Dla celów demonstracyjnych każde nowe konto otrzymuje balans równy 1000 zł"></nz-alert>
+    <nz-form-item>
+        <nz-form-label nzFor="selectedAccount">Rodzaj konta</nz-form-label>
+        <nz-form-control>
+            <nz-select [(ngModel)]="selectedType" [compareWith]="compareFn" [nzCustomTemplate]="defaultTemplate" class="account-select" nzDropdownClassName="account-type-panel">
+                <nz-option *ngFor="let account of dictionariesFacade.accountTypes$ | async" nzCustomContent [nzValue]="account">
+                    <div class="option">
+                        <span class="type-name">{{account.name | translatedField:currentLanguage}}</span>
+                        <span class="type-description">{{account.description | translatedField:currentLanguage}}</span>
+                    </div>
+                </nz-option>
+            </nz-select>
+            <ng-template #defaultTemplate let-selected>
+                {{selected.nzValue.name | translatedField:currentLanguage}}
+            </ng-template>
+        </nz-form-control>
+    </nz-form-item>
+    <div class="actions">
+        <button nz-button nzType="default" (click)="onCancel()">Anuluj</button>
+        <button nz-button nzType="primary" (click)="onAdd()" [disabled]="selectedType === null">Potwierdź</button>
+    </div>
+</div>
+

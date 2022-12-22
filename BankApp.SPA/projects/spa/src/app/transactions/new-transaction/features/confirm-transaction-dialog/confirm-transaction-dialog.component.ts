@@ -3,7 +3,6 @@ import { NewTransaction } from 'projects/api-client/src/models/transactions/new-
 import { TransactionsConstants } from 'projects/spa/src/app/shared/constants/transactions.constants';
 
 @Component({
-  selector: 'bnk-confirm-transaction-dialog',
   templateUrl: './confirm-transaction-dialog.component.html',
   styleUrls: ['./confirm-transaction-dialog.component.scss'],
 })

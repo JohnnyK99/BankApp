@@ -1,0 +1,47 @@
+:host {
+    padding: 25px 40px;
+    display: flex;
+    justify-content: center;
+    background-color: var(--color-white);
+}
+
+.active-content {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto;
+    row-gap: 15px;
+}
+
+nz-alert {
+    grid-column: span 2;
+    text-align: center;
+}
+
+.ant-form-item {
+    display: flex;
+    margin-bottom: 0;
+}
+
+.account-select {
+    width: 300px
+}
+
+.option {
+    display: grid;
+}
+
+.type-name {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.type-description {
+    white-space: normal;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 25px;
+}

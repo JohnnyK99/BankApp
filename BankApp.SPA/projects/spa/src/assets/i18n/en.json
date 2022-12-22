@@ -34,6 +34,7 @@
         "account_types": "Failed to load account types",
         "address_book": "Failed to load the address book",
         "bank_accounts": "Failed to load bank accounts",
+        "create_bank_account": "Failed to create account",
         "create_transaction": "Failed to create transaction",
         "download_file": "Failed to download the file",
         "fetch_transactions": "Failed to load transactions",
@@ -68,6 +69,7 @@
         "search": "Search"
     },
     "success": {
+        "create_bank_account": "Account has been successfully created",
         "register": "User has been successfully registered"
     },
     "transaction": {

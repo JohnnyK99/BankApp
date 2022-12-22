@@ -5,7 +5,6 @@ import { AuthFacade } from '../../global-stores/auth/auth.facade';
 import { AuthStatus } from '../../shared/constants/enums/auth-status.enum';
 
 @Component({
-  selector: 'bnk-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })

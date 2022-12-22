@@ -12,7 +12,6 @@ import { PaginationParameters } from '../../../shared/models/pagination-paramete
 import { TransactionsFacade } from '../../state/transactions.facade';
 
 @Component({
-  selector: 'bnk-transactions-list',
   templateUrl: './transactions-list.component.html',
   styleUrls: ['./transactions-list.component.scss'],
 })

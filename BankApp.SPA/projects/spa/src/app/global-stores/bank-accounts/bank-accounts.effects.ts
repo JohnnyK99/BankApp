@@ -33,6 +33,34 @@ export class BankAccountsEffects {
     ), { dispatch: false }
   );
 
+  createBankAccount$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(BankAccountsActions.createBankAccount),
+      mergeMap(action =>
+        this.bankAccountApiClient.createBankAccount(action.accountTypeId).pipe(
+          map(() => BankAccountsActions.createBankAccountSuccess()),
+          catchError(() => of(BankAccountsActions.createBankAccountFail()))
+        ))
+    )
+  );
+
+  createBankAccountSuccess$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(BankAccountsActions.createBankAccountSuccess),
+      map(() => {
+        this.alertService.success('success.create_bank_account');
+        return BankAccountsActions.fetchUserBankAccounts();
+      })
+    )
+  );
+
+  createBankAccountFail$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(BankAccountsActions.createBankAccountFail),
+      tap(() => this.alertService.error('error.create_bank_account'))
+    ), { dispatch: false }
+  );
+
   constructor(
     private actions$: Actions,
     private alertService: AlertService,

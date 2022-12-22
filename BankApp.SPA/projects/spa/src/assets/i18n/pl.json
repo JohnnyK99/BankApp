@@ -34,6 +34,7 @@
         "account_types": "Nie udało się pobrać rodzajów kont",
         "address_book": "Nie udało się pobrać listy zapisanych odbiorców",
         "bank_accounts": "Nie udało się pobrać kont bankowych",
+        "create_bank_account": "Nie udało się stworzyć konta",
         "create_transaction": "Nie udało się stworzyć transakcji",
         "download_file": "Nie udało się pobrać pliku",
         "fetch_transactions": "Nie udało się pobrać listy transakcji",
@@ -68,6 +69,7 @@
         "search": "Szukaj"
     },
     "success": {
+        "create_bank_account": "Pomyślnie utworzono konto",
         "register": "Pomyślnie zarejestrowano użytkownika"
     },
     "transaction": {

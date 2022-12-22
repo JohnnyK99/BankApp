@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { TransactionsFacade } from '../../../state/transactions.facade';
 
 @Component({
-  selector: 'bnk-transaction-success',
   templateUrl: './transaction-success.component.html',
   styleUrls: ['./transaction-success.component.scss'],
 })

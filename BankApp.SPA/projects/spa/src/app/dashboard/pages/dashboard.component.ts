@@ -4,7 +4,6 @@ import { BaseComponent } from '../../base.component';
 import { BankAccountsFacade } from '../../global-stores/bank-accounts/bank-accounts.facade';
 
 @Component({
-  selector: 'bnk-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
@@ -20,15 +19,11 @@ export class DashboardComponent extends BaseComponent implements OnInit {
   ngOnInit(): void {
     this.facade.fetchUserBankAccounts();
 
-    this.observe(this.facade.selectedBankAccountId$)
-      .subscribe(index => {
-        if(index != null && this.nzCarousel != null) {
-          this.nzCarousel.goTo(index);
-        }
-      });
-  }
-
-  setSelectedBankAccount(index: number): void {
-    this.facade.setSelectedBankAccountIndex(index);
+    // this.observe(this.facade.selectedBankAccountId$)
+    //   .subscribe(index => {
+    //     if(index != null && this.nzCarousel != null) {
+    //       this.nzCarousel.goTo(index);
+    //     }
+    //   });
   }
 }

@@ -1,20 +1,27 @@
 <h1>{{'dashboard.main_page' | translate}}</h1>
-<div class="carousel-wrapper">
-    <ng-container *ngIf="(facade.userBankAccounts$ | async) === null">
-        <nz-skeleton [nzActive]="true"></nz-skeleton>
-    </ng-container>
-    <ng-container *ngIf="(facade.userBankAccounts$ | async) as bankAccounts">
-        <button nz-button nzType="text" (click)="setSelectedBankAccount(carousel.activeIndex-1)" [disabled]="carousel.activeIndex === 0">
-            <span nz-icon nzType="left" nzTheme="outline"></span>
-        </button>
-        <nz-carousel nzEnableSwipe="false" #carousel class="elevated">
-            <bnk-account-card nz-carousel-content 
-                              *ngFor="let account of bankAccounts" 
-                              [account]="account">
-            </bnk-account-card>
-        </nz-carousel>
-        <button nz-button nzType="text" (click)="setSelectedBankAccount(carousel.activeIndex+1)" [disabled]="carousel.activeIndex === bankAccounts.length-1">
-            <span nz-icon nzType="right" nzTheme="outline"></span>
-        </button>
-    </ng-container>
+<div class="page-content">
+    <div class="carousel-wrapper">
+        <ng-container *ngIf="(facade.userBankAccounts$ | async) === null">
+            <nz-skeleton [nzActive]="true"></nz-skeleton>
+        </ng-container>
+        <ng-container *ngIf="(facade.userBankAccounts$ | async) as bankAccounts">
+            <button nz-button nzType="text" (click)="carousel.pre(); facade.setSelectedBankAccountIndex(carousel.activeIndex)" [disabled]="carousel.activeIndex === 0">
+                <span nz-icon nzType="left" nzTheme="outline"></span>
+            </button>
+            <nz-carousel nzEnableSwipe="false" #carousel class="elevated">
+                <bnk-account-card nz-carousel-content 
+                                    *ngFor="let account of bankAccounts" 
+                                    [account]="account">
+                </bnk-account-card>
+            </nz-carousel>
+            <button nz-button nzType="text" (click)="carousel.next(); facade.setSelectedBankAccountIndex(carousel.activeIndex)" [disabled]="carousel.activeIndex === bankAccounts.length-1">
+                <span nz-icon nzType="right" nzTheme="outline"></span>
+            </button>
+        </ng-container>
+    </div>
+
+    <bnk-new-account-card class="elevated"></bnk-new-account-card>
 </div>
+
+
+

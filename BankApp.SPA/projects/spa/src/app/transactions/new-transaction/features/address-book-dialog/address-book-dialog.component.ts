@@ -7,7 +7,6 @@ import { TransactionsConstants } from 'projects/spa/src/app/shared/constants/tra
 import { combineLatest, map, startWith } from 'rxjs';
 
 @Component({
-  selector: 'bnk-address-book',
   templateUrl: './address-book-dialog.component.html',
   styleUrls: ['./address-book-dialog.component.scss'],
 })

@@ -14,4 +14,8 @@ export class BankAccountsUrlsService {
   getUserBankAccounts(): string {
     return this.baseUrl;
   }
+
+  createBankAccount(): string {
+    return this.baseUrl;
+  }
 }

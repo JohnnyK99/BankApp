@@ -5,7 +5,6 @@ import { TransactionsConstants } from '../../../shared/constants/transactions.co
 import { DashboardFacade } from '../../state/dashboard.facade';
 
 @Component({
-  selector: 'bnk-transaction-dialog',
   templateUrl: './transaction-dialog.component.html',
   styleUrls: ['./transaction-dialog.component.scss'],
 })

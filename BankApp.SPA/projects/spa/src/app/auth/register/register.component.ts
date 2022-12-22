@@ -16,7 +16,6 @@ import { TranslationService } from '../../shared/services/translation.service';
 import { TranslatedComponent } from '../../translated.component';
 
 @Component({
-  selector: 'bnk-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })

@@ -21,4 +21,8 @@ export class BankAccountsFacade {
   setSelectedBankAccountIndex(bankAccountIndex: number): void {
     this.store.dispatch(BankAccountsActions.setSelectedBankAccountIndex({ bankAccountIndex }));
   }
+
+  createBankAccount(accountTypeId: number): void {
+    this.store.dispatch(BankAccountsActions.createBankAccount({ accountTypeId }));
+  }
 }
