@@ -11,7 +11,8 @@ export class AddressBookApiClient {
   private addressBook: AddressBookEntry[] = [
     { id: 1, name: 'Moje konto oszczędnościowe', accountNumber: '48254910320000000000000001' },
     { id: 2, name: 'Moje konto standardowe', accountNumber: '48254910320000000000000002' },
-    { id: 3, name: 'Moje konto dla młodych', accountNumber: '48254910320000000000000004' },
+    { id: 3, name: 'Moje konto dla młodych', accountNumber: '48254910320000000000000003' },
+    { id: 4, name: 'Piotrek', accountNumber: '48254910320000000000000004' },
   ];
 
   constructor(

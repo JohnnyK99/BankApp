@@ -52,12 +52,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let transaction of table.data">
+                    <tr *ngFor="let transaction of table.data" [ngClass]="{'ant-table-row--red': transaction.transactionType === TransactionType.Outcoming, 'ant-table-row--green': transaction.transactionType === TransactionType.Incoming}">
                         <td>{{transaction.accountNumberFrom | mask: TransactionsConstants.accountNumberMask}}</td>
                         <td>{{transaction.title}}</td>
                         <td>{{transaction.description}}</td>
                         <td>{{transaction.date | date:'dd.MM.yyyy HH:mm:ss'}}</td>
-                        <td>{{transaction.amount | mask:"separator.2"}} zł</td>
+                        <td class="amount-col">{{transaction.amount | mask:"separator.2"}} zł</td>
                         <td>{{transaction.transactionType === TransactionType.Incoming ? ('transaction_type.incoming' | translate) : ('transaction_type.outcoming' | translate)}}</td>
                         <td class="button-column">
                             <span nz-icon nzType="cloud-download" nzTheme="outline" (click)="transactionsFacade.downloadConfirmation(transaction.id)"></span>

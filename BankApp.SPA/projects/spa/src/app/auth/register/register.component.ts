@@ -7,6 +7,7 @@ import {
   ValidatorFn,
   Validators
 } from '@angular/forms';
+import { RegistrationModel } from 'projects/api-client/src/models/auth/registration.model';
 import { AppRoutes } from '../../app-routes.constants';
 import { AuthFacade } from '../../global-stores/auth/auth.facade';
 import { DictionariesFacade } from '../../global-stores/dictionaries/dictionaries.facade';
@@ -96,7 +97,15 @@ export class RegisterComponent extends TranslatedComponent implements OnInit {
 
   register(): void {
     if(this.registrationFormGroup.valid) {
-      this.authFacade.register(this.registrationFormGroup.getRawValue());
+      const model: RegistrationModel = {
+        firstName: this.registrationFormGroup.controls.firstName.value,
+        lastName: this.registrationFormGroup.controls.lastName.value,
+        email: this.registrationFormGroup.controls.email.value,
+        password: this.registrationFormGroup.controls.password.value,
+        accountTypeId: this.registrationFormGroup.controls.initialAccountTypeId.value,
+      };
+
+      this.authFacade.register(model);
     }
   }
 

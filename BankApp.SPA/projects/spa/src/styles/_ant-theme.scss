@@ -18,8 +18,39 @@
     color: var(--color-text);
 }
 
+.ant-input {
+    &:hover {
+        border-color: var(--color-primary);
+    }
+
+    &:focus {
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 2px var(--color-primary-light);
+    }
+}
+
 .ant-select-item-empty {
     display: none;
+}
+
+.ant-table-tbody > tr.ant-table-row:hover > td {
+    background-color: initial;
+}
+
+.ant-table-row {
+    &--green .amount-col {
+        color: var(--color-green);
+        &:hover {
+            background-color: var(--color-background-green-hover);
+        }
+    }
+
+    &--red .amount-col {
+        color: var(--color-red);
+        &:hover {
+            background-color: var(--color-background-red-hover);
+        }
+    }
 }
 
 .ant-carousel .slick-dots {

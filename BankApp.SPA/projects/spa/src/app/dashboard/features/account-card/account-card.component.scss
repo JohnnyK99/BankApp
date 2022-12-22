@@ -76,11 +76,11 @@
     }
 
     &--incoming .amount {
-        color: green;
+        color: var(--color-green);
     }
 
     &--outcoming .amount {
-        color: red;
+        color: var(--color-red);
     }
 
     &:hover {
