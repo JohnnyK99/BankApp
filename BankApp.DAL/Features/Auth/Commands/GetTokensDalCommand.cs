@@ -20,7 +20,7 @@ namespace BankApp.DAL.Features.Auth.Commands
             _jwtHelpers = jwtHelpers;
         }
 
-        public async Task<Result<TokenModel>> GetTokensAsync(string username)
+        public async Task<TokenModel> GetTokensAsync(string username)
         {
             var user = await _userManager.FindByNameAsync(username);
 
@@ -44,7 +44,8 @@ namespace BankApp.DAL.Features.Auth.Commands
                 RefreshTokenExp = refreshTokenExp,
             };
 
-            return await Result<TokenModel>.SuccessAsync(model);
+            return model;
+            //return await Result<TokenModel>.SuccessAsync(model);
         }
     }
 }

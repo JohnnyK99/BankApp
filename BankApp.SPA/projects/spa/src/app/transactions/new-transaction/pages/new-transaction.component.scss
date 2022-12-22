@@ -59,6 +59,7 @@ nz-select {
 .bank-account-option {
     display: flex;
     justify-content: space-between;
+    gap: 15px;
     height: var(--account-select-option-height);
 }
 

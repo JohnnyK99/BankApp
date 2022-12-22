@@ -11,12 +11,10 @@ namespace BankApp.DAL.Features.Dictionaries.Queries
     public class GetAccountTypesDalQuery : IDalService, IGetAccountTypesDalQuery
     {
         private readonly AppDbContext _dbContext;
-        private readonly IMapper _mapper;
 
-        public GetAccountTypesDalQuery(AppDbContext dbContext, IMapper mapper)
+        public GetAccountTypesDalQuery(AppDbContext dbContext)
         {
             _dbContext = dbContext;
-            _mapper = mapper;
         }
 
         public async Task<IEnumerable<AccountTypeDalDto>> GetAccountTypesAsync()

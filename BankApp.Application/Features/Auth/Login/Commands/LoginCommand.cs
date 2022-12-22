@@ -38,9 +38,9 @@ namespace BankApp.Application.Features.Auth.Login.Commands
                     return await Result<TokenModel>.FailAsync(usernameResult.Messages);
                 }
 
-                Result<TokenModel> tokensResult = await _getTokensDalCommand.GetTokensAsync(usernameResult.Data);
+                TokenModel tokens = await _getTokensDalCommand.GetTokensAsync(usernameResult.Data);
 
-                return tokensResult;
+                return await Result<TokenModel>.SuccessAsync(tokens);
             }
         }
     }

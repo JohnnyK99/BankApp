@@ -29,7 +29,8 @@ namespace BankApp.DAL.Features.Transactions.Queries
             string sortColumn,
             SortDirection sortDirection)
         {
-            var transactions = await _dbContext.Transactions.Where(tr => (tr.AccountFrom.AccountNumber == bankAccountNumber || tr.AccountTo.AccountNumber == bankAccountNumber) &&
+            var transactions = await _dbContext.Transactions.Where(tr => 
+            (tr.AccountFrom.AccountNumber == bankAccountNumber || tr.AccountTo.AccountNumber == bankAccountNumber) &&
             (searchBy == null || tr.Title.ToLower().Contains(searchBy) || tr.Description.ToLower().Contains(searchBy)) &&
             (dateFrom == null || tr.Date >= dateFrom) &&
             (dateTo == null || tr.Date <= dateTo))

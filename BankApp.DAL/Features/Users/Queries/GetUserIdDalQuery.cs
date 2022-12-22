@@ -7,7 +7,7 @@ namespace BankApp.DAL.Features.Users.Queries
 {
     public class GetUserIdDalQuery : IDalService, IGetUserIdDalQuery
     {
-        private AppDbContext _dbContext;
+        private readonly AppDbContext _dbContext;
 
         public GetUserIdDalQuery(AppDbContext dbContext)
         {
