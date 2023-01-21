@@ -1,4 +1,4 @@
-﻿using BankApp.Application.Features.SavedRecipients.Commands;
+﻿using BankApp.Application.Features.SavedRecipients.Commands.AddRecipient;
 using BankApp.DAL.Db;
 using BankApp.DAL.Db.Entities;
 using System.Threading.Tasks;

@@ -3,7 +3,7 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace BankApp.Application.Features.SavedRecipients.Commands
+namespace BankApp.Application.Features.SavedRecipients.Commands.AddRecipient
 {
     public class AddRecipientCommand : IRequest<Unit>
     {

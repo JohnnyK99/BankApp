@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace BankApp.Application.Features.SavedRecipients.Commands
+namespace BankApp.Application.Features.SavedRecipients.Commands.AddRecipient
 {
     public interface IAddRecipientDalCommand
     {

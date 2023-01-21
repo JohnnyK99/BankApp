@@ -1,10 +1,14 @@
 ﻿using BankApp.API.Constants.Routes;
 using BankApp.API.Dto.SavedRecipients.AddRecipient;
-using BankApp.Application.Features.SavedRecipients.Commands;
+using BankApp.Application.Features.SavedRecipients.Commands.AddRecipient;
+using BankApp.Application.Features.SavedRecipients.Queries.GetRecipients;
 using BankApp.Application.Features.Users.Queries.GetUserId;
+using BankApp.Application.Wrappers.Result;
+using BankApp.DAL.Constants;
 using MediatR;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -21,7 +25,19 @@ namespace BankApp.API.Controllers.SavedRecipients
             _mediator = mediator;
         }
 
+        [HttpGet]
+        [Authorize(Roles = UserRoles.Client)]
+        public async Task<IActionResult> GetAll(CancellationToken cancellationToken)
+        {
+            var userId = await _mediator.Send(new GetUserIdQuery(User.Identity.Name), cancellationToken);
+
+            Result<IEnumerable<SavedRecipient>> recipients = await _mediator.Send(new GetRecipientsQuery(userId), cancellationToken);
+
+            return Ok(recipients);
+        }
+
         [HttpPost]
+        [Authorize(Roles = UserRoles.Client)]
         public async Task<IActionResult> AddRecipient(AddRecipientDto request, CancellationToken cancellationToken)
         {
             var userId = await _mediator.Send(new GetUserIdQuery(User.Identity.Name), cancellationToken);
