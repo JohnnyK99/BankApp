@@ -25,8 +25,9 @@ namespace BankApp.DAL.Helpers.BankAccount
 
         private string GetControlNumber(string baseAccountNumber)
         {
-            //TODO: Implement generation logic
-            return "48";
+            var baseRemainder = decimal.Parse(baseAccountNumber) * 100 % 97;
+            var controlSum = 97 - baseRemainder + 1;
+            return controlSum.ToString().PadLeft(2, '0');
         }
     }
 }

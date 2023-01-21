@@ -14,5 +14,6 @@ namespace BankApp.DAL.Db.Entities
         public UserEntity User { get; set; }
         public ICollection<TransactionEntity> OutgoingTransactions { get; set; }
         public ICollection<TransactionEntity> IncomingTransactions { get; set; }
+        public ICollection<SavedRecipientEntity> SavedRecipients { get; set; }
     }
 }

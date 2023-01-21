@@ -10,7 +10,7 @@ namespace BankApp.API.Dto.BankAccounts.CreateBankAccount
 {
     public class CreateTransactionDtoValidator : AbstractValidator<CreateTransactionDto>
     {
-        public bool ExistsProposal { get; set; }
+        public bool ExistsBankAccount { get; set; }
 
         public CreateTransactionDtoValidator(IMediator mediator, IHttpContextAccessor httpContextAccessor)
         {
@@ -28,12 +28,12 @@ namespace BankApp.API.Dto.BankAccounts.CreateBankAccount
                 .NotEmpty()
                 .MustAsync(async (id, token) =>
                 {
-                    ExistsProposal = await mediator.Send(new BankAccountExistenceByNumberQuery(id), token);
-                    return ExistsProposal;
+                    ExistsBankAccount = await mediator.Send(new BankAccountExistenceByNumberQuery(id), token);
+                    return ExistsBankAccount;
                 })
                 .WithMessage("Source account does not exist");
 
-            When(_ => ExistsProposal, () =>
+            When(_ => ExistsBankAccount, () =>
             {
                 RuleFor(x => new { x.AccountNumberFrom, x.AccountNumberTo })
                 .Must(x => x.AccountNumberFrom != x.AccountNumberTo)
@@ -49,6 +49,19 @@ namespace BankApp.API.Dto.BankAccounts.CreateBankAccount
 
                 RuleFor(x => x.AccountNumberTo)
                     .NotEmpty()
+                    .Must(number =>
+                    {
+                        if(number.Length != 26)
+                        {
+                            return false;
+                        }
+
+                        var controlSum = number.Substring(0, 2);
+                        var baseNumber = number.Substring(2, 24);
+
+                        return decimal.Parse(baseNumber + controlSum) % 97 == 1;
+                    })
+                    .WithMessage("Invalid target account number")
                     .MustAsync(async (accountId, token) => await mediator.Send(new BankAccountExistenceByNumberQuery(accountId), token))
                     .WithMessage("Target account does not exist");
 

@@ -25,6 +25,11 @@
             public const string AccountTypes = "account-types";
         }
 
+        public static class SavedRecipients
+        {
+            public const string Base = $"{Root}/recipients";
+        }
+
         public static class Transactions
         {
             public const string Base = $"{Root}/transactions";

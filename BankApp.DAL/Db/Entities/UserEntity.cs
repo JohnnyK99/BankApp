@@ -11,5 +11,6 @@ namespace BankApp.DAL.Db.Entities
         public double? RefreshTokenExp { get; set; }
 
         public ICollection<BankAccountEntity> BankAccounts { get; set; }
+        public ICollection<SavedRecipientEntity> SavedRecipients { get; set; }
     }
 }
