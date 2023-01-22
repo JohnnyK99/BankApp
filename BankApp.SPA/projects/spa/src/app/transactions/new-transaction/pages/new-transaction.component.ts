@@ -91,6 +91,7 @@ export class NewTransactionComponent extends TranslatedComponent {
       nzTitle: this.translationService.getTranslation('new_transaction.saved_payees'),
       nzContent: AddressBookDialogComponent,
       nzFooter: null,
+      nzWidth: 550,
     });
 
     dialog.afterClose.pipe(filter(result => result != null)).subscribe(result => {

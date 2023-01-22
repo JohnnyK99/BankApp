@@ -1,8 +1,34 @@
 <input nz-input [formControl]="filterControl" [placeholder]="'shared.search' | translate">
+<ng-container *ngIf="(facade.isAddingMode$ | async) === false">
+    <button nz-button nzType="primary" class="new-entry-button" (click)="facade.enterAddingMode()">Dodaj nowego odbiorcę</button>
+</ng-container>
+<div *ngIf="facade.isAddingMode$ | async" class="new-entry-wrapper" [formGroup]="formGroup">
+    <nz-form-item>
+        <nz-form-control>
+            <input placeholder="nazwa" nz-input formControlName="name" id="name" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-control [nzErrorTip]="numberErrorTip">
+            <input placeholder="numer konta" nz-input formControlName="accountNumber" id="accountNumber" [mask]="TransactionsConstants.accountNumberMask" [dropSpecialCharacters]="true" />
+            <ng-template #numberErrorTip let-control>   
+                <ng-container *ngIf="control.hasError('pattern')">Niepoprawny numer konta</ng-container>
+                <ng-container *ngIf="control.hasError('unique')">Odbiorca już istnieje</ng-container>
+              </ng-template>
+        </nz-form-control>
+    </nz-form-item>
+    <div class="actions">
+        <button nz-button class="cancel-entry-button" (click)="facade.cancelAddingMode()">{{'shared.cancel' | translate}}</button>
+        <button nz-button nzType="primary" class="add-entry-button" (click)="onEntryAdd()" [disabled]="formGroup.valid === false">{{'shared.confirm' | translate}}</button>
+    </div>
+</div>
 <span class="no-entries-label" *ngIf="!(filteredEntries$ | async)?.length">{{'new_transaction.no_recipients' | translate}}</span>
 <nz-radio-group nzButtonStyle="solid" [(ngModel)]="selected" (ngModelChange)="onSelect()">
-    <label nz-radio-button *ngFor="let entry of filteredEntries$ | async" [nzValue]="entry">
-        <span class="account-name">{{entry.name}}</span>
-        <span class="account-description">{{entry.accountNumber | mask: TransactionsConstants.accountNumberMask}}</span>
+    <label nz-radio-button *ngFor="let entry of entries" [nzValue]="entry">
+        <div class="entry">
+            <span class="account-name">{{entry.name}}</span>
+            <span class="account-description">{{entry.accountNumber | mask: TransactionsConstants.accountNumberMask}}</span>
+            <span nz-icon nzType="close" nzTheme="outline" class="delete-entry-icon" (click)="onEntryDelete($event, entry.accountNumber)"></span>
+        </div>
     </label>
 </nz-radio-group>

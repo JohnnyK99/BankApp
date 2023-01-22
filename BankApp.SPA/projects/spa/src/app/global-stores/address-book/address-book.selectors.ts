@@ -8,3 +8,8 @@ export const getAddressBook = createSelector(
   getAddressBookState,
   state => state.entries
 );
+
+export const isAddingMode = createSelector(
+  getAddressBookState,
+  state => state.isAddingMode
+);

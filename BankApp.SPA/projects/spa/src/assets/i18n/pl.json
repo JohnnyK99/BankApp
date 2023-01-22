@@ -32,6 +32,7 @@
     },
     "error": {
         "account_types": "Nie udało się pobrać rodzajów kont",
+        "add_address_book_entry": "Nie udało się dodać odbiorcy",
         "address_book": "Nie udało się pobrać listy zapisanych odbiorców",
         "bank_accounts": "Nie udało się pobrać kont bankowych",
         "create_bank_account": "Nie udało się stworzyć konta",
@@ -39,7 +40,8 @@
         "download_file": "Nie udało się pobrać pliku",
         "fetch_transactions": "Nie udało się pobrać listy transakcji",
         "login": "Błąd logowania - upewnij się, że dane są poprawne",
-        "register": "Nie udało się zarejestrować konta - spróbuj ponownie później"
+        "register": "Nie udało się zarejestrować konta - spróbuj ponownie później",
+        "remove_address_book_entry": "Nie udało się usunąć odbiorcy"
     },
     "nav": {
         "main_page": "Strona główna",
@@ -69,8 +71,10 @@
         "search": "Szukaj"
     },
     "success": {
+        "add_address_book_entry": "Pomyślnie dodano odbiorcę",
         "create_bank_account": "Pomyślnie utworzono konto",
-        "register": "Pomyślnie zarejestrowano użytkownika"
+        "register": "Pomyślnie zarejestrowano użytkownika",
+        "remove_address_book_entry": "Pomyślnie usunięto odbiorcę"
     },
     "transaction": {
         "amount": "Kwota",

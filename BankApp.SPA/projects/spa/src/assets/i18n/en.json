@@ -32,6 +32,7 @@
     },
     "error": {
         "account_types": "Failed to load account types",
+        "add_address_book_entry": "Failed to add entry",
         "address_book": "Failed to load the address book",
         "bank_accounts": "Failed to load bank accounts",
         "create_bank_account": "Failed to create account",
@@ -39,7 +40,8 @@
         "download_file": "Failed to download the file",
         "fetch_transactions": "Failed to load transactions",
         "login": "Login failed - make sure that credentials are valid",
-        "register": "Registration failed - try again later"
+        "register": "Registration failed - try again later",
+        "remove_address_book_entry": "Failed to remove entry"
     },
     "nav": {
         "main_page": "Dashboard",
@@ -69,8 +71,10 @@
         "search": "Search"
     },
     "success": {
+        "add_address_book_entry": "Entry has been successfully added",
         "create_bank_account": "Account has been successfully created",
-        "register": "User has been successfully registered"
+        "register": "User has been successfully registered",
+        "remove_address_book_entry": "Entry has been successfully removed"
     },
     "transaction": {
         "amount": "Amount",

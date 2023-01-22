@@ -7,6 +7,8 @@
 .ant-btn-primary,
 .ant-radio-button-wrapper {
     color: var(--color-text);
+    border-radius: 5px !important;
+    border-left-width: 1px;
 }
 
 .ant-btn-primary:not([disabled]):hover {
@@ -94,4 +96,10 @@
 .ant-table-tbody > tr > td,
 .ant-table-thead > tr > th {
     padding: 8px 5px;
+}
+
+
+
+.ant-radio-button-wrapper:not(:first-child)::before {
+    display: none;
 }

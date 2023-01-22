@@ -4,6 +4,7 @@ import { AddressBookState } from './address-book.state';
 
 const initialState: AddressBookState = {
   entries: null,
+  isAddingMode: false,
 };
 
 export const addressBookReducer = createReducer<AddressBookState>(
@@ -11,5 +12,13 @@ export const addressBookReducer = createReducer<AddressBookState>(
   on(AddressBookActions.fetchAddressBookSuccess, (state, action): AddressBookState => ({
     ...state,
     entries: action.entries,
+  })),
+  on(AddressBookActions.enterAddingMode, (state): AddressBookState => ({
+    ...state,
+    isAddingMode: true,
+  })),
+  on(AddressBookActions.cancelAddingMode, AddressBookActions.addEntrySuccess, (state): AddressBookState => ({
+    ...state,
+    isAddingMode: false,
   }))
 );
