@@ -61,3 +61,9 @@ hr {
   border-color: var(--color-secondary-light);
   margin-block: 10px;
 }
+
+bnk-client-selector {
+  display: grid;
+  width: 80%;
+  margin-inline: auto;
+}

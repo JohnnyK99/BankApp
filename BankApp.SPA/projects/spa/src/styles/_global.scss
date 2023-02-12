@@ -86,8 +86,8 @@ hr {
     margin-block: 0;
 }
 
-.account-options-panel {
-    //height: 200px;
+.account-options-panel,
+.client-options-panel {
     .ant-select-item {
         padding: 15px 10px;
     }

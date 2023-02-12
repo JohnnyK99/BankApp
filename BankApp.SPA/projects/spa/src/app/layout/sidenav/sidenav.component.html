@@ -14,13 +14,18 @@
 
         <hr>
 
+        <ng-container *ngIf="userService.isInRole(UserRoles.Employee)">
+            <bnk-client-selector></bnk-client-selector>
+            <hr>
+        </ng-container>
+
         <div class="nav-element" [routerLink]="['dashboard']" routerl routerLinkActive="nav-element--active" [routerLinkActiveOptions]="{exact: true}">
             <span nz-icon nzType="home" nzTheme="outline" class="nav-icon"></span>
             <span nz-icon nzType="right" nzTheme="outline" class="arrow-icon"></span>
             <span>{{'nav.main_page' | translate}}</span>
         </div>
 
-        <div class="nav-element" [routerLink]="['/transactions/new']" routerLinkActive="nav-element--active" [routerLinkActiveOptions]="{exact: true}">
+        <div class="nav-element" *ngIf="userService.isInRole(UserRoles.Client)" [routerLink]="['/transactions/new']" routerLinkActive="nav-element--active" [routerLinkActiveOptions]="{exact: true}">
             <span nz-icon nzType="dollar" nzTheme="outline" class="nav-icon"></span>
             <span nz-icon nzType="right" nzTheme="outline" class="arrow-icon"></span>
             <span>{{'nav.new_transaction' | translate}}</span>

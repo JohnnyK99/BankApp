@@ -6,6 +6,7 @@ import { environment } from '../../environments/environment';
 import { AddressBookStoreModule } from './address-book/address-book-store.module';
 import { AuthStoreModule } from './auth/auth-store.module';
 import { BankAccountsStoreModule } from './bank-accounts/bank-accounts-store.module';
+import { ClientsStoreModule } from './clients/clients-store.module';
 import { DictionariesStoreModule } from './dictionaries/dictionaries-store.module';
 import { LanguageStoreModule } from './language/language-store.module';
 
@@ -17,6 +18,7 @@ import { LanguageStoreModule } from './language/language-store.module';
     AuthStoreModule,
     AddressBookStoreModule,
     BankAccountsStoreModule,
+    ClientsStoreModule,
     DictionariesStoreModule,
     LanguageStoreModule,
   ],

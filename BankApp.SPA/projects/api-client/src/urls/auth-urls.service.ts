@@ -11,6 +11,10 @@ export class AuthUrlsService {
 
   constructor(@Inject(CONFIG) private config: ApiClientConfigModel) {}
 
+  getClients(): string {
+    return `${this.baseUrl}/clients`;
+  }
+
   login(): string {
     return `${this.baseUrl}/login`;
   }

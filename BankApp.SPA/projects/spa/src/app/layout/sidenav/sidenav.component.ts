@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthFacade } from '../../global-stores/auth/auth.facade';
 import { AuthStatus } from '../../shared/constants/enums/auth-status.enum';
+import { UserRoles } from '../../shared/constants/enums/user-roles.enum';
+import { UserService } from '../../shared/services/user.service';
 
 @Component({
   selector: 'bnk-sidenav',
@@ -9,7 +11,11 @@ import { AuthStatus } from '../../shared/constants/enums/auth-status.enum';
 })
 export class SidenavComponent {
   readonly AuthStatus = AuthStatus;
+  readonly UserRoles = UserRoles;
 
-  constructor(public authFacade: AuthFacade) { }
+  constructor(
+    public authFacade: AuthFacade,
+    public userService: UserService
+  ) { }
 
 }

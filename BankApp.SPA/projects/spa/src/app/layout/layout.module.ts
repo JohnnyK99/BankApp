@@ -10,6 +10,10 @@ import { UserOutline, LoginOutline, GithubOutline, LinkedinOutline } from '@ant-
 import { AppRoutingModule } from '../app-routing.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { ClientSelectorComponent } from './sidenav/client-selector/client-selector.component';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,15 +21,19 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     FooterComponent,
     LanguageSelectorComponent,
     SidenavComponent,
+    ClientSelectorComponent,
   ],
   imports: [
     CommonModule,
     AppRoutingModule,
     TranslateModule,
+    ReactiveFormsModule,
 
     NzButtonModule,
     NzIconModule.forChild([UserOutline, LoginOutline, GithubOutline, LinkedinOutline]),
     NzDropDownModule,
+    NzFormModule,
+    NzSelectModule,
   ],
   exports: [
     SidenavComponent,

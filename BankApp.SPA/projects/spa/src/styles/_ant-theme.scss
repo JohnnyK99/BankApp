@@ -35,6 +35,15 @@
     display: none;
 }
 
+.ant-select-selection-placeholder {
+    display: flex;
+    align-items: center;
+}
+
+.ant-select-selection-search-input {
+    height: 100% !important;
+}
+
 .ant-table-tbody > tr.ant-table-row:hover > td {
     background-color: initial;
 }
