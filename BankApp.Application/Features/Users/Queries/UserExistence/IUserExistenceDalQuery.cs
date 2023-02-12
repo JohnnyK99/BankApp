@@ -4,6 +4,7 @@ namespace BankApp.Application.Features.Users.Queries.UserExistence
 {
     public interface IUserExistenceDalQuery
     {
-        Task<bool> DoesUserExistAsync(string userEmail);
+        Task<bool> DoesUserExistByEmailAsync(string userEmail);
+        Task<bool> DoesUserExistByIdAsync(string userId);
     }
 }

@@ -30,7 +30,7 @@ namespace BankApp.API.Controllers.BankAccounts
         }
 
         [HttpGet]
-        [Authorize(Roles = UserRoles.Client)]
+        [Authorize(Roles = $"{UserRoles.Client}, {UserRoles.Employee}")]
         public async Task<IActionResult> GetAll([FromQuery] GetTransactionsDto request, CancellationToken cancellationToken)
         {
             GetTransactionsQuery query = new(
@@ -66,7 +66,7 @@ namespace BankApp.API.Controllers.BankAccounts
         }
 
         [HttpGet(ApiRoutes.Transactions.Confirmation)]
-        [Authorize(Roles = UserRoles.Client)]
+        [Authorize(Roles = $"{UserRoles.Client}, {UserRoles.Employee}")]
         public async Task<IActionResult> GetTransactionConfirmation([FromRoute] GetTransactionConfirmationDto request, CancellationToken cancellationToken)
         {
             bool existsTransaction = await _mediator.Send(new TransactionExistenceQuery(request.TransactionId), cancellationToken);

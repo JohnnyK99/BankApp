@@ -47,10 +47,10 @@ namespace BankApp.API.Controllers.BankAccounts
             if (User.IsInRole(UserRoles.Client))
             {
                 userId = await _mediator.Send(new GetUserIdQuery(User.Identity.Name), cancellationToken);
-            } 
+            }
             else
             {
-                bool existsClient = await _mediator.Send(new UserExistenceQuery(userId), cancellationToken);
+                bool existsClient = await _mediator.Send(new UserExistenceByIdQuery(userId), cancellationToken);
                 if (!existsClient)
                 {
                     return NotFound();

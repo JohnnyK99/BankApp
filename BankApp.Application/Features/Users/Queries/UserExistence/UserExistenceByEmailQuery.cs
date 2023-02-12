@@ -4,16 +4,16 @@ using System.Threading.Tasks;
 
 namespace BankApp.Application.Features.Users.Queries.UserExistence
 {
-    public class UserExistenceQuery : IRequest<bool>
+    public class UserExistenceByEmailQuery : IRequest<bool>
     {
         public string UserEmail { get; set; }
 
-        public UserExistenceQuery(string userEmail)
+        public UserExistenceByEmailQuery(string userEmail)
         {
             UserEmail = userEmail;
         }
 
-        public class Handler : IRequestHandler<UserExistenceQuery, bool>
+        public class Handler : IRequestHandler<UserExistenceByEmailQuery, bool>
         {
             private readonly IUserExistenceDalQuery _userExistenceDalQuery;
 
@@ -22,9 +22,9 @@ namespace BankApp.Application.Features.Users.Queries.UserExistence
                 _userExistenceDalQuery = userExistenceDalQuery;
             }
 
-            public async Task<bool> Handle(UserExistenceQuery request, CancellationToken token)
+            public async Task<bool> Handle(UserExistenceByEmailQuery request, CancellationToken token)
             {
-                return await _userExistenceDalQuery.DoesUserExistAsync(request.UserEmail);
+                return await _userExistenceDalQuery.DoesUserExistByEmailAsync(request.UserEmail);
             }
         }
     }

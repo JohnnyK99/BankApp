@@ -20,7 +20,7 @@ namespace BankApp.API.Dto.BankAccounts.CreateBankAccount
             {
                 RuleFor(x => x.UserId)
                     .NotEmpty()
-                    .MustAsync(async (id, token) => await mediator.Send(new UserExistenceQuery(id), token))
+                    .MustAsync(async (id, token) => await mediator.Send(new UserExistenceByIdQuery(id), token))
                     .WithMessage("Invalid user id");
             });
         }

@@ -1,6 +1,7 @@
 ﻿using BankApp.Application.Constants;
 using BankApp.Application.Features.BankAccounts.Queries.Existence;
 using BankApp.Application.Features.BankAccounts.Queries.Ownership;
+using BankApp.DAL.Constants;
 using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -14,11 +15,19 @@ namespace BankApp.API.Dto.Transactions.GetTransactions
         {
             var username = httpContextAccessor.HttpContext.User.Identity.Name;
 
+            this.CascadeMode = CascadeMode.Stop;
+
             RuleFor(x => x.BankAccountNumber)
                 .NotEmpty()
-                .MustAsync(async (number, token) => await mediator.Send(new BankAccountExistenceByNumberQuery(number), token) && 
-                                                    await mediator.Send(new BankAccountOwnershipQuery(username, number), token))
-                .WithMessage("Not all bank accounts exist or belong to the user");
+                .MustAsync(async (number, token) => await mediator.Send(new BankAccountExistenceByNumberQuery(number), token))
+                .WithMessage("Account does not exist");
+
+            When(x => httpContextAccessor.HttpContext.User.IsInRole(UserRoles.Client), () =>
+            {
+                RuleFor(x => x.BankAccountNumber)
+                    .MustAsync(async (number, token) => await mediator.Send(new BankAccountOwnershipQuery(username, number), token))
+                    .WithMessage("Bank account does not belong to the user");
+            });
 
             When(x => x.DateFrom is not null && x.DateTo is not null, () =>
             {

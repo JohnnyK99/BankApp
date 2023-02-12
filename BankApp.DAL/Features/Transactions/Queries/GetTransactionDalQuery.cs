@@ -1,6 +1,8 @@
 ﻿using BankApp.Application.Features.BankAccounts.Queries.GetClientBankAccounts;
 using BankApp.Application.Features.Transactions.Queries.GetTransactionConfirmation;
 using BankApp.DAL.Db;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace BankApp.DAL.Features.Transactions.Queries
@@ -16,18 +18,18 @@ namespace BankApp.DAL.Features.Transactions.Queries
 
         public async Task<Transaction> GetTransactionAsync(int transactionId)
         {
-            var transaction = await _dbContext.Transactions.FindAsync(transactionId);
-
-            return new()
-            {
-                Id = transaction.Id,
-                AccountNumberFrom = transaction.AccountFrom.AccountNumber,
-                AccountNumberTo = transaction.AccountTo.AccountNumber,
-                Title = transaction.Title,
-                Description = transaction.Description,
-                Date = transaction.Date,
-                Amount = transaction.Amount,
-            };
+            return await _dbContext.Transactions.Where(tr => tr.Id == transactionId)
+                .Select(tr => new Transaction()
+                {
+                    Id = tr.Id,
+                    AccountNumberFrom = tr.AccountFrom.AccountNumber,
+                    AccountNumberTo = tr.AccountTo.AccountNumber,
+                    Title = tr.Title,
+                    Description = tr.Description,
+                    Date = tr.Date,
+                    Amount = tr.Amount,
+                })
+                .FirstAsync();
         }
     }
 }

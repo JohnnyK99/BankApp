@@ -22,7 +22,7 @@ namespace BankApp.API.Dto.Auth.Register
             RuleFor(x => x.Email)
                 .EmailAddress()
                 .WithMessage("Valid email address must be provided.")
-                .MustAsync(async (address, token) => !(await mediator.Send(new UserExistenceQuery(address), token)))
+                .MustAsync(async (address, token) => !(await mediator.Send(new UserExistenceByEmailQuery(address), token)))
                 .WithMessage("Account with provided email address already exists");
 
             RuleFor(x => x.Password)

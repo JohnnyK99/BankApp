@@ -14,9 +14,14 @@ namespace BankApp.DAL.Features.Users.Queries
             _dbContext = dbContext;
         }
 
-        public async Task<bool> DoesUserExistAsync(string userEmail)
+        public async Task<bool> DoesUserExistByEmailAsync(string userEmail)
         {
             return await _dbContext.Users.AnyAsync(user => user.NormalizedEmail == userEmail.Normalize());
+        }
+
+        public async Task<bool> DoesUserExistByIdAsync(string userId)
+        {
+            return await _dbContext.Users.AnyAsync(user => user.Id == userId);
         }
     }
 }
