@@ -74,6 +74,10 @@
                         <input nz-input formControlName="payeeAccountNumber" id="firstName" [mask]="TransactionsConstants.accountNumberMask" [dropSpecialCharacters]="true" />
                         <ng-template #numberErrorTip let-control>   
                             <ng-container *ngIf="control.hasError('pattern')">Niepoprawny numer konta</ng-container>
+                            <ng-container *ngIf="control.hasError('controlSum')">
+                                Niepoprawny numer konta
+                                <span nz-icon nzType="info-circle" nzTheme="outline" nz-tooltip nzTooltipTitle="Format numeru jest poprawny, lecz wartość jego sumy kontrolnej nie spełnia wymagań"></span>
+                            </ng-container>
                             <ng-container *ngIf="control.hasError('sameAccount')">Numery konta muszą się różnić</ng-container>
                           </ng-template>
                     </nz-form-control>

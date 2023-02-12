@@ -18,6 +18,7 @@ import { RouterModule } from '@angular/router';
 import { InfoItemModule } from '../../shared/components/info-item/info-item.module';
 import { TransactionSuccessComponent } from './pages/transaction-success/transaction-success.component';
 import { NzResultModule } from 'ng-zorro-antd/result';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { NzResultModule } from 'ng-zorro-antd/result';
     NzModalModule,
     NzRadioModule,
     NzResultModule,
+    NzToolTipModule,
   ],
   exports: [
   ],

@@ -72,7 +72,7 @@ export class NewTransactionComponent extends TranslatedComponent {
     this.addressBookFacade.fetchAddressBook();
     this.payeeNameControl.disable({ emitEvent: false });
     this.amountControl.addValidators([this.amountValidator]);
-    this.payeeAccountNumberControl.addValidators([this.accountNumberValidator]);
+    this.payeeAccountNumberControl.addValidators([this.accountNumberValidator, this.controlSumValidator]);
 
     this.observe(this.selectedAccountControl.valueChanges)
       .subscribe(() => {
@@ -151,6 +151,25 @@ export class NewTransactionComponent extends TranslatedComponent {
     }
 
     return { sameAccount: true };
+  };
+
+  private controlSumValidator: ValidatorFn = (): ValidationErrors | null => {
+    const accountNumber = this.payeeAccountNumberControl.value;
+
+    if(accountNumber.length !== 26) {
+      return null;
+    }
+
+    const controlSum = this.payeeAccountNumberControl.value.substring(0, 2);
+    const baseNumber = this.payeeAccountNumberControl.value.substring(2);
+
+    const remainder = BigInt(baseNumber + controlSum) % BigInt(97);
+
+    if(remainder === BigInt(1)) {
+      return null;
+    }
+
+    return { controlSum: true };
   };
 
   private openTransactionDialog(transaction: NewTransaction): void {
