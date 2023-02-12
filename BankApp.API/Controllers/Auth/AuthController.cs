@@ -11,6 +11,10 @@ using BankApp.Application.Features.Auth.RefreshToken;
 using BankApp.API.Dto.Auth.Login;
 using System.Threading;
 using BankApp.Application.Wrappers.Result;
+using Microsoft.AspNetCore.Authorization;
+using BankApp.DAL.Constants;
+using System.Collections.Generic;
+using BankApp.Application.Features.Auth.Clients.Queries;
 
 namespace BankApp.API.Controllers.Auth
 {
@@ -67,5 +71,12 @@ namespace BankApp.API.Controllers.Auth
             return Ok(result);
         }
 
+        [HttpGet(ApiRoutes.Auth.Clients)]
+        [Authorize(Roles = $"{UserRoles.Employee}, {UserRoles.Client}")]
+        public async Task<IActionResult> GetClients(string searchBy, CancellationToken cancellationToken)
+        {
+            Result<IEnumerable<Client>> clients = await _mediator.Send(new GetClientsQuery(searchBy), cancellationToken);
+            return Ok(clients);
+        }
     }
 }

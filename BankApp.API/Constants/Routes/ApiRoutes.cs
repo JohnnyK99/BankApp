@@ -7,6 +7,7 @@
         public static class Auth
         {
             public const string Base = $"{Root}/auth";
+            public const string Clients = "clients";
             public const string Register = "register";
             public const string Login = "login";
             public const string RefreshToken = "refresh";
