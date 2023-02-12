@@ -14,10 +14,10 @@
         "password": "Hasło",
         "password_rules": {
             "one_capital": "jedną wielką literę",
-            "eight_characters": "osiem znaków",
             "one_digit": "jedną cyfrę",
             "one_special_character": "jeden znak specjalny",
-            "password_should_contain_at_least": "Hasło powinno zawierać co najmniej:"
+            "password_should_contain_at_least": "Hasło powinno zawierać co najmniej:",
+            "ten_characters": "dziesięć znaków"
         },
         "register": "Zarejestruj się",
         "register_label": "Zarejestruj",
@@ -38,6 +38,7 @@
         "create_bank_account": "Nie udało się stworzyć konta",
         "create_transaction": "Nie udało się stworzyć transakcji",
         "download_file": "Nie udało się pobrać pliku",
+        "fetch_clients": "Nie udało się pobrać listy klientów",
         "fetch_transactions": "Nie udało się pobrać listy transakcji",
         "login": "Błąd logowania - upewnij się, że dane są poprawne",
         "register": "Nie udało się zarejestrować konta - spróbuj ponownie później",

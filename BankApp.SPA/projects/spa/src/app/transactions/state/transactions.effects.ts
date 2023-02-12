@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { TransactionApiClient } from 'projects/api-client/src/clients/transaction.api-client';
+import { TransactionsQueryParams } from 'projects/api-client/src/models/transactions/transactions-query-params.model';
 import {
   catchError,
   EMPTY,
@@ -91,12 +92,16 @@ export class TransactionsEffects {
       ofType(TransactionsActions.fetchTransactions),
       withLatestFrom(this.facade.queryParams$),
       map(([, params]) => params),
-      mergeMap(params =>
-        this.transactionApiClient.getTransactions(params).pipe(
+      mergeMap(params => {
+        if(this.shouldClearTransactions(params)) {
+          return of(TransactionsActions.clearTransactions());
+        }
+
+        return this.transactionApiClient.getTransactions(params).pipe(
           map(result => TransactionsActions.fetchTransactionsSuccess({ transactions: result.data })),
           catchError(() => of(TransactionsActions.fetchTransactionsFail()))
-        )
-      )
+        );
+      })
     )
   );
 
@@ -116,4 +121,8 @@ export class TransactionsEffects {
     private router: Router,
     private transactionApiClient: TransactionApiClient
   ) {}
+
+  private shouldClearTransactions(params: TransactionsQueryParams): boolean {
+    return params.bankAccountNumber == null;
+  }
 }

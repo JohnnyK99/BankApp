@@ -29,7 +29,7 @@
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-            <nz-form-label nzRequired nzFor="lastName">{{'auth.repeat_password' | translate}}</nz-form-label>
+            <nz-form-label nzRequired nzFor="repeatPassword">{{'auth.repeat_password' | translate}}</nz-form-label>
             <nz-form-control>
                 <input nz-input type="password" formControlName="repeatPassword" id="repeatPassword" />
             </nz-form-control>
@@ -82,7 +82,7 @@
 <ng-template #passwordTooltipTemplate class="password-tooltip">
     <span>{{'auth.password_rules.password_should_contain_at_least' | translate}}</span>
     <div class="password-validation-entry">
-        <span>{{'auth.password_rules.eight_characters' | translate}}</span>
+        <span>{{'auth.password_rules.ten_characters' | translate}}</span>
         <span *ngIf="!hasEnoughCharacters" nz-icon nzType="close" nzTheme="outline" style="color: red;"></span>
         <span *ngIf="hasEnoughCharacters" nz-icon nzType="check" nzTheme="outline" style="color: green;"></span>
     </div>

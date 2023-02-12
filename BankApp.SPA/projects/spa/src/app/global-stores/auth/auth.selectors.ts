@@ -27,6 +27,11 @@ export const getAccessTokenExp = createSelector(
   state => state.accessTokenExp
 );
 
+export const getUserRoles = createSelector(
+  getAuthState,
+  state => state.userRoles
+);
+
 export const getUserInfo = createSelector(
   getAuthState,
   state => ({

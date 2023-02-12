@@ -17,12 +17,12 @@ export class BankAccountApiClient {
     private http: HttpClient
   ) {}
 
-  getUserBankAccounts(): Observable<GetUserBankAccountsResponse> {
-    return this.http.get<Result<BankAccount[]>>(this.accountUrls.getUserBankAccounts())
+  getUserBankAccounts(userId?: string): Observable<GetUserBankAccountsResponse> {
+    return this.http.get<Result<BankAccount[]>>(this.accountUrls.getUserBankAccounts(), { params: { userId: userId ?? '' } })
       .pipe(mapToResponse(GetUserBankAccountsResponse));
   }
 
-  createBankAccount(accountTypeId: number): EmptyResponse {
-    return this.http.post(this.accountUrls.createBankAccount(), { accountTypeId });
+  createBankAccount(accountTypeId: number, userId?: string | null): EmptyResponse {
+    return this.http.post(this.accountUrls.createBankAccount(), { accountTypeId, userId });
   }
 }

@@ -57,7 +57,7 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   private isAuthUrl(req: HttpRequest<any>): boolean {
-    return req.url.startsWith(this.authUrlsService.baseUrl);
+    return req.url.startsWith(this.authUrlsService.baseUrl) && !req.url.endsWith('clients');
   }
 
   private isAssetsUrl(req: HttpRequest<any>): boolean {

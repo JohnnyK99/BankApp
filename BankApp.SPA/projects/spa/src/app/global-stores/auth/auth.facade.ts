@@ -12,7 +12,8 @@ import {
   getGuardInfo,
   getInterceptorInfo,
   getRefreshInfo,
-  getUserInfo
+  getUserInfo,
+  getUserRoles
 } from './auth.selectors';
 import { AuthState } from './auth.state';
 
@@ -25,6 +26,7 @@ export class AuthFacade {
   refreshInfo$ = this.store.select(getRefreshInfo);
   authStatus$ = this.store.select(getAuthStatus);
   userInfo$ = this.store.select(getUserInfo);
+  userRoles$ = this.store.select(getUserRoles);
   accessToken$ = this.store.select(getAccessToken);
   accessTokenExp$ = this.store.select(getAccessTokenExp);
 

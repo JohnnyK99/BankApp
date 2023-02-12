@@ -6,9 +6,11 @@ import {
   map,
   mergeMap,
   of,
-  tap
+  tap,
+  withLatestFrom
 } from 'rxjs';
 import { AlertService } from '../../shared/services/alert.service';
+import { ClientsFacade } from '../clients/clients.facade';
 import { BankAccountsActions } from './bank-accounts.actions';
 
 @Injectable()
@@ -17,8 +19,10 @@ export class BankAccountsEffects {
   getUserBankAccounts$ = createEffect(() =>
     this.actions$.pipe(
       ofType(BankAccountsActions.fetchUserBankAccounts),
-      mergeMap(() =>
-        this.bankAccountApiClient.getUserBankAccounts().pipe(
+      withLatestFrom(this.clientsFacade.selectedClientId$),
+      map(([, id]) => id),
+      mergeMap(id =>
+        this.bankAccountApiClient.getUserBankAccounts(id ?? undefined).pipe(
           map(result => BankAccountsActions.fetchUserBankAccountsSuccess({ bankAccounts: result.data })),
           catchError(() => of(BankAccountsActions.fetchUserBankAccountsFail()))
         )
@@ -36,8 +40,9 @@ export class BankAccountsEffects {
   createBankAccount$ = createEffect(() =>
     this.actions$.pipe(
       ofType(BankAccountsActions.createBankAccount),
-      mergeMap(action =>
-        this.bankAccountApiClient.createBankAccount(action.accountTypeId).pipe(
+      withLatestFrom(this.clientsFacade.selectedClientId$),
+      mergeMap(([action, clientId]) =>
+        this.bankAccountApiClient.createBankAccount(action.accountTypeId, clientId).pipe(
           map(() => BankAccountsActions.createBankAccountSuccess()),
           catchError(() => of(BankAccountsActions.createBankAccountFail()))
         ))
@@ -64,6 +69,7 @@ export class BankAccountsEffects {
   constructor(
     private actions$: Actions,
     private alertService: AlertService,
-    private bankAccountApiClient: BankAccountApiClient
+    private bankAccountApiClient: BankAccountApiClient,
+    private clientsFacade: ClientsFacade
   ) {}
 }

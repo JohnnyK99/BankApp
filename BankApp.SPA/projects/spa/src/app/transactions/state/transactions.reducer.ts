@@ -1,4 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
+import { AuthActions } from '../../global-stores/auth/auth.actions';
 import { TransactionType } from '../../shared/constants/enums/transaction-type.enum';
 import { TransactionsConstants } from '../../shared/constants/transactions.constants';
 import { TransactionsActions } from './transactions.actions';
@@ -45,6 +46,11 @@ export const transactionsReducer = createReducer<TransactionsState>(
     },
     isTableLoading: false,
   })),
+  on(TransactionsActions.clearTransactions, (state): TransactionsState => ({
+    ...state,
+    transactions: [],
+    isTableLoading: false,
+  })),
   on(TransactionsActions.setFilters, (state, action): TransactionsState => ({
     ...state,
     filters: {
@@ -59,5 +65,9 @@ export const transactionsReducer = createReducer<TransactionsState>(
       ...action.pagination,
     },
     sortParameters: action.sort,
+  })),
+  on(AuthActions.logout, (state): TransactionsState => ({
+    ...state,
+    ...initialState,
   }))
 );

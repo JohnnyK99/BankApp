@@ -14,10 +14,10 @@
         "password": "Password",
         "password_rules": {
             "one_capital": "one capital letter",
-            "eight_characters": "eight characters",
             "one_digit": "one digit",
             "one_special_character": "one special character",
-            "password_should_contain_at_least": "Password should contain at least"
+            "password_should_contain_at_least": "Password should contain at least",
+            "ten_characters": "ten characters"
         },
         "register": "Register",
         "register_label": "Register",
@@ -38,6 +38,7 @@
         "create_bank_account": "Failed to create account",
         "create_transaction": "Failed to create transaction",
         "download_file": "Failed to download the file",
+        "fetch_clients": "Failed to load clients",
         "fetch_transactions": "Failed to load transactions",
         "login": "Login failed - make sure that credentials are valid",
         "register": "Registration failed - try again later",

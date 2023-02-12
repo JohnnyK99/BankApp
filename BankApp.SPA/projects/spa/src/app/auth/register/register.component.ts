@@ -48,7 +48,7 @@ export class RegisterComponent extends TranslatedComponent implements OnInit {
   }
 
   get hasEnoughCharacters(): boolean {
-    return this.passwordFormControl.value.length >= 8;
+    return this.passwordFormControl.value.length >= 10;
   }
 
   get hasEnoughCapitalLetters(): boolean {

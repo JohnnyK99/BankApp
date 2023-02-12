@@ -43,6 +43,9 @@ export const TransactionsActions = {
   fetchTransactionsFail: createAction(
     '[Transactions] Fetch transactions fail'
   ),
+  clearTransactions: createAction(
+    '[Transactions] Clear transactions'
+  ),
   setFilters: createAction(
     '[Transactions] Set filters',
     props<SetFiltersProps>()

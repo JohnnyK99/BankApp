@@ -39,6 +39,10 @@ export const authReducer = createReducer<AuthState>(
     ...state,
     status: AuthStatus.Registering,
   })),
+  on(AuthActions.registerSuccess, state => ({
+    ...state,
+    status: AuthStatus.LoggedOut,
+  })),
   on(AuthActions.registerFail, state => ({
     ...state,
     status: AuthStatus.ErrorRegister,

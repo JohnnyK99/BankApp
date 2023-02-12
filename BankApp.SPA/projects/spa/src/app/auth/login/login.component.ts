@@ -34,7 +34,7 @@ export class LoginComponent {
   }
 
   fillEmployeeData(): void {
-    this.loginFormGroup.setValue({ email: '99999', password: 'wwwww' });
+    this.loginFormGroup.setValue({ email: 'bkowalski@gmail.com', password: 'Tpfforith2!' });
   }
 
 }

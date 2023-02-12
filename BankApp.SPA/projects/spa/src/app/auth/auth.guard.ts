@@ -5,6 +5,7 @@ import { AppRoutes } from '../app-routes.constants';
 import { AuthFacade } from '../global-stores/auth/auth.facade';
 import { LocalStorageHelpers } from '../shared/helpers/local-storage.helpers';
 import { AuthGuardModel } from '../shared/models/auth-guard.model';
+import { UserService } from '../shared/services/user.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,8 @@ export class AuthGuard implements CanActivate {
 
   constructor(
     private router: Router,
-    private facade: AuthFacade
+    private facade: AuthFacade,
+    private userService: UserService
   ) {}
 
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
@@ -25,7 +27,7 @@ export class AuthGuard implements CanActivate {
             this.redirectToLogin(route.url.toString());
             return false;
           }
-          return true;
+          return route.data['roles'] == null || this.userService.isInRole(...route.data['roles'] as string[]);
         })
       );
   }

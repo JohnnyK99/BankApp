@@ -1,4 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
+import { AuthActions } from '../auth/auth.actions';
 import { AddressBookActions } from './address-book.actions';
 import { AddressBookState } from './address-book.state';
 
@@ -20,5 +21,9 @@ export const addressBookReducer = createReducer<AddressBookState>(
   on(AddressBookActions.cancelAddingMode, AddressBookActions.addEntrySuccess, (state): AddressBookState => ({
     ...state,
     isAddingMode: false,
+  })),
+  on(AuthActions.logout, (state): AddressBookState => ({
+    ...state,
+    ...initialState,
   }))
 );
