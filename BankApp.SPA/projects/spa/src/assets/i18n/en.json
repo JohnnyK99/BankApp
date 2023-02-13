@@ -24,6 +24,9 @@
         "repeat_password": "Repeat password"
     },
     "dashboard": {
+        "account_type": "Account type",
+        "add_new_account": "Add new account",
+        "balance_for_demonstration": "For demonstrational purposes each new account is loaded with balance of 1000 zł",
         "full_transactions_list": "Full transactions list",
         "main_page": "Main page",
         "new_transaction": "New transaction",
@@ -34,6 +37,7 @@
         "account_types": "Failed to load account types",
         "add_address_book_entry": "Failed to add entry",
         "address_book": "Failed to load the address book",
+        "amount_exceeds_balance": "Amount exceeds current account balance",
         "bank_accounts": "Failed to load bank accounts",
         "create_bank_account": "Failed to create account",
         "create_transaction": "Failed to create transaction",
@@ -41,8 +45,12 @@
         "fetch_clients": "Failed to load clients",
         "fetch_transactions": "Failed to load transactions",
         "login": "Login failed - make sure that credentials are valid",
+        "numbers_need_to_differ": "Account numbers need to differ",
+        "payee_already_exists": "Payee already exists",
+        "incorrect_account_number": "Incorrect account number",
         "register": "Registration failed - try again later",
-        "remove_address_book_entry": "Failed to remove entry"
+        "remove_address_book_entry": "Failed to remove entry",
+        "valid_number_wrong_control_sum": "Number format is valid, but the control sum does not meet the requirements"
     },
     "nav": {
         "main_page": "Dashboard",
@@ -64,9 +72,11 @@
         "transaction_title": "Transaction title"
     },
     "shared": {
+        "account_number": "Account number",
         "back": "Back",
         "cancel": "Cancel",
         "confirm": "Confirm",
+        "name": "Name",
         "next": "Next",
         "none": "-",
         "search": "Search"
@@ -78,6 +88,7 @@
         "remove_address_book_entry": "Entry has been successfully removed"
     },
     "transaction": {
+        "add_new_payee": "Add new payee",
         "amount": "Amount",
         "date": "Transaction date",
         "description": "Description",

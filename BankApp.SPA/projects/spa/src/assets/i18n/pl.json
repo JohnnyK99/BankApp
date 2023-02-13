@@ -24,6 +24,9 @@
         "repeat_password": "Powtórz hasło"
     },
     "dashboard": {
+        "account_type": "Rodzaj konta",
+        "add_new_account": "Dodaj nowe konto",
+        "balance_for_demonstration": "Dla celów demonstracyjnych każde nowe konto otrzymuje balans równy 1000zł",
         "full_transactions_list": "Pełna lista transakcji",
         "main_page": "Strona główna",
         "new_transaction": "Nowa transakcja",
@@ -34,6 +37,7 @@
         "account_types": "Nie udało się pobrać rodzajów kont",
         "add_address_book_entry": "Nie udało się dodać odbiorcy",
         "address_book": "Nie udało się pobrać listy zapisanych odbiorców",
+        "amount_exceeds_balance": "Kwota przekracza stan konta",
         "bank_accounts": "Nie udało się pobrać kont bankowych",
         "create_bank_account": "Nie udało się stworzyć konta",
         "create_transaction": "Nie udało się stworzyć transakcji",
@@ -41,8 +45,12 @@
         "fetch_clients": "Nie udało się pobrać listy klientów",
         "fetch_transactions": "Nie udało się pobrać listy transakcji",
         "login": "Błąd logowania - upewnij się, że dane są poprawne",
+        "numbers_need_to_differ": "Numery kont muszą się różnić",
+        "payee_already_exists": "Odbiorca już istnieje",
+        "incorrect_account_number": "Nieprawidłowy numer konta",
         "register": "Nie udało się zarejestrować konta - spróbuj ponownie później",
-        "remove_address_book_entry": "Nie udało się usunąć odbiorcy"
+        "remove_address_book_entry": "Nie udało się usunąć odbiorcy",
+        "valid_number_wrong_control_sum": "Format numeru jest poprawny, lecz wartość jego sumy kontrolnej nie spełnia wymagań"
     },
     "nav": {
         "main_page": "Strona główna",
@@ -64,9 +72,11 @@
         "transaction_title": "Tytuł transakcji"
     },
     "shared": {
+        "account_number": "Numer konta",
         "back": "Wstecz",
         "cancel": "Anuluj",
         "confirm": "Potwierdź",
+        "name": "Nazwa",
         "next": "Dalej",
         "none": "-",
         "search": "Szukaj"
@@ -78,6 +88,7 @@
         "remove_address_book_entry": "Pomyślnie usunięto odbiorcę"
     },
     "transaction": {
+        "add_new_payee": "Dodaj nowego odbiorcę",
         "amount": "Kwota",
         "date": "Data transakcji",
         "description": "Opis",

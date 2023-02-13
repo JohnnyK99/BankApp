@@ -55,7 +55,7 @@
                 <nz-form-control [nzErrorTip]="amountErrorTip">
                     <input nz-input class="amount-input" mask="separator.2" suffix=" zł" formControlName="amount" id="amount" />
                     <ng-template #amountErrorTip let-control>   
-                        <ng-container *ngIf="control.hasError('amountTooHigh')">Kwota przekracza stan konta</ng-container>
+                        <ng-container *ngIf="control.hasError('amountTooHigh')">{{'error.amount_exceeds_balance' | translate}}</ng-container>
                       </ng-template>
                 </nz-form-control>
             </nz-form-item>
@@ -73,12 +73,12 @@
                     <nz-form-control [nzErrorTip]="numberErrorTip">
                         <input nz-input formControlName="payeeAccountNumber" id="firstName" [mask]="TransactionsConstants.accountNumberMask" [dropSpecialCharacters]="true" />
                         <ng-template #numberErrorTip let-control>   
-                            <ng-container *ngIf="control.hasError('pattern')">Niepoprawny numer konta</ng-container>
+                            <ng-container *ngIf="control.hasError('pattern')">{{'error.incorrect_account_number'}}</ng-container>
                             <ng-container *ngIf="control.hasError('controlSum')">
-                                Niepoprawny numer konta
-                                <span nz-icon nzType="info-circle" nzTheme="outline" nz-tooltip nzTooltipTitle="Format numeru jest poprawny, lecz wartość jego sumy kontrolnej nie spełnia wymagań"></span>
+                                {{'error.incorrect_account_number' | translate}}
+                                <span nz-icon nzType="info-circle" nzTheme="outline" nz-tooltip [nzTooltipTitle]="'error.valid_number_wrong_control_sum' | translate"></span>
                             </ng-container>
-                            <ng-container *ngIf="control.hasError('sameAccount')">Numery konta muszą się różnić</ng-container>
+                            <ng-container *ngIf="control.hasError('sameAccount')">{{'error.numbers_need_to_differ' | translate}}</ng-container>
                           </ng-template>
                     </nz-form-control>
                 </nz-form-item>

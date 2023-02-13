@@ -1,19 +1,19 @@
 <input nz-input [formControl]="filterControl" [placeholder]="'shared.search' | translate">
 <ng-container *ngIf="(facade.isAddingMode$ | async) === false">
-    <button nz-button nzType="primary" class="new-entry-button" (click)="facade.enterAddingMode()">Dodaj nowego odbiorcę</button>
+    <button nz-button nzType="primary" class="new-entry-button" (click)="facade.enterAddingMode()">{{'transaction.add_new_payee' | translate}}</button>
 </ng-container>
 <div *ngIf="facade.isAddingMode$ | async" class="new-entry-wrapper" [formGroup]="formGroup">
     <nz-form-item>
         <nz-form-control>
-            <input placeholder="nazwa" nz-input formControlName="name" id="name" />
+            <input [placeholder]="'shared.name' | translate" nz-input formControlName="name" id="name" />
         </nz-form-control>
     </nz-form-item>
     <nz-form-item>
         <nz-form-control [nzErrorTip]="numberErrorTip">
-            <input placeholder="numer konta" nz-input formControlName="accountNumber" id="accountNumber" [mask]="TransactionsConstants.accountNumberMask" [dropSpecialCharacters]="true" />
+            <input [placeholder]="'shared.account_number' | translate" nz-input formControlName="accountNumber" id="accountNumber" [mask]="TransactionsConstants.accountNumberMask" [dropSpecialCharacters]="true" />
             <ng-template #numberErrorTip let-control>   
-                <ng-container *ngIf="control.hasError('pattern')">Niepoprawny numer konta</ng-container>
-                <ng-container *ngIf="control.hasError('unique')">Odbiorca już istnieje</ng-container>
+                <ng-container *ngIf="control.hasError('pattern')">{{'error.incorrect_account_number' | translate}}</ng-container>
+                <ng-container *ngIf="control.hasError('unique')">{{'error.payee_already_exists' | translate}}</ng-container>
               </ng-template>
         </nz-form-control>
     </nz-form-item>
@@ -24,7 +24,7 @@
 </div>
 <span class="no-entries-label" *ngIf="!(filteredEntries$ | async)?.length">{{'new_transaction.no_recipients' | translate}}</span>
 <nz-radio-group nzButtonStyle="solid" [(ngModel)]="selected" (ngModelChange)="onSelect()">
-    <label nz-radio-button *ngFor="let entry of entries" [nzValue]="entry">
+    <label nz-radio-button *ngFor="let entry of filteredEntries$ | async" [nzValue]="entry">
         <div class="entry">
             <span class="account-name">{{entry.name}}</span>
             <span class="account-description">{{entry.accountNumber | mask: TransactionsConstants.accountNumberMask}}</span>
