@@ -6,7 +6,7 @@ namespace BankApp.Application.Features.Dictionaries.Queries.Existence.AccountTyp
 {
     public class AccountTypeExistenceQuery : IRequest<bool>
     {
-        public int AccountTypeId { get; set; }
+        public int AccountTypeId { get; }
 
         public AccountTypeExistenceQuery(int accountTypeId)
         {

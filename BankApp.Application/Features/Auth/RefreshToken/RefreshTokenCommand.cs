@@ -8,8 +8,8 @@ namespace BankApp.Application.Features.Auth.RefreshToken
 {
     public class RefreshTokenCommand : IRequest<Result<TokenModel>> 
     {
-        public string AccessToken { get; set; }
-        public string RefreshToken { get; set; }
+        public string AccessToken { get; }
+        public string RefreshToken { get; }
 
         public RefreshTokenCommand(
             string accessToken,

@@ -75,7 +75,8 @@ namespace BankApp.API.Controllers.Auth
         [Authorize(Roles = $"{UserRoles.Employee}, {UserRoles.Client}")]
         public async Task<IActionResult> GetClients(string searchBy, CancellationToken cancellationToken)
         {
-            Result<IEnumerable<Client>> clients = await _mediator.Send(new GetClientsQuery(searchBy), cancellationToken);
+            GetClientsQuery query = new(searchBy);
+            Result<IEnumerable<Client>> clients = await _mediator.Send(query, cancellationToken);
             return Ok(clients);
         }
     }

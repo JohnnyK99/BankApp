@@ -1,5 +1,4 @@
-﻿using BankApp.Application.Features.BankAccounts.Queries.GetBankAccount;
-using BankApp.Application.Wrappers.Result;
+﻿using BankApp.Application.Wrappers.Result;
 using MediatR;
 using System;
 using System.Threading;

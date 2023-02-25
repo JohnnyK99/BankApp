@@ -6,7 +6,7 @@ namespace BankApp.Application.Features.Users.Queries.UserExistence
 {
     public class UserExistenceByEmailQuery : IRequest<bool>
     {
-        public string UserEmail { get; set; }
+        public string UserEmail { get; }
 
         public UserExistenceByEmailQuery(string userEmail)
         {

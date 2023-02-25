@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Identity;
 using System.IdentityModel.Tokens.Jwt;
 using System.Threading.Tasks;
 using BankApp.DAL.Helpers.Jwt;
-using BankApp.Application.Wrappers.Result;
 
 namespace BankApp.DAL.Features.Auth.Commands
 {
@@ -45,7 +44,6 @@ namespace BankApp.DAL.Features.Auth.Commands
             };
 
             return model;
-            //return await Result<TokenModel>.SuccessAsync(model);
         }
     }
 }

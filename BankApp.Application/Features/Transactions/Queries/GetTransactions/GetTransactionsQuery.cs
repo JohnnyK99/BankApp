@@ -16,8 +16,8 @@ namespace BankApp.Application.Features.Transactions.Queries.GetTransactions
         public string BankAccountNumber { get; }
         public IEnumerable<TransactionType> TransactionTypes { get; }
         public string SearchBy { get; }
-        public DateTime? DateFrom { get; set; }
-        public DateTime? DateTo { get; set; }
+        public DateTime? DateFrom { get; }
+        public DateTime? DateTo { get; }
         public int PageNumber { get; }
         public int PageSize { get; }
         public string SortColumn { get; }

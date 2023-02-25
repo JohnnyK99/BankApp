@@ -2,7 +2,6 @@
 using BankApp.DAL.Constants;
 using BankApp.DAL.Db.Entities;
 using Microsoft.AspNetCore.Identity;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -22,7 +21,9 @@ namespace BankApp.DAL.Features.Auth.Queries
         {
             IEnumerable<UserEntity> users = await _userManager.GetUsersInRoleAsync(UserRoles.Client);
 
-            return users.Where(user => searchBy == default || string.Concat(user.FirstName, " ", user.LastName).ToLower().Contains(searchBy.ToLower()) || user.Email.Contains(searchBy.ToLower()))
+            return users.Where(user => searchBy == default || 
+                                       string.Concat(user.FirstName, " ", user.LastName).ToLower().Contains(searchBy.ToLower()) || 
+                                       user.Email.Contains(searchBy.ToLower()))
                 .OrderBy(user => user.LastName).ThenBy(user => user.FirstName)
                 .Select(user => new Client()
                 {

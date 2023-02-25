@@ -12,8 +12,8 @@ namespace BankApp.Application.Features.Auth.Registration.Commands
         public string FirstName { get; }
         public string LastName { get; }
         public string Email { get; }
-        public string Password { get; set; }
-        public int? AccountTypeId { get; set; }
+        public string Password { get; }
+        public int? AccountTypeId { get; }
 
         public RegisterUserCommand(
             string firstName,

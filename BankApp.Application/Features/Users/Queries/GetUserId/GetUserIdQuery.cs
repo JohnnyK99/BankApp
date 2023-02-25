@@ -6,7 +6,7 @@ namespace BankApp.Application.Features.Users.Queries.GetUserId
 {
     public class GetUserIdQuery : IRequest<string>
     {
-        public string UserEmail { get; set; }
+        public string UserEmail { get; }
 
         public GetUserIdQuery(string userEmail)
         {

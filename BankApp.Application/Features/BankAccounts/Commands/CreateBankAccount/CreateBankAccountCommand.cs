@@ -7,8 +7,8 @@ namespace BankApp.Application.Features.BankAccounts.Commands.CreateBankAccount
 {
     public class CreateBankAccountCommand : IRequest<Unit>
     {
-        public string UserId { get; set; }
-        public int AccountTypeId { get; set; }
+        public string UserId { get; }
+        public int AccountTypeId { get; }
 
         public CreateBankAccountCommand(string userId, int accountTypeId)
         {

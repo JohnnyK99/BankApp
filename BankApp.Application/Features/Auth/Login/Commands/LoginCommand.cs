@@ -7,8 +7,8 @@ namespace BankApp.Application.Features.Auth.Login.Commands
 {
     public class LoginCommand : IRequest<Result<TokenModel>>
     {
-        public string Email { get; set; }
-        public string Password { get; set; }
+        public string Email { get; }
+        public string Password { get; }
 
         public LoginCommand(
             string email,
