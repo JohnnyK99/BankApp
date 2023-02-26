@@ -15,7 +15,7 @@
                     <nz-option *ngFor="let account of bankAccountsFacade.userBankAccounts$ | async" nzCustomContent [nzValue]="account">
                         <div class="bank-account-option">
                             <div class="bank-account-header">
-                                <span class="account-name">{{account.accountType.translation | translatedField:currentLanguage}}</span>
+                                <span class="account-name">{{account.accountType.translation | translatedField}}</span>
                                 <span class="account-number">{{account.accountNumber | mask: TransactionsConstants.accountNumberMask}}</span>
                             </div>
                             <div class="account-balance">
@@ -27,7 +27,7 @@
                 <ng-template #defaultTemplate let-selected>
                     <div class="bank-account-option">
                         <div class="bank-account-header">
-                            <span class="account-name">{{selected.nzValue.accountType.translation | translatedField:currentLanguage}}</span>
+                            <span class="account-name">{{selected.nzValue.accountType.translation | translatedField}}</span>
                             <span class="account-number">{{selected.nzValue.accountNumber | mask: TransactionsConstants.accountNumberMask}}</span>
                         </div>
                         <div class="account-balance">

@@ -52,8 +52,8 @@
                 <nz-skeleton [nzActive]="true" *ngIf="(dictFacade.accountTypes$ | async) === null"></nz-skeleton>
                 <nz-radio-group *ngIf="(dictFacade.accountTypes$ | async) as accountTypes" [formControl]="initialAccountTypeIdControl" nzButtonStyle="solid">
                     <label nz-radio-button *ngFor="let account of accountTypes" [nzValue]="account.id">
-                        <span class="account-name">{{account.name | translatedField:currentLanguage}}</span>
-                        <span class="account-description">{{account.description | translatedField:currentLanguage}}</span>
+                        <span class="account-name">{{account.name | translatedField}}</span>
+                        <span class="account-description">{{account.description | translatedField}}</span>
                     </label>
                     <label nz-radio-button [nzValue]="null">{{'auth.continue_without_account' | translate}}</label>
                 </nz-radio-group>

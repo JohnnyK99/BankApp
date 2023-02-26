@@ -10,13 +10,13 @@
             <nz-select [(ngModel)]="selectedType" [compareWith]="compareFn" [nzCustomTemplate]="defaultTemplate" class="account-select" nzDropdownClassName="account-type-panel">
                 <nz-option *ngFor="let account of dictionariesFacade.accountTypes$ | async" nzCustomContent [nzValue]="account">
                     <div class="option">
-                        <span class="type-name">{{account.name | translatedField:currentLanguage}}</span>
-                        <span class="type-description">{{account.description | translatedField:currentLanguage}}</span>
+                        <span class="type-name">{{account.name | translatedField}}</span>
+                        <span class="type-description">{{account.description | translatedField}}</span>
                     </div>
                 </nz-option>
             </nz-select>
             <ng-template #defaultTemplate let-selected>
-                {{selected.nzValue.name | translatedField:currentLanguage}}
+                {{selected.nzValue.name | translatedField}}
             </ng-template>
         </nz-form-control>
     </nz-form-item>

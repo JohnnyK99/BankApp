@@ -9,18 +9,17 @@ import {
 } from '@angular/forms';
 import { RegistrationModel } from 'projects/api-client/src/models/auth/registration.model';
 import { AppRoutes } from '../../app-routes.constants';
+import { BaseComponent } from '../../base.component';
 import { AuthFacade } from '../../global-stores/auth/auth.facade';
 import { DictionariesFacade } from '../../global-stores/dictionaries/dictionaries.facade';
 import { AuthStatus } from '../../shared/constants/enums/auth-status.enum';
 import { StringHelpers } from '../../shared/helpers/string.helpers';
-import { TranslationService } from '../../shared/services/translation.service';
-import { TranslatedComponent } from '../../translated.component';
 
 @Component({
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
-export class RegisterComponent extends TranslatedComponent implements OnInit {
+export class RegisterComponent extends BaseComponent implements OnInit {
   readonly AppRoutes = AppRoutes;
   readonly AuthStatus = AuthStatus;
 
@@ -66,15 +65,12 @@ export class RegisterComponent extends TranslatedComponent implements OnInit {
   constructor(
     public authFacade: AuthFacade,
     public dictFacade: DictionariesFacade,
-    private fb: NonNullableFormBuilder,
-    public override translationService: TranslationService
+    private fb: NonNullableFormBuilder
   ) {
-    super(translationService);
+    super();
   }
 
-  override ngOnInit(): void {
-    super.ngOnInit();
-
+  ngOnInit(): void {
     this.dictFacade.getAccountTypes();
 
     this.passwordFormControl.addValidators([this.passwordValidator]);

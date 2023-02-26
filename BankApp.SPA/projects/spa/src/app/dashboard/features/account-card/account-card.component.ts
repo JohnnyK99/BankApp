@@ -7,7 +7,6 @@ import { TransactionDialogComponent } from '../transaction-dialog/transaction-di
 import { TransactionType } from '../../../shared/constants/enums/transaction-type.enum';
 import { TransactionsConstants } from '../../../shared/constants/transactions.constants';
 import { TranslationService } from '../../../shared/services/translation.service';
-import { TranslatedComponent } from '../../../translated.component';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,7 +14,7 @@ import { Router } from '@angular/router';
   templateUrl: './account-card.component.html',
   styleUrls: ['./account-card.component.scss'],
 })
-export class AccountCardComponent extends TranslatedComponent {
+export class AccountCardComponent {
   @Input()
   account: BankAccountTranslated;
 
@@ -26,10 +25,8 @@ export class AccountCardComponent extends TranslatedComponent {
   constructor(
     private modalService: NzModalService,
     private router: Router,
-    public override translationService: TranslationService
-  ) {
-    super(translationService);
-  }
+    private translationService: TranslationService
+  ) {}
 
   openTransactionDialog(transaction: Transaction): void {
     this.modalService.create<TransactionDialogComponent>({

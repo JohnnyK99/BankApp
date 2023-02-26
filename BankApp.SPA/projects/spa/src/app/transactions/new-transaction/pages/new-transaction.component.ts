@@ -13,11 +13,11 @@ import { BankAccountTranslated } from 'projects/api-client/src/models/bank-accou
 import { NewTransaction } from 'projects/api-client/src/models/transactions/new-transaction.model';
 import { filter } from 'rxjs';
 import { AppRoutes } from '../../../app-routes.constants';
+import { BaseComponent } from '../../../base.component';
 import { AddressBookFacade } from '../../../global-stores/address-book/address-book.facade';
 import { BankAccountsFacade } from '../../../global-stores/bank-accounts/bank-accounts.facade';
 import { TransactionsConstants } from '../../../shared/constants/transactions.constants';
 import { TranslationService } from '../../../shared/services/translation.service';
-import { TranslatedComponent } from '../../../translated.component';
 import { TransactionsFacade } from '../../state/transactions.facade';
 import { AddressBookDialogComponent } from '../features/address-book-dialog/address-book-dialog.component';
 import { ConfirmTransactionDialogComponent } from '../features/confirm-transaction-dialog/confirm-transaction-dialog.component';
@@ -26,7 +26,7 @@ import { ConfirmTransactionDialogComponent } from '../features/confirm-transacti
   templateUrl: './new-transaction.component.html',
   styleUrls: ['./new-transaction.component.scss'],
 })
-export class NewTransactionComponent extends TranslatedComponent {
+export class NewTransactionComponent extends BaseComponent {
   readonly TransactionsConstants = TransactionsConstants;
 
   formGroup = this.fb.group({
@@ -65,9 +65,9 @@ export class NewTransactionComponent extends TranslatedComponent {
     private fb: NonNullableFormBuilder,
     private modalService: NzModalService,
     private router: Router,
-    public override translationService: TranslationService
+    private translationService: TranslationService
   ) {
-    super(translationService);
+    super();
     this.bankAccountsFacade.fetchUserBankAccounts();
     this.addressBookFacade.fetchAddressBook();
     this.payeeNameControl.disable({ emitEvent: false });

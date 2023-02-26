@@ -1,5 +1,5 @@
 <div class="header">
-    <span class="account-name">{{account.accountType.translation | translatedField:currentLanguage}}</span>
+    <span class="account-name">{{account.accountType.translation | translatedField}}</span>
     <span class="account-number">{{account.accountNumber | mask: TransactionsConstants.accountNumberMask}}</span>
 </div>
 <div class="account-balance">
