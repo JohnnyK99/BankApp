@@ -1,5 +1,6 @@
 {
     "auth": {
+        "account_choice": "Wybór konta",
         "already_have_account": "Masz już konto?",
         "continue_without_account": "Chcę kontynuować bez wyboru konta",
         "email": "Email",
@@ -19,6 +20,7 @@
             "password_should_contain_at_least": "Hasło powinno zawierać co najmniej:",
             "ten_characters": "dziesięć znaków"
         },
+        "personal_data": "Dane osobowe",
         "register": "Zarejestruj się",
         "register_label": "Zarejestruj",
         "repeat_password": "Powtórz hasło"
@@ -70,6 +72,10 @@
         "transaction_description": "Opis transakcji",
         "transaction_successful": "Transakcja zakończona pomyślnie",
         "transaction_title": "Tytuł transakcji"
+    },
+    "no_access": {
+        "dont_have_access": "Nie masz dostępu do tej zawartości",
+        "redirect_to_dashboard": "Powrót do strony głównej"
     },
     "shared": {
         "account_number": "Numer konta",

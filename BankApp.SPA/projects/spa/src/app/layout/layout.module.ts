@@ -14,6 +14,7 @@ import { ClientSelectorComponent } from './sidenav/client-selector/client-select
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NoAccessComponent } from './no-access/no-access.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     LanguageSelectorComponent,
     SidenavComponent,
     ClientSelectorComponent,
+    NoAccessComponent,
   ],
   imports: [
     CommonModule,

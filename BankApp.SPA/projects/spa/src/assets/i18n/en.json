@@ -1,5 +1,6 @@
 {
     "auth": {
+        "account_choice": "Account choice",
         "already_have_account": "Already have an account?",
         "continue_without_account": "I want to proceed without default account",
         "email": "Email",
@@ -19,6 +20,7 @@
             "password_should_contain_at_least": "Password should contain at least",
             "ten_characters": "ten characters"
         },
+        "personal_data": "Personal data",
         "register": "Register",
         "register_label": "Register",
         "repeat_password": "Repeat password"
@@ -70,6 +72,10 @@
         "transaction_description": "Transaction description",
         "transaction_successful": "Transaction has been successful",
         "transaction_title": "Transaction title"
+    },
+    "no_access": {
+        "dont_have_access": "You don't have access to this content",
+        "redirect_to_dashboard": "Redirect to dashboard"
     },
     "shared": {
         "account_number": "Account number",
