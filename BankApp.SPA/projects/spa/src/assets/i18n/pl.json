@@ -32,8 +32,10 @@
         "full_transactions_list": "Pełna lista transakcji",
         "main_page": "Strona główna",
         "new_transaction": "Nowa transakcja",
+        "no_bank_accounts_to_display": "Brak kont bankowych do wyświetlenia",
         "no_transactions_for_selected_account": "Brak transakcji dla wybranego konta",
         "recent_transactions": "Ostatnie transakcje"
+
     },
     "error": {
         "account_types": "Nie udało się pobrać rodzajów kont",

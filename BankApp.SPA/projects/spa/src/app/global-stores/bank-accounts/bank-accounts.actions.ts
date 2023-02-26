@@ -14,6 +14,9 @@ export const BankAccountsActions = {
   fetchUserBankAccountsFail: createAction(
     '[Bank accounts] Fetch user bank accounts fail'
   ),
+  clearUserBankAccounts: createAction(
+    '[Bank accounts] Clear user bank accounts'
+  ),
   setSelectedBankAccountIndex: createAction(
     '[Bank accounts] Set selected bank account index',
     props<SetSelectedBankAccountIndexProps>()

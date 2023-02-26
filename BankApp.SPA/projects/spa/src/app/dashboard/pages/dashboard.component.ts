@@ -24,6 +24,8 @@ export class DashboardComponent extends BaseComponent implements OnInit {
   ngOnInit(): void {
     if(this.userService.isInRole(UserRoles.Client)) {
       this.facade.fetchUserBankAccounts();
+    } else {
+      this.facade.clearUserBankAccounts();
     }
   }
 }

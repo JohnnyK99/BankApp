@@ -32,6 +32,7 @@
         "full_transactions_list": "Full transactions list",
         "main_page": "Main page",
         "new_transaction": "New transaction",
+        "no_bank_accounts_to_display": "No bank accounts to display",
         "no_transactions_for_selected_account": "There are no transactions for this acount",
         "recent_transactions": "Recent transactions"
     },

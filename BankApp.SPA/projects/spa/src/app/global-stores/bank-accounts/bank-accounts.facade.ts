@@ -25,4 +25,8 @@ export class BankAccountsFacade {
   createBankAccount(accountTypeId: number): void {
     this.store.dispatch(BankAccountsActions.createBankAccount({ accountTypeId }));
   }
+
+  clearUserBankAccounts(): void {
+    this.store.dispatch(BankAccountsActions.clearUserBankAccounts());
+  }
 }

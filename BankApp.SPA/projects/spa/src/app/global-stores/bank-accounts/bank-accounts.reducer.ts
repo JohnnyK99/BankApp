@@ -15,6 +15,10 @@ export const bankAccountsReducer = createReducer<BankAccountsState>(
     bankAccounts: action.bankAccounts,
     selectedBankAccountIndex: state.selectedBankAccountIndex ?? 0,
   })),
+  on(BankAccountsActions.clearUserBankAccounts, (state): BankAccountsState => ({
+    ...state,
+    bankAccounts: [],
+  })),
   on(BankAccountsActions.setSelectedBankAccountIndex, (state, action): BankAccountsState => ({
     ...state,
     selectedBankAccountIndex: action.bankAccountIndex,
