@@ -1,7 +1,7 @@
 <form nz-form [formGroup]="registrationFormGroup">
     <nz-steps [nzCurrent]="step">
-        <nz-step nzTitle="Dane osobowe"></nz-step>
-        <nz-step nzTitle="Wybór konta"></nz-step>
+        <nz-step [nzTitle]="'auth.personal_data' | translate"></nz-step>
+        <nz-step [nzTitle]="'auth.account_choice' | translate"></nz-step>
     </nz-steps>
     <ng-container *ngIf="step === 0">
         <nz-form-item>
@@ -36,9 +36,9 @@
         </nz-form-item>
         <span class="login-redirect">{{'auth.already_have_account' | translate}} <a [routerLink]="'/' + AppRoutes.login">{{'auth.login' | translate}}</a></span>
         <nz-form-item>
-        <nz-form-control>
-            <button nz-button nzType="primary" class="next-button" (click)="moveForward()" [disabled]="!registrationFormGroup.valid">{{'shared.next' | translate}}</button>
-        </nz-form-control>
+            <nz-form-control>
+                <button nz-button nzType="primary" class="next-button" (click)="moveForward()" [disabled]="!registrationFormGroup.valid">{{'shared.next' | translate}}</button>
+            </nz-form-control>
         </nz-form-item>
     </ng-container>
     <ng-container *ngIf="step === 1">

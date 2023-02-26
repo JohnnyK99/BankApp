@@ -3,8 +3,6 @@ import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
 import { first, map, Observable } from 'rxjs';
 import { AppRoutes } from '../app-routes.constants';
 import { AuthFacade } from '../global-stores/auth/auth.facade';
-import { LocalStorageHelpers } from '../shared/helpers/local-storage.helpers';
-import { AuthGuardModel } from '../shared/models/auth-guard.model';
 import { UserService } from '../shared/services/user.service';
 
 @Injectable({
@@ -13,27 +11,46 @@ import { UserService } from '../shared/services/user.service';
 export class AuthGuard implements CanActivate {
 
   constructor(
-    private router: Router,
     private facade: AuthFacade,
+    private router: Router,
     private userService: UserService
   ) {}
 
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
-    return this.facade.guardInfo$
+    return this.facade.isTokenValid$
       .pipe(
         first(),
-        map((model: AuthGuardModel) => {
-          if(!model.token || !model.exp || model.exp < Date.now()) {
-            this.redirectToLogin(route.url.toString());
+        map(isValid => {
+          if(isValid === false) {
+            this.facade.redirectToLogin(this.getFullPath(route));
             return false;
           }
-          return route.data['roles'] == null || this.userService.isInRole(...route.data['roles'] as string[]);
+          if(this.hasValidRole(route.data['roles'] as string[])) {
+            return true;
+          }
+
+          this.redirectToNoAccess();
+          return false;
         })
       );
   }
 
-  private redirectToLogin(targetUrl: string): void {
-    LocalStorageHelpers.setLoginTargetUrl(targetUrl);
-    this.router.navigate([AppRoutes.login]);
+  private hasValidRole(routeRoles: string[]): boolean {
+    if(routeRoles == null || routeRoles.length === 0) {
+      return true;
+    }
+
+    return this.userService.isInRole(...routeRoles);
+  }
+
+  private getFullPath(route: ActivatedRouteSnapshot): string {
+    return '/' + route.pathFromRoot.map(r => r.url)
+      .filter(f => f.length > 0)
+      .map(([f]) => f.path)
+      .join('/');
+  }
+
+  private redirectToNoAccess(): void {
+    this.router.navigate([AppRoutes.noAccess]);
   }
 }

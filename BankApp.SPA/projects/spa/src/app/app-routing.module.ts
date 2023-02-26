@@ -4,6 +4,7 @@ import { AppRoutes } from './app-routes.constants';
 import { AuthGuard } from './auth/auth.guard';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { NoAccessComponent } from './layout/no-access/no-access.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,10 @@ const routes: Routes = [
   {
     path: AppRoutes.login,
     component: LoginComponent,
+  },
+  {
+    path: AppRoutes.noAccess,
+    component: NoAccessComponent,
   },
   {
     path: AppRoutes.register,

@@ -9,11 +9,11 @@ import {
   getAccessToken,
   getAccessTokenExp,
   getAuthStatus,
-  getGuardInfo,
   getInterceptorInfo,
   getRefreshInfo,
   getUserInfo,
-  getUserRoles
+  getUserRoles,
+  isTokenValid
 } from './auth.selectors';
 import { AuthState } from './auth.state';
 
@@ -21,7 +21,7 @@ import { AuthState } from './auth.state';
   providedIn: 'root',
 })
 export class AuthFacade {
-  guardInfo$ = this.store.select(getGuardInfo);
+  isTokenValid$ = this.store.select(isTokenValid);
   interceptorInfo$ = this.store.select(getInterceptorInfo);
   refreshInfo$ = this.store.select(getRefreshInfo);
   authStatus$ = this.store.select(getAuthStatus);
@@ -34,6 +34,10 @@ export class AuthFacade {
 
   constructor(private store: Store<AuthState>) {
     this.initTokenRefresh();
+  }
+
+  redirectToLogin(targetUrl: string): void {
+    this.store.dispatch(AuthActions.redirectToLogin({ targetUrl }));
   }
 
   login(model: LoginModel): void {
@@ -58,12 +62,14 @@ export class AuthFacade {
           return;
         }
 
-        if(timeToExpiry < AuthConstants.timeToRefreshAccessToken) {
+        const timeToRefresh = timeToExpiry - AuthConstants.timeToRefreshAccessToken;
+
+        if(timeToRefresh < 0) { //token is valid, but expires sooner than timeToRefreshAccessToken
           this.store.dispatch(AuthActions.refreshToken());
           return;
         }
 
-        this.startTokenRefreshTimer(timeToExpiry - AuthConstants.timeToRefreshAccessToken);
+        this.startTokenRefreshTimer(timeToRefresh);
       });
   }
 

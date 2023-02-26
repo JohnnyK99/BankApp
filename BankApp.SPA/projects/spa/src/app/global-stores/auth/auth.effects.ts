@@ -11,6 +11,7 @@ import {
   withLatestFrom
 } from 'rxjs';
 import { AppRoutes } from '../../app-routes.constants';
+import { AuthConstants } from '../../shared/constants/auth.constants';
 import { AuthHelpers } from '../../shared/helpers/auth.helpers';
 import { LocalStorageHelpers } from '../../shared/helpers/local-storage.helpers';
 import { AlertService } from '../../shared/services/alert.service';
@@ -19,6 +20,18 @@ import { AuthFacade } from './auth.facade';
 
 @Injectable()
 export class AuthEffects {
+
+  redirectToLogin$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.redirectToLogin),
+      tap(action => {
+        if(AuthConstants.redirectUrlsToIgnore.some(url => !action.targetUrl.includes(url))) {
+          LocalStorageHelpers.setLoginTargetUrl(action.targetUrl);
+        }
+
+        this.router.navigate([AppRoutes.login]);
+      })
+    ), { dispatch: false });
 
   login$ = createEffect(() =>
     this.actions$.pipe(

@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { FeatureState } from '../../shared/constants/enums/feature-state.enum';
-import { AuthGuardModel } from '../../shared/models/auth-guard.model';
+import { AuthHelpers } from '../../shared/helpers/auth.helpers';
 import { AuthInterceptorModel } from '../../shared/models/auth-interceptor.model';
 import { AuthRefreshModel } from '../../shared/models/auth-refresh.model';
 import { AuthState } from './auth.state';
@@ -40,19 +40,17 @@ export const getUserInfo = createSelector(
   } as UserModel)
 );
 
-export const getGuardInfo = createSelector(
-  getAuthState,
-  state => ({
-    token: state.accessToken,
-    exp: state.accessTokenExp,
-  } as AuthGuardModel)
+export const isTokenValid = createSelector(
+  getAccessTokenExp,
+  exp => exp != null && !AuthHelpers.isTokenExpired(exp)
 );
 
 export const getInterceptorInfo = createSelector(
   getAuthState,
-  state => ({
+  isTokenValid,
+  (state, isValid) => ({
     accessToken: state.accessToken,
-    accessTokenExp: state.accessTokenExp,
+    isTokenValid: isValid,
   } as AuthInterceptorModel)
 );
 

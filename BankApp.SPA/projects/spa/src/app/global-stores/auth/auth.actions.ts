@@ -1,6 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 import { LoginSuccessProps } from './props/login-success.props';
 import { LoginProps } from './props/login.props';
+import { RedirectToLoginProps } from './props/redirect-to-login.props';
 import { RefreshTokenSuccessProps } from './props/refresh-token-success.props';
 import { RegisterProps } from './props/register.props';
 
@@ -38,5 +39,9 @@ export const AuthActions = {
   ),
   refreshTokenFail: createAction(
     '[Auth] Refresh token fail'
+  ),
+  redirectToLogin: createAction(
+    '[Auth] Redirect to login',
+    props<RedirectToLoginProps>()
   ),
 };
