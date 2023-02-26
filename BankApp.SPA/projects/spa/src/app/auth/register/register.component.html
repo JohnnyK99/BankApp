@@ -3,7 +3,7 @@
         <nz-step [nzTitle]="'auth.personal_data' | translate"></nz-step>
         <nz-step [nzTitle]="'auth.account_choice' | translate"></nz-step>
     </nz-steps>
-    <ng-container *ngIf="step === 0">
+    <ng-container *ngIf="step === RegistrationStep.PersonalData">
         <nz-form-item>
             <nz-form-label nzRequired nzFor="firstName">{{'auth.first_name' | translate}}</nz-form-label>
             <nz-form-control>
@@ -41,11 +41,11 @@
             </nz-form-control>
         </nz-form-item>
     </ng-container>
-    <ng-container *ngIf="step === 1">
+    <ng-container *ngIf="step === RegistrationStep.AccountChoice">
         <nz-alert nzType="error" 
                   [nzMessage]="'error.register' | translate"
                   class="error-alert"
-                  *ngIf="(authFacade.authStatus$ | async) === AuthStatus.ErrorRegister">  
+                  *ngIf="(authFacade.authStatus$ | async) === AuthStatus.ErrorRegister">
         </nz-alert>
         <nz-form-item>
             <nz-form-control>
@@ -79,27 +79,27 @@
 
 
 
-<ng-template #passwordTooltipTemplate class="password-tooltip">
-    <span>{{'auth.password_rules.password_should_contain_at_least' | translate}}</span>
+<ng-template #passwordTooltipTemplate>
+    <span class="password-tootip-title">{{'auth.password_rules.password_should_contain_at_least' | translate}}</span>
     <div class="password-validation-entry">
-        <span>{{'auth.password_rules.ten_characters' | translate}}</span>
-        <span *ngIf="!hasEnoughCharacters" nz-icon nzType="close" nzTheme="outline" style="color: red;"></span>
-        <span *ngIf="hasEnoughCharacters" nz-icon nzType="check" nzTheme="outline" style="color: green;"></span>
+        <span>{{'auth.password_rules.length' | translate: {minLength: passwordRules.minLength} }}</span>
+        <span *ngIf="!hasEnoughCharacters" nz-icon nzType="close" nzTheme="outline" class="invalid"></span>
+        <span *ngIf="hasEnoughCharacters" nz-icon nzType="check" nzTheme="outline" class="valid"></span>
     </div>
     <div class="password-validation-entry">
-        <span>{{'auth.password_rules.one_capital' | translate}}</span>
-        <span *ngIf="!hasEnoughCapitalLetters" nz-icon nzType="close" nzTheme="outline" style="color: red;"></span>
-        <span *ngIf="hasEnoughCapitalLetters" nz-icon nzType="check" nzTheme="outline" style="color: green;"></span>
+        <span>{{'auth.password_rules.capital_letters' | translate: {minAmount: passwordRules.minCapitalLetters} }}</span>
+        <span *ngIf="!hasEnoughCapitalLetters" nz-icon nzType="close" nzTheme="outline" class="invalid"></span>
+        <span *ngIf="hasEnoughCapitalLetters" nz-icon nzType="check" nzTheme="outline" class="valid"></span>
     </div>
     <div class="password-validation-entry">
-        <span>{{'auth.password_rules.one_digit' | translate}}</span>
-        <span *ngIf="!hasEnoughDigits" nz-icon nzType="close" nzTheme="outline" style="color: red;"></span>
-        <span *ngIf="hasEnoughDigits" nz-icon nzType="check" nzTheme="outline" style="color: green;"></span>
+        <span>{{'auth.password_rules.digits' | translate: {minAmount: passwordRules.minDigits} }}</span>
+        <span *ngIf="!hasEnoughDigits" nz-icon nzType="close" nzTheme="outline" class="invalid"></span>
+        <span *ngIf="hasEnoughDigits" nz-icon nzType="check" nzTheme="outline" class="valid"></span>
     </div>
     <div class="password-validation-entry">
-        <span>{{'auth.password_rules.one_special_character' | translate}}</span>
-        <span *ngIf="!hasEnoughSpecialCharacters" nz-icon nzType="close" nzTheme="outline" style="color: red;"></span>
-        <span *ngIf="hasEnoughSpecialCharacters" nz-icon nzType="check" nzTheme="outline" style="color: green;"></span>
+        <span>{{'auth.password_rules.special_characters' | translate: {minAmount: passwordRules.minSpecialCharacters} }}</span>
+        <span *ngIf="!hasEnoughSpecialCharacters" nz-icon nzType="close" nzTheme="outline" class="invalid"></span>
+        <span *ngIf="hasEnoughSpecialCharacters" nz-icon nzType="check" nzTheme="outline" class="valid"></span>
     </div>
 </ng-template>
 

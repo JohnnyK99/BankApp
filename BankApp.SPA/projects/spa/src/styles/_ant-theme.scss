@@ -107,8 +107,11 @@
     padding: 8px 5px;
 }
 
-
-
 .ant-radio-button-wrapper:not(:first-child)::before {
     display: none;
+}
+
+.ant-tooltip-inner {
+    min-width: max-content;
+    display: grid;
 }

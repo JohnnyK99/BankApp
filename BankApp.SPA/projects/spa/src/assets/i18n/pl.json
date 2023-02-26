@@ -14,11 +14,11 @@
         "no_account": "Nie masz konta?",
         "password": "Hasło",
         "password_rules": {
-            "one_capital": "jedną wielką literę",
-            "one_digit": "jedną cyfrę",
-            "one_special_character": "jeden znak specjalny",
-            "password_should_contain_at_least": "Hasło powinno zawierać co najmniej:",
-            "ten_characters": "dziesięć znaków"
+            "capital_letters": "wielkich liter: {{minAmount}}",
+            "digits": "cyfr: {{minAmount}}",
+            "length": "znaków: {{minLength}}",
+            "special_characters": "znaków specjalnych: {{minAmount}}",
+            "password_should_contain_at_least": "Hasło powinno zawierać co najmniej:"
         },
         "personal_data": "Dane osobowe",
         "register": "Zarejestruj się",

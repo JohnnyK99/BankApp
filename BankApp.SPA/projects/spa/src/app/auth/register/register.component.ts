@@ -12,7 +12,9 @@ import { AppRoutes } from '../../app-routes.constants';
 import { BaseComponent } from '../../base.component';
 import { AuthFacade } from '../../global-stores/auth/auth.facade';
 import { DictionariesFacade } from '../../global-stores/dictionaries/dictionaries.facade';
+import { AuthConstants } from '../../shared/constants/auth.constants';
 import { AuthStatus } from '../../shared/constants/enums/auth-status.enum';
+import { RegistrationStep } from '../../shared/constants/enums/registration-step.enum';
 import { StringHelpers } from '../../shared/helpers/string.helpers';
 
 @Component({
@@ -22,8 +24,10 @@ import { StringHelpers } from '../../shared/helpers/string.helpers';
 export class RegisterComponent extends BaseComponent implements OnInit {
   readonly AppRoutes = AppRoutes;
   readonly AuthStatus = AuthStatus;
+  readonly RegistrationStep = RegistrationStep;
+  readonly passwordRules = AuthConstants.passwordRules;
 
-  step = 0;
+  step = RegistrationStep.PersonalData;
 
   registrationFormGroup = this.fb.group({
     firstName: this.fb.control<string>('', [Validators.required]),
@@ -47,19 +51,19 @@ export class RegisterComponent extends BaseComponent implements OnInit {
   }
 
   get hasEnoughCharacters(): boolean {
-    return this.passwordFormControl.value.length >= 10;
+    return this.passwordFormControl.value.length >= this.passwordRules.minLength;
   }
 
   get hasEnoughCapitalLetters(): boolean {
-    return StringHelpers.getCapitalLettersCount(this.passwordFormControl.value) >= 1;
+    return StringHelpers.getCapitalLettersCount(this.passwordFormControl.value) >= this.passwordRules.minCapitalLetters;
   }
 
   get hasEnoughDigits(): boolean {
-    return StringHelpers.getDigitCount(this.passwordFormControl.value) >= 1;
+    return StringHelpers.getDigitCount(this.passwordFormControl.value) >= this.passwordRules.minDigits;
   }
 
   get hasEnoughSpecialCharacters(): boolean {
-    return StringHelpers.getSpecialCharacterCount(this.passwordFormControl.value, ['!', '@', '#', '$', '%', '^', '&', '*']) >= 1;
+    return StringHelpers.getSpecialCharacterCount(this.passwordFormControl.value, this.passwordRules.specialCharacters) >= this.passwordRules.minSpecialCharacters;
   }
 
   constructor(

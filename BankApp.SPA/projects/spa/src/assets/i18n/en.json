@@ -14,11 +14,11 @@
         "no_account": "Don't have an account?",
         "password": "Password",
         "password_rules": {
-            "one_capital": "one capital letter",
-            "one_digit": "one digit",
-            "one_special_character": "one special character",
-            "password_should_contain_at_least": "Password should contain at least",
-            "ten_characters": "ten characters"
+            "capital_letters": "{{minAmount}} capital letter(s)",
+            "digits": "{{minAmount}} digit(s)",
+            "length": "{{minLength}} character(s)",
+            "special_characters": "{{minAmount}} special character(s)",
+            "password_should_contain_at_least": "Password should contain at least"
         },
         "personal_data": "Personal data",
         "register": "Register",

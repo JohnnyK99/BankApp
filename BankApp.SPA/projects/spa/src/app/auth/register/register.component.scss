@@ -25,10 +25,22 @@ nz-spin {
     margin-top: 20px;
 }
 
+.password-tooltip-title {
+    margin-bottom: 5px;
+}
+
 .password-validation-entry {
     display: grid;
     grid-template-columns: auto 40px;
     align-items: center;
+
+    .valid {
+        color: var(--color-green);
+    }
+
+    .invalid {
+        color: var(--color-red);
+    }
 }
 
 .next-button {
