@@ -18,6 +18,9 @@
   text-align: center;
   gap: 15px;
   padding: 10px 25px;
+  max-width: 300px;
+  margin: auto;
+  
   .anticon {
       font-size: 2.5rem;
   }
@@ -35,6 +38,7 @@
   padding: 10px 0;
   border-radius: 10px;
   cursor: pointer;
+  max-width: 300px;
 
   .arrow-icon {
     grid-row: span 2;

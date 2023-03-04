@@ -1,62 +1,63 @@
 :host {
-    width: 100%;
+  width: 100%;
 }
 
 .content {
-    background-color: var(--color-white);
-    margin-top: 30px;
-    border-radius: 5px;
-    padding: 10px 20px;
-    height: min-content;
+  background-color: var(--color-white);
+  margin-top: 30px;
+  border-radius: 5px;
+  padding: 10px 20px;
+  height: min-content;
+  overflow-x: auto;
 
-    .ant-select {
-        min-width: 290px;
-    }
+  .ant-select {
+    min-width: 290px;
+  }
 
-    .ant-picker {
-        min-width: 150px;
-    }
+  .ant-picker {
+    min-width: 150px;
+  }
 }
 
 .filters {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 15px;
 
-    .left {
-        display: flex;
-        gap: 15px;
-    }
+  .left {
+    display: flex;
+    gap: 15px;
+  }
 }
 
 .button-column {
-    text-align: center;
-    position: relative;
+  text-align: center;
+  position: relative;
 
-    span {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 1.2rem;
-        cursor: pointer;
+  span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.2rem;
+    cursor: pointer;
 
-        &:hover {
-            color: var(--color-accent);
-        }
+    &:hover {
+      color: var(--color-accent);
     }
+  }
 }
 
 hr {
-    width: 80%;
-    margin: 20px auto;
+  width: 80%;
+  margin: 20px auto;
 }
 
 .text-filter {
-    min-width: 240px;
+  min-width: 240px;
 }
 
 ::ng-deep .ant-table {
-    min-height: 475px;
+  min-height: 475px;
 }

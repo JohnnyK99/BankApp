@@ -1,104 +1,110 @@
 @use 'mixins' as *;
 
 :host {
-    background-color: var(--color-white);
-    border-radius: 10px;
-    padding: 15px 20px;
-    display: grid !important;
-    grid-template-rows: 60px auto auto;
-    grid-template-columns: 2fr 1fr;
-    height: 100% !important;
+  background-color: var(--color-white);
+  border-radius: 10px;
+  padding: 15px 20px;
+  display: grid !important;
+  grid-template-rows: 60px auto auto;
+  grid-template-columns: 2fr 1fr;
+  height: 100% !important;
 }
 
 .header {
-    display: grid;
+  display: grid;
 
-    @include lg {
-        grid-column: span 2;
-    }
+  @include sm {
+    grid-column: span 2;
+  }
 }
 
 .account-name {
-    font-size: 1.5rem;
-    font-weight: 500;   
+  font-size: 1.5rem;
+  font-weight: 500;   
 }
 
 .account-balance {
-    display: flex;
-    justify-content: right;
-    align-items: center;
-    font-size: 2rem;
-    font-weight: 500;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 500;
 
-    @include lg {
-        grid-column: span 2;
-        justify-content: left;
-    }
+  @include sm {
+    grid-column: span 2;
+    justify-content: left;
+  }
 }
 
 .no-transactions {
-    grid-column: span 2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;
-    font-weight: 500;
+  grid-column: span 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 
 .transactions-table {
-    grid-column: span 2;
-    display: grid;
-    text-align: center;
-    align-self: center;
-    justify-self: center;
-    width: 90%;
+  grid-column: span 2;
+  display: grid;
+  text-align: center;
+  align-self: center;
+  justify-self: center;
+  width: 90%;
 }
 
 .transactions-table-title {
-    margin-bottom: 10px;
-    font-size: 1.2rem;
-    font-weight: 500;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 
 .transaction {
-    display: grid;
-    grid-template-columns: 1fr 2fr 2fr 1fr;
-    gap: 15px;
-    padding: 5px 0;
-    border-radius: 4px;
-    cursor: pointer;
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr 1fr;
+  gap: 15px;
+  padding: 5px 0;
+  border-radius: 4px;
+  cursor: pointer;
 
-    >span {
-        max-width: 100%;
-        white-space: nowrap;
-        overflow-x: hidden;
-        text-overflow: ellipsis;
-    }
+  >span {
+    max-width: 100%;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+  }
 
-    &--incoming .amount {
-        color: var(--color-green);
-    }
+  &--incoming .amount {
+    color: var(--color-green);
+  }
 
-    &--outcoming .amount {
-        color: var(--color-red);
-    }
+  &--outcoming .amount {
+    color: var(--color-red);
+  }
 
-    &:hover {
-        background-color: var(--color-accent);
-    }
+  &:hover {
+    background-color: var(--color-accent);
+  }
 
-    @include lg {
-        grid-template-columns: 2fr 1fr;
-        .hide-small {
-            display: none;
-        }
+  @include lg {
+    grid-template-columns: 2fr 1fr;
+
+    .hide-small {
+      display: none;
     }
+  }
 }
 
 .account-actions {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 100px;
-    grid-column: span 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+  grid-column: span 2;
+
+  @include sm {
+    display: grid;
+    gap: 0;
+  }
 }

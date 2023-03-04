@@ -1,40 +1,44 @@
 @use 'mixins' as *;
 
 :host {
-    width: 100%;
-    display: grid;
-    gap: 20px;
-    justify-items: center;
-    grid-template-rows: 50px auto;
-    padding-top: 30px;
+  width: 100%;
+  display: grid;
+  gap: 20px;
+  justify-items: center;
+  grid-template-rows: 50px auto;
+  padding-top: 30px;
 }
 
 .carousel-wrapper{
-    width: 65vw;
-    height: 300px;
-    display: flex;
-    align-items: center;
+  width: 65vw;
+  height: 300px;
+  display: flex;
+  align-items: center;
 
-    @include lg {
-        height: 350px;
-    }
+  @include lg {
+    height: 350px;
+  }
 
-    @include sm {
-        width: 95vw;
-    }
+  @include md {
+    width: 95vw;
+  }
+
+  @include sm {
+    height: 400px;
+  }
 }
 
 bnk-new-account-card {
-    margin: 50px auto 0 auto;
-    width: 94%;
+  margin: 50px auto 0 auto;
+  width: 94%;
 }
 
 .empty-carousel-template {
-    height: 100%;
-    width: 90%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--color-white);
-    margin: auto;
+  height: 100%;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-white);
+  margin: auto;
 }

@@ -1,30 +1,30 @@
 :host {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    text-align: center;
-    align-self: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  align-self: center;
 }
 
 .error-alert {
-    position: absolute;
-    top: -50px;
-    left: 0;
-    right: 0;
+  position: absolute;
+  top: -50px;
+  left: 0;
+  right: 0;
 }
 
 form {
-    width: calc(min(400px, 100%));
-    position: relative;
+  width: calc(min(400px, 100%));
+  position: relative;
 }
 
 .example-data-button {
-    margin: 5px 0;
-    width: 80%;
-    justify-self: center;
+  margin: 5px 0;
+  width: 80%;
+  justify-self: center;
 }
 
 .login-button,
 nz-spin {
-    margin-top: 20px;
+  margin-top: 20px;
 }

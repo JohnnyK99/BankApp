@@ -1,67 +1,67 @@
 :host {
-    display: grid;
+  display: grid;
 }
 
 .new-entry-button {
-    margin-top: 10px;
-    justify-self: center;
+  margin-top: 10px;
+  justify-self: center;
 }
 
 .new-entry-wrapper {
-    margin-top: 10px;
-    border: 1px solid var(--color-border-gray);
-    padding: 10px;
-    display: grid;
-    grid-template-columns: 2fr 3fr;
-    column-gap: 10px;
-    border-radius: 5px;
+  margin-top: 10px;
+  border: 1px solid var(--color-border-gray);
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  column-gap: 10px;
+  border-radius: 5px;
 
-    .actions {
-        grid-column: span 2;
-        display: flex;
-        justify-content: space-around;
-    }
+  .actions {
+    grid-column: span 2;
+    display: flex;
+    justify-content: space-around;
+  }
 }
 
 .new-entry-title {
-    grid-column: span 2;
+  grid-column: span 2;
 }
 
 .ant-radio-group {
-    display: grid;
-    gap: 5px;
-    margin: 20px 0;
+  display: grid;
+  gap: 5px;
+  margin: 20px 0;
 }
 
 .no-entries-label {
-    display: grid;
-    text-align: center;
+  display: grid;
+  text-align: center;
 }
 
 .ant-radio-button-wrapper {
-    height: initial;
-    line-height: 25px;
+  height: initial;
+  line-height: 25px;
 
-    > ::ng-deep  span:last-child {
-        display: grid;
-        padding-block: 5px;
-    }
+  > ::ng-deep  span:last-child {
+    display: grid;
+    padding-block: 5px;
+  }
 }
 
 .entry {
-    position: relative;
-    display: grid;
+  position: relative;
+  display: grid;
 }
 
 .delete-entry-icon {
-    position: absolute;
-    right: 10px;
-    padding: 10px;
-    top: 50%;
-    transform: translate(0, -50%);
-    border-radius: 5px;
+  position: absolute;
+  right: 10px;
+  padding: 10px;
+  top: 50%;
+  transform: translate(0, -50%);
+  border-radius: 5px;
 
-    &:hover {
-        background-color: var(--color-accent-hover);
-    }
+  &:hover {
+    background-color: var(--color-accent-hover);
+  }
 }

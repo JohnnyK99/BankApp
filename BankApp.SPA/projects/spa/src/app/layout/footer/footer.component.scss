@@ -1,37 +1,40 @@
 @use 'mixins' as *;
 
 :host {
-    min-height: 40px;
-    padding: 10px 20px;
-    padding-right: 25%;
-    background-color: var(--color-secondary);
-    display: grid;
-    width: 120%;
-    gap: 10px;
+  min-height: 40px;
+  padding: 10px 20px;
+  padding-right: 25%;
+  background-color: var(--color-secondary);
+  display: grid;
+  width: 120%;
+  gap: 10px;
 
-    @include sm {
-        width: 100%;
-        padding-right: 20px;
-    }
+  @include md {
+    width: 100%;
+    padding-right: 20px;
+    height: 70px;
+    position: absolute;
+    bottom: 0;
+  }
 }
 
 span {
-    color: var(--color-white);
+  color: var(--color-white);
 
-    &.created-by {
-        text-align: center;
-    }
+  &.created-by {
+    text-align: center;
+  }
 }
 
 .icons {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 
-    .anticon {
-        font-size: 1.3rem;
-        
-        &:hover {
-            color: var(--color-accent);
-        }
+  .anticon {
+    font-size: 1.3rem;
+    
+    &:hover {
+      color: var(--color-accent);
     }
+  }
 }

@@ -1,117 +1,119 @@
 .ant-btn:not(.ant-btn-icon-only, .ant-btn[disabled]):hover,
 .ant-radio-button-wrapper:hover {
-    background-color: var(--color-accent);
-    color: var(--color-black);
+  background-color: var(--color-accent);
+  color: var(--color-black);
 }
 
 .ant-btn-primary,
 .ant-radio-button-wrapper {
-    color: var(--color-text);
-    border-radius: 5px !important;
-    border-left-width: 1px;
+  color: var(--color-text);
+  border-radius: 5px !important;
+  border-left-width: 1px;
 }
 
 .ant-btn-primary:not([disabled]):hover {
-    background-color: var(--color-accent-hover) !important;
-    border-color: var(--color-accent-hover); 
+  background-color: var(--color-accent-hover) !important;
+  border-color: var(--color-accent-hover); 
 }
 
 .ant-btn:focus {
-    color: var(--color-text);
+  color: var(--color-text);
 }
 
 .ant-input {
-    &:hover {
-        border-color: var(--color-primary);
-    }
+  &:hover {
+    border-color: var(--color-primary);
+  }
 
-    &:focus {
-        border-color: var(--color-primary);
-        box-shadow: 0 0 0 2px var(--color-primary-light);
-    }
+  &:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px var(--color-primary-light);
+  }
 }
 
 .ant-select-item-empty {
-    display: none;
+  display: none;
 }
 
 .ant-select-selection-placeholder {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .ant-select-selection-search-input {
-    height: 100% !important;
+  height: 100% !important;
 }
 
 .ant-table-tbody > tr.ant-table-row:hover > td {
-    background-color: initial;
+  background-color: initial;
 }
 
 .ant-table-row {
-    &--green .amount-col {
-        color: var(--color-green);
-        &:hover {
-            background-color: var(--color-background-green-hover);
-        }
-    }
+  &--green .amount-col {
+    color: var(--color-green);
 
-    &--red .amount-col {
-        color: var(--color-red);
-        &:hover {
-            background-color: var(--color-background-red-hover);
-        }
+    &:hover {
+      background-color: var(--color-background-green-hover);
     }
+  }
+
+  &--red .amount-col {
+    color: var(--color-red);
+
+    &:hover {
+      background-color: var(--color-background-red-hover);
+    }
+  }
 }
 
 .ant-carousel .slick-dots {
-    left: initial;
-    margin-right: 10px;
-    margin-left: 0;
-    pointer-events: none;
+  left: initial;
+  margin-right: 10px;
+  margin-left: 0;
+  pointer-events: none;
 
-    li {
-        border: 1px solid var(--color-accent);
-        border-radius: 10px;
+  li {
+    border: 1px solid var(--color-accent);
+    border-radius: 10px;
 
-        &.slick-active {
-            width: 16px;
-            background-color: var(--color-accent);
+    &.slick-active {
+      width: 16px;
+      background-color: var(--color-accent);
 
-             button{
-                 background-color: var(--color-accent);
-             }
-        }
+      button{
+        background-color: var(--color-accent);
+      }
     }
+  }
 }
 
 .ant-steps-item-process > .ant-steps-item-container > .ant-steps-item-icon .ant-steps-icon {
-    color: var(--color-black);
+  color: var(--color-black);
 }
 
 .ant-steps-item-process > .ant-steps-item-container > .ant-steps-item-content > .ant-steps-item-title::after {
-    background-color: var(--color-gray);
+  background-color: var(--color-gray);
 }
 
 .ant-radio-group-solid .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
-    color: var(--color-text);
+  color: var(--color-text);
 
-    &:hover {
-        background-color: var(--color-accent);
-        color: var(--color-text);
-    }
+  &:hover {
+    background-color: var(--color-accent);
+    color: var(--color-text);
+  }
 }
 
 .ant-table-tbody > tr > td,
 .ant-table-thead > tr > th {
-    padding: 8px 5px;
+  padding: 8px 5px;
 }
 
 .ant-radio-button-wrapper:not(:first-child)::before {
-    display: none;
+  display: none;
 }
 
 .ant-tooltip-inner {
-    min-width: max-content;
-    display: grid;
+  min-width: max-content;
+  display: grid;
 }

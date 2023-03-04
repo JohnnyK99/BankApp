@@ -1,76 +1,76 @@
 :host {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    text-align: center;
-    align-self: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  align-self: center;
 }
 
 .error-alert {
-    position: absolute;
-    top: -70px;
+  position: absolute;
+  top: -70px;
 }
 
 form {
-    width: calc(min(400px, 100%));
-    position: relative;
+  width: calc(min(400px, 100%));
+  position: relative;
 }
 
 .example-data-button {
-    margin: 5px 0;
+  margin: 5px 0;
 }
 
 .login-button,
 nz-spin {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .password-tooltip-title {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 .password-validation-entry {
-    display: grid;
-    grid-template-columns: auto 40px;
-    align-items: center;
+  display: grid;
+  grid-template-columns: auto 40px;
+  align-items: center;
 
-    .valid {
-        color: var(--color-green);
-    }
+  .valid {
+    color: var(--color-green);
+  }
 
-    .invalid {
-        color: var(--color-red);
-    }
+  .invalid {
+    color: var(--color-red);
+  }
 }
 
 .next-button {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .buttons {
-    display: grid;
-    gap: 10px;
+  display: grid;
+  gap: 10px;
 }
 
 .ant-radio-group {
-    display: grid;
-    gap: 15px;
+  display: grid;
+  gap: 15px;
 }
 
 .ant-radio-button-wrapper {
-    height: initial;
+  height: initial;
 
-    > ::ng-deep  span:last-child {
-        display: grid;
-        padding-block: 5px;
-    }
+  > ::ng-deep  span:last-child {
+    display: grid;
+    padding-block: 5px;
+  }
 }
 
 .account-name {
-    font-size: 1.2rem;
-    font-weight: 500;
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 
 .ant-steps {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }

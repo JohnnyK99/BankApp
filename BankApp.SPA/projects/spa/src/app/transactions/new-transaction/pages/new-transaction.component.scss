@@ -1,102 +1,146 @@
-:host {
-    width: 100%;
-    --account-select-option-height: 60px;
+@use 'mixins' as *;
 
-    ::ng-deep .ant-select-selection-item {
-        .bank-account-option {
-            margin-right: 30px;
-        }
+:host {
+  width: 100%;
+  --account-select-option-height: 60px;
+
+  ::ng-deep .ant-select-selection-item {
+    .bank-account-option {
+      margin-right: 30px;
     }
-    
-    ::ng-deep .ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
-        height: calc(var(--account-select-option-height) + 20px);
-        padding: 10px;
-    }
+  }
+  
+  ::ng-deep .ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+    height: calc(var(--account-select-option-height) + 20px);
+    padding: 10px;
+  }
+
+  @include md {
+    --account-select-option-height: 95px;
+  }
+
+  @include sm {
+    --account-select-option-height: 120px;
+  }
 }
 
 form {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    row-gap: 50px;
-    column-gap: 150px;
-    align-items: flex-start;
-    background-color: var(--color-white);
-    border-radius: 5px;
-    padding: 10px 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 50px;
+  column-gap: 150px;
+  align-items: flex-start;
+  background-color: var(--color-white);
+  border-radius: 5px;
+  padding: 10px 20px;
+
+  @include xl {
+    grid-template-columns: 1fr;
+    row-gap: 10px;
+  }
 }
 
 .content {
-    margin-top: 30px;
-    padding: 0 100px;
+  margin-top: 30px;
+  padding: 0 65px;
+
+  @include sm {
+    padding: 0;
+  }
 }
 
 .payee-info {
-    display: grid;
-    grid-template-columns: auto 100px;
+  display: grid;
+  grid-template-columns: auto 100px;
+
+  @include sm {
+    grid-template-columns: 1fr;
+  }
 }
 
 .contacts-icon {
-    font-size: 3rem;
-    cursor: pointer;
-    height: min-content;
-    width: min-content;
-    align-self: center;
-    justify-self: center;
+  font-size: 3rem;
+  cursor: pointer;
+  height: min-content;
+  width: min-content;
+  align-self: center;
+  justify-self: center;
 
-    &:hover {
-        color: var(--color-accent);
-    }
+  &:hover {
+    color: var(--color-accent);
+  }
 }
 
 nz-select {
-    min-width: 470px;
+  min-width: 470px;
+
+  @include md {
+    min-width: unset;
+  }
 }
 
 .bank-account-header {
-    display: grid;
+  display: grid;
 }
 
 .bank-account-option {
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
-    height: var(--account-select-option-height);
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  height: var(--account-select-option-height);
+
+  @include md {
+    display: grid;
+    gap: 0;
+  }
+
+  @include sm {
+    span {
+      white-space: normal;
+    }
+  }
 }
 
 .amount-input {
-    width: 250px;
+  width: 250px;
 }
 
 .account-name {
-    font-size: 1.5rem;
-    font-weight: 500;   
+  font-size: 1.5rem;
+  font-weight: 500;   
 }
 
 .account-select {
-    ::ng-deep .ant-select-selection-item {
-        padding-right: 0 !important;
-    }
-
+  ::ng-deep .ant-select-selection-item {
+    padding-right: 0 !important;
+  }
 }
 
 .account-balance {
-    display: flex;
-    justify-content: right;
-    align-items: center;
-    font-size: 2rem;
-    font-weight: 500;
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 500;
 }
 
 .transaction-info {
-    grid-row: span 2;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  grid-row: span 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .accept-button {
-    grid-column: span 2;
-    width: 150px;
-    justify-self: center;
+  grid-column: span 2;
+  width: 150px;
+  justify-self: center;
+
+  @include xl {
+    grid-column: span 1;
+  }
+}
+
+.account-number {
+  line-height: 1rem;
 }

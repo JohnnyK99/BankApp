@@ -1,41 +1,44 @@
 @use 'mixins' as *;
 
 .body {
-    display: flex;
-    justify-content: space-between;
-    background-color: var(--color-primary);
-    min-height: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--color-primary);
+  min-height: 100%;
 
-    @include sm {
-        display: grid;
-        justify-content: initial;
-    }
+  @include md {
+    position: relative;
+    flex-direction: column;
+    justify-content: initial;
+  }
 }
 
 .sidenav {
-    transition: 0.5s;
+  transition: 0.5s;
 
-    &--authorized {
-        width: 250px;
-    }
+  &--authorized {
+    width: 250px;
+  }
 
-    &--unauthorized {
-        width: 30%;
-    }
+  &--unauthorized {
+    width: 30%;
+  }
 
-    @include sm {
-        width: 100%;
-    }
+  @include md {
+    width: 100%;
+  }
 }
 
 .content {
-    background-color: var(--color-background);
-    border-radius: 35px 0 0 35px;
-    display: flex;
-    flex: 1;
-    padding: 15px;
+  background-color: var(--color-background);
+  border-radius: 35px 0 0 35px;
+  display: flex;
+  flex: 1;
+  padding: 15px;
+  overflow-x: auto;
 
-    @include sm {
-        border-radius: 35px 35px 0 0;
-    }
+  @include md {
+    border-radius: 0;
+    margin-bottom: 70px;
+  }
 }
