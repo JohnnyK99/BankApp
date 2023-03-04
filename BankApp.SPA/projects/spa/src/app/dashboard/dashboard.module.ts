@@ -21,6 +21,7 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { FormsModule } from '@angular/forms';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { NzAlertModule } from 'ng-zorro-antd/alert';
     NzFormModule,
     NzAlertModule,
     NzSelectModule,
+    NzToolTipModule,
     NzIconModule.forChild([LeftOutline, RightOutline]),
     NgxMaskModule.forChild(),
     TranslatedFieldPipe,

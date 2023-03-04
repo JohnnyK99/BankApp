@@ -1,6 +1,6 @@
 <nz-form-item>
     <nz-form-control>
-        <nz-select [formControl]="clientControl" nzPlaceHolder="Wybierz klienta" [nzCustomTemplate]="defaultTemplate" nzShowSearch nzServerSearch (nzOnSearch)="facade.fetchClients($event)" class="client-select" nzDropdownClassName="client-options-panel">
+        <nz-select [formControl]="clientControl" [nzPlaceHolder]="'nav.select_client' | translate" [nzCustomTemplate]="defaultTemplate" nzShowSearch nzServerSearch (nzOnSearch)="facade.fetchClients($event)" class="client-select" nzDropdownClassName="client-options-panel">
             <nz-option *ngFor="let client of facade.clients$ | async" nzCustomContent [nzValue]="client">
                 <div class="client-option">
                     <span>{{client.firstName}} {{client.lastName}}</span>

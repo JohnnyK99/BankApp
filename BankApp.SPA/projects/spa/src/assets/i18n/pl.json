@@ -29,6 +29,7 @@
         "account_type": "Rodzaj konta",
         "add_new_account": "Dodaj nowe konto",
         "balance_for_demonstration": "Dla celów demonstracyjnych każde nowe konto otrzymuje balans równy 1000zł",
+        "client_not_selected": "Nie wybrano klienta",
         "full_transactions_list": "Pełna lista transakcji",
         "main_page": "Strona główna",
         "new_transaction": "Nowa transakcja",
@@ -59,6 +60,7 @@
     "nav": {
         "main_page": "Strona główna",
         "new_transaction": "Nowa transakcja",
+        "select_client": "Wybierz klienta",
         "transactions_list": "Lista transakcji"
     },
     "new_transaction": {

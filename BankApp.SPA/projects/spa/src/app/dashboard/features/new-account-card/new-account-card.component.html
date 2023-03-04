@@ -22,7 +22,15 @@
     </nz-form-item>
     <div class="actions">
         <button nz-button nzType="default" (click)="onCancel()">{{'shared.cancel' | translate}}</button>
-        <button nz-button nzType="primary" (click)="onAdd()" [disabled]="selectedType === null">{{'shared.confirm' | translate}}</button>
+        <div *ngIf="(userService.isInRole(UserRoles.Employee) && (clientsFacade.selectedClientId$ | async) === null); else active" 
+              nz-tooltip [nzTooltipTitle]="'dashboard.client_not_selected' | translate">
+            <button nz-button disabled>{{'shared.confirm' | translate}}</button>
+        </div>
+        <ng-template #active>
+            <button nz-button nzType="primary" [disabled]="selectedType === null" (click)="onAdd()">
+                {{'shared.confirm' | translate}}
+            </button>
+        </ng-template>
     </div>
 </div>
 

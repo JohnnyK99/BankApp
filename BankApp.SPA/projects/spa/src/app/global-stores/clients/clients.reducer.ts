@@ -1,4 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
+import { AuthActions } from '../auth/auth.actions';
 import { ClientsActions } from './clients.actions';
 import { ClientsState } from './clients.state';
 
@@ -16,5 +17,9 @@ export const clientsReducer = createReducer<ClientsState>(
   on(ClientsActions.setSelectedClientId, (state, action): ClientsState => ({
     ...state,
     selectedClientId: action.id,
+  })),
+  on(AuthActions.logout, (state): ClientsState => ({
+    ...state,
+    ...initialState,
   }))
 );
