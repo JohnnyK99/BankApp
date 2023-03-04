@@ -98,7 +98,7 @@ export class NewTransactionComponent extends BaseComponent {
       this.formGroup.patchValue({
         payeeName: result.name,
         payeeAccountNumber: result.accountNumber,
-      }, { emitEvent: false, onlySelf: true });
+      }, { emitEvent: false });
 
       this.payeeAccountNumberControl.markAsDirty();
       this.payeeAccountNumberControl.updateValueAndValidity();
@@ -123,6 +123,10 @@ export class NewTransactionComponent extends BaseComponent {
 
   goBack(): void {
     this.router.navigate([AppRoutes.dashboard]);
+  }
+
+  clearPayeeName(): void {
+    this.payeeNameControl.setValue('');
   }
 
   private amountValidator: ValidatorFn = (): ValidationErrors | null => {

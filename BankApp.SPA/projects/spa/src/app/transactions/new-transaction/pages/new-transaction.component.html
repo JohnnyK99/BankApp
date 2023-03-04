@@ -71,9 +71,9 @@
                 <nz-form-item>
                     <nz-form-label nzRequired nzFor="payeeAccountNumber">{{'new_transaction.payee_account_number' | translate}}</nz-form-label>
                     <nz-form-control [nzErrorTip]="numberErrorTip">
-                        <input nz-input formControlName="payeeAccountNumber" id="firstName" [mask]="TransactionsConstants.accountNumberMask" [dropSpecialCharacters]="true" />
+                        <input nz-input formControlName="payeeAccountNumber" id="firstName" [mask]="TransactionsConstants.accountNumberMask" [dropSpecialCharacters]="true" (keydown)="clearPayeeName()" />
                         <ng-template #numberErrorTip let-control>   
-                            <ng-container *ngIf="control.hasError('pattern')">{{'error.incorrect_account_number'}}</ng-container>
+                            <ng-container *ngIf="control.hasError('pattern')">{{'error.incorrect_account_number' | translate}}</ng-container>
                             <ng-container *ngIf="control.hasError('controlSum')">
                                 {{'error.incorrect_account_number' | translate}}
                                 <span nz-icon nzType="info-circle" nzTheme="outline" nz-tooltip [nzTooltipTitle]="'error.valid_number_wrong_control_sum' | translate"></span>
