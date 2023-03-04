@@ -57,7 +57,7 @@
                         <td>{{transaction.title}}</td>
                         <td>{{transaction.description}}</td>
                         <td>{{transaction.date | date:'dd.MM.yyyy HH:mm:ss'}}</td>
-                        <td class="amount-col">{{transaction.amount | mask:"separator.2"}} zł</td>
+                        <td class="amount-col">${{transaction.amount | mask:"separator.2"}}</td>
                         <td>{{transaction.transactionType === TransactionType.Incoming ? ('transaction_type.incoming' | translate) : ('transaction_type.outcoming' | translate)}}</td>
                         <td class="button-column">
                             <span nz-icon nzType="cloud-download" nzTheme="outline" (click)="transactionsFacade.downloadConfirmation(transaction.id)"></span>

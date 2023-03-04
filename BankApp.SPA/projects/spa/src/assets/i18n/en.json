@@ -28,7 +28,7 @@
     "dashboard": {
         "account_type": "Account type",
         "add_new_account": "Add new account",
-        "balance_for_demonstration": "For demonstrational purposes each new account is loaded with balance of 1000 zł",
+        "balance_for_demonstration": "For demonstrational purposes each new account is loaded with balance of $1000 ",
         "client_not_selected": "Client has not been selected",
         "full_transactions_list": "Full transactions list",
         "main_page": "Main page",

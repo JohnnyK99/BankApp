@@ -3,7 +3,7 @@
     <span class="account-number">{{account.accountNumber | mask: TransactionsConstants.accountNumberMask}}</span>
 </div>
 <div class="account-balance">
-    {{account.balance | mask:'separator'}} zł
+    ${{account.balance | mask:'separator'}}
 </div>
 
 <div class="no-transactions" *ngIf="account.recentTransactions.length === 0">
@@ -18,7 +18,7 @@
             <span class="hide-small" *ngIf="transaction.transactionType === TransactionType.Incoming">{{transaction.accountNumberFrom | mask:TransactionsConstants.accountNumberMask}}</span>
             <span class="hide-small" *ngIf="transaction.transactionType === TransactionType.Outcoming">{{transaction.accountNumberTo | mask:TransactionsConstants.accountNumberMask}}</span>
             <span>{{transaction.title}}</span>
-            <span class="amount">{{transaction.amount | mask:'separator'}} zł</span>
+            <span class="amount">${{transaction.amount | mask:'separator'}}</span>
         </div>
         <hr *ngIf="i !== account.recentTransactions.length-1">
     </div>

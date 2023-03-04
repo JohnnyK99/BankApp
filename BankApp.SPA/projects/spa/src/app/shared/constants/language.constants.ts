@@ -13,5 +13,5 @@ export const LanguageConstants = {
       flag: './assets/icons/flags/gb.svg',
     },
   ] as LanguageModel[],
-  defaultLanguageCode: 'pl',
+  defaultLanguageCode: 'en',
 };

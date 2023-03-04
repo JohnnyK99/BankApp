@@ -19,7 +19,7 @@
                                 <span class="account-number">{{account.accountNumber | mask: TransactionsConstants.accountNumberMask}}</span>
                             </div>
                             <div class="account-balance">
-                                {{account.balance | mask:'separator'}} zł
+                                ${{account.balance | mask:'separator'}}
                             </div>
                         </div>
                     </nz-option>
@@ -31,7 +31,7 @@
                             <span class="account-number">{{selected.nzValue.accountNumber | mask: TransactionsConstants.accountNumberMask}}</span>
                         </div>
                         <div class="account-balance">
-                            {{selected.nzValue.balance | mask:'separator'}} zł
+                            ${{selected.nzValue.balance | mask:'separator'}}
                         </div>
                     </div>
                 </ng-template>
@@ -53,7 +53,7 @@
             <nz-form-item>
                 <nz-form-label nzRequired nzFor="amount">{{'new_transaction.amount' | translate}}</nz-form-label>
                 <nz-form-control [nzErrorTip]="amountErrorTip">
-                    <input nz-input class="amount-input" mask="separator.2" suffix=" zł" formControlName="amount" id="amount" />
+                    <input nz-input class="amount-input" mask="separator.2" prefix="$" formControlName="amount" id="amount" />
                     <ng-template #amountErrorTip let-control>   
                         <ng-container *ngIf="control.hasError('amountTooHigh')">{{'error.amount_exceeds_balance' | translate}}</ng-container>
                       </ng-template>

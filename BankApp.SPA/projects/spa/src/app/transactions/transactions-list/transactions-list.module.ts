@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
@@ -28,8 +29,6 @@ import { NzFormModule } from 'ng-zorro-antd/form';
     NzInputModule,
     NzDatePickerModule,
     NzTableModule,
-  ],
-  exports: [
   ],
 })
 export class TransactionsListModule { }

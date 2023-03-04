@@ -22,7 +22,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { registerLocaleData } from '@angular/common';
 
 import pl from '@angular/common/locales/pl';
-import { NZ_I18N, pl_PL } from 'ng-zorro-antd/i18n';
+import { en_GB, NZ_I18N } from 'ng-zorro-antd/i18n';
 
 registerLocaleData(pl);
 
@@ -69,7 +69,7 @@ const apiClientConfig: ApiClientConfigModel = {
     },
     {
       provide: NZ_I18N,
-      useValue: pl_PL,
+      useValue: en_GB,
     },
   ],
   bootstrap: [AppComponent],

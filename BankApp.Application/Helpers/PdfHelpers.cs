@@ -46,7 +46,7 @@ namespace BankApp.Application.Helpers
             gfx.DrawString(transaction.Date.ToString("dd.MM.yyyy HH:mm:ss"), fontNormal, XBrushes.Black, new XRect((page.Width - 20) / 2, 255, page.Width - 20, 40), XStringFormats.CenterLeft);
 
             gfx.DrawString("Kwota", fontLabel, XBrushes.Black, new XRect(20, 295, (page.Width - 20) / 2, 40), XStringFormats.CenterLeft);
-            gfx.DrawString($"{transaction.Amount} zł", fontNormal, XBrushes.Black, new XRect((page.Width - 20) / 2, 295, page.Width - 20, 40), XStringFormats.CenterLeft);
+            gfx.DrawString($"${transaction.Amount}", fontNormal, XBrushes.Black, new XRect((page.Width - 20) / 2, 295, page.Width - 20, 40), XStringFormats.CenterLeft);
 
             Stream stream = new MemoryStream();
             document.Save(stream);

@@ -12,5 +12,5 @@
     <span *ngIf="transaction.description.length > 0">{{transaction.description}}</span>
 </bnk-info-item>
 <bnk-info-item [subtitle]="'transaction.amount' | translate">
-    <span class="amount">{{transaction.amount}} zł</span>
+    <span class="amount">${{transaction.amount}}</span>
 </bnk-info-item>
