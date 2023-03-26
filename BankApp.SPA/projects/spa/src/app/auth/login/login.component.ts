@@ -3,6 +3,7 @@ import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { AppRoutes } from '../../shared/constants/routes/app-routes.constants';
 import { AuthFacade } from '../../global-stores/auth/auth.facade';
 import { AuthStatus } from '../../shared/constants/enums/auth-status.enum';
+import { StringValidators } from '../../shared/validators/string-validators';
 
 @Component({
   templateUrl: './login.component.html',
@@ -13,8 +14,8 @@ export class LoginComponent {
   readonly AppRoutes = AppRoutes;
 
   loginFormGroup = this.fb.group({
-    email: this.fb.control<string>('', [Validators.required, Validators.email]),
-    password: this.fb.control<string>('', [Validators.required]),
+    email: this.fb.control<string>('', [StringValidators.required, Validators.email]),
+    password: this.fb.control<string>('', [StringValidators.required]),
   });
 
   constructor(

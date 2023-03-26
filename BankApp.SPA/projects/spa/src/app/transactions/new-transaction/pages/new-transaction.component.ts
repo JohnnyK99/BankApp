@@ -21,6 +21,7 @@ import { TranslationService } from '../../../shared/services/translation.service
 import { TransactionsFacade } from '../../state/transactions.facade';
 import { AddressBookDialogComponent } from '../features/address-book-dialog/address-book-dialog.component';
 import { ConfirmTransactionDialogComponent } from '../features/confirm-transaction-dialog/confirm-transaction-dialog.component';
+import { StringValidators } from '../../../shared/validators/string-validators';
 
 @Component({
   templateUrl: './new-transaction.component.html',
@@ -31,10 +32,10 @@ export class NewTransactionComponent extends BaseComponent implements OnInit {
 
   formGroup = this.fb.group({
     selectedAccount: this.fb.control<BankAccountTranslated | null>(null, Validators.required),
-    payeeAccountNumber: this.fb.control<string>('', [Validators.required, Validators.pattern(TransactionsConstants.accountNumberRegex)]),
+    payeeAccountNumber: this.fb.control<string>('', [StringValidators.required, Validators.pattern(TransactionsConstants.accountNumberRegex)]),
     payeeName: this.fb.control<string>(''),
     amount: this.fb.control<number | null>(null, [Validators.required, Validators.min(TransactionsConstants.minTransactionAmount)]),
-    title: this.fb.control<string>('', Validators.required),
+    title: this.fb.control<string>('', StringValidators.required),
     description: this.fb.control<string>(''),
   });
 

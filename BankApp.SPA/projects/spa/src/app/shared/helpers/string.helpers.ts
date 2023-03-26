@@ -11,4 +11,8 @@ export class StringHelpers {
     const regex = new RegExp(`[${specialCharacters.join('|')}]`, 'g');
     return s.match(regex)?.length || 0;
   }
+
+  static isEmptyOrWhitespace(value: string | null | undefined): boolean {
+    return value == null || /\S/.test(value) === false;
+  }
 }

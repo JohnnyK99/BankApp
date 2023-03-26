@@ -11,6 +11,7 @@ import { AddressBookEntry } from 'projects/api-client/src/models/address-book/ad
 import { BaseComponent } from 'projects/spa/src/app/base.component';
 import { AddressBookFacade } from 'projects/spa/src/app/global-stores/address-book/address-book.facade';
 import { TransactionsConstants } from 'projects/spa/src/app/shared/constants/transactions.constants';
+import { StringValidators } from 'projects/spa/src/app/shared/validators/string-validators';
 import { combineLatest, filter, map, startWith } from 'rxjs';
 
 @Component({
@@ -38,8 +39,8 @@ export class AddressBookDialogComponent extends BaseComponent implements OnInit 
   }));
 
   formGroup = this.fb.group({
-    name: this.fb.control<string>('', Validators.required),
-    accountNumber: this.fb.control<string>('', [Validators.required, Validators.pattern(TransactionsConstants.accountNumberRegex)]),
+    name: this.fb.control<string>('', StringValidators.required),
+    accountNumber: this.fb.control<string>('', [StringValidators.required, Validators.pattern(TransactionsConstants.accountNumberRegex)]),
   });
 
   get accountNumberControl(): FormControl<string> {

@@ -16,6 +16,7 @@ import { AuthConstants } from '../../shared/constants/auth.constants';
 import { AuthStatus } from '../../shared/constants/enums/auth-status.enum';
 import { RegistrationStep } from '../../shared/constants/enums/registration-step.enum';
 import { StringHelpers } from '../../shared/helpers/string.helpers';
+import { StringValidators } from '../../shared/validators/string-validators';
 
 @Component({
   templateUrl: './register.component.html',
@@ -30,11 +31,11 @@ export class RegisterComponent extends BaseComponent implements OnInit {
   step = RegistrationStep.PersonalData;
 
   registrationFormGroup = this.fb.group({
-    firstName: this.fb.control<string>('', [Validators.required]),
-    lastName: this.fb.control<string>('', [Validators.required]),
-    email: this.fb.control<string>('', [Validators.required, Validators.email]),
-    password: this.fb.control<string>('', [Validators.required]),
-    repeatPassword: this.fb.control<string>('', [Validators.required]),
+    firstName: this.fb.control<string>('', [StringValidators.required]),
+    lastName: this.fb.control<string>('', [StringValidators.required]),
+    email: this.fb.control<string>('', [StringValidators.required, Validators.email]),
+    password: this.fb.control<string>('', [StringValidators.required]),
+    repeatPassword: this.fb.control<string>('', [StringValidators.required]),
     initialAccountTypeId: this.fb.control<number | null>(null),
   });
 
