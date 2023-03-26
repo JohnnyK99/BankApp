@@ -2,5 +2,5 @@
 
 namespace BankApp.Application.Wrappers
 {
-    public record FileResponse(Stream Content, string FileName, string ContentType);
+    public record FileResponse(byte[] Content, string FileName, string ContentType);
 }

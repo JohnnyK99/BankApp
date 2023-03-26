@@ -2,7 +2,6 @@
 using BankApp.Application.Helpers;
 using BankApp.Application.Wrappers;
 using MediatR;
-using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -11,10 +10,12 @@ namespace BankApp.Application.Features.Transactions.Queries.GetTransactionConfir
     public class GetTransactionConfirmationQuery : IRequest<FileResponse>
     {
         public int TransactionId { get; }
+        public string Language { get; }
 
-        public GetTransactionConfirmationQuery(int transactionId)
+        public GetTransactionConfirmationQuery(int transactionId, string language)
         {
             TransactionId = transactionId;
+            Language = language;
         }
 
         public class Handler : IRequestHandler<GetTransactionConfirmationQuery, FileResponse>
@@ -31,8 +32,8 @@ namespace BankApp.Application.Features.Transactions.Queries.GetTransactionConfir
             public async Task<FileResponse> Handle(GetTransactionConfirmationQuery request, CancellationToken cancellationToken)
             {
                 Transaction transaction = await _getTransactionDalQuery.GetTransactionAsync(request.TransactionId);
-                Stream confirmation = _pdfHelpers.GetTransactionConfirmation(transaction);
-                string filename = $"Potwierdzenie transakcji {transaction.Date:yyyy-MM-dd}-{transaction.Id}.pdf";
+                byte[] confirmation = _pdfHelpers.GetTransactionConfirmation(transaction, request.Language);
+                string filename = $"Transaction confirmation {transaction.Date:yyyy-MM-dd}-{transaction.Id}.pdf";
 
                 return new FileResponse(confirmation, filename, "application/pdf");
             }

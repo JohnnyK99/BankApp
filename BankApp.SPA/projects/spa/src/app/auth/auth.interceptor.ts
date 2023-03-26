@@ -1,5 +1,6 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { AuthUrlsService } from 'projects/api-client/src/urls/auth-urls.service';
 import { Observable, concatMap, first, EMPTY } from 'rxjs';
 import { environment } from '../../environments/environment';
@@ -11,7 +12,8 @@ import { AuthFacade } from '../global-stores/auth/auth.facade';
 export class AuthInterceptor implements HttpInterceptor {
   constructor(
     private authFacade: AuthFacade,
-    private authUrlsService: AuthUrlsService
+    private authUrlsService: AuthUrlsService,
+    private translateService: TranslateService
   ) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -46,6 +48,7 @@ export class AuthInterceptor implements HttpInterceptor {
       req.clone({
         setHeaders: {
           Authorization: `Bearer ${token}`,
+          'Accept-Language': this.translateService.currentLang,
         },
       })
     );

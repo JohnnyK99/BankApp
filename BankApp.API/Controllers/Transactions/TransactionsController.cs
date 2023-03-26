@@ -75,7 +75,9 @@ namespace BankApp.API.Controllers.BankAccounts
                 return NotFound();
             }
 
-            FileResponse confirmation = await _mediator.Send(new GetTransactionConfirmationQuery(request.TransactionId), cancellationToken);
+            string language = Request.Headers.AcceptLanguage.ToString();
+
+            FileResponse confirmation = await _mediator.Send(new GetTransactionConfirmationQuery(request.TransactionId, language), cancellationToken);
             return File(confirmation.Content, confirmation.ContentType, confirmation.FileName);
         }
     }
