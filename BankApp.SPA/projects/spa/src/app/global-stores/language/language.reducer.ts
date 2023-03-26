@@ -11,7 +11,7 @@ const initialState: LanguageState = {
 
 export const languageReducer = createReducer<LanguageState>(
   initialState,
-  on(LanguageActions.selectLanguage, (state, action) => ({
+  on(LanguageActions.selectLanguage, (state, action): LanguageState => ({
     ...state,
     selectedLanguageCode: action.code,
   }))

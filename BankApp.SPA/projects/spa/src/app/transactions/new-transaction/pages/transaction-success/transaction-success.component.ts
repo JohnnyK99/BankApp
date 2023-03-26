@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AppRoutes } from 'projects/spa/src/app/shared/constants/routes/app-routes.constants';
+import { TransactionsRoutes } from 'projects/spa/src/app/shared/constants/routes/transactions-routes.constants';
 import { TransactionsFacade } from '../../../state/transactions.facade';
 
 @Component({
@@ -6,6 +8,8 @@ import { TransactionsFacade } from '../../../state/transactions.facade';
   styleUrls: ['./transaction-success.component.scss'],
 })
 export class TransactionSuccessComponent {
+  readonly AppRoutes = AppRoutes;
+  readonly TransactionsRoutes = TransactionsRoutes;
 
   constructor(private facade: TransactionsFacade) { }
 

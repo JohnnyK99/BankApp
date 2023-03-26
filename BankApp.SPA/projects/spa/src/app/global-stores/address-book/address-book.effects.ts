@@ -17,12 +17,12 @@ export class AddressBookEffects {
   fetchAddressBook$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AddressBookActions.fetchAddressBook),
-      mergeMap(() => {
-        return this.addressBookApiClient.getAllEntries().pipe(
+      mergeMap(() =>
+        this.addressBookApiClient.getAllEntries().pipe(
           map(result => AddressBookActions.fetchAddressBookSuccess({ entries: result.data })),
           catchError(() => of(AddressBookActions.fetchAddressBookFail()))
-        );
-      })
+        )
+      )
     )
   );
 
@@ -40,7 +40,8 @@ export class AddressBookEffects {
         this.addressBookApiClient.addEntry(action.entry).pipe(
           map(() => AddressBookActions.addEntrySuccess()),
           catchError(() => of(AddressBookActions.addEntryFail()))
-        ))
+        )
+      )
     )
   );
 
@@ -68,7 +69,8 @@ export class AddressBookEffects {
         this.addressBookApiClient.removeEntry(action.accountNumber).pipe(
           map(() => AddressBookActions.removeEntrySuccess()),
           catchError(() => of(AddressBookActions.removeEntryFail()))
-        ))
+        )
+      )
     )
   );
 

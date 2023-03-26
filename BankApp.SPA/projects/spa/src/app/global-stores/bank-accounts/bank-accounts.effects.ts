@@ -45,7 +45,8 @@ export class BankAccountsEffects {
         this.bankAccountApiClient.createBankAccount(action.accountTypeId, clientId).pipe(
           map(() => BankAccountsActions.createBankAccountSuccess()),
           catchError(() => of(BankAccountsActions.createBankAccountFail()))
-        ))
+        )
+      )
     )
   );
 

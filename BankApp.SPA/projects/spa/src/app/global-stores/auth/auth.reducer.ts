@@ -21,7 +21,7 @@ export const authReducer = createReducer<AuthState>(
     ...state,
     status: AuthStatus.Authenticating,
   })),
-  on(AuthActions.loginSuccess, AuthActions.refreshTokenSuccess, (state, action) => ({
+  on(AuthActions.loginSuccess, AuthActions.refreshTokenSuccess, (state, action): AuthState => ({
     ...state,
     accessToken: action.model.accessToken,
     accessTokenExp: AuthHelpers.getAccessTokenExp(action.model.accessToken),
@@ -31,23 +31,23 @@ export const authReducer = createReducer<AuthState>(
     userRoles: AuthHelpers.getUserRoles(action.model.accessToken),
     status: AuthStatus.Authenticated,
   })),
-  on(AuthActions.loginFail, state => ({
+  on(AuthActions.loginFail, (state): AuthState => ({
     ...state,
     status: AuthStatus.ErrorLogin,
   })),
-  on(AuthActions.register, state => ({
+  on(AuthActions.register, (state): AuthState => ({
     ...state,
     status: AuthStatus.Registering,
   })),
-  on(AuthActions.registerSuccess, state => ({
+  on(AuthActions.registerSuccess, (state): AuthState => ({
     ...state,
     status: AuthStatus.LoggedOut,
   })),
-  on(AuthActions.registerFail, state => ({
+  on(AuthActions.registerFail, (state): AuthState => ({
     ...state,
     status: AuthStatus.ErrorRegister,
   })),
-  on(AuthActions.logout, () => ({
+  on(AuthActions.logout, (): AuthState => ({
     accessToken: null,
     accessTokenExp: null,
     refreshToken: null,

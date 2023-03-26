@@ -1,4 +1,4 @@
-import { AppRoutes } from '../../app-routes.constants';
+import { AppRoutes } from '../constants/routes/app-routes.constants';
 import { LocalStorageKey } from '../constants/enums/local-storage-key.enum';
 import { LanguageConstants } from '../constants/language.constants';
 

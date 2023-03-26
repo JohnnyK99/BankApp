@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
 import { first, map, Observable } from 'rxjs';
-import { AppRoutes } from '../app-routes.constants';
+import { AppRoutes } from '../shared/constants/routes/app-routes.constants';
 import { AuthFacade } from '../global-stores/auth/auth.facade';
 import { UserService } from '../shared/services/user.service';
 

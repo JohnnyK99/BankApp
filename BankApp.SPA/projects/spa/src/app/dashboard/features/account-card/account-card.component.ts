@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { BankAccountTranslated } from 'projects/api-client/src/models/bank-accounts/bank-account-translated.model';
 import { Transaction } from 'projects/api-client/src/models/transactions/transaction.model';
-import { AppRoutes } from '../../../app-routes.constants';
+import { AppRoutes } from '../../../shared/constants/routes/app-routes.constants';
 import { TransactionDialogComponent } from '../transaction-dialog/transaction-dialog.component';
 import { TransactionType } from '../../../shared/constants/enums/transaction-type.enum';
 import { TransactionsConstants } from '../../../shared/constants/transactions.constants';

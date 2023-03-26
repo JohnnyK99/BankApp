@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AppRoutes } from '../../app-routes.constants';
+import { AppRoutes } from '../../shared/constants/routes/app-routes.constants';
 
 @Component({
   selector: 'bnk-no-access',

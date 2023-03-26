@@ -5,7 +5,7 @@
     <ul nz-menu>
         <li nz-menu-item *ngFor="let language of facade.availableLanguages$ | async" 
                          [ngClass]="{'ant-dropdown-menu-item--active': language.code === (facade.selectedLanguage$ | async)}"
-                         (click)="setLanguage(language.code)">
+                         (click)="translationService.setLanguage(language.code)">
             <img [src]="language.flag">
             <span>{{language.name}}</span>
         </li>

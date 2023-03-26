@@ -22,6 +22,8 @@ export class AddressBookDialogComponent extends BaseComponent {
 
   filterControl = this.fb.control<string>('');
   entries: AddressBookEntry[] = [];
+  selected: AddressBookEntry | null = null;
+
   filter$ = this.filterControl.valueChanges;
 
   filteredEntries$ = combineLatest([
@@ -34,8 +36,6 @@ export class AddressBookDialogComponent extends BaseComponent {
 
     return entries.filter(entry => entry.name.toLocaleLowerCase().includes(filterText.toLocaleLowerCase()) || entry.accountNumber.includes(filterText));
   }));
-
-  selected: AddressBookEntry | null = null;
 
   formGroup = this.fb.group({
     name: this.fb.control<string>('', Validators.required),

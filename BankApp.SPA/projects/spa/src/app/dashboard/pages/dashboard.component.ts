@@ -10,7 +10,6 @@ import { UserService } from '../../shared/services/user.service';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent extends BaseComponent implements OnInit {
-
   @ViewChild('carousel')
   nzCarousel: NzCarouselComponent;
 

@@ -10,7 +10,7 @@ import {
   tap,
   withLatestFrom
 } from 'rxjs';
-import { AppRoutes } from '../../app-routes.constants';
+import { AppRoutes } from '../../shared/constants/routes/app-routes.constants';
 import { AuthConstants } from '../../shared/constants/auth.constants';
 import { AuthHelpers } from '../../shared/helpers/auth.helpers';
 import { LocalStorageHelpers } from '../../shared/helpers/local-storage.helpers';

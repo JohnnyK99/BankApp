@@ -9,12 +9,8 @@ import { TranslationService } from '../../../shared/services/translation.service
 })
 export class LanguageSelectorComponent {
   constructor(
-    private translationService: TranslationService,
+    public translationService: TranslationService,
     public facade: LanguageFacade
   ) {}
-
-  setLanguage(language: string): void {
-    this.translationService.setLanguage(language);
-  }
 }
 

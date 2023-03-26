@@ -13,9 +13,5 @@ import { TransactionsStoreModule } from './state/transactions-store.module';
     TransactionsRoutingModule,
     TransactionsStoreModule,
   ],
-  exports: [
-  ],
-  declarations: [
-  ],
 })
 export class TransactionsModule { }

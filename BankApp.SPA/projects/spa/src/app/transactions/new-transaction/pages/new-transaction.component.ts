@@ -12,7 +12,7 @@ import { AddressBookEntry } from 'projects/api-client/src/models/address-book/ad
 import { BankAccountTranslated } from 'projects/api-client/src/models/bank-accounts/bank-account-translated.model';
 import { NewTransaction } from 'projects/api-client/src/models/transactions/new-transaction.model';
 import { filter } from 'rxjs';
-import { AppRoutes } from '../../../app-routes.constants';
+import { AppRoutes } from '../../../shared/constants/routes/app-routes.constants';
 import { BaseComponent } from '../../../base.component';
 import { AddressBookFacade } from '../../../global-stores/address-book/address-book.facade';
 import { BankAccountsFacade } from '../../../global-stores/bank-accounts/bank-accounts.facade';
@@ -94,15 +94,17 @@ export class NewTransactionComponent extends BaseComponent {
       nzWidth: 550,
     });
 
-    dialog.afterClose.pipe(filter(result => result != null)).subscribe(result => {
-      this.formGroup.patchValue({
-        payeeName: result.name,
-        payeeAccountNumber: result.accountNumber,
-      }, { emitEvent: false });
+    dialog.afterClose
+      .pipe(filter(result => result != null))
+      .subscribe(result => {
+        this.formGroup.patchValue({
+          payeeName: result.name,
+          payeeAccountNumber: result.accountNumber,
+        }, { emitEvent: false });
 
-      this.payeeAccountNumberControl.markAsDirty();
-      this.payeeAccountNumberControl.updateValueAndValidity();
-    });
+        this.payeeAccountNumberControl.markAsDirty();
+        this.payeeAccountNumberControl.updateValueAndValidity();
+      });
   }
 
   createTransaction(): void {

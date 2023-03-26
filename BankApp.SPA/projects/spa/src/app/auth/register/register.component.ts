@@ -8,7 +8,7 @@ import {
   Validators
 } from '@angular/forms';
 import { RegistrationModel } from 'projects/api-client/src/models/auth/registration.model';
-import { AppRoutes } from '../../app-routes.constants';
+import { AppRoutes } from '../../shared/constants/routes/app-routes.constants';
 import { BaseComponent } from '../../base.component';
 import { AuthFacade } from '../../global-stores/auth/auth.facade';
 import { DictionariesFacade } from '../../global-stores/dictionaries/dictionaries.facade';
@@ -84,7 +84,7 @@ export class RegisterComponent extends BaseComponent implements OnInit {
       .subscribe(() => this.repeatPasswordFormControl.updateValueAndValidity());
 
     this.observe(this.dictFacade.accountTypes$)
-      .subscribe(accountTypes => this.initialAccountTypeIdControl.setValue(!accountTypes?.length ? null : accountTypes[0].id, { emitEvent: false }));
+      .subscribe(accountTypes => this.initialAccountTypeIdControl.setValue(accountTypes?.length == null ? null : accountTypes[0].id, { emitEvent: false }));
   }
 
   moveForward(): void {

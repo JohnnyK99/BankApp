@@ -1,5 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { TransactionsQueryParams } from 'projects/api-client/src/models/transactions/transactions-query-params.model';
+import { DateFormat } from '../../shared/constants/enums/date-format.enum';
 import { FeatureState } from '../../shared/constants/enums/feature-state.enum';
 import { DateHelpers } from '../../shared/helpers/date-helpers';
 import { TransactionsState } from './transactions.state';
@@ -36,8 +37,8 @@ export const getQueryParams = createSelector(
   state => ({
     bankAccountNumber: state.filters.bankAccountNumber,
     transactionTypes: state.filters.transactionTypes,
-    dateFrom: state.filters.dateFrom ? DateHelpers.format(state.filters.dateFrom) : null,
-    dateTo: state.filters.dateTo ? DateHelpers.format(state.filters.dateTo) : null,
+    dateFrom: state.filters.dateFrom ? DateHelpers.format(state.filters.dateFrom, DateFormat.Api) : null,
+    dateTo: state.filters.dateTo ? DateHelpers.format(state.filters.dateTo, DateFormat.Api) : null,
     searchBy: state.filters.searchBy,
     pageNumber: state.paginationParameters.currentPage,
     pageSize: state.paginationParameters.pageSize,

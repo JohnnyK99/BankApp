@@ -12,7 +12,7 @@
 
 <div class="transactions-table" *ngIf="account.recentTransactions.length > 0">
     <span class="transactions-table-title">{{'dashboard.recent_transactions' | translate}}</span>
-    <div *ngFor="let transaction of account.recentTransactions; index as i">
+    <div *ngFor="let transaction of account.recentTransactions; last as last">
         <div class="transaction" (click)="openTransactionDialog(transaction)" [ngClass]="{'transaction--incoming': transaction.transactionType === TransactionType.Incoming, 'transaction--outcoming': transaction.transactionType === TransactionType.Outcoming}">
             <span class="hide-small">{{transaction.date | date: 'dd.MM.yyyy'}}</span>
             <span class="hide-small" *ngIf="transaction.transactionType === TransactionType.Incoming">{{transaction.accountNumberFrom | mask:TransactionsConstants.accountNumberMask}}</span>
@@ -20,7 +20,7 @@
             <span>{{transaction.title}}</span>
             <span class="amount">${{transaction.amount | mask:'separator'}}</span>
         </div>
-        <hr *ngIf="i !== account.recentTransactions.length-1">
+        <hr *ngIf="!last">
     </div>
 </div>
 <div class="account-actions">

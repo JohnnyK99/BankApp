@@ -6,7 +6,6 @@ const getClientsState = createFeatureSelector<ClientsState>(FeatureState.Clients
 
 export const getClients = createSelector(
   getClientsState,
-  //state => state.clients.concat(state.clients).concat(state.clients).concat(state.clients).concat(state.clients)
   state => state.clients
 );
 

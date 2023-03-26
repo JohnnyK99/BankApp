@@ -22,7 +22,8 @@ export class ClientsEffects {
         this.authApiClient.getClients(action.searchBy).pipe(
           map(result => ClientsActions.fetchClientsSuccess({ clients: result.data })),
           catchError(() => of(ClientsActions.fetchClientsFail()))
-        ))
+        )
+      )
     )
   );
 
@@ -37,7 +38,8 @@ export class ClientsEffects {
     this.actions$.pipe(
       ofType(ClientsActions.setSelectedClientId),
       map(() => BankAccountsActions.fetchUserBankAccounts())
-    ));
+    )
+  );
 
   constructor(
     private actions$: Actions,

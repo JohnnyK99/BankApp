@@ -5,7 +5,7 @@ import { TransactionApiClient } from 'projects/api-client/src/clients/transactio
 import { TransactionsQueryParams } from 'projects/api-client/src/models/transactions/transactions-query-params.model';
 import {
   catchError,
-  EMPTY,
+  filter,
   map,
   mergeMap,
   of,
@@ -55,13 +55,8 @@ export class TransactionsEffects {
       ofType(TransactionsActions.downloadNewConfirmation),
       withLatestFrom(this.facade.newTransactionId$),
       map(([, id]) => id),
-      mergeMap(id => {
-        if(!id) {
-          return EMPTY;
-        }
-
-        return of(TransactionsActions.downloadConfirmation({ transactionId: id }));
-      })
+      filter(Boolean),
+      map(id => TransactionsActions.downloadConfirmation({ transactionId: id }))
     )
   );
 
@@ -72,8 +67,10 @@ export class TransactionsEffects {
         this.transactionApiClient.getConfirmation(action.transactionId).pipe(
           map(confirmation => TransactionsActions.downloadConfirmationSuccess({ confirmation })),
           catchError(() => of(TransactionsActions.downloadConfirmationFail()))
-        ))
-    ));
+        )
+      )
+    )
+  );
 
   downloadConfirmationSuccess$ = createEffect(() =>
     this.actions$.pipe(

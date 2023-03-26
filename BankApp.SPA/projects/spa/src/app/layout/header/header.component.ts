@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AppRoutes } from '../../app-routes.constants';
+import { AppRoutes } from '../../shared/constants/routes/app-routes.constants';
 import { AuthFacade } from '../../global-stores/auth/auth.facade';
 import { AuthStatus } from '../../shared/constants/enums/auth-status.enum';
 

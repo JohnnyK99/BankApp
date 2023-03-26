@@ -1,4 +1,4 @@
-import { AppRoutes } from '../../app-routes.constants';
+import { AppRoutes } from './routes/app-routes.constants';
 
 export const AuthConstants = {
   timeToRefreshAccessToken: 120000,

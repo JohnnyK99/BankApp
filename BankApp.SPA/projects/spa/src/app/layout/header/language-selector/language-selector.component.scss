@@ -7,29 +7,29 @@
   padding: 0;
 }
 
-  .ant-dropdown-menu-item {
-    height: 40px;
+.ant-dropdown-menu-item {
+  height: 40px;
 
-    &--active {
-      background-color: var(--color-accent);
-    }
-
-    img {
-      height: 20px;
-      margin-right: 5px;
-    }
+  &--active {
+    background-color: var(--color-accent);
   }
 
-  .trigger-button {
-    padding: 0;
-    height: 22px;
-    line-height: initial;
-
-    &:hover {
-      background-color: initial;
-    } 
-  }
-
-  .current-language {
+  img {
     height: 20px;
+    margin-right: 5px;
   }
+}
+
+.trigger-button {
+  padding: 0;
+  height: 22px;
+  line-height: initial;
+
+  &:hover {
+    background-color: initial;
+  } 
+}
+
+.current-language {
+  height: 20px;
+}

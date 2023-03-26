@@ -1,8 +1,8 @@
 <form nz-form [formGroup]="loginFormGroup">
     <nz-alert nzType="error" 
-                [nzMessage]="'error.login' | translate"
-                class="error-alert"
-                *ngIf="(facade.authStatus$ | async) === AuthStatus.ErrorLogin">  
+              [nzMessage]="'error.login' | translate"
+              class="error-alert"
+              *ngIf="(facade.authStatus$ | async) === AuthStatus.ErrorLogin">  
     </nz-alert>
     <nz-form-item>
         <nz-form-label nzFor="email">{{'auth.email' | translate}}</nz-form-label>
