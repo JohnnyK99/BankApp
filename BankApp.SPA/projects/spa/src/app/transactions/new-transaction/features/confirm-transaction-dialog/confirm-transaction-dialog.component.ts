@@ -11,7 +11,4 @@ export class ConfirmTransactionDialogComponent {
   transaction: NewTransaction;
 
   readonly TransactionsConstants = TransactionsConstants;
-
-  constructor() { }
-
 }

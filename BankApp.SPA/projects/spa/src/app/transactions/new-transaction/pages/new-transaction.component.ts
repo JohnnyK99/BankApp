@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormControl,
   NonNullableFormBuilder,
@@ -26,7 +26,7 @@ import { ConfirmTransactionDialogComponent } from '../features/confirm-transacti
   templateUrl: './new-transaction.component.html',
   styleUrls: ['./new-transaction.component.scss'],
 })
-export class NewTransactionComponent extends BaseComponent {
+export class NewTransactionComponent extends BaseComponent implements OnInit {
   readonly TransactionsConstants = TransactionsConstants;
 
   formGroup = this.fb.group({
@@ -68,11 +68,15 @@ export class NewTransactionComponent extends BaseComponent {
     private translationService: TranslationService
   ) {
     super();
-    this.bankAccountsFacade.fetchUserBankAccounts();
-    this.addressBookFacade.fetchAddressBook();
+
     this.payeeNameControl.disable({ emitEvent: false });
     this.amountControl.addValidators([this.amountValidator]);
     this.payeeAccountNumberControl.addValidators([this.accountNumberValidator, this.controlSumValidator]);
+  }
+
+  ngOnInit(): void {
+    this.bankAccountsFacade.fetchUserBankAccounts();
+    this.addressBookFacade.fetchAddressBook();
 
     this.observe(this.selectedAccountControl.valueChanges)
       .subscribe(() => {

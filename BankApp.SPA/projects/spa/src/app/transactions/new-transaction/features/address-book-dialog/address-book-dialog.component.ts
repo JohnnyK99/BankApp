@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormControl,
   NonNullableFormBuilder,
@@ -17,7 +17,7 @@ import { combineLatest, filter, map, startWith } from 'rxjs';
   templateUrl: './address-book-dialog.component.html',
   styleUrls: ['./address-book-dialog.component.scss'],
 })
-export class AddressBookDialogComponent extends BaseComponent {
+export class AddressBookDialogComponent extends BaseComponent implements OnInit {
   readonly TransactionsConstants = TransactionsConstants;
 
   filterControl = this.fb.control<string>('');
@@ -52,16 +52,18 @@ export class AddressBookDialogComponent extends BaseComponent {
     private fb: NonNullableFormBuilder
   ) {
     super();
-
     this.accountNumberControl.addValidators([this.uniqueValidator]);
+  }
 
-    modal.afterClose.subscribe(() => facade.cancelAddingMode());
+  ngOnInit(): void {
+    this.modal.afterClose.subscribe(() => this.facade.cancelAddingMode());
 
     this.observe(this.facade.addressBook$)
       .pipe(filter(Boolean))
       .subscribe(book => this.entries = book);
 
-    this.observe(this.facade.isAddingMode$).subscribe(() => this.formGroup.reset());
+    this.observe(this.facade.isAddingMode$)
+      .subscribe(() => this.formGroup.reset());
   }
 
   onSelect(): void {
