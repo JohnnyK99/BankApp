@@ -4,4 +4,7 @@ export const TransactionsConstants = {
   minTransactionAmount: 0.01,
   defaultPageSize: 10,
   pageSizeOptions: [10, 15, 30, 50],
+  maxTitleLength: 50,
+  maxDescriptionLength: 500,
+  maxSearchByLength: 100,
 };

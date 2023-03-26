@@ -40,6 +40,9 @@ namespace BankApp.API.Dto.Transactions.GetTransactions
                 .Must(col => col is null || TransactionConstants.SortColumns.Contains(col))
                 .WithMessage("Incorrect sort column");
 
+            RuleFor(x => x.SearchBy)
+                .MaximumLength(TransactionConstants.MaxSearchByLength)
+                .WithMessage($"Search by cannot contain more than {TransactionConstants.MaxSearchByLength} characters");
         }
     }
 }

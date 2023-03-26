@@ -34,7 +34,11 @@
             </nz-date-picker>
         </div>
         <div class="right">
-            <input class="text-filter" nz-input [placeholder]="'transactions_list.search_title_description' | translate" [ngModel]="filters.searchBy" (ngModelChange)="onSearchByChange($event)">
+            <input class="text-filter" nz-input 
+                   [placeholder]="'transactions_list.search_title_description' | translate"
+                   [maxLength]="TransactionsConstants.maxSearchByLength"
+                   [ngModel]="filters.searchBy" 
+                   (ngModelChange)="onSearchByChange($event)">
         </div>
     </div>
 

@@ -41,13 +41,15 @@
             <nz-form-item>
                 <nz-form-label nzRequired nzFor="title">{{'new_transaction.transaction_title' | translate}}</nz-form-label>
                 <nz-form-control>
-                    <input nz-input formControlName="title" id="title" />
+                    <input nz-input formControlName="title" id="title" [maxLength]="TransactionsConstants.maxTitleLength" />
                 </nz-form-control>
             </nz-form-item>
             <nz-form-item>
                 <nz-form-label nzFor="description">{{'new_transaction.transaction_description' | translate}}</nz-form-label>
                 <nz-form-control>
-                    <textarea rows="5" nz-input formControlName="description" id="description"></textarea>
+                    <nz-textarea-count [nzMaxCharacterCount]="TransactionsConstants.maxDescriptionLength">
+                        <textarea rows="5" nz-input formControlName="description" id="description" [maxlength]="TransactionsConstants.maxDescriptionLength"></textarea> 
+                    </nz-textarea-count>
                 </nz-form-control>
             </nz-form-item>
             <nz-form-item>

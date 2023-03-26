@@ -21,8 +21,9 @@ namespace BankApp.API.Dto.BankAccounts.CreateBankAccount
 
             RuleFor(x => x.Title)
                 .NotEmpty()
-                .MinimumLength(1)
-                .WithMessage("Transaction title must contain at least one character");
+                .MinimumLength(TransactionConstants.MinTitleLength)
+                .MaximumLength(TransactionConstants.MaxTitleLength)
+                .WithMessage($"Transaction title must contain between {TransactionConstants.MinTitleLength} and {TransactionConstants.MaxTitleLength} characters");
 
             RuleFor(x => x.AccountNumberFrom)
                 .NotEmpty()
@@ -73,7 +74,9 @@ namespace BankApp.API.Dto.BankAccounts.CreateBankAccount
                     })
                     .WithMessage("Transaction amount cannot be higher than source account balance");
 
-
+                RuleFor(x => x.Description)
+                    .MaximumLength(TransactionConstants.MaxDescriptionLength)
+                    .WithMessage($"Description cannot contain more than {TransactionConstants.MaxDescriptionLength} characters");
             });
 
 
