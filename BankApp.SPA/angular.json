@@ -38,7 +38,8 @@
                 "output": "/assets/"
               },
               "projects/spa/src/favicon.ico",
-              "projects/spa/src/assets"
+              "projects/spa/src/assets",
+              "projects/spa/src/web.config"
             ],
             "styles": [
               "projects/spa/src/styles/theme.less",
