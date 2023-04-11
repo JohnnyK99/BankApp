@@ -19,22 +19,25 @@
             <hr>
         </ng-container>
 
-        <div class="nav-element" [routerLink]="[AppRoutes.dashboard]" routerl routerLinkActive="nav-element--active" [routerLinkActiveOptions]="{exact: true}">
-            <span nz-icon nzType="home" nzTheme="outline" class="nav-icon"></span>
-            <span nz-icon nzType="right" nzTheme="outline" class="arrow-icon"></span>
-            <span>{{'nav.main_page' | translate}}</span>
-        </div>
-
-        <div class="nav-element" *ngIf="userService.isInRole(UserRoles.Client)" [routerLink]="[AppRoutes.transactions, TransactionsRoutes.new]" routerLinkActive="nav-element--active" [routerLinkActiveOptions]="{exact: true}">
-            <span nz-icon nzType="dollar" nzTheme="outline" class="nav-icon"></span>
-            <span nz-icon nzType="right" nzTheme="outline" class="arrow-icon"></span>
-            <span>{{'nav.new_transaction' | translate}}</span>
-        </div>
-
-        <div class="nav-element" [routerLink]="[AppRoutes.transactions, TransactionsRoutes.list]" routerLinkActive="nav-element--active" [routerLinkActiveOptions]="{exact: true}">
-            <span nz-icon nzType="unordered-list" nzTheme="outline" class="nav-icon"></span>
-            <span nz-icon nzType="right" nzTheme="outline" class="arrow-icon"></span>
-            <span>{{'nav.transactions_list' | translate}}</span>
+        <span nz-icon nzType="menu" nzTheme="outline" class="toggle-menu-icon" (click)="toggleMenu()"></span>
+        <div class="sidemenu" [ngClass]="{'sidemenu--closed': isMenuClosed}">
+            <div class="nav-element" [routerLink]="[AppRoutes.dashboard]" routerl routerLinkActive="nav-element--active" [routerLinkActiveOptions]="{exact: true}">
+                <span nz-icon nzType="home" nzTheme="outline" class="nav-icon"></span>
+                <span nz-icon nzType="right" nzTheme="outline" class="arrow-icon"></span>
+                <span>{{'nav.main_page' | translate}}</span>
+            </div>
+    
+            <div class="nav-element" *ngIf="userService.isInRole(UserRoles.Client)" [routerLink]="[AppRoutes.transactions, TransactionsRoutes.new]" routerLinkActive="nav-element--active" [routerLinkActiveOptions]="{exact: true}">
+                <span nz-icon nzType="dollar" nzTheme="outline" class="nav-icon"></span>
+                <span nz-icon nzType="right" nzTheme="outline" class="arrow-icon"></span>
+                <span>{{'nav.new_transaction' | translate}}</span>
+            </div>
+    
+            <div class="nav-element" [routerLink]="[AppRoutes.transactions, TransactionsRoutes.list]" routerLinkActive="nav-element--active" [routerLinkActiveOptions]="{exact: true}">
+                <span nz-icon nzType="unordered-list" nzTheme="outline" class="nav-icon"></span>
+                <span nz-icon nzType="right" nzTheme="outline" class="arrow-icon"></span>
+                <span>{{'nav.transactions_list' | translate}}</span>
+            </div>
         </div>
     </ng-container>
 </div>

@@ -5,6 +5,7 @@ import { AuthStatus } from '../../shared/constants/enums/auth-status.enum';
 import { UserRoles } from '../../shared/constants/enums/user-roles.enum';
 import { UserService } from '../../shared/services/user.service';
 import { TransactionsRoutes } from '../../shared/constants/routes/transactions-routes.constants';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'bnk-sidenav',
@@ -17,9 +18,18 @@ export class SidenavComponent {
   readonly AppRoutes = AppRoutes;
   readonly TransactionsRoutes = TransactionsRoutes;
 
+  isMenuClosed = true;
+
   constructor(
     public authFacade: AuthFacade,
-    public userService: UserService
-  ) { }
+    public userService: UserService,
+    private router: Router
+  ) {
+    this.router.events.subscribe(() => this.isMenuClosed = true);
+  }
+
+  toggleMenu(): void {
+    this.isMenuClosed = !this.isMenuClosed;
+  }
 
 }
