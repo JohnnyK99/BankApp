@@ -332,7 +332,11 @@
         ],
         "spaced-comment": "off",
         "use-isnan": "error",
-        "valid-typeof": "off"
+        "valid-typeof": "off",
+        "arrow-parens": [ 
+          "error",
+          "as-needed"
+        ]
       }
     },
     {
