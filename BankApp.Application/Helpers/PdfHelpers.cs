@@ -23,7 +23,7 @@ namespace BankApp.Application.Helpers
         public byte[] GetTransactionConfirmation(Transaction transaction, string language)
         {
             MemoryStream stream = new();
-            using PdfReader reader = new($"D:\\Projekty\\BankApp\\BankApp.Application\\Templates\\GetTransactionConfirmation\\template_{language}.pdf");
+            using PdfReader reader = new(GetAbsolutePath("Templates\\GetTransactionConfirmation\\template_pl.pdf"));
             using PdfWriter writer = new(stream);
 
             using PdfDocument document = new(reader, writer);
@@ -45,6 +45,13 @@ namespace BankApp.Application.Helpers
         private void SetFieldValue(PdfFormField field, string value, int fontSize = 15)
         {
             field.SetValue(value, _font, fontSize);
+        }
+
+        private static string GetAbsolutePath(string relativePath)
+        {
+            string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string file = Path.Combine(currentDirectory, relativePath);
+            return Path.GetFullPath(file);
         }
     }
 }
