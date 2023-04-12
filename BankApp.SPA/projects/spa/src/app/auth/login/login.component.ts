@@ -4,6 +4,7 @@ import { AppRoutes } from '../../shared/constants/routes/app-routes.constants';
 import { AuthFacade } from '../../global-stores/auth/auth.facade';
 import { AuthStatus } from '../../shared/constants/enums/auth-status.enum';
 import { StringValidators } from '../../shared/validators/string-validators';
+import { AuthConstants } from '../../shared/constants/auth.constants';
 
 @Component({
   templateUrl: './login.component.html',
@@ -30,11 +31,11 @@ export class LoginComponent {
   }
 
   fillCustomerData(): void {
-    this.loginFormGroup.setValue({ email: 'anowak@gmail.com', password: 'tRtyU45!as' });
+    this.loginFormGroup.setValue(AuthConstants.defaultCustomerCredentials);
   }
 
   fillEmployeeData(): void {
-    this.loginFormGroup.setValue({ email: 'bkowalski@gmail.com', password: 'Tpfforith2!' });
+    this.loginFormGroup.setValue(AuthConstants.defaultEmployeeCredentials);
   }
 
 }

@@ -10,4 +10,12 @@ export const AuthConstants = {
     minSpecialCharacters: 1,
     specialCharacters: ['!', '@', '#', '$', '%', '^', '&', '*'],
   },
+  defaultCustomerCredentials: {
+    email: 'adamjones@gmail.com',
+    password: 'NkhO*4U42Y7C',
+  },
+  defaultEmployeeCredentials: {
+    email: 'jsmith@gmail.com',
+    password: 'I1!1c%Z2569U',
+  },
 };
