@@ -4,7 +4,7 @@
 
 <div class="actions">
     <button nz-button (click)="downloadConfirmation()">{{'transaction.download_confirmation' | translate}}</button>
-    <button nz-button [routerLink]="[AppRoutes.transactions, TransactionsRoutes.new]">{{'dashboard.new_transaction' | translate}}</button>
+    <button nz-button [routerLink]="['/', AppRoutes.transactions, TransactionsRoutes.new]">{{'dashboard.new_transaction' | translate}}</button>
     <button nz-button [routerLink]="[AppRoutes.base]">{{'new_transaction.go_to_dashboard' | translate}}</button>
 </div>
 
