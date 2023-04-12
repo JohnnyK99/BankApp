@@ -23,7 +23,7 @@ namespace BankApp.Application.Helpers
         public byte[] GetTransactionConfirmation(Transaction transaction, string language)
         {
             MemoryStream stream = new();
-            using PdfReader reader = new(GetAbsolutePath("Templates\\GetTransactionConfirmation\\template_pl.pdf"));
+            using PdfReader reader = new(GetAbsolutePath($"Templates\\GetTransactionConfirmation\\template_{language}.pdf"));
             using PdfWriter writer = new(stream);
 
             using PdfDocument document = new(reader, writer);
