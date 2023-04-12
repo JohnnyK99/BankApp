@@ -47,7 +47,7 @@ export class AuthEffects {
   loginSuccess$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.loginSuccess),
-      tap((action) => {
+      tap(action => {
         const targetUrl = LocalStorageHelpers.getLoginTargetUrl();
         LocalStorageHelpers.removeLoginTargetUrl();
         AuthHelpers.setLocalStorageValues(action.model.accessToken, action.model.refreshToken, action.model.refreshTokenExp);
@@ -104,7 +104,7 @@ export class AuthEffects {
   refreshTokenSuccess$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.refreshTokenSuccess),
-      tap((action) => AuthHelpers.setLocalStorageValues(action.model.accessToken, action.model.refreshToken, action.model.refreshTokenExp))
+      tap(action => AuthHelpers.setLocalStorageValues(action.model.accessToken, action.model.refreshToken, action.model.refreshTokenExp))
     ), { dispatch: false });
 
   constructor(

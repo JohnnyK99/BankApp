@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using BankApp.API.Extensions;
+using BankApp.DAL.Db;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,5 +37,12 @@ app.UseAuthorization();
 app.UseCors();
 
 app.MapControllers();
+
+var service = (IServiceScopeFactory)app.Services.GetService(typeof(IServiceScopeFactory));
+
+using (var db = service.CreateScope().ServiceProvider.GetService<AppDbContext>())
+{
+    db.Database.Migrate();
+}
 
 app.Run();
