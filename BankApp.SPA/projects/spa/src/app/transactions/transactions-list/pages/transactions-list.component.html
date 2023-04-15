@@ -8,26 +8,24 @@
 </div>
 
 <div class="content elevated">
-    <div class="filters" *ngIf="transactionsFacade.filters$ | async as filters">
+    <div class="filters" *ngIf="transactionsFacade.filters$ | async as filters" [formGroup]="filtersFormGroup">
         <div class="left">
-            <nz-select [nzPlaceHolder]="'transactions_list.bank_account' | translate" [ngModel]="filters.bankAccountNumber" (ngModelChange)="onBankAccountNumberChange($event)">
+            <nz-select [nzPlaceHolder]="'transactions_list.bank_account' | translate" formControlName="bankAccountNumber">
                 <nz-option *ngFor="let account of bankAccountsFacade.userBankAccounts$ | async" 
                            [nzValue]="account.accountNumber" 
                            [nzLabel]="account.accountNumber | mask: TransactionsConstants.accountNumberMask">
                 </nz-option>
             </nz-select>
-            <nz-select [nzPlaceHolder]="'transactions_list.transaction_type' | translate" nzMode="multiple" [ngModel]="filters.transactionTypes" (ngModelChange)="onTransactionTypesChange($event)">
+            <nz-select [nzPlaceHolder]="'transactions_list.transaction_type' | translate" nzMode="multiple" formControlName="transactionTypes">
                 <nz-option [nzValue]="TransactionType.Incoming" [nzLabel]="'transaction_type.incoming' | translate"></nz-option>
                 <nz-option [nzValue]="TransactionType.Outcoming" [nzLabel]="'transaction_type.outcoming' | translate"></nz-option>
             </nz-select>
-            <nz-date-picker [ngModel]="filters.dateFrom" 
-                            (ngModelChange)="onDateFromChange($event)" 
+            <nz-date-picker formControlName="dateFrom"
                             nzInputReadOnly="true" 
                             [nzFormat]="DateFormat.Default" 
                             [nzPlaceHolder]="'transactions_list.date_from' | translate">
             </nz-date-picker>
-            <nz-date-picker [ngModel]="filters.dateTo" 
-                            (ngModelChange)="onDateToChange($event)" 
+            <nz-date-picker formControlName="dateTo"
                             nzInputReadOnly="true" 
                             [nzFormat]="DateFormat.Default" 
                             [nzPlaceHolder]="'transactions_list.date_to' | translate">
@@ -35,10 +33,9 @@
         </div>
         <div class="right">
             <input class="text-filter" nz-input 
+                   formControlName="searchBy"
                    [placeholder]="'transactions_list.search_title_description' | translate"
-                   [maxLength]="TransactionsConstants.maxSearchByLength"
-                   [ngModel]="filters.searchBy" 
-                   (ngModelChange)="onSearchByChange($event)">
+                   [maxLength]="TransactionsConstants.maxSearchByLength">
         </div>
     </div>
 

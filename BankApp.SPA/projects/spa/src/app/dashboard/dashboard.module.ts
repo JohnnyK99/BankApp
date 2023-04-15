@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -31,6 +31,7 @@ import { DashboardStoreModule } from './state/dashboard-store.module';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     DashboardRoutingModule,
     DashboardStoreModule,
     TranslateModule,

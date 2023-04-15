@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
@@ -20,6 +20,7 @@ import { TransactionsListComponent } from './pages/transactions-list.component';
     CommonModule,
     TranslateModule,
     FormsModule,
+    ReactiveFormsModule,
     NgxMaskModule.forChild(),
 
     NzFormModule,

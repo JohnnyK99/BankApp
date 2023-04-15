@@ -21,11 +21,11 @@ import { combineLatest, filter, map, startWith } from 'rxjs';
 export class AddressBookDialogComponent extends BaseComponent implements OnInit {
   readonly TransactionsConstants = TransactionsConstants;
 
-  filterControl = this.fb.control<string>('');
+  filterFormControl = this.fb.control<string>('');
+  selectedEntryFormControl = this.fb.control<AddressBookEntry | null>(null);
   entries: AddressBookEntry[] = [];
-  selected: AddressBookEntry | null = null;
 
-  filter$ = this.filterControl.valueChanges;
+  filter$ = this.filterFormControl.valueChanges;
 
   filteredEntries$ = combineLatest([
     this.facade.addressBook$,
@@ -65,10 +65,10 @@ export class AddressBookDialogComponent extends BaseComponent implements OnInit 
 
     this.observe(this.facade.isAddingMode$)
       .subscribe(() => this.formGroup.reset());
-  }
 
-  onSelect(): void {
-    this.modal.close(this.selected);
+    this.observe(this.selectedEntryFormControl.valueChanges)
+      .pipe(filter(Boolean))
+      .subscribe(entry => this.modal.close(entry));
   }
 
   onEntryAdd(): void {

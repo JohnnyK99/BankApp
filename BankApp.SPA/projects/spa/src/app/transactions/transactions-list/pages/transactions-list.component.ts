@@ -11,6 +11,7 @@ import { TransactionsConstants } from '../../../shared/constants/transactions.co
 import { PaginationParameters } from '../../../shared/models/pagination-parameters.model';
 import { TransactionsFacade } from '../../state/transactions.facade';
 import { DateFormat } from '../../../shared/constants/enums/date-format.enum';
+import { NonNullableFormBuilder } from '@angular/forms';
 
 @Component({
   templateUrl: './transactions-list.component.html',
@@ -21,7 +22,16 @@ export class TransactionsListComponent extends BaseComponent implements OnInit {
   readonly TransactionType = TransactionType;
   readonly DateFormat = DateFormat;
 
+  filtersFormGroup = this.fb.group({
+    bankAccountNumber: this.fb.control<string | null>(null),
+    transactionTypes: this.fb.control<TransactionType[]>([]),
+    dateFrom: this.fb.control<Date | null>(null),
+    dateTo: this.fb.control<Date | null>(null),
+    searchBy: this.fb.control<string>(''),
+  });
+
   constructor(
+    private fb: NonNullableFormBuilder,
     private router: Router,
     public bankAccountsFacade: BankAccountsFacade,
     public transactionsFacade: TransactionsFacade
@@ -34,7 +44,13 @@ export class TransactionsListComponent extends BaseComponent implements OnInit {
 
     this.observe(this.bankAccountsFacade.selectedBankAccount$)
       .pipe(filter(Boolean))
-      .subscribe(acc => this.onBankAccountNumberChange(acc.accountNumber));
+      .subscribe(acc => this.transactionsFacade.setFilters({ bankAccountNumber: acc.accountNumber }));
+
+    this.observe(this.transactionsFacade.filters$)
+      .subscribe(filters => this.filtersFormGroup.setValue(filters, { emitEvent: false }));
+
+    this.observe(this.filtersFormGroup.valueChanges)
+      .subscribe(value => this.transactionsFacade.setFilters(value));
   }
 
   goBack(): void {
@@ -54,27 +70,6 @@ export class TransactionsListComponent extends BaseComponent implements OnInit {
     } else {
       this.transactionsFacade.setTableParams(paginationParams, { sortDirection: undefined, column: undefined });
     }
-  }
-
-  onBankAccountNumberChange(bankAccountNumber: string): void {
-    this.transactionsFacade.setFilters({ bankAccountNumber });
-  }
-
-  onTransactionTypesChange(transactionTypes: TransactionType[]): void {
-    this.transactionsFacade.setFilters({ transactionTypes });
-    this.transactionsFacade.fetchTransactions();
-  }
-
-  onDateFromChange(dateFrom: Date | null): void {
-    this.transactionsFacade.setFilters({ dateFrom });
-  }
-
-  onDateToChange(dateTo: Date | null): void {
-    this.transactionsFacade.setFilters({ dateTo });
-  }
-
-  onSearchByChange(searchBy: string): void {
-    this.transactionsFacade.setFilters({ searchBy });
   }
 
   disabledDateFrom = (dateTo: Date | null) => (current: Date): boolean => {

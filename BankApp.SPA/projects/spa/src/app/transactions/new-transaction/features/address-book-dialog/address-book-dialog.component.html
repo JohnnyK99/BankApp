@@ -1,4 +1,4 @@
-<input nz-input [formControl]="filterControl" [placeholder]="'shared.search' | translate">
+<input nz-input [formControl]="filterFormControl" [placeholder]="'shared.search' | translate">
 <ng-container *ngIf="(facade.isAddingMode$ | async) === false">
     <button nz-button nzType="primary" class="new-entry-button" (click)="facade.enterAddingMode()">{{'transaction.add_new_payee' | translate}}</button>
 </ng-container>
@@ -23,7 +23,7 @@
     </div>
 </div>
 <span class="no-entries-label" *ngIf="!(filteredEntries$ | async)?.length">{{'new_transaction.no_recipients' | translate}}</span>
-<nz-radio-group nzButtonStyle="solid" [(ngModel)]="selected" (ngModelChange)="onSelect()">
+<nz-radio-group nzButtonStyle="solid" [formControl]="selectedEntryFormControl">
     <label nz-radio-button *ngFor="let entry of filteredEntries$ | async" [nzValue]="entry">
         <div class="entry">
             <span class="account-name">{{entry.name}}</span>

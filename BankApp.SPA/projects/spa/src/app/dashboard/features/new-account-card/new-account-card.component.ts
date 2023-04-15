@@ -5,6 +5,7 @@ import { ClientsFacade } from '../../../global-stores/clients/clients.facade';
 import { DictionariesFacade } from '../../../global-stores/dictionaries/dictionaries.facade';
 import { UserRoles } from '../../../shared/constants/enums/user-roles.enum';
 import { UserService } from '../../../shared/services/user.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'bnk-new-account-card',
@@ -15,7 +16,7 @@ export class NewAccountCardComponent implements OnInit {
   readonly UserRoles = UserRoles;
 
   isActive = false;
-  selectedType: AccountTypeTranslated | null = null;
+  selectedTypeFormControl = new FormControl<AccountTypeTranslated | null>(null);
 
   constructor(
     public clientsFacade: ClientsFacade,
@@ -39,11 +40,11 @@ export class NewAccountCardComponent implements OnInit {
   }
 
   onAdd(): void {
-    if(this.selectedType == null) {
+    if(this.selectedTypeFormControl.value == null) {
       return;
     }
 
-    this.bankAccountsFacade.createBankAccount(this.selectedType.id);
+    this.bankAccountsFacade.createBankAccount(this.selectedTypeFormControl.value.id);
     this.isActive = false;
   }
 
