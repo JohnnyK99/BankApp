@@ -34,7 +34,7 @@
                 <input nz-input type="password" formControlName="repeatPassword" id="repeatPassword" />
             </nz-form-control>
         </nz-form-item>
-        <span class="login-redirect">{{'auth.already_have_account' | translate}} <a [routerLink]="'/' + AppRoutes.login">{{'auth.login' | translate}}</a></span>
+        <span class="login-redirect">{{'auth.already_have_account' | translate}} <a [routerLink]="['/', AppRoutes.login]">{{'auth.login' | translate}}</a></span>
         <nz-form-item>
             <nz-form-control>
                 <button nz-button nzType="primary" class="next-button" (click)="moveForward()" [disabled]="!registrationFormGroup.valid">{{'shared.next' | translate}}</button>

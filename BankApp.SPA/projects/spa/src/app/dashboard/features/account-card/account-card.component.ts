@@ -8,6 +8,9 @@ import { TransactionType } from '../../../shared/constants/enums/transaction-typ
 import { TransactionsConstants } from '../../../shared/constants/transactions.constants';
 import { TranslationService } from '../../../shared/services/translation.service';
 import { Router } from '@angular/router';
+import { TransactionsRoutes } from '../../../shared/constants/routes/transactions-routes.constants';
+import { UserRoles } from '../../../shared/constants/enums/user-roles.enum';
+import { UserService } from '../../../shared/services/user.service';
 
 @Component({
   selector: 'bnk-account-card',
@@ -18,14 +21,17 @@ export class AccountCardComponent {
   @Input()
   account: BankAccountTranslated;
 
-  readonly TransactionType = TransactionType;
   readonly AppRoutes = AppRoutes;
   readonly TransactionsConstants = TransactionsConstants;
+  readonly TransactionsRoutes = TransactionsRoutes;
+  readonly TransactionType = TransactionType;
+  readonly UserRoles = UserRoles;
 
   constructor(
     private modalService: NzModalService,
     private router: Router,
-    private translationService: TranslationService
+    private translationService: TranslationService,
+    public userService: UserService
   ) {}
 
   openTransactionDialog(transaction: Transaction): void {

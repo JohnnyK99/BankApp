@@ -24,7 +24,7 @@
             {{'auth.fill_employee_data' | translate}}
         </button>
     </nz-form-item>
-    <span>{{'auth.no_account' | translate}} <a [routerLink]="['/' + AppRoutes.register]">{{'auth.register' | translate}}</a></span>
+    <span>{{'auth.no_account' | translate}} <a [routerLink]="['/', AppRoutes.register]">{{'auth.register' | translate}}</a></span>
     <nz-form-item>
         <nz-form-control>
             <nz-spin nzSimple nzSize="small" *ngIf="(facade.authStatus$ | async) === AuthStatus.Authenticating"></nz-spin>
