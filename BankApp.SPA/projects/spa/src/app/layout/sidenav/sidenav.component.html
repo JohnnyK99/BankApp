@@ -4,9 +4,13 @@
     <ng-container *ngIf="(authFacade.authStatus$ | async) === AuthStatus.Authenticated">
         <div class="user-info" >
             <span nz-icon nzType="user" nzTheme="outline"></span>
-            <span>{{(authFacade.userInfo$ | async)?.username}}</span>
+            <span class="user-email" *ngIf="authFacade.userInfo$ | async as userInfo"
+                  [title]="userInfo.username">
+                  {{userInfo.username}}
+            </span>
             <button nz-button 
                     nzType="primary" 
+                    class="logout-button"
                     (click)="authFacade.logout()">
                 {{'auth.logout' | translate}}
             </button>
