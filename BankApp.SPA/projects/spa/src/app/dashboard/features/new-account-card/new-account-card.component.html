@@ -5,7 +5,7 @@
 <div *ngIf="isActive" class="active-content">
     <nz-alert nzType="info" [nzMessage]="'dashboard.balance_for_demonstration' | translate"></nz-alert>
     <nz-form-item>
-        <nz-form-label nzFor="selectedAccount">{{'dashboard.account_type' | translate}}</nz-form-label>
+        <nz-form-label nzFor="selectedAccount" class="account-type-label">{{'dashboard.account_type' | translate}}</nz-form-label>
         <nz-form-control>
             <nz-select [(ngModel)]="selectedType" [compareWith]="compareFn" [nzCustomTemplate]="defaultTemplate" class="account-select" nzDropdownClassName="account-type-panel">
                 <nz-option *ngFor="let account of dictionariesFacade.accountTypes$ | async" nzCustomContent [nzValue]="account">

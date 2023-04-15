@@ -33,7 +33,11 @@ nz-alert {
 }
 
 .account-select {
-  width: 300px
+  width: 300px;
+
+  @include xs {
+    width: 100%;
+  }
 }
 
 .option {
@@ -54,4 +58,14 @@ nz-alert {
   justify-content: flex-end;
   align-items: center;
   gap: 25px;
+}
+
+.account-type-label {
+  margin-right: 5px;
+}
+
+.ant-form-item {
+  @include xs {
+    display: grid;
+  }
 }

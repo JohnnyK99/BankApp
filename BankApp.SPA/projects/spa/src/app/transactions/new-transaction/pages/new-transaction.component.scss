@@ -15,12 +15,8 @@
     padding: 10px;
   }
 
-  @include md {
-    --account-select-option-height: 95px;
-  }
-
-  @include sm {
-    --account-select-option-height: 120px;
+  @include xs {
+    --account-select-option-height: 100px;
   }
 }
 
@@ -89,12 +85,12 @@ nz-select {
   gap: 15px;
   height: var(--account-select-option-height);
 
-  @include md {
+  @include xs {
     display: grid;
-    gap: 0;
+    //gap: 0;
   }
 
-  @include sm {
+  @include xs {
     span {
       white-space: normal;
     }
