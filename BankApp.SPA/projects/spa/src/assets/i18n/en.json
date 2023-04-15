@@ -30,8 +30,8 @@
         "add_new_account": "Add new account",
         "balance_for_demonstration": "For demonstrational purposes each new account is loaded with balance of $1000 ",
         "client_not_selected": "Client has not been selected",
+        "dashboard": "Dashboard",
         "full_transactions_list": "Full transactions list",
-        "main_page": "Main page",
         "new_transaction": "New transaction",
         "no_bank_accounts_to_display": "No bank accounts to display",
         "no_transactions_for_selected_account": "There are no transactions for this acount",
@@ -72,9 +72,9 @@
         "payee_account_number": "Payee account number",
         "payee_name": "Payee name",
         "saved_payees": "Saved payees",
-        "transaction_description": "Transaction description",
+        "transaction_description": "Description",
         "transaction_successful": "Transaction has been successful",
-        "transaction_title": "Transaction title"
+        "transaction_title": "Title"
     },
     "no_access": {
         "dont_have_access": "You don't have access to this content",
@@ -121,7 +121,7 @@
         "bank_account": "Bank account",
         "description": "Description",
         "search_title_description": "Search (title, description)...",
-        "sender_or_receiver": "Sender / receiver",
+        "sender_or_receiver": "Sender / Receiver",
         "title": "Title",
         "transaction_date": "Transaction date",
         "transaction_type": "Transaction type",
