@@ -6,15 +6,33 @@ import {
   map,
   catchError,
   of,
-  tap
+  tap,
+  withLatestFrom
 } from 'rxjs';
 import { FileHelpers } from '../../shared/helpers/file.helpers';
 import { AlertService } from '../../shared/services/alert.service';
 import { DashboardActions } from './dashboard.actions';
+import { ClientsFacade } from '../../global-stores/clients/clients.facade';
+import { UserService } from '../../shared/services/user.service';
+import { UserRoles } from '../../shared/constants/enums/user-roles.enum';
+import { BankAccountsActions } from '../../global-stores/bank-accounts/bank-accounts.actions';
 
 
 @Injectable()
 export class DashboardEffects {
+  init$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(DashboardActions.init),
+      withLatestFrom(this.clientsFacade.selectedClientId$),
+      map(([, clientId]) => {
+        if(this.userService.isInRole(UserRoles.Client) || clientId != null) {
+          return BankAccountsActions.fetchUserBankAccounts();
+        }
+
+        return BankAccountsActions.clearUserBankAccounts();
+      })
+    ));
+
   downloadConfirmation$ = createEffect(() =>
     this.actions$.pipe(
       ofType(DashboardActions.downloadConfirmation),
@@ -42,6 +60,8 @@ export class DashboardEffects {
   constructor(
     private actions$: Actions,
     private alertService: AlertService,
-    private transactionApiClient: TransactionApiClient
+    private clientsFacade: ClientsFacade,
+    private transactionApiClient: TransactionApiClient,
+    private userService: UserService
   ) {}
 }

@@ -3,6 +3,9 @@ import { DownloadConfirmationSuccessProps } from './props/download-confirmation-
 import { DownloadConfirmationProps } from './props/download-confirmation.props';
 
 export const DashboardActions = {
+  init: createAction(
+    '[Dashboard] Init'
+  ),
   downloadConfirmation: createAction(
     '[Dashboard] Download confirmation',
     props<DownloadConfirmationProps>()

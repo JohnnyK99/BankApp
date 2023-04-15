@@ -1,15 +1,15 @@
 <h1>{{'dashboard.dashboard' | translate}}</h1>
 <div class="page-content">
     <div class="carousel-wrapper">
-        <ng-container *ngIf="(facade.userBankAccounts$ | async) === null">
+        <ng-container *ngIf="(bankAccountsFacade.userBankAccounts$ | async) === null">
             <nz-skeleton [nzActive]="true"></nz-skeleton>
         </ng-container>
-        <ng-container *ngIf="(facade.userBankAccounts$ | async) as bankAccounts">
+        <ng-container *ngIf="(bankAccountsFacade.userBankAccounts$ | async) as bankAccounts">
             <div class="empty-carousel-template elevated" *ngIf="bankAccounts.length === 0">
                 {{'dashboard.no_bank_accounts_to_display' | translate}}
             </div>
             <ng-container *ngIf="bankAccounts.length > 0">
-                <button nz-button nzType="text" (click)="carousel.pre(); facade.setSelectedBankAccountIndex(carousel.activeIndex)" [disabled]="carousel.activeIndex === 0">
+                <button nz-button nzType="text" (click)="carousel.pre(); bankAccountsFacade.setSelectedBankAccountIndex(carousel.activeIndex)" [disabled]="carousel.activeIndex === 0">
                     <span nz-icon nzType="left" nzTheme="outline"></span>
                 </button>
                 <nz-carousel nzEnableSwipe="false" #carousel class="elevated">
@@ -18,7 +18,7 @@
                                         [account]="account">
                     </bnk-account-card>
                 </nz-carousel>
-                <button nz-button nzType="text" (click)="carousel.next(); facade.setSelectedBankAccountIndex(carousel.activeIndex)" [disabled]="bankAccounts.length === 0 || carousel.activeIndex === bankAccounts.length-1">
+                <button nz-button nzType="text" (click)="carousel.next(); bankAccountsFacade.setSelectedBankAccountIndex(carousel.activeIndex)" [disabled]="bankAccounts.length === 0 || carousel.activeIndex === bankAccounts.length-1">
                     <span nz-icon nzType="right" nzTheme="outline"></span>
                 </button>
             </ng-container>

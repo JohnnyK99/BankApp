@@ -2,8 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NzCarouselComponent } from 'ng-zorro-antd/carousel';
 import { BaseComponent } from '../../base.component';
 import { BankAccountsFacade } from '../../global-stores/bank-accounts/bank-accounts.facade';
-import { UserRoles } from '../../shared/constants/enums/user-roles.enum';
-import { UserService } from '../../shared/services/user.service';
+import { DashboardFacade } from '../state/dashboard.facade';
 
 @Component({
   templateUrl: './dashboard.component.html',
@@ -14,17 +13,13 @@ export class DashboardComponent extends BaseComponent implements OnInit {
   nzCarousel: NzCarouselComponent;
 
   constructor(
-    public facade: BankAccountsFacade,
-    private userService: UserService
+    public bankAccountsFacade: BankAccountsFacade,
+    public dashboardFacade: DashboardFacade
   ) {
     super();
   }
 
   ngOnInit(): void {
-    if(this.userService.isInRole(UserRoles.Client)) {
-      this.facade.fetchUserBankAccounts();
-    } else {
-      this.facade.clearUserBankAccounts();
-    }
+    this.dashboardFacade.init();
   }
 }
