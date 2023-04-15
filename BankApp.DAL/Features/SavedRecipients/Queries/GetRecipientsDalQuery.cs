@@ -23,7 +23,9 @@ namespace BankApp.DAL.Features.SavedRecipients.Queries
                                                    {
                                                        AccountNumber = recipient.BankAccount.AccountNumber,
                                                        Name = recipient.Name
-                                                   }).ToListAsync();
+                                                   })
+                                                   .OrderBy(recipient => recipient.Name)
+                                                   .ToListAsync();
         }
     }
 }
