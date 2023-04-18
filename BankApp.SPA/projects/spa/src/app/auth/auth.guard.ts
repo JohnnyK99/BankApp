@@ -21,6 +21,17 @@ export class AuthGuard implements CanActivate {
       .pipe(
         first(),
         map(isValid => {
+          const url = route.url.toString();
+
+          if([AppRoutes.login, AppRoutes.register].includes(url)) {
+            if(isValid) {
+              this.redirectToBase();
+              return false;
+            }
+
+            return true;
+          }
+
           if(isValid === false) {
             this.facade.redirectToLogin(this.getFullPath(route));
             return false;
@@ -52,5 +63,9 @@ export class AuthGuard implements CanActivate {
 
   private redirectToNoAccess(): void {
     this.router.navigate([AppRoutes.noAccess]);
+  }
+
+  private redirectToBase(): void {
+    this.router.navigate([AppRoutes.base]);
   }
 }

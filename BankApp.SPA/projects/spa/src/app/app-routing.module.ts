@@ -20,6 +20,7 @@ const routes: Routes = [
   {
     path: AppRoutes.login,
     component: LoginComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: AppRoutes.noAccess,
@@ -28,6 +29,7 @@ const routes: Routes = [
   {
     path: AppRoutes.register,
     component: RegisterComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: AppRoutes.base,
