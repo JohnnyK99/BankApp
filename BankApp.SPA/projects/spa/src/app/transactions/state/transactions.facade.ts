@@ -51,6 +51,5 @@ export class TransactionsFacade {
 
   setTableParams(pagination: Partial<PaginationParameters>, sort: SortParameters): void {
     this.store.dispatch(TransactionsActions.setTableParams({ pagination, sort }));
-    this.fetchTransactions();
   }
 }

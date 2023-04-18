@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NzTableQueryParams } from 'ng-zorro-antd/table';
-import { filter } from 'rxjs';
+import { distinctUntilChanged, filter, map } from 'rxjs';
 import { AppRoutes } from '../../../shared/constants/routes/app-routes.constants';
 import { BaseComponent } from '../../../base.component';
 import { BankAccountsFacade } from '../../../global-stores/bank-accounts/bank-accounts.facade';
@@ -21,6 +21,8 @@ export class TransactionsListComponent extends BaseComponent implements OnInit {
   readonly TransactionsConstants = TransactionsConstants;
   readonly TransactionType = TransactionType;
   readonly DateFormat = DateFormat;
+
+  isInitialParamsChange = true;
 
   filtersFormGroup = this.fb.group({
     bankAccountNumber: this.fb.control<string | null>(null),
@@ -43,8 +45,8 @@ export class TransactionsListComponent extends BaseComponent implements OnInit {
     this.bankAccountsFacade.fetchUserBankAccounts();
 
     this.observe(this.bankAccountsFacade.selectedBankAccount$)
-      .pipe(filter(Boolean))
-      .subscribe(acc => this.transactionsFacade.setFilters({ bankAccountNumber: acc.accountNumber }));
+      .pipe(filter(Boolean), map(acc => acc.accountNumber), distinctUntilChanged())
+      .subscribe(acc => this.transactionsFacade.setFilters({ bankAccountNumber: acc }));
 
     this.observe(this.transactionsFacade.filters$)
       .subscribe(filters => this.filtersFormGroup.setValue(filters, { emitEvent: false }));
@@ -70,6 +72,13 @@ export class TransactionsListComponent extends BaseComponent implements OnInit {
     } else {
       this.transactionsFacade.setTableParams(paginationParams, { sortDirection: undefined, column: undefined });
     }
+
+    if(this.isInitialParamsChange) {
+      this.isInitialParamsChange = false;
+      return;
+    }
+
+    this.transactionsFacade.fetchTransactions();
   }
 
   disabledDateFrom = (dateTo: Date | null) => (current: Date): boolean => {
