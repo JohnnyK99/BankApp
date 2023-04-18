@@ -5,10 +5,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-left: 20px;
-  padding-right: 25%;
-  width: 120%;
-  padding-right: 25%;
+  padding-inline: 20px;
+  box-shadow: 30px 0 0 0 var(--color-secondary);
   background-color: var(--color-secondary);
 
   @include md {

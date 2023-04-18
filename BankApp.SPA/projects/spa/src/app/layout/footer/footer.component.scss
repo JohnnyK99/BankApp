@@ -2,11 +2,10 @@
 
 :host {
   min-height: 40px;
-  padding: 10px 20px;
-  padding-right: 25%;
+  padding: 10px;
+  box-shadow: 30px 0 0 0 var(--color-secondary);
   background-color: var(--color-secondary);
   display: grid;
-  width: 120%;
   gap: 10px;
 
   @include md {
