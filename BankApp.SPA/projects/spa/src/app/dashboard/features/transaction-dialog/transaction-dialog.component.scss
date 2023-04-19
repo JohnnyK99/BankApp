@@ -1,8 +1,15 @@
+@use 'mixins' as *;
+
 :host {
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 15px;
   row-gap: 40px;
+
+  @include sm {
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+  }
 }
 
 .amount {
@@ -14,4 +21,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @include sm {
+    grid-column: span 1;
+  }
+}
+
+bnk-info-item {
+  ::ng-deep span {
+    word-break: break-all;
+  }
 }

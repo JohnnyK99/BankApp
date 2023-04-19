@@ -39,7 +39,7 @@ export class AccountCardComponent {
       nzTitle: this.translationService.getTranslation('transaction.transaction'),
       nzContent: TransactionDialogComponent,
       nzFooter: null,
-      nzWidth: '60vw',
+      nzWidth: '600px',
       nzComponentParams: {
         transaction,
       },

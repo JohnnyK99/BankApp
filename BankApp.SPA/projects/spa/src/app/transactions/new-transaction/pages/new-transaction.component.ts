@@ -187,7 +187,7 @@ export class NewTransactionComponent extends BaseComponent implements OnInit {
     this.modalService.create<ConfirmTransactionDialogComponent>({
       nzTitle: this.translationService.getTranslation('new_transaction.confirm_transaction'),
       nzContent: ConfirmTransactionDialogComponent,
-      nzWidth: '60vw',
+      nzWidth: '600px',
       nzOnOk: () => this.transactionsFacade.createTransaction(transaction),
       nzOkText: this.translationService.getTranslation('shared.confirm'),
       nzCancelText: this.translationService.getTranslation('shared.cancel'),
