@@ -3,14 +3,10 @@
 
 ## Table of contents
 
-- [Demo](#demo)
 - [Overview](#overview)
 - [Features](#features)
 - [Technologies](#technologies)
 - [Screenshots](#screenshots)
-
-## Demo
-Demonstrational version of the project has been deployed to Azure and is available <a href="https://bank-app-front.azurewebsites.net" target="_blank">HERE</a>
 
 ## Overview
 
@@ -61,15 +57,10 @@ Users with *Employee* role are able to browse and display information on all cli
 
 ## Spis treści
 
-- [Wersja demonstracyjna](#wersja-demonstracyjna)
 - [Opis](#opis)
 - [Funkcjonalności](#funkcjonalności)
 - [Technologie](#technologie)
 - [Zrzuty ekranu](#zrzuty-ekranu)
-
-## Wersja demonstracyjna
-
-Demonstracyjna wersja aplikacji została opublikowana na platformie Azure i jest dostępna <a href="https://bank-app-front.azurewebsites.net" target="_blank">TUTAJ</a>
 
 ## Opis
 
